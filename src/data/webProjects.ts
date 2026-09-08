@@ -770,67 +770,131 @@ export const webProjects = [
   },
   {
     id: "thanada-construction",
-    title: "Thanada Construction",
+    title: "Thanada Construction Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Apr 2024 – Jul 2024",
     role: "Senior UX/UI Designer",
     category: "Web Design & Construction",
+    platform: "Responsive Marketing & Portfolio Site",
+    industry: "Residential Design & Build",
     tags: ["Construction", "Residential", "Portfolio", "Lead Gen"],
+    stack: ["Figma", "Design System", "Thai Typography", "Content Templates"],
     image: "/img/cover/thanada-construction.webp",
-    imageAlt: "Thanada Construction residential design and build portfolio website",
+    imageAlt: "Thanada Construction website — design and construction portfolios kept separate, full organisation chart published",
     metric: "Design + Build",
-    metricBadge: "Free Consultation",
-    overview: "Portfolio and enquiry site for a residential design-and-build contractor, structured so homeowners can judge completed work before starting a build conversation.",
-    problem: "Choosing a home builder is a high-commitment decision made largely on evidence of finished work, but the company had no way to show completed houses, service scope or team structure to homeowners weighing contractors.",
+    metricBadge: "13 Functions, 3 Departments",
+    hook: "A homeowner choosing a builder is really asking whether anyone will still answer after handover — so the organisation chart, warranty function included, is published in full.",
+    overview:
+      "Portfolio and enquiry site for Thanada Construction, a Thai residential design-and-build contractor. Completed work is split into design and construction so a homeowner can judge each separately, and the organisation chart is published in full — three departments and thirteen named functions, quality warranty among them — because the question behind choosing a builder is whether the company has the people to finish the job and to answer afterwards.",
+    kpis: [
+      { value: "2 portfolios", label: "Design work and construction work kept apart", sub: "one company, two different judgements for the client" },
+      { value: "3 departments", label: "Design, construction & engineering, administration", sub: "thirteen named functions on the published org chart" },
+      { value: "Warranty staffed", label: "Quality warranty appears as a role, not a promise", sub: "after-handover has an owner in the chart" },
+    ],
+    problem:
+      "Commissioning a house is the largest purchase most people make, and it is decided on evidence they cannot easily get: what the company has actually built, whether it can both design and construct, and whether anyone will still be reachable when something needs fixing a year later. Without published work, without those two services separated, and without any account of who is inside the company, a homeowner comparing contractors has nothing but a quote to compare.",
     baselineStats: [
-      { value: "Unseen", label: "Completed houses not viewable before enquiry" },
-      { value: "Unclear", label: "Design and construction scope not separated" },
-      { value: "Unstated", label: "Team structure and capability not documented" }
+      { value: "Unseen", label: "completed houses not viewable before an enquiry" },
+      { value: "Undifferentiated", label: "design and construction scope not separated" },
+      { value: "Company unstated", label: "no account of which disciplines are actually in-house" }
     ],
     solutions: [
-      { title: "Work Portfolio Split by Service", body: "Completed projects separated into design work and construction work, each with photography of finished houses so homeowners can assess style and quality against their own brief." },
-      { title: "Organisational Capability Chart", body: "Team structure published across design, engineering and site management, showing homeowners the company has the disciplines a full design-and-build actually requires." },
-      { title: "Editorial Content for Early-Stage Buyers", body: "Articles on choosing a contractor and planning a build, capturing homeowners researching months before they are ready to commission." }
+      {
+        title: "Two Portfolios, Not One",
+        body: "Completed work splits into design projects and construction projects, each with photography of finished houses. They are two different decisions for a homeowner — one is a judgement about taste, the other about execution — and merging them into a single gallery makes both harder to make."
+      },
+      {
+        title: "The Organisation Chart, Published in Full",
+        body: "Three departments and thirteen named functions: design; construction and engineering covering estimating, engineering, building systems, construction and handover, and quality warranty; and general administration covering finance, sales, tendering, customer relations and after-sales, contracts, HR and internal audit. It shows a homeowner that the disciplines a design-and-build requires are staffed rather than assembled on the day."
+      },
+      {
+        title: "Warranty as a Function, Not a Promise",
+        body: "Quality warranty sits in the chart as a role inside the construction department rather than as a line of marketing copy. For a client whose real fear is being unable to reach anyone after handover, a box on the org chart answers the question better than a guarantee does."
+      },
+      {
+        title: "Editorial for Homeowners Months Ahead",
+        body: "Articles on choosing a contractor and selecting a house design reach people researching long before they are ready to commission. A build decision has a long lead time, so being useful to someone who cannot yet enquire is part of the site's job rather than an extra."
+      }
     ],
     impactTable: [
-      { metric: "Completed work visibility", before: "Not published", after: "Portfolio by service type", delta: "Documented" },
-      { metric: "Service scope clarity", before: "Undifferentiated", after: "Design and build separated", delta: "Structured" },
-      { metric: "Early-stage audience reach", before: "None", after: "Article and guide content", delta: "Added" }
+      { metric: "Completed work", before: "Not published", after: "Two portfolios, design and construction", delta: "Documented" },
+      { metric: "Service scope", before: "Undifferentiated", after: "Design and build judged separately", delta: "Separated" },
+      { metric: "Company capability", before: "Unstated", after: "3 departments, 13 named functions", delta: "Published" },
+      { metric: "Early-stage researchers", before: "No reason to visit", after: "Article and guide content", delta: "Reached" }
+    ],
+    quote:
+      "The question underneath \"which builder should I use\" is usually \"will anyone answer when the roof leaks in year two\". Publishing the org chart with a warranty function inside it answers that better than any guarantee written in marketing copy.",
+    quoteRole: "Design rationale · Thanada Construction Website",
+    learnings: [
+      "Design and construction are two different judgements for a homeowner, and keeping their portfolios separate lets each be made on its own terms.",
+      "An organisation chart is unusually persuasive for a high-commitment service, because it converts a claim about capability into a countable list of roles.",
+      "Build decisions have long lead times, which makes content for people who are not ready to enquire a functional part of the site rather than an optional extra."
     ],
     deliverables: ["Portfolio Site", "Service Category System", "Article Templates", "Contact & Enquiry Pages"]
-
   },
   {
     id: "happy-training",
-    title: "Happy Training",
+    title: "Happy Training Website",
     client: "HAPPY THREE CREATION CO., LTD.",
     timeline: "Aug 2023 – Feb 2024",
     role: "Senior UX/UI Designer",
     category: "Web Design & Training Institute",
+    platform: "Responsive Marketing & Catalogue Site",
+    industry: "Corporate Training",
     tags: ["Training", "Courses", "Lead Gen", "Corporate"],
+    stack: ["Figma", "Design System", "Thai Typography", "Catalogue Templates"],
     image: "/img/cover/happy-training.webp",
-    imageAlt: "Happy Training corporate training institute course catalogue website",
+    imageAlt: "Happy Training website redesign — a flat column of course links rebuilt as fifteen grouped, filterable categories",
     metric: "15 Course Groups",
-    metricBadge: "Soft Skill + Hard Skill",
-    overview: "Redesign of a corporate training institute site, restructuring an unnavigable list of course links into a browsable catalogue that HR buyers can filter and shortlist from.",
-    problem: "The original site listed every course as a plain text link in one continuous column — over a hundred entries with no grouping, no imagery and no hierarchy — leaving HR buyers to scan the entire page to find anything relevant to their team.",
+    metricBadge: "Flat Text List → Filtered Catalogue",
+    hook: "The old site put every course in one column of plain text links — over a hundred of them, ungrouped. Making that catalogue navigable was the entire redesign.",
+    overview:
+      "A redesign for Happy Training, a Thai corporate training institute. The site it replaced listed every course as a plain text link in a single continuous column with no grouping, no imagery and no hierarchy. The rebuild turns that into fifteen course groups, image-led cards with a category filter, and the four delivery formats stated before the catalogue — so an HR buyer can shortlist by the capability gap they are trying to close.",
+    kpis: [
+      { value: "15 groups", label: "Coaching, leadership, sales, service, digital, knowledge", sub: "replacing one undifferentiated column of links" },
+      { value: "4 formats", label: "Group coaching, hard-skill workshop, workshop, activity", sub: "how a session runs, stated before the course list" },
+      { value: "Cards + filter", label: "Image-led course cards with category filtering", sub: "a catalogue that is scanned rather than read" },
+    ],
+    problem:
+      "The original site was a wall of text: over a hundred course titles as plain links in one column, undifferentiated, unsorted and unillustrated. An HR buyer looking for something to close a specific gap — service quality, first-line leadership, presentation skills — had to read the whole page to find out whether it existed. In practice that meant the catalogue's depth, which is the institute's main asset, was working against it.",
     baselineStats: [
-      { value: "Flat list", label: "All courses presented as undifferentiated text links" },
-      { value: "No grouping", label: "Courses not categorised by skill type or function" },
-      { value: "No visual", label: "Course pages carried no imagery or scannable structure" }
+      { value: "One flat column", label: "over a hundred courses as undifferentiated text links" },
+      { value: "No grouping", label: "nothing organising courses by skill type or function" },
+      { value: "No imagery", label: "no visual hierarchy to scan; the page had to be read" }
     ],
     solutions: [
-      { title: "Course Category Architecture", body: "Restructured the catalogue into fifteen course groups spanning leadership, sales and marketing, service, safety, digital and knowledge management, so HR buyers can navigate by the capability gap they are solving." },
-      { title: "Visual Course Cards with Filtering", body: "Replaced text links with image-led cards and a category filter, making the catalogue scannable rather than something to be read line by line." },
-      { title: "Trainer Credibility Layer", body: "Foregrounded the four delivery formats — group coaching, hard-skill workshop, training and workshop, training and activity — with photography of live sessions, since corporate buyers assess the trainer as much as the syllabus." }
+      {
+        title: "Fifteen Groups Over a Hundred Courses",
+        body: "The catalogue was restructured into fifteen groups — coaching, leadership, sales and marketing, thinking skills, train-the-trainer, management, service, general soft skill, digital technology, knowledge management, tools, speaking, online and premium courses. An HR buyer navigates by the capability gap they are closing rather than by scanning titles for a match."
+      },
+      {
+        title: "Cards and a Filter Instead of Links",
+        body: "Courses became image-led cards with a category filter sitting above them. The catalogue is now scanned rather than read, which is the only way a list of this length becomes usable at all."
+      },
+      {
+        title: "Delivery Format Before the Syllabus",
+        body: "Four formats are stated up front: training and group coaching, hard-skill workshop, training and workshop, and training and activity. A corporate buyer is deciding how a day will run with their team as deliberately as what it will cover, so the format cannot sit inside each course page."
+      },
+      {
+        title: "Trainers Made Visible",
+        body: "Photography of live sessions and of the trainers running them carries through the page. In corporate training the buyer assesses the person who will be in the room as much as the syllabus, and the previous site showed neither."
+      }
     ],
     impactTable: [
-      { metric: "Catalogue structure", before: "Single flat text list", after: "15 grouped categories", delta: "Restructured" },
-      { metric: "Course presentation", before: "Text links only", after: "Image cards with filter", delta: "Scannable" },
-      { metric: "Delivery format clarity", before: "Not stated", after: "4 formats surfaced", delta: "Defined" }
+      { metric: "Catalogue structure", before: "One flat column of text links", after: "15 grouped categories", delta: "Restructured" },
+      { metric: "Finding a relevant course", before: "Read the entire page", after: "Filter by category", delta: "Scannable" },
+      { metric: "Course presentation", before: "Text link only", after: "Image card inside a category", delta: "Illustrated" },
+      { metric: "Delivery format", before: "Not stated", after: "Four formats before the catalogue", delta: "Defined" }
+    ],
+    quote:
+      "A hundred courses in one column is not a catalogue, it is a wall. The institute's depth was its best asset and its worst navigation problem at the same time, and grouping it was the entire redesign.",
+    quoteRole: "Design rationale · Happy Training Website",
+    learnings: [
+      "Depth of catalogue becomes a liability the moment it is presented flat, and the fix is grouping rather than trimming.",
+      "In a long list, image cards are not decoration — they give the eye something to scan by, which is the difference between reading a page and finding something on it.",
+      "Corporate training buyers choose a delivery format as deliberately as a topic, so the format belongs before the course list rather than inside each course page."
     ],
     deliverables: ["Site Redesign", "Course Catalogue System", "Category Filter UI", "Responsive Marketing Site"]
-
   },
   {
     id: "once-accounting",
