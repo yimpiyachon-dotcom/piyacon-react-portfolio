@@ -140,21 +140,66 @@ const customStyles = `
     justify-content: space-between;
     gap: 16px;
   }
+  .section-head-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #5F6369;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+  .section-head-rule {
+    flex: 1;
+    height: 1px;
+    background: #24262B;
+  }
   .section-head-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     white-space: nowrap;
     flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #6EE7B7;
+    background: rgba(110, 231, 183, 0.06);
+    border: 1px solid rgba(110, 231, 183, 0.3);
+    border-radius: 9999px;
+    /* 40px tall: a comfortable touch target, unlike the old bare text link. */
+    padding: 10px 18px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+  }
+  .section-head-action:hover {
+    background: rgba(110, 231, 183, 0.12);
+    border-color: #6EE7B7;
+  }
+  .section-head-action:active {
+    transform: scale(0.97);
+  }
+  .section-head-action .arrow {
+    transition: transform 160ms ease;
+  }
+  .section-head-action:hover .arrow {
+    transform: translateX(3px);
   }
   @media (max-width: 700px) {
-    .section-head {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
+    /* The rule line is decoration; dropping it buys the label the room it
+       needs to stay on one row beside the button. */
+    .section-head-rule {
+      display: none;
+    }
+    .section-head-title {
+      font-size: 10px;
+      letter-spacing: 0.06em;
     }
     .section-head-action {
-      align-self: flex-end;
-    }
-    .section-head > div > span {
-      white-space: normal !important;
+      font-size: 12px;
+      padding: 9px 15px;
     }
   }
 
@@ -4377,35 +4422,16 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
       {/* Featured Web Application Projects */}
       <div className="section-head" style={{ marginBottom: 32 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1, minWidth: 0 }}>
-          <span
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 11,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "#5F6369",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Featured Web Applications & Platforms
-          </span>
-          <div style={{ flex: 1, height: 1, background: "#24262B" }} />
+          <span className="section-head-title">Featured Web Applications & Platforms</span>
+          <div className="section-head-rule" />
         </div>
         <button
           className="section-head-action"
           onClick={onProjects}
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 12,
-            color: "#6EE7B7",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: 0,
-            letterSpacing: "0.04em",
-          }}
+          aria-label="View all 29 projects"
         >
-          View all 29 projects →
+          View all
+          <span className="arrow" aria-hidden="true">→</span>
         </button>
       </div>
 
