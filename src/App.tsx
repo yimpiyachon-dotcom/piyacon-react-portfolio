@@ -817,6 +817,8 @@ function KpiStrip() {
         gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
         gap: 16,
         marginTop: 48,
+        position: "relative",
+        zIndex: 1,
       }}
     >
       {items.map((item, i) => (
@@ -2035,12 +2037,14 @@ function HeroBackground() {
       aria-hidden="true"
       style={{
         position: "absolute",
-        top: 0,
+        // Up past the section's own start, so the field reaches the page top
+        // and passes under the nav rather than leaving a dark band below it.
+        top: "calc(var(--page-pad-top, 0px) * -1)",
         left: "50%",
         width: "100vw",
         maxWidth: "100vw",
         transform: "translateX(-50%)",
-        height: "820px",
+        bottom: 0,
         overflow: "hidden",
         pointerEvents: "none",
         zIndex: 0,
@@ -2082,8 +2086,9 @@ function HeroBackground() {
             linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
           `,
           backgroundSize: "48px 48px",
-          maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black 20%, transparent 80%)",
-          WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black 20%, transparent 80%)",
+          // Reaches past the KPI row so the cards have grid to refract.
+          maskImage: "radial-gradient(ellipse 70% 560px at 50% 300px, black 18%, transparent 88%)",
+          WebkitMaskImage: "radial-gradient(ellipse 70% 560px at 50% 300px, black 18%, transparent 88%)",
           opacity: 0.85,
         }}
       />
@@ -2101,7 +2106,7 @@ function HeroBackground() {
           className="aurora-orb"
           style={{
             position: "absolute",
-            top: "15%",
+            top: "123px",
             left: "25%",
             width: "480px",
             height: "480px",
@@ -2115,7 +2120,7 @@ function HeroBackground() {
           className="aurora-orb"
           style={{
             position: "absolute",
-            top: "28%",
+            top: "230px",
             right: "22%",
             width: "520px",
             height: "520px",
@@ -2129,7 +2134,7 @@ function HeroBackground() {
           className="aurora-orb"
           style={{
             position: "absolute",
-            top: "10%",
+            top: "82px",
             left: "48%",
             width: "360px",
             height: "360px",
@@ -2220,10 +2225,23 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
   onSelectCv: Handler;
 }) {
   return (
-    <div style={{ maxWidth: 1200, margin: "0 auto", padding: "120px 24px 120px", position: "relative" }}>
-      <HeroBackground />
+    <div
+      style={{
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "120px 24px 120px",
+        position: "relative",
+        // Published so the hero background can reclaim this padding and run to
+        // the top of the page instead of starting below it.
+        ["--page-pad-top" as string]: "120px",
+      }}
+    >
       {/* Hero */}
       <section style={{ marginBottom: 96, position: "relative", zIndex: 1 }}>
+        {/* Inside the section so its height tracks the hero grid *and* the KPI
+            row: the cards frost what is painted behind them, so the field has
+            to reach them. */}
+        <HeroBackground />
         <div
           style={{
             display: "grid",
