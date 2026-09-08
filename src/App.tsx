@@ -131,6 +131,112 @@ const customStyles = `
     color: #E2E8F0;
   }
 
+  /* Section header: title + "view all" action.
+     The title has white-space: nowrap, so on narrow screens the action button
+     gets squeezed and wraps mid-phrase — stack the two rows instead. */
+  .section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .section-head-action {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  @media (max-width: 700px) {
+    .section-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .section-head-action {
+      align-self: flex-end;
+    }
+    .section-head > div > span {
+      white-space: normal !important;
+    }
+  }
+
+  /* ---- Loading: page transition ---- */
+  @keyframes page-enter {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .page-enter {
+    /* fill-mode "backwards", not "both": a lingering transform on the wrapper
+       would become the containing block for the pages' position:fixed back
+       buttons and pin them to the page instead of the viewport. */
+    animation: page-enter 380ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+  .route-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    z-index: 300;
+    background: linear-gradient(90deg, transparent, #6EE7B7 40%, #A7F3D0 60%, transparent);
+    transform-origin: 0 50%;
+    animation: route-progress 520ms ease-out forwards;
+    box-shadow: 0 0 12px rgba(110, 231, 183, 0.6);
+  }
+  @keyframes route-progress {
+    0%   { transform: scaleX(0); opacity: 1; }
+    70%  { transform: scaleX(0.85); opacity: 1; }
+    100% { transform: scaleX(1); opacity: 0; }
+  }
+
+  /* ---- Loading: image lazy-load skeleton ---- */
+  .img-frame {
+    position: relative;
+    overflow: hidden;
+    background: #14161A;
+  }
+  .img-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(110, 231, 183, 0.09) 45%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    background-size: 220% 100%;
+    animation: skeleton-sweep 1.25s ease-in-out infinite;
+    pointer-events: none;
+    transition: opacity 320ms ease;
+  }
+  .img-frame.is-loaded::after {
+    opacity: 0;
+    animation: none;
+  }
+  @keyframes skeleton-sweep {
+    from { background-position: 160% 0; }
+    to   { background-position: -60% 0; }
+  }
+  .img-frame > img {
+    opacity: 0;
+    transition: opacity 420ms ease, transform 420ms ease;
+    transform: scale(1.02);
+  }
+  .img-frame.is-loaded > img {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-enter,
+    .route-progress,
+    .img-frame::after,
+    .img-frame > img {
+      animation: none !important;
+      transition: none !important;
+    }
+    .img-frame > img { opacity: 1; transform: none; }
+  }
+
   @media print {
     body * {
       visibility: hidden;
@@ -2330,6 +2436,52 @@ function KpiStrip() {
   );
 }
 
+/**
+ * Image that reserves its box, shimmers while the bitmap streams in, then
+ * cross-fades it. The frame div carries the layout the surrounding markup used
+ * to put on a plain wrapper, so call sites keep the same DOM depth.
+ */
+function LazyImage({
+  src,
+  alt,
+  frameStyle,
+  style,
+  onError,
+  eager = false,
+}: {
+  src?: string;
+  alt?: string;
+  frameStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
+  onError?: (e: React.SyntheticEvent<HTMLImageElement>) => void;
+  eager?: boolean;
+}) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div className={`img-frame${loaded ? " is-loaded" : ""}`} style={frameStyle}>
+      <img
+        // A cached image can finish before React attaches onLoad, so the ref
+        // settles those cases instead of leaving the shimmer running forever.
+        ref={(el) => {
+          if (el?.complete) setLoaded(true);
+        }}
+        src={src}
+        alt={alt}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        fetchPriority={eager ? "high" : undefined}
+        onLoad={() => setLoaded(true)}
+        onError={(e) => {
+          setLoaded(true);
+          onError?.(e);
+        }}
+        style={style}
+      />
+    </div>
+  );
+}
+
 function ProjectCard({ project, onClick }: { project: Project; onClick: Handler }) {
   return (
     <div
@@ -2347,11 +2499,10 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
     >
       {/* Image + badge overlay */}
       <div style={{ position: "relative", aspectRatio: "16/10", overflow: "hidden", background: "#1B1D21" }}>
-        <img
-          loading="lazy"
-          decoding="async"
+        <LazyImage
           src={project.image}
           alt={project.imageAlt || project.title}
+          frameStyle={{ position: "absolute", inset: 0 }}
           onError={(e) => {
             e.currentTarget.src = "https://placehold.co/600x380/1a1b1f/6EE7B7?text=Platform+Case+Study";
           }}
@@ -3315,11 +3466,10 @@ function CaseStudy({ project, onBack, onHome }: {
           border: "1px solid #24262B",
         }}
       >
-        <img
-          loading="lazy"
-          decoding="async"
+        <LazyImage
           src={project.image}
           alt={project.imageAlt || project.title}
+          frameStyle={{ width: "100%", height: "100%" }}
           onError={(e) => {
             e.currentTarget.src = "https://placehold.co/900x560/1a1b1f/6EE7B7?text=Hero+Platform+Mockup";
           }}
@@ -3462,11 +3612,10 @@ function CaseStudy({ project, onBack, onHome }: {
                         background: "#1B1D21",
                       }}
                     >
-                      <img
-                        loading="lazy"
-                        decoding="async"
+                      <LazyImage
                         src={src}
                         alt={`${s.title} — visual ${i + 1}`}
+                        frameStyle={{ minHeight: 180 }}
                         style={{ width: "100%", display: "block" }}
                       />
                     </div>
@@ -4226,16 +4375,8 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
       </section>
 
       {/* Featured Web Application Projects */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 16,
-          marginBottom: 32,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1 }}>
+      <div className="section-head" style={{ marginBottom: 32 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1, minWidth: 0 }}>
           <span
             style={{
               fontFamily: "'JetBrains Mono', monospace",
@@ -4251,6 +4392,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
           <div style={{ flex: 1, height: 1, background: "#24262B" }} />
         </div>
         <button
+          className="section-head-action"
           onClick={onProjects}
           style={{
             fontFamily: "'JetBrains Mono', monospace",
@@ -4767,11 +4909,10 @@ function ProjectsPage({ onSelect, onBack, onSelectWebPreview, onContact }: {
                 }}
               >
                 <div style={{ position: "relative", aspectRatio: "16/10", overflow: "hidden", background: "#1B1D21" }}>
-                  <img
-                    loading="lazy"
-                    decoding="async"
+                  <LazyImage
                     src={p.image}
                     alt={p.title}
+                    frameStyle={{ position: "absolute", inset: 0 }}
                     style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                     onError={(e) => {
                       e.currentTarget.src = "https://placehold.co/600x380/1a1b1f/6EE7B7?text=Web+Design+Showcase";
@@ -6314,11 +6455,10 @@ function PreviewModal({ project, onClose }: { project: Project | null; onClose: 
             flexShrink: 0,
           }}
         >
-          <img
-            loading="lazy"
-            decoding="async"
+          <LazyImage
             src={project.image}
             alt={project.imageAlt || project.title}
+            frameStyle={{ position: "absolute", inset: 0 }}
             onError={(e) => {
               e.currentTarget.src = "https://placehold.co/820x460/1a1b1f/6EE7B7?text=Case+Study+Preview";
             }}
@@ -6742,6 +6882,10 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [activeProject, page]);
 
+  // One key per view. Remounting on change replays the enter animation and the
+  // top progress bar, which is what makes navigation read as a page change.
+  const routeKey = activeProject ? `case-study:${activeProject}` : page;
+
   return (
     <div style={{ minHeight: "100vh", background: "#0A0B0D" }}>
       {/* Embedded Global Styles */}
@@ -6770,6 +6914,9 @@ export default function App() {
       />
 
       {/* Conditional View Rendering */}
+      <div key={routeKey}>
+        <div className="route-progress" aria-hidden="true" />
+        <main className="page-enter">
       {selectedCaseStudy ? (
         <CaseStudy
           /* Keyed by project so switching case studies remounts with a fresh tab state. */
@@ -6815,6 +6962,8 @@ export default function App() {
           onSelectCv={() => setCvModalOpen(true)}
         />
       )}
+        </main>
+      </div>
 
       {/* Interactive Overlays */}
       <CvModal
