@@ -207,6 +207,7 @@ export const imageSizes: Record<string, [number, number, number[]]> = {
   "/img/process/smart-watcher/27.webp": [1900, 1051, [480, 1200]],
   "/img/process/smart-watcher/28.webp": [1904, 1064, [480, 1200]],
   "/img/process/smart-watcher/29.webp": [1065, 1133, [480]],
+  "/img/process/supakit-amulet/01.webp": [1668, 1220, [480, 1200]],
   "/img/process/th-health/01.webp": [1104, 1376, [480]],
   "/img/process/th-health/02.webp": [2219, 1184, [480, 1200]],
   "/img/process/th-health/03.webp": [2534, 720, [480, 1200]],

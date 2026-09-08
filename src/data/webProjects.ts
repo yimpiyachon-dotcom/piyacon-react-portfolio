@@ -642,35 +642,67 @@ export const webProjects = [
   },
   {
     id: "supakit-amulet",
-    title: "Supakit Amulet",
+    title: "Supakit Amulet Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Jan 2024 – Mar 2024",
     role: "UX/UI Designer",
     category: "Web Design & Manufacturing",
+    platform: "Responsive Marketing & Portfolio Site",
+    industry: "Amulet & Buddhist Object Manufacturing",
     tags: ["Manufacturing", "Portfolio", "Craft", "B2B"],
+    stack: ["Figma", "Design System", "Thai Typography", "Photography Direction"],
     image: "/img/cover/supakit-amulet.webp",
-    imageAlt: "Supakit amulet manufacturing workshop portfolio and commission enquiry website",
-    metric: "3 Work Categories",
-    metricBadge: "Direct Line Enquiry",
-    overview: "Portfolio and commission site for an amulet manufacturing workshop, built to show casting capability and finished work quality to temples and commissioning clients.",
-    problem: "Commissioning religious objects is a trust-heavy decision made largely on craftsmanship evidence, but the workshop had no way to show finished work, production process or scale to prospective clients before a phone call.",
+    imageAlt: "Supakit Watthumongkol website — die-struck and 3D sculpted portfolio, workshop photography and founder-fronted enquiry",
+    metric: "2 Craft Disciplines",
+    metricBadge: "Owner's Direct Line, Site-Wide",
+    hook: "In amulet commissioning the order goes to a person, not a company — so the founder's face and his own mobile number sit on the homepage rather than behind a contact form.",
+    overview:
+      "The site for Supakit Watthumongkol, a Thai amulet and Buddhist-object foundry. Commissioning sacred objects is a trust decision made on craftsmanship and on who answers the phone, so the site is built around two things: photographic evidence of finished work and of the production floor, and the founder placed personally at every point where an enquiry starts.",
+    kpis: [
+      { value: "2 disciplines", label: "Die-struck coins and medals, 3D sculpted pieces", sub: "shot on black so relief and metal finish read" },
+      { value: "Owner-fronted", label: "Named, photographed, with his own mobile number", sub: "on the homepage call-to-action and the about page" },
+      { value: "6 process photos", label: "Casting, hand finishing, welding, inspection", sub: "evidence of the standard rather than a claim about it" },
+    ],
+    problem:
+      "Commissioning religious objects is a trust-heavy decision, and it turns on two things a website usually cannot carry: whether the finish is good enough, and whether the person taking the order can be relied on. A temple committee or a commissioning client judged both by visiting the workshop or asking around. With no published work, no view of the production floor and no named person to call, there was nothing to assess before that first phone call — which made the call itself the filter.",
     baselineStats: [
-      { value: "No portfolio", label: "Finished work not viewable before enquiry" },
-      { value: "Unseen", label: "Casting and finishing process not documented" },
-      { value: "Phone only", label: "No structured route from interest to enquiry" }
+      { value: "No portfolio", label: "finished work not viewable before an enquiry" },
+      { value: "Process unseen", label: "casting and hand finishing undocumented" },
+      { value: "No named contact", label: "nothing telling a client who they would be dealing with" }
     ],
     solutions: [
-      { title: "Work Portfolio by Craft Type", body: "Output separated into coin pressing, three-dimensional casting and finished pieces, photographed against dark backgrounds so metal finish and relief detail read clearly." },
-      { title: "Workshop Process Documentation", body: "Real photography of the casting floor, hand finishing and quality inspection, giving commissioning clients evidence of the production standard rather than claims about it." },
-      { title: "Direct Enquiry Architecture", body: "Phone numbers and LINE contact persistent in the header and repeated at each section break, matching how this market actually opens a commission conversation." }
+      {
+        title: "Two Disciplines, Photographed to Be Judged",
+        body: "Work splits into die-struck coins and medals, and 3D sculpted pieces — statues, rings, bangles. Every item is shot against black so relief, metal and finish read, because the client is assessing craftsmanship from the photograph alone and nothing else on the page can stand in for that."
+      },
+      {
+        title: "The Production Floor as Evidence",
+        body: "Six photographs of the workshop: inspection under a loupe, casting, hand finishing, welding, the team at work, and a monk present on site. These carry the production standard as evidence rather than as a claim, which counts for more here than any description of quality control could."
+      },
+      {
+        title: "The Founder Placed Where Enquiries Start",
+        body: "Boy Supakit appears by name and photograph with his own mobile number on the homepage call-to-action and again on the about page. In this market a commission is entrusted to a person, so putting that person behind a generic form removes the thing actually being decided."
+      },
+      {
+        title: "Contact Persistent, Not Parked",
+        body: "Two phone numbers and a LINE account sit in the header of every page and repeat at each section break, alongside a contact page with a form and a map. The distance between looking at a piece and asking about it is never more than one element."
+      }
     ],
     impactTable: [
-      { metric: "Finished work visibility", before: "Not published", after: "Categorised portfolio", delta: "Documented" },
-      { metric: "Production process evidence", before: "None", after: "Workshop photography", delta: "Shown" },
-      { metric: "Enquiry routes", before: "Phone only", after: "Phone, LINE and form", delta: "Expanded" }
+      { metric: "Assessing craftsmanship", before: "Workshop visit or word of mouth", after: "Two categorised bodies of work", delta: "Published" },
+      { metric: "Production standard", before: "Claimed", after: "Six workshop photographs", delta: "Evidenced" },
+      { metric: "Who the client deals with", before: "Unstated", after: "Founder named, pictured, direct mobile", delta: "Personal" },
+      { metric: "Enquiry route", before: "Phone only", after: "Phone, LINE and form, header-persistent", delta: "Expanded" }
+    ],
+    quote:
+      "A temple committee is not choosing a supplier, they are choosing someone to entrust a sacred object to. Putting the founder's face and his own mobile number on the homepage is not a warm touch — it is the thing being decided.",
+    quoteRole: "Design rationale · Supakit Amulet Website",
+    learnings: [
+      "Where a purchase is entrusted rather than transacted, a named and photographed person outperforms any amount of company-voice copy.",
+      "Shooting metalwork on black is a functional decision rather than a stylistic one — the client is judging relief and finish, and a busy background removes the only evidence they have.",
+      "Documenting the production floor answers a quality question that no written claim about quality control can reach."
     ],
     deliverables: ["Portfolio Site", "Work Category System", "Article & News Templates", "Contact & Location Pages"]
-
   },
   {
     id: "chaocom-thailand",
