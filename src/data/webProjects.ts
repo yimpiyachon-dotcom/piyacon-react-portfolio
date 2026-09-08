@@ -2,34 +2,67 @@
 export const webProjects = [
   {
     id: "contracable",
-    title: "Contracable SaaS",
+    title: "Contractable",
     client: "BEURDEV CO., LTD.",
     timeline: "Apr 2024 – Jul 2024",
     role: "Senior UX/UI Designer",
-    category: "Web Design & B2B SaaS",
-    tags: ["SaaS", "B2B", "Design Tokens", "Enterprise"],
+    category: "Web App & Legal Tech",
+    platform: "Responsive Web Application",
+    industry: "Legal Tech / Document Automation",
+    tags: ["Legal Tech", "Document Automation", "Thai Language", "Self-Service"],
+    stack: ["Figma", "Component Library", "Form UX", "Thai Typography"],
     image: "/img/441ee598a9f9.webp",
-    imageAlt: "Contract lifecycle management SaaS product marketing landing and tier pricing calculator",
-    metric: "98/100 Lighthouse Perf",
-    metricBadge: "+62% Free Trials",
-    overview: "Contract lifecycle management platform landing page with enterprise pricing tier configurator, compliance calculator, and interactive product demo tours.",
-    problem: "Legal-tech enterprise buyers found the previous landing page too abstract and lacked clear ROI proof to justify scheduling software enterprise demos.",
+    imageAlt: "Contractable Thai legal document platform — template catalogue, guided form and live document preview",
+    metric: "Word & PDF Output",
+    metricBadge: "Guided Form + Live Preview",
+    hook: "Legal paperwork without a lawyer — pick a Thai contract template, answer the questions, watch the document write itself.",
+    overview:
+      "A Thai-language platform for producing legal documents without a lawyer. A user browses a catalogue of business and personal templates, fills in a guided form while the finished contract renders live beside it, then downloads the result as Word or PDF. Accounts keep completed documents and purchase receipts.",
+    kpis: [
+      { value: "Self-service", label: "Document creation", sub: "no lawyer needed for standard contracts" },
+      { value: "Live preview", label: "Form and document side by side", sub: "wording visible while answering" },
+      { value: "Word + PDF", label: "Editable and final output", sub: "downloadable from the member area" },
+    ],
+    problem:
+      "Producing a standard Thai contract meant either paying a lawyer for routine paperwork or copying a template of unknown provenance from the internet. Non-lawyers cannot tell which clauses a document needs, whether the wording holds up, or what they are agreeing to — so the choice was between unnecessary cost and unmanaged risk.",
     baselineStats: [
-      { value: "2.1%", label: "Free trial / sales demo request conversion" },
-      { value: "64/100", label: "Legacy page performance score (slow load speeds)" },
-      { value: "73%", label: "Visitors leaving before reaching pricing comparisons" }
+      { value: "Lawyer or guesswork", label: "no middle option for routine documents" },
+      { value: "Blind templates", label: "downloaded files gave no guidance on what to fill in" },
+      { value: "Unverifiable", label: "no way to know whether the wording was sound" },
     ],
     solutions: [
-      { title: "Interactive Product Feature Playground", body: "Embedded clickable sandbox showing how automated NDA generation and redline tracking works in 3 clicks." },
-      { title: "ROI & Legal Hours Saved Calculator", body: "Interactive slider allowing General Counsels to input team size and immediately calculate hours and dollar savings." },
-      { title: "Ultra-Clean Tokenized Architecture", body: "Strict Tailwind-based typography and SVG vector illustration hierarchy achieving 98/100 Google Lighthouse rating." }
+      {
+        title: "Template Catalogue Split by Audience",
+        body: "Documents are organised into business and personal groups on the homepage and the catalogue page, so a visitor identifies their situation before facing any legal vocabulary."
+      },
+      {
+        title: "Guided Form Beside a Live Document",
+        body: "The fill-in flow puts the question set on the left and the rendering contract on the right, with a progress bar underneath. The user sees their answer become the legal sentence, which is what turns an opaque form into something they can check."
+      },
+      {
+        title: "Plain-Language Framing Around Each Template",
+        body: "Every template opens with its last-updated date, format, page count and a three-step explanation of what happens next — the questions a first-time user asks before committing time to a form."
+      },
+      {
+        title: "Member Area for Documents and Receipts",
+        body: "Completed documents stay downloadable in Word and PDF from the account area, alongside purchase receipts and account settings, so a document can be retrieved and re-issued later."
+      }
     ],
     impactTable: [
-      { metric: "Enterprise demo requests", before: "24 / mo", after: "59 / mo", delta: "+145%" },
-      { metric: "Lighthouse Performance Score", before: "64 / 100", after: "98 / 100", delta: "+53%" },
-      { metric: "Pricing section scroll depth", before: "27%", after: "68%", delta: "+151%" }
+      { metric: "Route to a standard contract", before: "Lawyer or unverified template", after: "Guided self-service flow", delta: "Opened" },
+      { metric: "Document wording during entry", before: "Unseen until download", after: "Rendered live beside the form", delta: "Visible" },
+      { metric: "Access to finished documents", before: "One-time download", after: "Stored in the member area", delta: "Retained" },
+      { metric: "Template selection", before: "Undifferentiated list", after: "Split by business and personal", delta: "Structured" }
     ],
-    deliverables: ["B2B SaaS Landing Page", "Interactive ROI Calculator", "Responsive Component Tokens", "Design System Specs"]
+    quote:
+      "The live preview is the whole product. A form that hides its output asks the user to trust it; a form that writes the contract in front of them lets the user verify it — and for a legal document, verification is the feature.",
+    quoteRole: "Design rationale · Contractable",
+    learnings: [
+      "Showing the generated document while the form is being answered does more for confidence than any amount of reassuring copy around the form.",
+      "Splitting templates into business and personal lets people self-identify before they meet legal vocabulary, which is where a general list loses them.",
+      "Thai legal text is dense and long-form: type scale and line height carried more of the usability work here than layout did."
+    ],
+    deliverables: ["Marketing Site", "Template Catalogue", "Guided Document Flow", "Member Area & Account Settings", "Article Templates"]
   },
   {
     id: "aluminium-loop",

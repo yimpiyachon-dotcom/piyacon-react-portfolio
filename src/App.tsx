@@ -3,6 +3,7 @@ import "./styles/global.css";
 import { PROFILE_IMG } from "./data/profile";
 import { projects } from "./data/projects";
 import { allProjects } from "./data/allProjects";
+import { webProjects } from "./data/webProjects";
 import { processSteps } from "./data/processSteps";
 
 /**
@@ -22,6 +23,8 @@ type Kpi = { value: string; label: string; sub?: string };
 type Stat = { value?: string; label?: string; [key: string]: any };
 type ShowToast = (message: string) => void;
 type Handler = () => void;
+
+const highFetchPriority = { fetchpriority: "high" } as unknown as React.ImgHTMLAttributes<HTMLImageElement>;
 
 
 function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
@@ -103,7 +106,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
               }}
             >
               <img
-                fetchPriority="high"
+                {...highFetchPriority}
                 decoding="async"
                 src={PROFILE_IMG}
                 alt="Piyachon Wanburi (Yim) - Senior UX/UI Designer"
@@ -870,7 +873,7 @@ function LazyImage({
         alt={alt}
         loading={eager ? "eager" : "lazy"}
         decoding="async"
-        fetchPriority={eager ? "high" : undefined}
+        {...(eager ? highFetchPriority : {})}
         onLoad={() => setLoaded(true)}
         onError={(e) => {
           setLoaded(true);
@@ -1150,6 +1153,15 @@ function CaseStudy({ project, onBack, onHome }: {
   const [activeTab, setActiveTab] = useState("overview");
   const steps = processSteps[project.id] ?? [];
 
+  // Web & brand entries are written up progressively, so a case study may not
+  // carry every section yet. Reading through these defaults lets a partial
+  // project render the parts it has instead of crashing on a missing array.
+  const kpis = project.kpis ?? [];
+  const baselineStats = project.baselineStats ?? [];
+  const solutions = project.solutions ?? [];
+  const impactTable = project.impactTable ?? [];
+  const learnings = project.learnings ?? [];
+
   return (
     <div style={{ maxWidth: 940, margin: "0 auto", padding: "96px 24px 120px" }}>
       {/* Floating back button */}
@@ -1212,9 +1224,13 @@ function CaseStudy({ project, onBack, onHome }: {
         </button>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
-          <span className="tag-chip">{project.role}</span>
-          <span className="tag-chip">{project.platform}</span>
-          <span className="tag-chip">{project.industry}</span>
+          {[project.role, project.platform, project.industry]
+            .filter(Boolean)
+            .map((label: string) => (
+              <span key={label} className="tag-chip">
+                {label}
+              </span>
+            ))}
         </div>
         <h1
           style={{
@@ -1415,7 +1431,9 @@ function CaseStudy({ project, onBack, onHome }: {
       ) : (
       <>
 
-      {/* Executive Summary */}
+      {kpis.length > 0 || project.hook && (
+        <>
+{/* Executive Summary */}
       <section style={{ marginBottom: 64 }}>
         <div
           style={{
@@ -1429,7 +1447,7 @@ function CaseStudy({ project, onBack, onHome }: {
         >
           Executive Summary & Quantified Impact
         </div>
-        <KpiScoreboard kpis={project.kpis} />
+        <KpiScoreboard kpis={kpis} />
         <p
           style={{
             fontFamily: "'Inter', sans-serif",
@@ -1444,8 +1462,12 @@ function CaseStudy({ project, onBack, onHome }: {
       </section>
 
       <div style={{ width: "100%", height: 1, background: "#24262B", marginBottom: 64 }} />
+        </>
+      )}
 
-      {/* 01 Problem */}
+      {project.problem && (
+        <>
+{/* 01 Problem */}
       <section style={{ marginBottom: 64 }}>
         <div
           style={{
@@ -1482,12 +1504,16 @@ function CaseStudy({ project, onBack, onHome }: {
         >
           {project.problem}
         </p>
-        <BaselineStat stats={project.baselineStats} />
+        <BaselineStat stats={baselineStats} />
       </section>
 
       <div style={{ width: "100%", height: 1, background: "#24262B", marginBottom: 64 }} />
+        </>
+      )}
 
-      {/* 02 Solutions */}
+      {solutions.length > 0 && (
+        <>
+{/* 02 Solutions */}
       <section style={{ marginBottom: 64 }}>
         <div
           style={{
@@ -1514,7 +1540,7 @@ function CaseStudy({ project, onBack, onHome }: {
           Strategic UX Solutions
         </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          {project.solutions.map((s: any, i: number) => (
+          {solutions.map((s: any, i: number) => (
             <div
               key={i}
               style={{
@@ -1568,8 +1594,12 @@ function CaseStudy({ project, onBack, onHome }: {
       </section>
 
       <div style={{ width: "100%", height: 1, background: "#24262B", marginBottom: 64 }} />
+        </>
+      )}
 
-      {/* 03 Impact */}
+      {impactTable.length > 0 && (
+        <>
+{/* 03 Impact */}
       <section style={{ marginBottom: 64 }}>
         <div
           style={{
@@ -1629,12 +1659,12 @@ function CaseStudy({ project, onBack, onHome }: {
               </tr>
             </thead>
             <tbody>
-              {project.impactTable.map((row: any, i: number) => (
+              {impactTable.map((row: any, i: number) => (
                 <tr
                   key={i}
                   className="before-after-row"
                   style={{
-                    borderBottom: i < project.impactTable.length - 1 ? "1px solid #24262B" : "none",
+                    borderBottom: i < impactTable.length - 1 ? "1px solid #24262B" : "none",
                     transition: "background 150ms",
                   }}
                 >
@@ -1688,7 +1718,8 @@ function CaseStudy({ project, onBack, onHome }: {
         </div>
 
         {/* Stakeholder Quote card */}
-        <div
+        {project.quote && (
+          <div
           style={{
             background: "#131417",
             border: "1px solid #24262B",
@@ -1719,12 +1750,17 @@ function CaseStudy({ project, onBack, onHome }: {
           >
             — {project.quoteRole}
           </span>
-        </div>
+          </div>
+        )}
       </section>
 
       <div style={{ width: "100%", height: 1, background: "#24262B", marginBottom: 64 }} />
+        </>
+      )}
 
-      {/* 04 Learnings */}
+      {learnings.length > 0 && (
+        <>
+{/* 04 Learnings */}
       <section style={{ marginBottom: 64 }}>
         <div
           style={{
@@ -1751,7 +1787,7 @@ function CaseStudy({ project, onBack, onHome }: {
           Senior Learnings & Scalability
         </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-          {project.learnings.map((l: any, i: number) => (
+          {learnings.map((l: any, i: number) => (
             <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
               <span
                 style={{
@@ -1779,6 +1815,8 @@ function CaseStudy({ project, onBack, onHome }: {
           ))}
         </div>
       </section>
+        </>
+      )}
 
       </>
       )}
@@ -2402,10 +2440,9 @@ function SectionDivider({ label, count }: { label: string; count: number }) {
   );
 }
 
-function ProjectsPage({ onSelect, onBack, onSelectWebPreview, onContact }: {
+function ProjectsPage({ onSelect, onBack, onContact }: {
   onSelect: (id: string) => void;
   onBack: Handler;
-  onSelectWebPreview: (project: Project) => void;
   onContact: Handler;
 }) {
   const [filter, setFilter] = useState("all");
@@ -2646,7 +2683,7 @@ function ProjectsPage({ onSelect, onBack, onSelectWebPreview, onContact }: {
             {filteredWeb.map((p, i) => (
               <div
                 key={p.id || i}
-                onClick={() => onSelectWebPreview(p)}
+                onClick={() => onSelect(p.id)}
                 className="project-card"
                 style={{
                   background: "#131417",
@@ -4148,353 +4185,6 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
 }
 
 
-function PreviewModal({ project, onClose }: { project: Project | null; onClose: Handler }) {
-  if (!project) return null;
-
-  return (
-    <div
-      className="modal-overlay"
-      onClick={onClose}
-      style={{
-        position: "fixed",
-        inset: 0,
-        backgroundColor: "rgba(10, 11, 13, 0.88)",
-        backdropFilter: "blur(14px)",
-        zIndex: 100,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px 16px",
-      }}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          background: "#131417",
-          border: "1px solid #24262B",
-          borderRadius: 20,
-          maxWidth: 820,
-          width: "100%",
-          maxHeight: "92vh",
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-          boxShadow: "0 28px 70px rgba(0,0,0,0.85)",
-          overflow: "hidden",
-        }}
-      >
-        {/* Top Header Bar */}
-        <div
-          style={{
-            position: "relative",
-            aspectRatio: "16/9",
-            maxHeight: 340,
-            overflow: "hidden",
-            background: "#1B1D21",
-            flexShrink: 0,
-          }}
-        >
-          <LazyImage
-            src={project.image}
-            alt={project.imageAlt || project.title}
-            frameStyle={{ position: "absolute", inset: 0 }}
-            onError={(e) => {
-              e.currentTarget.src = "https://placehold.co/820x460/1a1b1f/6EE7B7?text=Case+Study+Preview";
-            }}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "linear-gradient(to bottom, rgba(10,11,13,0.2) 0%, rgba(10,11,13,0.85) 100%)",
-            }}
-          />
-
-          {/* Badges on hero */}
-          <div style={{ position: "absolute", top: 16, left: 18, display: "flex", gap: 8, flexWrap: "wrap" }}>
-            <div className="metric-badge">{project.metric || "Verified Design System"}</div>
-            {project.metricBadge && (
-              <div className="metric-badge metric-badge-neutral">{project.metricBadge}</div>
-            )}
-          </div>
-
-          <button
-            onClick={onClose}
-            style={{
-              position: "absolute",
-              top: 16,
-              right: 16,
-              background: "rgba(10,11,13,0.85)",
-              border: "1px solid #24262B",
-              borderRadius: "50%",
-              width: 36,
-              height: 36,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#F5F5F4",
-              cursor: "pointer",
-            }}
-          >
-            ✕
-          </button>
-
-          <div style={{ position: "absolute", bottom: 18, left: 24, right: 24 }}>
-            <div
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 11,
-                color: "#6EE7B7",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                marginBottom: 4,
-              }}
-            >
-              {project.client || "Client System"} · {project.timeline || "Delivered"}
-            </div>
-            <h2
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontSize: "clamp(22px, 3.5vw, 30px)",
-                fontWeight: 800,
-                color: "#F5F5F4",
-                margin: 0,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              {project.title}
-            </h2>
-          </div>
-        </div>
-
-        {/* Scrollable Content Details */}
-        <div
-          style={{
-            padding: "24px 28px 32px",
-            overflowY: "auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: 24,
-          }}
-        >
-          {/* Metadata chips */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
-            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-              <span className="tag-chip">{project.role || "Lead UX/UI Designer"}</span>
-              <span className="tag-chip">{project.category}</span>
-            </div>
-            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-              {project.tags.map((t: string) => (
-                <span key={t} className="stack-chip">
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Overview */}
-          <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 15,
-              color: "#F5F5F4",
-              lineHeight: 1.6,
-              margin: 0,
-            }}
-          >
-            {project.overview}
-          </p>
-
-          {/* Problem & Baseline Stats */}
-          {project.problem && (
-            <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 12, padding: "20px 22px" }}>
-              <div
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: 11,
-                  color: "#FCA5A5",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  marginBottom: 8,
-                }}
-              >
-                01 · The UX Problem & Friction
-              </div>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.6, margin: "0 0 16px" }}>
-                {project.problem}
-              </p>
-
-              {project.baselineStats && (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 10 }}>
-                  {project.baselineStats.map((st: any, i: number) => (
-                    <div key={i} style={{ background: "#131417", border: "1px solid #24262B", borderRadius: 8, padding: "12px 14px" }}>
-                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, fontWeight: 700, color: "#FCA5A5", marginBottom: 2 }}>
-                        {st.value}
-                      </div>
-                      <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: "#5F6369", lineHeight: 1.4 }}>
-                        {st.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Strategic Solutions */}
-          {project.solutions && (
-            <div>
-              <div
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: 11,
-                  color: "#6EE7B7",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  marginBottom: 12,
-                }}
-              >
-                02 · Strategic UX Solutions
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {project.solutions.map((sol: any, i: number) => (
-                  <div
-                    key={i}
-                    style={{
-                      background: "#17191E",
-                      border: "1px solid #24262B",
-                      borderRadius: 10,
-                      padding: "14px 18px",
-                      display: "flex",
-                      gap: 14,
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#6EE7B7", fontWeight: 700, paddingTop: 2 }}>
-                      0{i + 1}
-                    </span>
-                    <div>
-                      <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 15, fontWeight: 700, color: "#F5F5F4", marginBottom: 4 }}>
-                        {sol.title}
-                      </div>
-                      <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.5 }}>
-                        {sol.body}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Impact Validation Table */}
-          {project.impactTable && (
-            <div>
-              <div
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: 11,
-                  color: "#6EE7B7",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  marginBottom: 10,
-                }}
-              >
-                03 · Quantified Impact & Delta
-              </div>
-              <div style={{ border: "1px solid #24262B", borderRadius: 10, overflowX: "auto" }}>
-                <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 440 }}>
-                  <thead>
-                    <tr style={{ background: "#1B1D21" }}>
-                      {["Metric", "Before", "After Launch", "Net Δ"].map((h) => (
-                        <th
-                          key={h}
-                          style={{
-                            fontFamily: "'JetBrains Mono', monospace",
-                            fontSize: 11,
-                            letterSpacing: "0.08em",
-                            textTransform: "uppercase",
-                            color: "#5F6369",
-                            padding: "10px 14px",
-                            textAlign: "left",
-                            fontWeight: 500,
-                            borderBottom: "1px solid #24262B",
-                          }}
-                        >
-                          {h}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {project.impactTable.map((r: any, i: number) => (
-                      <tr
-                        key={i}
-                        style={{
-                          borderBottom: i < project.impactTable.length - 1 ? "1px solid #24262B" : "none",
-                          background: "#131417",
-                        }}
-                      >
-                        <td style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", padding: "12px 14px" }}>
-                          {r.metric}
-                        </td>
-                        <td style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: "#5F6369", padding: "12px 14px" }}>
-                          {r.before}
-                        </td>
-                        <td style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: "#F5F5F4", padding: "12px 14px" }}>
-                          {r.after}
-                        </td>
-                        <td style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: "#6EE7B7", fontWeight: 700, padding: "12px 14px" }}>
-                          {r.delta}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-
-          {/* Key Deliverables */}
-          {project.deliverables && (
-            <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", borderTop: "1px solid #24262B", paddingTop: 16 }}>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#5F6369", textTransform: "uppercase" }}>
-                Deliverables:
-              </span>
-              {project.deliverables.map((d: any) => (
-                <span key={d} className="tag-chip">
-                  ✓ {d}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Action Row */}
-          <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", borderTop: "1px solid #24262B", paddingTop: 20, flexWrap: "wrap", gap: 12 }}>
-            <button
-              onClick={onClose}
-              style={{
-                background: "#6EE7B7",
-                color: "#0A0B0D",
-                padding: "8px 20px",
-                borderRadius: 8,
-                border: "none",
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: 13,
-                cursor: "pointer",
-              }}
-            >
-              Close Details
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function Toast({ message, onClose }: { message: string | null; onClose: Handler }) {
   useEffect(() => {
     if (!message) return;
@@ -4595,6 +4285,11 @@ function ScrollToTop() {
  */
 type Route = { page: "home" | "projects" | "about" | "stack" | "case-study"; projectId: string | null };
 
+// Every project gets its own case-study page and URL. CaseStudy renders only
+// the sections a project actually has, so a write-up can be filled in over time
+// without the page breaking in between.
+const caseStudies = [...projects, ...webProjects];
+
 const HOME_ROUTE: Route = { page: "home", projectId: null };
 const STATIC_PAGES = ["projects", "about", "stack"] as const;
 
@@ -4604,7 +4299,7 @@ function parseRoute(pathname: string): Route {
     const id = decodeURIComponent(caseMatch[1]);
     // An unknown id would render nothing, so treat it as a bad link and fall
     // back to the project index rather than a blank page.
-    if (projects.some((p) => p.id === id)) return { page: "case-study", projectId: id };
+    if (caseStudies.some((p) => p.id === id)) return { page: "case-study", projectId: id };
     return { page: "projects", projectId: null };
   }
 
@@ -4630,13 +4325,12 @@ export default function App() {
   const [route, setRoute] = useState<Route>(() => parseRoute(window.location.pathname));
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [cvModalOpen, setCvModalOpen] = useState(false);
-  const [previewItem, setPreviewItem] = useState<Project | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const { page, projectId: activeProject } = route;
 
   const selectedCaseStudy = useMemo(() => {
-    return projects.find((p) => p.id === activeProject);
+    return caseStudies.find((p) => p.id === activeProject);
   }, [activeProject]);
 
   const navigate = useCallback((next: Route) => {
@@ -4711,7 +4405,6 @@ export default function App() {
         <ProjectsPage
           onSelect={openCaseStudy}
           onBack={goTo("home")}
-          onSelectWebPreview={(item) => setPreviewItem(item)}
           onContact={() => setContactModalOpen(true)}
         />
       ) : page === "about" ? (
@@ -4747,8 +4440,6 @@ export default function App() {
         onClose={() => setContactModalOpen(false)}
         onShowToast={setToastMessage}
       />
-
-      <PreviewModal project={previewItem} onClose={() => setPreviewItem(null)} />
 
       {/* Toast Feedback */}
       <Toast message={toastMessage} onClose={() => setToastMessage(null)} />

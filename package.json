@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx}\" \"*.{json,html,js}\"",
-    "check": "node scripts/check-assets.mjs && node scripts/check-data.mjs && knip"
+    "check": "node scripts/check-assets.mjs && node scripts/check-data.mjs && node scripts/check-render.mjs && knip"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
