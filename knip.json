@@ -1,6 +1,5 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "entry": ["scripts/*.mjs", "src/renderSmoke.tsx"],
-  "project": ["src/**/*.{ts,tsx}", "scripts/**/*.mjs"],
-  "ignoreDependencies": ["sharp"]
+  "entry": ["scripts/*.mjs", "src/renderSmoke.tsx", "src/entry-server.tsx"],
+  "project": ["src/**/*.{ts,tsx}", "scripts/**/*.mjs"]
 }

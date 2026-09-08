@@ -6,9 +6,7 @@
  * plain objects with optional fields — and an HTTP check only proves index.html
  * was served. This actually mounts each page. Run via scripts/check-render.mjs.
  */
-import { renderToString } from 'react-dom/server';
-import React from 'react';
-import App from './App';
+import { render } from './entry-server';
 import { projects } from './data/projects';
 import { webProjects } from './data/webProjects';
 
@@ -16,9 +14,8 @@ const ids = [...projects, ...webProjects].map((p) => p.id);
 const failures: string[] = [];
 for (const id of [...ids, 'projects', 'about', 'stack', '']) {
   const path = ids.includes(id) ? `/case/${id}` : `/${id}`;
-  window.history.replaceState(null, '', path);
   try {
-    const html = renderToString(React.createElement(App));
+    const html = render(path);
     if (html.length < 500) failures.push(`${path} rendered only ${html.length} chars`);
   } catch (e) {
     failures.push(`${path} THREW: ${(e as Error).message}`);

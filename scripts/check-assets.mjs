@@ -46,8 +46,17 @@ const referenced = new Set(
   [...sourceText.matchAll(/["'(](\/[\w\-./]+\.(?:webp|avif|png|jpe?g|svg|gif|ico))/gi)].map((m) => m[1]),
 );
 
+// The narrow srcset siblings are generated from their originals and referenced
+// only through a template literal, so they count as referenced whenever the
+// original is.
+const VARIANT = /-\d+w(\.\w+)$/;
+const isLiveVariant = (file) => {
+  const original = file.replace(VARIANT, '$1');
+  return original !== file && referenced.has(original);
+};
+
 const missing = [...referenced].filter((r) => !publicFiles.includes(r)).sort();
-const orphans = publicFiles.filter((f) => !referenced.has(f)).sort();
+const orphans = publicFiles.filter((f) => !referenced.has(f) && !isLiveVariant(f)).sort();
 
 for (const path of missing) console.error(`  ERROR  ${path} — referenced in source, no such file in ${PUBLIC_DIR}/`);
 for (const path of orphans) {

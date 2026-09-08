@@ -5,6 +5,7 @@ import { projects } from "./data/projects";
 import { allProjects } from "./data/allProjects";
 import { webProjects } from "./data/webProjects";
 import { processSteps } from "./data/processSteps";
+import { imageSizes, VARIANT_WIDTH } from "./data/imageSizes";
 
 /**
  * Portfolio content (projects, KPIs, case-study steps) is authored as plain data
@@ -23,6 +24,19 @@ type Kpi = { value: string; label: string; sub?: string };
 type Stat = { value?: string; label?: string; [key: string]: any };
 type ShowToast = (message: string) => void;
 type Handler = () => void;
+
+/** srcset offering the narrow variant alongside the original, when one exists. */
+const srcSetFor = (src?: string) => {
+  const size = src && imageSizes[src];
+  if (!size || !size[2]) return undefined;
+  return `${src.replace(/\.(\w+)$/, `-${VARIANT_WIDTH}w.$1`)} ${VARIANT_WIDTH}w, ${src} ${size[0]}w`;
+};
+
+/** Reserves a walkthrough image's box before it loads, so nothing below it moves. */
+const aspectRatioOf = (src: string) => {
+  const size = imageSizes[src];
+  return size ? `${size[0]} / ${size[1]}` : undefined;
+};
 
 const highFetchPriority = { fetchpriority: "high" } as unknown as React.ImgHTMLAttributes<HTMLImageElement>;
 
@@ -108,7 +122,11 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
               <img
                 {...highFetchPriority}
                 decoding="async"
+                width={800}
+                height={1066}
                 src={PROFILE_IMG}
+                srcSet={srcSetFor(PROFILE_IMG)}
+                sizes="(max-width: 700px) 90vw, 360px"
                 alt="Piyachon Wanburi (Yim) - Senior UX/UI Designer"
                 onError={(e) => {
                   e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&fit=crop&auto=format";
@@ -290,7 +308,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                   <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                     // DESIGNER DNA
                   </div>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#5F6369" }}>Flip ↻</span>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790" }}>Flip ↻</span>
                 </div>
 
                 {/* Headline */}
@@ -851,6 +869,7 @@ function LazyImage({
   style,
   onError,
   eager = false,
+  sizes = "(max-width: 700px) 100vw, 560px",
 }: {
   src?: string;
   alt?: string;
@@ -858,18 +877,27 @@ function LazyImage({
   style?: React.CSSProperties;
   onError?: (e: React.SyntheticEvent<HTMLImageElement>) => void;
   eager?: boolean;
+  /** CSS width this image is rendered at, so the browser can pick a source. */
+  sizes?: string;
 }) {
   const [loaded, setLoaded] = useState(false);
+  // Intrinsic size lets the browser reserve the box before the bytes land,
+  // which is what keeps this image from shifting the page as it loads.
+  const [width, height] = (src && imageSizes[src]) || [];
 
   return (
     <div className={`img-frame${loaded ? " is-loaded" : ""}`} style={frameStyle}>
       <img
+        width={width}
+        height={height}
         // A cached image can finish before React attaches onLoad, so the ref
         // settles those cases instead of leaving the shimmer running forever.
         ref={(el) => {
           if (el?.complete) setLoaded(true);
         }}
         src={src}
+        srcSet={srcSetFor(src)}
+        sizes={sizes}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
         decoding="async"
@@ -1016,7 +1044,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#6EE7B7" }}>
             {project.client}
           </span>
-          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#5F6369" }}>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790" }}>
             {project.timeline}
           </span>
         </div>
@@ -1091,7 +1119,7 @@ function KpiScoreboard({ kpis }: { kpis: Kpi[] }) {
             style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 12,
-              color: "#5F6369",
+              color: "#828790",
               letterSpacing: "0.02em",
             }}
           >
@@ -1206,7 +1234,7 @@ function CaseStudy({ project, onBack, onHome }: {
           style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 13,
-            color: "#5F6369",
+            color: "#828790",
             background: "none",
             border: "none",
             cursor: "pointer",
@@ -1218,7 +1246,7 @@ function CaseStudy({ project, onBack, onHome }: {
             transition: "color 150ms",
           }}
           onMouseEnter={(e) => (e.currentTarget.style.color = "#9CA0A8")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#5F6369")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#828790")}
         >
           ← All projects overview
         </button>
@@ -1273,6 +1301,7 @@ function CaseStudy({ project, onBack, onHome }: {
           src={project.image}
           alt={project.imageAlt || project.title}
           frameStyle={{ width: "100%", height: "100%" }}
+          sizes="(max-width: 940px) 100vw, 892px"
           onError={(e) => {
             e.currentTarget.src = "https://placehold.co/900x560/1a1b1f/6EE7B7?text=Hero+Platform+Mockup";
           }}
@@ -1418,7 +1447,8 @@ function CaseStudy({ project, onBack, onHome }: {
                       <LazyImage
                         src={src}
                         alt={`${s.title} — visual ${i + 1}`}
-                        frameStyle={{ minHeight: 180 }}
+                        frameStyle={{ aspectRatio: aspectRatioOf(src) }}
+                        sizes="(max-width: 940px) 100vw, 892px"
                         style={{ width: "100%", display: "block" }}
                       />
                     </div>
@@ -1475,7 +1505,7 @@ function CaseStudy({ project, onBack, onHome }: {
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            color: "#5F6369",
+            color: "#828790",
             marginBottom: 8,
           }}
         >
@@ -1521,7 +1551,7 @@ function CaseStudy({ project, onBack, onHome }: {
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            color: "#5F6369",
+            color: "#828790",
             marginBottom: 8,
           }}
         >
@@ -1607,7 +1637,7 @@ function CaseStudy({ project, onBack, onHome }: {
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            color: "#5F6369",
+            color: "#828790",
             marginBottom: 8,
           }}
         >
@@ -1646,7 +1676,7 @@ function CaseStudy({ project, onBack, onHome }: {
                       fontSize: 11,
                       letterSpacing: "0.08em",
                       textTransform: "uppercase",
-                      color: "#5F6369",
+                      color: "#828790",
                       padding: "14px 20px",
                       textAlign: "left",
                       fontWeight: 500,
@@ -1682,7 +1712,7 @@ function CaseStudy({ project, onBack, onHome }: {
                     style={{
                       fontFamily: "'JetBrains Mono', monospace",
                       fontSize: 14,
-                      color: "#5F6369",
+                      color: "#828790",
                       padding: "16px 20px",
                     }}
                   >
@@ -1768,7 +1798,7 @@ function CaseStudy({ project, onBack, onHome }: {
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            color: "#5F6369",
+            color: "#828790",
             marginBottom: 8,
           }}
         >
@@ -1838,7 +1868,7 @@ function CaseStudy({ project, onBack, onHome }: {
           style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 13,
-            color: "#5F6369",
+            color: "#828790",
             background: "none",
             border: "none",
             cursor: "pointer",
@@ -1846,7 +1876,7 @@ function CaseStudy({ project, onBack, onHome }: {
             transition: "color 150ms",
           }}
           onMouseEnter={(e) => (e.currentTarget.style.color = "#F5F5F4")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#5F6369")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#828790")}
         >
           ← Back to all projects
         </button>
@@ -1886,19 +1916,26 @@ function HeroBackground() {
       }}
     >
       <style>{`
+        /* Translate only, and each orb on its own layer.
+           These are 500px+ elements under filter: blur(90px). Scaling one forces
+           the blur to be re-rasterised every frame, which on a throttled CPU was
+           the bulk of the main-thread work holding up first paint. Moving a
+           layer that is already rasterised costs the compositor almost nothing,
+           and at this blur radius the drift reads the same as the pulse did. */
+        .aurora-orb { will-change: transform; }
         @keyframes float-emerald {
-          0%, 100% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(60px, -40px) scale(1.15); }
-          66% { transform: translate(-30px, 45px) scale(0.95); }
+          0%, 100% { transform: translate3d(0px, 0px, 0); }
+          33% { transform: translate3d(60px, -40px, 0); }
+          66% { transform: translate3d(-30px, 45px, 0); }
         }
         @keyframes float-blue {
-          0%, 100% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(-50px, 60px) scale(1.1); }
-          66% { transform: translate(40px, -30px) scale(0.9); }
+          0%, 100% { transform: translate3d(0px, 0px, 0); }
+          33% { transform: translate3d(-50px, 60px, 0); }
+          66% { transform: translate3d(40px, -30px, 0); }
         }
         @keyframes float-lime {
-          0%, 100% { transform: translate(0px, 0px) scale(0.95); }
-          50% { transform: translate(45px, 35px) scale(1.2); }
+          0%, 100% { transform: translate3d(0px, 0px, 0); }
+          50% { transform: translate3d(45px, 35px, 0); }
         }
         @media (prefers-reduced-motion: reduce) {
           .aurora-orb { animation: none !important; }
@@ -1996,15 +2033,24 @@ function HeroBackground() {
   );
 }
 
+// Longest phrase first. The hero heading is the page's Largest Contentful Paint
+// element, and a later, longer phrase typing in registers as a new, larger paint
+// — which pushed LCP out to wherever the animation happened to be. Leading with
+// the longest phrase means every later one fits inside a box already painted.
 const TYPEWRITER_PHRASES = [
-  "Hello Everyone! I'm Piyachon.",
   "UX/UI Designer Crafting Experiences.",
   "From Insight to Experience.",
+  "Hello Everyone! I'm Piyachon.",
 ];
 
 function TypewriterText() {
   const [phraseIdx, setPhraseIdx] = useState(0);
-  const [text, setText] = useState("");
+  // Starts on the finished first phrase instead of typing up from nothing. This
+  // is the hero's largest text, so growing it a character at a time meant
+  // Largest Contentful Paint was not reached until the typing finished —
+  // Lighthouse measured 4.2 s for text a reader could already see at 1.7 s. The
+  // loop is unchanged from the first delete onward.
+  const [text, setText] = useState(TYPEWRITER_PHRASES[0]);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
@@ -2074,7 +2120,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
               }}
             >
               <span>● Available for work</span>
-              <span style={{ color: "#5F6369" }}>/</span>
+              <span style={{ color: "#828790" }}>/</span>
               <span style={{ color: "#F5F5F4" }}>Immediately Available</span>
             </div>
 
@@ -2181,7 +2227,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
       {/* Featured Web Application Projects */}
       <div className="section-head" style={{ marginBottom: 32 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1, minWidth: 0 }}>
-          <span className="section-head-title">Featured Web Applications & Platforms</span>
+          <h2 className="section-head-title">Featured Web Applications &amp; Platforms</h2>
           <div className="section-head-rule" />
         </div>
         <button
@@ -2393,14 +2439,14 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
           style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 12,
-            color: "#5F6369",
+            color: "#828790",
           }}
         >
           © 2026 Piyachon Wanburi · Senior UX/UI Specialist · Bangkok
         </span>
         <div style={{ display: "flex", gap: 20 }}>
-          <span style={{ color: "#5F6369", fontSize: 13 }}>094-498-9917</span>
-          <span style={{ color: "#5F6369", fontSize: 13 }}>yimpiyachon@gmail.com</span>
+          <span style={{ color: "#828790", fontSize: 13 }}>094-498-9917</span>
+          <span style={{ color: "#828790", fontSize: 13 }}>yimpiyachon@gmail.com</span>
         </div>
       </footer>
     </div>
@@ -2410,18 +2456,20 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
 function SectionDivider({ label, count }: { label: string; count: number }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 24, marginTop: 16 }}>
-      <span
+      <h2
         style={{
+          margin: 0,
+          fontWeight: 400,
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 11,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
-          color: "#5F6369",
+          color: "#828790",
           whiteSpace: "nowrap",
         }}
       >
         {label}
-      </span>
+      </h2>
       <div style={{ flex: 1, height: 1, background: "#24262B" }} />
       <span
         style={{
@@ -2558,7 +2606,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
           style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 13,
-            color: "#5F6369",
+            color: "#828790",
             background: "none",
             border: "none",
             cursor: "pointer",
@@ -2577,7 +2625,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            color: "#5F6369",
+            color: "#828790",
             marginBottom: 12,
           }}
         >
@@ -2734,7 +2782,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
                     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", marginBottom: 3 }}>
                       {p.title}
                     </div>
-                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#5F6369", textTransform: "uppercase" }}>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", textTransform: "uppercase" }}>
                       {p.category}
                     </div>
                   </div>
@@ -2767,7 +2815,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
 
       {/* Projects Footer */}
       <div style={{ borderTop: "1px solid #24262B", paddingTop: 36, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#5F6369" }}>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#828790" }}>
           {filteredApps.length + filteredWeb.length} of {allProjects.apps.length + allProjects.web.length} projects shown
         </span>
         <button
@@ -2912,7 +2960,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 13,
-            color: "#5F6369",
+            color: "#828790",
             background: "none",
             border: "none",
             cursor: "pointer",
@@ -3025,9 +3073,9 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 22, fontWeight: 700, color: "#F5F5F4", margin: 0 }}>
+          <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 22, fontWeight: 700, color: "#F5F5F4", margin: 0 }}>
             Translating complex domain data into effortless human actions
-          </h3>
+          </h2>
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
             Coming from a formal background in Architecture & Product Design at KMUTNB, I look at software interfaces like physical buildings:
             spatial hierarchy, foundational durability, and purposeful wayfinding. When designing mission-critical dashboards,
@@ -3091,7 +3139,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
 
       {/* 4-Step Methodology */}
       <section style={{ marginBottom: 64 }}>
-        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#5F6369", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
           METHODOLOGY
         </div>
         <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 26, fontWeight: 700, color: "#F5F5F4", margin: "0 0 24px" }}>
@@ -3200,9 +3248,9 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
                     {item.step}
                   </span>
                 </div>
-                <h4 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", margin: "0 0 8px" }}>
+                <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", margin: "0 0 8px" }}>
                   {item.title}
-                </h4>
+                </h3>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.55, margin: 0 }}>
                   {item.desc}
                 </p>
@@ -3214,7 +3262,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
 
       {/* Experience Highlights */}
       <section style={{ marginBottom: 64 }}>
-        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#5F6369", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
           CAREER TRACK RECORD
         </div>
         <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 26, fontWeight: 700, color: "#F5F5F4", margin: "0 0 24px" }}>
@@ -3534,7 +3582,7 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
           style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 13,
-            color: "#5F6369",
+            color: "#828790",
             background: "none",
             border: "none",
             cursor: "pointer",
@@ -3604,9 +3652,9 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
             }}
           >
             <div style={{ marginBottom: 20 }}>
-              <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 20, fontWeight: 700, color: "#F5F5F4", margin: "0 0 6px" }}>
+              <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 20, fontWeight: 700, color: "#F5F5F4", margin: "0 0 6px" }}>
                 {cat.category}
-              </h3>
+              </h2>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", margin: 0 }}>
                 {cat.desc}
               </p>
@@ -3742,6 +3790,9 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
   return (
     <div
       className="modal-overlay cv-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Piyachon Wanburi resume"
       onClick={onClose}
       style={{
         position: "fixed",
@@ -3815,6 +3866,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
             </button>
             <button
               onClick={onClose}
+              aria-label="Close resume"
               style={{
                 background: "#1B1D21",
                 border: "1px solid #24262B",
@@ -3908,7 +3960,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
 
           {/* About Statement */}
           <div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#5F6369", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8 }}>
               About Me
             </div>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
@@ -3919,7 +3971,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
 
           {/* Work Experience */}
           <div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#5F6369", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 14 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 14 }}>
               Professional Experience
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
@@ -3985,7 +4037,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
                     <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 15, fontWeight: 700, color: "#F5F5F4" }}>
                       {exp.role} · <span style={{ color: "#6EE7B7" }}>{exp.company}</span>
                     </span>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#5F6369" }}>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#828790" }}>
                       {exp.period}
                     </span>
                   </div>
@@ -4022,7 +4074,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
 
           {/* Education & Certifications */}
           <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#5F6369", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>
               Education & Certifications
             </div>
             <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 14, fontWeight: 700, color: "#F5F5F4", marginBottom: 4 }}>
@@ -4046,18 +4098,13 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
 function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClose: Handler; onShowToast?: ShowToast }) {
   if (!isOpen) return null;
 
-  const copy = (text: string, label: string) => {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text);
-    } else {
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
+  const copy = async (text: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      onShowToast?.(`Copied: ${label}`);
+    } catch {
+      onShowToast?.(`Copy failed — ${label}: ${text}`);
     }
-    onShowToast?.(`Copied: ${label}`);
   };
 
   const contactItems: {
@@ -4101,6 +4148,9 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Contact details"
       onClick={onClose}
       style={{
         position: "fixed",
@@ -4129,6 +4179,7 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
       >
         <button
           onClick={onClose}
+          aria-label="Close contact details"
           style={{
             position: "absolute", top: 24, right: 24,
             background: "#1B1D21", border: "1px solid #24262B",
@@ -4149,11 +4200,11 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
           {contactItems.map((item) => (
             <div key={item.label} style={fieldStyle}>
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "#5F6369", textTransform: "uppercase", marginBottom: 3 }}>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "#828790", textTransform: "uppercase", marginBottom: 3 }}>
                   {item.label}
                 </div>
                 {item.href ? (
-                  <a href={item.href} target="_blank" rel="noreferrer"
+                  <a href={item.href} target="_blank" rel="noopener noreferrer"
                     style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: "#6EE7B7", textDecoration: "none", display: "block" }}>
                     {item.value} ↗
                   </a>

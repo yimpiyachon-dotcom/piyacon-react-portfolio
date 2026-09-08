@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "npm run check && tsc --noEmit && eslint . && vite build",
+    "build": "npm run generate && npm run check && tsc --noEmit && eslint . && vite build && node scripts/prerender.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx}\" \"*.{json,html,js}\"",
-    "check": "node scripts/check-assets.mjs && node scripts/check-data.mjs && node scripts/check-render.mjs && knip"
+    "check": "node scripts/check-assets.mjs && node scripts/check-data.mjs && node scripts/check-render.mjs && knip",
+    "generate": "node scripts/gen-fonts.mjs && node scripts/gen-image-sizes.mjs && node scripts/gen-sitemap.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
