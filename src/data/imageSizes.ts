@@ -133,6 +133,7 @@ export const imageSizes: Record<string, [number, number, number[]]> = {
   "/img/process/land-monitoring/08.webp": [1510, 1022, [480]],
   "/img/process/land-monitoring/09.webp": [1608, 898, [480, 1200]],
   "/img/process/max-solution/01.webp": [1878, 1256, [480, 1200]],
+  "/img/process/once-accounting/01.webp": [1428, 1434, [480]],
   "/img/process/orgenees-wellness/01.webp": [1472, 1032, [480]],
   "/img/process/patc-institute/01.webp": [1816, 1274, [480, 1200]],
   "/img/process/smart-forest/01.webp": [2560, 1015, [480, 1200]],

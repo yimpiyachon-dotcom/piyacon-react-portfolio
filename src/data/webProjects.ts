@@ -898,35 +898,67 @@ export const webProjects = [
   },
   {
     id: "once-accounting",
-    title: "Once Accounting",
+    title: "Once Accounting Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Apr 2024 – Jul 2024",
     role: "Senior UX/UI Designer",
     category: "Web Design & Accounting Services",
+    platform: "Single-Page Sale Page",
+    industry: "Accounting & Company Registration",
     tags: ["Sale Page", "Paid Ads", "Lead Gen", "Accounting"],
+    stack: ["Figma", "Landing Page Design", "Thai Typography", "Brand Assets"],
     image: "/img/cover/once-accounting.webp",
-    imageAlt: "Once Accounting company registration service sale page for paid advertising",
+    imageAlt: "Once Accounting sale page — three published registration packages, four-step process and repeated contact bar",
     metric: "3 Pricing Tiers",
-    metricBadge: "Built for Paid Ads",
-    overview: "Single-page sale page for an accounting firm, built as a paid-advertising landing destination for company registration and monthly bookkeeping services.",
-    problem: "Ad traffic arrives with one question — what does it cost and how long does it take — but a conventional corporate site buries pricing behind an enquiry form, losing the visitor before the firm ever gets a lead.",
+    metricBadge: "Two Offer Versions",
+    hook: "Ad traffic arrives with two questions — what does it cost and how long does it take — so the page answers both in the first screen and repeats the phone number after every block.",
+    overview:
+      "A single-page sale page for Once Accounting, a Thai accounting firm selling company registration and monthly bookkeeping. It is built as a paid-advertising destination rather than a corporate site: three packages priced openly, a four-step process anchored to a one-week completion, a client wall carrying Shell and MG, and a contact bar after every block. The pricing section exists in two versions, the second reframing the third tier as a discounted logo design add-on.",
+    kpis: [
+      { value: "฿1,900–4,000", label: "Three registration packages priced on the page", sub: "government DBD fees disclosed as excluded" },
+      { value: "1 week", label: "Stated completion time for company registration", sub: "anchoring a four-step process explainer" },
+      { value: "2 versions", label: "The pricing block designed twice", sub: "third tier reframed as a discounted logo add-on" },
+    ],
+    problem:
+      "A visitor arriving from an advertisement has two questions and very little patience: what it costs and how long it takes. A conventional corporate site answers neither — pricing sits behind an enquiry form and the process is described in prose — so the visitor leaves before the firm has a lead, and the ad spend that brought them is wasted. The page had to close that gap inside the first screen.",
     baselineStats: [
-      { value: "No landing page", label: "Paid traffic sent to a general corporate site" },
-      { value: "Price on request", label: "Service fees not stated up front" },
-      { value: "Unclear", label: "Registration process and timeline not explained" }
+      { value: "No landing page", label: "paid traffic sent to a general corporate site" },
+      { value: "Price on request", label: "service fees not stated up front" },
+      { value: "Timeline unstated", label: "how long a registration takes not explained" }
     ],
     solutions: [
-      { title: "Price-Led Offer Presentation", body: "Three registration packages published openly at ฿4,000, ฿2,000 and ฿1,900 with the inclusions listed against each, so an ad visitor can qualify themselves in seconds instead of filling a form to find out." },
-      { title: "Four-Step Process Explainer", body: "The registration journey reduced to four numbered steps — form, document preparation, signing, receiving the completed set — anchored by a one-week completion promise." },
-      { title: "Persistent Conversion Bar", body: "Phone number and LINE contact repeated after every content block, matching how a single-page ad funnel converts rather than relying on one footer form." }
+      {
+        title: "Price-Led Offer, Government Fees Disclosed",
+        body: "Three packages published at ฿4,000, ฿2,000 and ฿1,900 with their inclusions listed against each, under a promotion band. The note that Department of Business Development fees sit outside the quoted price runs directly beneath, so the number a visitor sees is one that still holds after the call."
+      },
+      {
+        title: "Four Steps and a One-Week Commitment",
+        body: "Registration reduced to four numbered steps — complete the form, prepare the incorporation documents, sign, receive the full set — with \"all of this is finished within one week\" carried as the anchor beneath them. That is the other half of the ad visitor's question, answered in a single line."
+      },
+      {
+        title: "The Pricing Block, Designed Twice",
+        body: "Two versions of the offer sit side by side. The second strikes through the ฿2,000 tier to show the discount and reframes the third card entirely — from a registration package into a logo design add-on at half price, ฿3,800 down to ฿1,900. The same page making a different bet about what the third slot should sell."
+      },
+      {
+        title: "Contact After Every Block, Not Only the Footer",
+        body: "A free-consultation bar carrying the phone number and LINE account repeats after each section, with 24-hour availability stated in the footer. A single-page funnel converts wherever the reader stops reading, so the exit has to be everywhere rather than waiting at the end."
+      }
     ],
     impactTable: [
       { metric: "Landing destination", before: "General corporate site", after: "Dedicated sale page", delta: "Purpose-built" },
-      { metric: "Pricing visibility", before: "On request", after: "3 tiers published", delta: "Open" },
-      { metric: "Contact touchpoints", before: "Footer form only", after: "Repeated after each block", delta: "Multiplied" }
+      { metric: "Pricing", before: "On request", after: "Three tiers, fees disclosed", delta: "Published" },
+      { metric: "Timeline", before: "Unstated", after: "One week, on the offer block", delta: "Committed" },
+      { metric: "Contact points", before: "Footer form only", after: "After every content block", delta: "Multiplied" }
     ],
-    deliverables: ["Sale Page Design", "Pricing Comparison Blocks", "Process Explainer Graphics", "Logo & Brand Assets"]
-
+    quote:
+      "Ad traffic is expensive and impatient. If the first screen does not say the price and the turnaround, the money that bought the click has already been spent for nothing.",
+    quoteRole: "Design rationale · Once Accounting Website",
+    learnings: [
+      "On a paid-traffic page, publishing the price is not a concession — it is what stops you paying for visits that were never going to convert.",
+      "Disclosing the government fee that sits outside the quoted figure protects the number's credibility, which is worth more on a sale page than a lower headline would be.",
+      "Designing the offer block twice forced the third tier's job to be decided explicitly — package or cross-sell — in a way that arguing about it in the abstract would not have."
+    ],
+    deliverables: ["Sale Page Design", "Pricing Comparison Blocks", "Process Explainer Graphics", "Logo & Brand Assets", "Mobile Layouts"]
   },
   {
     id: "endless-eco",
