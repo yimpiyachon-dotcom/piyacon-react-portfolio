@@ -5,8 +5,10 @@
  * Two failure modes this catches, both of which have actually happened here:
  *   - a path in the code that no file backs (a renamed or mistyped file), which
  *     otherwise shows up only as a broken image in the browser;
- *   - a file in public/ that nothing references, which is how dead weight and
- *     "which copy is the real one?" confusion accumulate.
+ *   - a file in public/ that nothing references. This is also the tripwire for
+ *     a deletion gone wrong: removing a case study or walkthrough by mistake
+ *     strands its images, and stranded images fail the build rather than
+ *     quietly shipping a site with a section missing.
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, extname } from 'node:path';
@@ -48,10 +50,12 @@ const missing = [...referenced].filter((r) => !publicFiles.includes(r)).sort();
 const orphans = publicFiles.filter((f) => !referenced.has(f)).sort();
 
 for (const path of missing) console.error(`  ERROR  ${path} — referenced in source, no such file in ${PUBLIC_DIR}/`);
-for (const path of orphans) console.warn(`  warn   ${PUBLIC_DIR}${path} — file exists, nothing references it`);
+for (const path of orphans) {
+  console.error(`  ERROR  ${PUBLIC_DIR}${path} — file exists, nothing references it`);
+}
 
 const summary = `[assets] ${referenced.size} referenced · ${publicFiles.length} on disk · ${missing.length} missing · ${orphans.length} unreferenced`;
-if (missing.length) {
+if (missing.length || orphans.length) {
   console.error(summary);
   process.exit(1);
 }
