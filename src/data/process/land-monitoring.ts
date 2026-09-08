@@ -6,7 +6,7 @@ export const steps: ProcessStep[] = [
     title: "Brand & Landing Page Design",
     body: "Designed the VLM marketing surface that has to explain a geospatial carbon product to buyers who are not GIS specialists. Satellite imagery and 3D data-layer illustrations were used to make an abstract remote-sensing capability legible before a prospect ever sees the platform.",
     images: [
-      "/img/3dde92b39270.webp",
+      "/img/process/land-monitoring/01.webp",
     ],
   },
   {
@@ -14,7 +14,7 @@ export const steps: ProcessStep[] = [
     title: "Authentication & Account Flows",
     body: "Built the full account lifecycle — register, email verification, log in, forgot password and profile — including the error and expired-link states. For a platform holding regulated carbon data, a clear account boundary is part of the product's credibility, not just plumbing.",
     images: [
-      "/img/d4d03caac3b5.webp",
+      "/img/process/land-monitoring/02.webp",
     ],
   },
   {
@@ -22,7 +22,7 @@ export const steps: ProcessStep[] = [
     title: "Analytical Dashboard Design",
     body: "Designed the per-plot analysis view where biomass, carbon sequestration, NDVI, precipitation, solar radiation, temperature and elevation each get a dedicated read. Every metric needed its own chart treatment — a bar comparison, a time series, or a colour-ramped map — rather than forcing one visual language onto different data shapes.",
     images: [
-      "/img/bcee5b6ef5ad.webp",
+      "/img/process/land-monitoring/03.webp",
     ],
   },
   {
@@ -30,7 +30,7 @@ export const steps: ProcessStep[] = [
     title: "Geospatial Layer System",
     body: "Built the full map-layer feature set: switching between biomass, NDVI, temperature, precipitation, hot spot and elevation overlays on one continuous map. The design problem was keeping the base map readable while a colour-ramped raster sits on top of it.",
     images: [
-      "/img/7065d8ee9d23.webp",
+      "/img/process/land-monitoring/04.webp",
     ],
   },
   {
@@ -38,8 +38,8 @@ export const steps: ProcessStep[] = [
     title: "Project & Plot Management",
     body: "Designed the multi-project workspace where users filter between farms, inspect plot boundaries against high-resolution imagery, and read the area breakdown table alongside the map. The linked mini-map keeps regional context while the main view is zoomed into a single parcel.",
     images: [
-      "/img/06faf1b6ffab.webp",
-      "/img/7c5dd9518c5e.webp",
+      "/img/process/land-monitoring/05.webp",
+      "/img/process/land-monitoring/07.webp",
     ],
   },
   {
@@ -47,8 +47,8 @@ export const steps: ProcessStep[] = [
     title: "Hot Spot Detection & Zoom Behaviour",
     body: "Specified marker clustering across six zoom levels so hot spot density stays interpretable from national view down to a single district. Without a defined clustering rule, fire and anomaly markers collapse into an unreadable mass at country scale.",
     images: [
-      "/img/7b76b00d5486.webp",
-      "/img/fc66130a776a.webp",
+      "/img/process/land-monitoring/06.webp",
+      "/img/process/land-monitoring/08.webp",
     ],
   },
   {
@@ -56,7 +56,7 @@ export const steps: ProcessStep[] = [
     title: "Provincial Reporting & Summary Views",
     body: "Designed the choropleth reporting layer with province-level breakdowns and proportional summaries. These are the screens that get exported into carbon reporting, so the table and chart had to stay legible outside the interface.",
     images: [
-      "/img/bf22b7b56636.webp",
+      "/img/process/land-monitoring/09.webp",
     ],
   },
 ];
