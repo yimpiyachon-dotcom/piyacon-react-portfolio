@@ -5,7 +5,7 @@ import { projects } from "./data/projects";
 import { allProjects } from "./data/allProjects";
 import { webProjects } from "./data/webProjects";
 import { processSteps } from "./data/processSteps";
-import { imageSizes, VARIANT_WIDTH } from "./data/imageSizes";
+import { imageSizes } from "./data/imageSizes";
 
 /**
  * Portfolio content (projects, KPIs, case-study steps) is authored as plain data
@@ -25,11 +25,12 @@ type Stat = { value?: string; label?: string; [key: string]: any };
 type ShowToast = (message: string) => void;
 type Handler = () => void;
 
-/** srcset offering the narrow variant alongside the original, when one exists. */
+/** srcset offering every generated variant alongside the original. */
 const srcSetFor = (src?: string) => {
   const size = src && imageSizes[src];
-  if (!size || !size[2]) return undefined;
-  return `${src.replace(/\.(\w+)$/, `-${VARIANT_WIDTH}w.$1`)} ${VARIANT_WIDTH}w, ${src} ${size[0]}w`;
+  if (!size || size[2].length === 0) return undefined;
+  const variants = size[2].map((w) => `${src.replace(/\.(\w+)$/, `-${w}w.$1`)} ${w}w`);
+  return [...variants, `${src} ${size[0]}w`].join(", ");
 };
 
 /**
