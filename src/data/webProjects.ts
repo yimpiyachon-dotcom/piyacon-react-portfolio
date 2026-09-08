@@ -322,129 +322,259 @@ export const webProjects = [
   },
   {
     id: "max-solution",
-    title: "Max Solution",
+    title: "Max Solution Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Mar 2024 – May 2024",
     role: "Senior UX/UI Designer",
-    category: "Web Design & Enterprise",
-    tags: ["Enterprise", "B2B", "Consulting", "IT Services"],
+    category: "Web Design & Security Hardware",
+    platform: "Responsive Marketing & Catalogue Site",
+    industry: "Access Control / Security Hardware",
+    tags: ["Access Control", "Security Hardware", "B2B", "Thai Language"],
+    stack: ["Figma", "Design System", "Thai Typography", "Catalogue Templates"],
     image: "/img/cover/max-solution.webp",
-    imageAlt: "Enterprise IT software solutions and digital transformation consulting website",
-    metric: "4.9★ Stakeholder CSAT",
-    metricBadge: "−38% Bounce Rate",
-    overview: "Enterprise software consultation website built with accessible typography, interactive solutions matrix, and whitepaper download funnels.",
-    problem: "Executive decision makers were confused by dense corporate service descriptions and couldn't find relevant enterprise client case references.",
+    imageAlt: "Max Solution website — access control hardware catalogue, quotation request and named customer installations",
+    metric: "9 Customer References",
+    metricBadge: "Models & Dates Per Install",
+    hook: "A security-hardware supplier whose strongest sales asset was its install list — so the site was built to make every reference checkable down to the model number.",
+    overview:
+      "The website for Max Solution, a Thai supplier and installer of access-control hardware — face scanners, card readers, swing and flap gates, automatic door sensors. It is built around two assets the business already had and was not putting to work: a catalogue buyers want to browse by device type, and two decades of named installations at international schools, restaurant groups and manufacturers that could be shown with the models and dates attached.",
+    kpis: [
+      { value: "9 references", label: "Named customers with install month and models", sub: "expandable list of every product at each site" },
+      { value: "20+ years", label: "Operating since 2003", sub: "published references span 2018 to 2023" },
+      { value: "Quote, not cart", label: "Product enquiry with a preferred callback window", sub: "LINE Official and a ten-line phone system alongside" },
+    ],
+    problem:
+      "In access control the purchase is a risk decision rather than a preference one. A school or a factory is buying something that will govern who gets through a door for the next decade, and it will be specified by someone who needs to know the exact model and whether it has held up somewhere comparable. The business had that evidence — two decades of installations at named organisations — but evidence a buyer cannot check does no work, and a buyer who already knows the device they need has no way to start from it.",
     baselineStats: [
-      { value: "54%", label: "Bounce rate on enterprise technology solutions page" },
-      { value: "8 inquiries", label: "Monthly RFP contact submissions" },
-      { value: "3.2 / 5", label: "Stakeholder perception score for technical credibility" }
+      { value: "Evidence unpublished", label: "two decades of named installations not usable by a buyer" },
+      { value: "Specification blind", label: "no way to see which model went into a comparable site" },
+      { value: "No device-first entry", label: "browsing by the hardware type a buyer already knows" }
     ],
     solutions: [
-      { title: "Industry-Vertical Matrix Navigation", body: "Segmented solutions by industry (Banking, Retail, Logistics) with dedicated compliance certifications visible upfront." },
-      { title: "Interactive System Architecture Schematics", body: "Clean visual diagrams illustrating cloud migration pathways and security hardening protocols." },
-      { title: "Streamlined Enterprise RFP Workflow", body: "Guided 4-step proposal request form capturing technical scope, timeline, and compliance standards." }
+      {
+        title: "References That Name the Model",
+        body: "Each of the nine customer cards carries the organisation, its sector, what was installed with the model numbers written inline — G5, L4, NBT, ESW-850, F8, KB1 — the month the system went live, and an expandable list of every product at that site. A specifier can find a comparable installation and read its bill of materials rather than take a claim on trust."
+      },
+      {
+        title: "Scale Stated in the Customer's Own Terms",
+        body: "The references quote deployment size where it exists: over 500 units across Mr. D.I.Y branches, over 300 across MK Restaurant Group's brands including Yayoi, Mio-Mio Paradise and Laem Charoen Seafood. For anyone weighing a multi-site rollout that is the number which settles whether the supplier can carry it."
+      },
+      {
+        title: "Catalogue Browsable by Device",
+        body: "A category strip runs across the top of the homepage — face scan, card reader, swing gate, flap gate, card connector, autodoor sensor, wireless switch — so a buyer who already knows the device type skips the marketing entirely. Highlight and best-of blocks sit below for the ones who arrive without a specification."
+      },
+      {
+        title: "A Quote Path, Not a Checkout",
+        body: "The primary action is a quotation request asking which product, the details, and — the part that matters to a trade buyer — the window in which they would prefer to be called back. A LINE Official QR code sits beside it for the buyers who will not make a phone call at all."
+      }
     ],
     impactTable: [
-      { metric: "Qualified RFP submissions", before: "8 / mo", after: "22 / mo", delta: "+175%" },
-      { metric: "Enterprise whitepaper downloads", before: "45 / mo", after: "190 / mo", delta: "+322%" },
-      { metric: "Stakeholder credibility score", before: "3.2 / 5", after: "4.9 / 5", delta: "+53%" }
+      { metric: "Checking a comparable install", before: "Ask a salesperson", after: "Read the reference card", delta: "Self-serve" },
+      { metric: "Knowing which model to specify", before: "Ask a salesperson", after: "Models named in every reference", delta: "Published" },
+      { metric: "Browsing by device type", before: "Requires knowing the range first", after: "Category strip above the marketing", delta: "Direct" },
+      { metric: "Getting a price", before: "Phone call in office hours", after: "Quote form with a callback window", delta: "Asynchronous" }
     ],
-    deliverables: ["Enterprise B2B Architecture", "Interactive System Diagrams", "Lead-Capture Funnels", "Corporate Brand Kit"]
+    quote:
+      "In access control the buyer is a specifier, and a specifier does not want a brochure — they want to know which model went into a building like theirs and whether it is still running. Naming the model in every reference is the whole credibility strategy.",
+    quoteRole: "Design rationale · Max Solution Website",
+    learnings: [
+      "A reference is only evidence if it is checkable — naming the model and the month is what turns a logo wall into something a specifier can use.",
+      "Deployment scale in the customer's own words carries further than any claim the supplier makes about its own capacity.",
+      "A trade buyer often knows the device before they know the brand, which makes a category strip above the marketing worth the homepage space it takes."
+    ],
+    deliverables: ["Marketing Site", "Product Catalogue Structure", "Customer Reference System", "Quotation Request Flow"]
   },
   {
     id: "orgenees-wellness",
-    title: "Orgenees Orange Juice",
+    title: "Orgeness Orange Juice Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Jun 2024 – Aug 2024",
     role: "Senior UX/UI Designer",
     category: "Web Design & Food Manufacturing",
+    platform: "Responsive Marketing & Catalogue Site",
+    industry: "Food Manufacturing / Wholesale & OEM",
     tags: ["Manufacturing", "Wholesale", "OEM", "FMCG"],
+    stack: ["Figma", "Design System", "Thai Typography", "Catalogue Templates"],
     image: "/img/cover/orgenees-wellness.webp",
-    imageAlt: "Orgeness fresh orange juice factory wholesale and OEM website",
-    metric: "220–1000 ml Range",
-    metricBadge: "GMP · HACCP · อย.",
-    overview: "Site for a fresh orange juice factory selling wholesale and OEM contract production, built to convert resellers and own-brand clients rather than individual shoppers.",
-    problem: "The business earns from wholesale volume and contract manufacturing, but a conventional product site speaks to single-bottle buyers — leaving reseller margins, minimum order terms and OEM capability invisible to the people who actually place large orders.",
+    imageAlt: "Orgeness fresh orange juice website — wholesale price tiers, four formulas and OEM contract production",
+    metric: "4 Formulas · 5 Sizes",
+    metricBadge: "Wholesale Tiers Published",
+    hook: "A juice factory that earns from cases, not bottles — so the site publishes the wholesale break-points instead of making a reseller ask for them.",
+    overview:
+      "The site for ORGENESS GROUP, a fresh orange juice factory selling wholesale and OEM contract production. It is built to convert resellers and own-brand clients rather than individual shoppers: four formulas each get their own page, every bottle size carries a retail price and two quantity break-points, and contract manufacturing runs as a second track alongside the catalogue.",
+    kpis: [
+      { value: "4 formulas", label: "Original and Premium, each with a low-calorie version", sub: "treated as separate products, not variants" },
+      { value: "5 sizes + jug", label: "220 ml to 1,000 ml, plus a six-litre catering jug", sub: "retail price and two wholesale breaks per size" },
+      { value: "2 buyer tracks", label: "Wholesale resellers and OEM own-brand clients", sub: "carried on one site without competing" },
+    ],
+    problem:
+      "The business earns from wholesale volume and contract manufacturing, but a conventional product site speaks to someone buying a single bottle. A reseller deciding whether to stock the brand needs the break-points and the margin before anything else, and a company wanting its own label produced needs to know that is on offer at all — neither of which a retail-shaped site tells them. Both were left to a phone call.",
     baselineStats: [
-      { value: "Retail-framed", label: "Site spoke to individual buyers, not resellers" },
-      { value: "Unstated", label: "Wholesale pricing and minimum order terms not published" },
-      { value: "Hidden", label: "OEM own-brand production capability not surfaced" }
+      { value: "Retail-framed", label: "the site spoke to individual buyers, not resellers" },
+      { value: "Terms on request", label: "wholesale pricing and quantity breaks not published" },
+      { value: "OEM invisible", label: "own-brand contract production not surfaced as an offer" }
     ],
     solutions: [
-      { title: "Wholesale Economics Made Explicit", body: "Published the reseller case directly — sizes from 220 ml to 1,000 ml, wholesale from ฿11.5 per bottle, free Bangkok delivery above 100 bottles, and nationwide shipping by temperature-controlled truck." },
-      { title: "OEM Contract Production Track", body: "A dedicated section for own-brand manufacturing, positioned around low capital outlay and no storefront requirement, with LINE and phone consultation as the entry point." },
-      { title: "Food-Safety Credibility Layer", body: "GMP, HACCP and Thai FDA certification surfaced alongside the residue-testing and sweetness-consistency process, since food-grade buyers screen on standards before taste." }
+      {
+        title: "Wholesale Economics on the Product Page",
+        body: "Each formula gets a full-width price panel: bottles from 220 ml to 1,000 ml plus a six-litre catering jug, retail price under every size, and two quantity break-points beneath that. A reseller can calculate margin on the page instead of opening a conversation to get a number."
+      },
+      {
+        title: "Four Formulas as Four Products",
+        body: "Original and Premium, each with a low-calorie version, get their own page rather than sitting behind a variant selector. A reseller stocks one line, not the range, so each formula has to stand on its own with its own pricing panel and its own contact point."
+      },
+      {
+        title: "OEM Contract Production as a Second Track",
+        body: "A dedicated services page positions own-brand manufacturing around low capital outlay and no storefront requirement, with LINE and phone consultation as the entry point. It shares the site with the wholesale catalogue without competing with it for the homepage."
+      },
+      {
+        title: "Food-Safety Credibility Layer",
+        body: "The factory's certification is surfaced on the page alongside the production process and the plant itself. Food-grade buyers screen on standards before they consider taste, so the document belongs where the decision happens rather than on a page nobody reaches."
+      }
     ],
     impactTable: [
-      { metric: "Audience the site addresses", before: "Retail buyers", after: "Wholesale and OEM clients", delta: "Repositioned" },
-      { metric: "Wholesale terms visibility", before: "On request", after: "Published rates and minimums", delta: "Open" },
-      { metric: "Certification disclosure", before: "Not shown", after: "GMP, HACCP, อย.", delta: "Surfaced" }
+      { metric: "Audience the site addresses", before: "Retail buyers", after: "Wholesale resellers and OEM clients", delta: "Repositioned" },
+      { metric: "Wholesale terms", before: "On request by phone", after: "Two break-points published per size", delta: "Open" },
+      { metric: "Contract manufacturing", before: "Not offered on the site", after: "Its own services track", delta: "Surfaced" },
+      { metric: "Formula selection", before: "Variants of one product", after: "Four products with their own pages", delta: "Separated" }
     ],
-    deliverables: ["Wholesale Marketing Site", "Product Catalogue", "OEM Enquiry Flow", "Article & SEO Templates"]
-
+    quote:
+      "A reseller's first question is margin, and every hour they spend waiting for a price is an hour a competitor's published sheet is answering it. Putting the break-points on the product page is not transparency for its own sake — it is the shortest route to the order.",
+    quoteRole: "Design rationale · Orgeness Orange Juice Website",
+    learnings: [
+      "Publishing quantity break-points does the qualifying work a sales call would otherwise spend its first ten minutes on.",
+      "When buyers stock one line rather than the range, giving each formula its own page beats a variant selector that assumes they are comparing.",
+      "For food-grade buyers the certification is not a trust badge at the bottom of the page — it is a screening gate that has to sit before the product story."
+    ],
+    deliverables: ["Wholesale Marketing Site", "Product & Pricing Pages", "OEM Enquiry Flow", "Article & SEO Templates"]
   },
   {
     id: "billion-plus",
-    title: "Billion Plus",
+    title: "Billion Plus Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Mar 2024 – May 2024",
     role: "Lead UX/UI Designer",
     category: "Web Design & Industrial Equipment",
+    platform: "Responsive Marketing & Catalogue Site",
+    industry: "Industrial Cleaning Equipment",
     tags: ["Industrial", "Catalogue", "Rental", "B2B"],
+    stack: ["Figma", "Wireframes", "Design System", "Thai Typography"],
     image: "/img/cover/billion-plus.webp",
-    imageAlt: "Billion Plus industrial floor cleaning machine sales and rental website",
-    metric: "5 Machine Categories",
-    metricBadge: "Open Rental Pricing",
-    overview: "Sales, rental and service site for industrial floor-cleaning machines, structured so facilities buyers can navigate by cleaning application rather than model number.",
-    problem: "Buyers sourcing floor-cleaning equipment rarely know model names, and rental rates were locked behind enquiry forms — forcing a sales conversation before a prospect could tell whether the machine or the budget was even a fit.",
+    imageAlt: "Billion Plus Service website — industrial floor-cleaning machine catalogue, specification tables and rental",
+    metric: "5 Machine Classes",
+    metricBadge: "Sized by m²/hr, Not Model",
+    hook: "Facilities buyers do not know model names — they know how many square metres have to be clean before the next shift. The catalogue was built on that number.",
+    overview:
+      "The site for Billion Plus Service, a Thai supplier of industrial floor-cleaning machines running three lines: sales, rental and repair. The catalogue is organised by machine class and by cleaning throughput in square metres per hour, so a facilities buyer can size equipment against the floor they actually have instead of working backwards from model names.",
+    kpis: [
+      { value: "5 classes", label: "Mini washer, single disc, burnisher, walk-behind and ride-on scrubber", sub: "menu also reaches sweepers, vacuums and cleaning chemicals" },
+      { value: "m²/hr published", label: "Throughput and tank capacity per machine size", sub: "sizes from 20 to 32 inches, standard and heavy duty" },
+      { value: "Sell · rent · repair", label: "Three lines declared in the hero", sub: "rental entry price stated on the same screen" },
+    ],
+    problem:
+      "Someone sourcing a floor scrubber is usually a facilities or plant manager, not an equipment specialist. They know their floor area and their shift window; they do not know which machine width clears it in time. A catalogue organised by model name asks them to learn the range before they are allowed to choose from it — and the rental option, often the right answer for a one-off deep clean, sits behind the same wall.",
     baselineStats: [
-      { value: "Model-led", label: "Catalogue organised by SKU rather than cleaning task" },
-      { value: "Hidden", label: "Rental rates available only on request" },
-      { value: "Mixed", label: "Sales, rental and service offers competing on one page" }
+      { value: "Model-led", label: "catalogue organised by SKU rather than by cleaning task" },
+      { value: "Specs unmatched to need", label: "no way to size a machine against a known floor area" },
+      { value: "Three lines, one page", label: "sales, rental and repair competing for the same attention" }
     ],
     solutions: [
-      { title: "Application-Based Catalogue Structure", body: "Machines grouped into five classes — mini floor washer, single disc, high speed burnisher, walk-behind scrubber and ride-on scrubber — with a dropdown that filters by cleaning application instead of model number." },
-      { title: "Published Rental Rate Tables", body: "Structured tables showing machine size, cleaning capacity in square metres and rate per rental period, putting the daily rate in the open rather than behind a contact form." },
-      { title: "Industrial Client Credibility Layer", body: "Client logos from manufacturers including AGC, NHK, KYB, Sumitomo and NSK positioned to carry the proof a B2B facilities buyer looks for before enquiring." }
+      {
+        title: "Catalogue Grouped by Machine Class",
+        body: "Machines sit in five classes — mini floor washer, single disc, high-speed burnisher, walk-behind scrubber and ride-on scrubber — with a category menu that also reaches sweepers, vacuum and carpet cleaners, high-pressure jets, escalator cleaners and the cleaning chemicals that go alongside them. A buyer enters at the task rather than the SKU."
+      },
+      {
+        title: "Specification Tables That Answer the Sizing Question",
+        body: "Each table sets machine size, from 20 to 32 inches in standard and heavy-duty builds, against water tank capacity, cleaning throughput in square metres per hour, and the rental term. A plant manager who knows their floor area and their shift length can read the right size straight off the table instead of describing the problem to a salesperson first."
+      },
+      {
+        title: "Three Business Lines Declared Up Front",
+        body: "Sell, rent, repair sits directly beneath the brand name in the hero, with the rental entry price — 333 baht a day — on the same screen. Someone who arrived intending to buy, and for whom renting is the cheaper answer, finds that out before they leave rather than after."
+      },
+      {
+        title: "Industrial Client Wall as Proof",
+        body: "Manufacturers including AAPICO, AGC Automotive, NHK Spring, JBT, KYB, Häfele, Sumitomo Rubber, NSK, IJTT, Nissin Electric and Bangkok Summit carry the credibility a facilities buyer screens on. In plant procurement, which comparable operations already use a supplier is the reference that settles it."
+      }
     ],
     impactTable: [
-      { metric: "Catalogue navigation model", before: "By model number", after: "By cleaning application", delta: "Restructured" },
-      { metric: "Rental pricing visibility", before: "Enquiry required", after: "Published tables", delta: "Open" },
-      { metric: "Machine categories surfaced", before: "Flat product list", after: "5 grouped classes", delta: "Segmented" }
+      { metric: "Catalogue entry point", before: "Model number", after: "Machine class and cleaning task", delta: "Restructured" },
+      { metric: "Sizing a machine", before: "Ask a salesperson", after: "Throughput in m²/hr against size", delta: "Self-serve" },
+      { metric: "Rental option", before: "Behind an enquiry", after: "Entry price and terms in the open", delta: "Surfaced" },
+      { metric: "Business lines", before: "Competing on one page", after: "Sell, rent, repair stated in the hero", delta: "Declared" }
     ],
-    deliverables: ["Wireframes", "Product Catalogue System", "Rental Rate Tables", "Responsive Marketing Site"]
-
+    quote:
+      "A plant manager does not want a machine, they want the floor clean before the next shift starts. Publishing square metres per hour against machine size turns a catalogue into a calculation they can run themselves.",
+    quoteRole: "Design rationale · Billion Plus Website",
+    learnings: [
+      "Buyers navigate by the constraint they own — floor area and shift length — not by the vocabulary the supplier uses, so the spec that decides the purchase belongs in the table rather than in a datasheet.",
+      "Keeping the wireframe on the board beside the finished pages is what kept the structural argument reviewable once the visual design arrived.",
+      "When a business sells, rents and repairs, saying so in the hero costs three words and stops a rental customer bouncing off a sales page."
+    ],
+    deliverables: ["Wireframes", "Product Catalogue System", "Rental Specification Tables", "Responsive Marketing Site"]
   },
   {
     id: "unionchemical",
-    title: "Unionchemical Industrial",
+    title: "Unionchemical Website",
     client: "BEURDEV CO., LTD.",
     timeline: "May 2024 – Jul 2024",
     role: "Senior UX/UI Designer",
     category: "Web Design & Industrial",
-    tags: ["Industrial", "Corporate", "B2B", "Chemicals"],
+    platform: "Responsive Corporate Website",
+    industry: "Ethanol Manufacturing / Chemicals",
+    tags: ["Industrial", "Corporate", "B2B", "Ethanol"],
+    stack: ["Figma", "Design System", "Bilingual Content", "Thai Typography"],
     image: "/img/cover/unionchemical.webp",
-    imageAlt: "Industrial chemical raw material manufacturing directory and TDS download portal",
-    metric: "+45% Product Spec Downloads",
-    metricBadge: "−60% Inquiry Response Time",
-    overview: "Chemical manufacturing product directory with technical data sheet (TDS/MSDS) quick downloads and batch RFQ cart system for factory engineers.",
-    problem: "Factory chemical engineers couldn't easily locate specific polymer and solvent grades due to poor search indexing and inaccessible PDF safety sheets.",
+    imageAlt: "Union Chemical and Equipment corporate website — certification architecture, four ethanol products and ESG section",
+    metric: "Corporate Site, 20+ Pages",
+    metricBadge: "ESG + Health as 4th Pillar",
+    hook: "An ethanol manufacturer selling into food and pharmaceutical supply chains, where the buyer's first question is never the product — it is which certificates you hold.",
+    overview:
+      "The corporate site for Union Chemical and Equipment (UC&E), a Thai ethanol manufacturer supplying food, pharmaceutical and industrial customers. It is weighted toward governance rather than catalogue: four products sit inside a structure that gives at least as much room to certification, company history, ESG and organisational structure, because in a regulated supply chain those are what a buyer audits before a grade is ever discussed.",
+    kpis: [
+      { value: "4 products", label: "Ethanol food additive, Solvent 95, avia sanitiser, chemical", sub: "each with its own packaging-container specification" },
+      { value: "4 ESG pillars", label: "Environmental, Social, Governance — and Health", sub: "a fourth pillar with its own page, not a subsection" },
+      { value: "5 sections", label: "About, Businesses, ESG, Media, Contact across 20+ pages", sub: "bilingual Thai and English throughout" },
+    ],
+    problem:
+      "Selling ethanol into food and pharmaceutical manufacturing is a qualification process before it is a sale. A procurement or QA reviewer works down a list — production licence, ISO, GMP, HACCP, halal, laboratory calibration — and a supplier who cannot produce that evidence quickly is screened out regardless of what the product is like. A conventional product site leads with grades and treats the paperwork as a footnote, which inverts the order the buyer actually works in.",
     baselineStats: [
-      { value: "6.2 min", label: "Time taken to find chemical specification sheets" },
-      { value: "42%", label: "Users abandoning search before downloading MSDS files" },
-      { value: "19 phone inquiries", label: "Daily repetitive requests for basic product datasheets" }
+      { value: "Product-first order", label: "grades foregrounded, certification treated as a footnote" },
+      { value: "History unstructured", label: "capital, licences and certifications with no single view" },
+      { value: "ESG unplaced", label: "no home for the disclosures regulated buyers request" }
     ],
     solutions: [
-      { title: "CAS Number & Chemical Formula Instant Search", body: "Engineered rapid search recognizing IUPAC nomenclature, commercial names, and CAS numbers." },
-      { title: "1-Click Batch Technical Download", body: "Engineered multi-select drawer allowing engineers to bundle 10+ TDS and safety sheets into a single ZIP." },
-      { title: "Bulk Container Volume Estimator", body: "Interactive container calculator estimating pallet and IBC tote shipping weights and volumes." }
+      {
+        title: "Certification Given Its Own Architecture",
+        body: "Marks including FDA, GMP, ISO and halal sit high on the homepage, and a dedicated Certification page splits the evidence into Our Standard, Product Standard, Environmental Standards, and laboratory testing and measurement calibration. A QA reviewer can work down their own checklist without opening a conversation to do it."
+      },
+      {
+        title: "Company History Shown Twice, Deliberately",
+        body: "The milestone page carries the same record as both a dated table and a horizontal timeline — capital increases, licences, ISO and HACCP certifications, product launches. The table serves a reviewer verifying a specific year; the timeline serves a visitor forming a view of how long the company has held its standards. Two readers, two shapes, one record."
+      },
+      {
+        title: "Packaging Specified on Every Product",
+        body: "Each product page ends with its packaging containers, from 20-litre drums through 200-litre drums and 1,000-litre IBC tanks up to ISO tank, with net volume and net weight per unit. For an industrial buyer how a product ships determines whether it can be bought at all, so it sits on the page rather than in a follow-up."
+      },
+      {
+        title: "ESG With a Fourth Pillar",
+        body: "Sustainability runs Environmental, Social and Governance and adds Health, each with its own page. For a manufacturer whose output reaches food and pharmaceutical chains, health is the axis buyers ask about directly — folding it into Social would have buried the disclosure most likely to be requested."
+      }
     ],
     impactTable: [
-      { metric: "Technical specification downloads", before: "420 / mo", after: "610 / mo", delta: "+45%" },
-      { metric: "Search-to-spec discovery time", before: "6.2 min", after: "45 sec", delta: "−88%" },
-      { metric: "Direct industrial RFQ conversions", before: "18 / mo", after: "46 / mo", delta: "+155%" }
+      { metric: "Order the buyer works in", before: "Product grades first", after: "Certification given its own section", delta: "Reordered" },
+      { metric: "Verifying a certification year", before: "Ask the company", after: "Dated milestone table and timeline", delta: "Self-serve" },
+      { metric: "Packaging and shipping units", before: "Ask a salesperson", after: "Specified on every product page", delta: "Published" },
+      { metric: "ESG disclosure", before: "Nowhere to point to", after: "Four pillars, a page each", delta: "Structured" }
     ],
-    deliverables: ["B2B Chemical Directory", "CAS Index Search UI", "Technical Spec Drawer", "Responsive Corporate Portal"]
+    quote:
+      "In a regulated supply chain the sale opens with an audit, not a pitch. Giving certification its own architecture instead of a badge row at the bottom of the page matches the order a QA reviewer actually works in.",
+    quoteRole: "Design rationale · Unionchemical Website",
+    learnings: [
+      "In regulated industries the compliance evidence is the product page, and leading with grades inverts the order the buyer works in.",
+      "The same history can serve two readers differently — a dated table for someone verifying a year, a timeline for someone forming an impression — which makes showing it twice correct rather than redundant.",
+      "Health sitting alongside the standard three ESG pillars fits a manufacturer whose output reaches food and pharmaceutical chains better than folding it into Social would have."
+    ],
+    deliverables: ["Corporate Website", "Certification & Standards Architecture", "Product & Packaging Templates", "ESG Section", "Careers & CV Submission"]
   },
   {
     id: "thaimanee-craft",
