@@ -194,34 +194,67 @@ export const webProjects = [
   },
   {
     id: "patc-institute",
-    title: "PATC Institute",
+    title: "PATC Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Apr 2024 – Jun 2024",
     role: "Senior UX/UI Designer",
     category: "Web Design & Education",
-    tags: ["Education", "Institute", "Courses", "Aviation"],
+    platform: "Responsive Marketing Website",
+    industry: "Aviation Training / Vocational Education",
+    tags: ["Education", "Aviation", "Courses", "Accreditation"],
+    stack: ["Figma", "Design System", "Thai Typography", "Content Templates"],
     image: "/img/cover/patc-institute.webp",
-    imageAlt: "Professional aviation training academy course catalog and student enrollment portal",
-    metric: "+76% Enrollment Rate",
-    metricBadge: "−50% Call Center Queries",
-    overview: "Professional aviation and aerospace training curriculum portal with live cohort availability calendars, syllabus downloads, and student registration.",
-    problem: "Aspiring pilots and maintenance trainees found course requirements confusing, resulting in high call center volumes and abandoned registrations.",
+    imageAlt: "Pattaya Aviation Training Center website — accreditation marks, course catalogue and public training schedule",
+    metric: "4 Accreditations Surfaced",
+    metricBadge: "14 Courses · 3 Service Lines",
+    hook: "A training centre whose authority sat in a filing cabinet as four certificates — the site's job was to move them to the point where someone decides whether to enrol.",
+    overview:
+      "The website for Pattaya Aviation Training Center, a Thai aviation and occupational safety training provider. The site carries three separate lines of business — public and in-house training, occupational measurement services, and meeting room hire — and puts the centre's accreditations, each traced back to the certificate that issues it, in front of anyone weighing up a course.",
+    kpis: [
+      { value: "4 accreditations", label: "ISO 9001:2015, CAAT and two national endorsements", sub: "each traced to the issued certificate" },
+      { value: "14 courses", label: "Filterable catalogue with category sidebar", sub: "one detail template across every course" },
+      { value: "3 service lines", label: "Training, measurement services, room hire", sub: "ordered down one homepage instead of competing" },
+    ],
+    problem:
+      "The centre's authority to train rests on paperwork — an ISO 9001:2015 quality management registration, Civil Aviation Authority of Thailand approval and two national endorsements — but a certificate is a scanned document, not something a visitor encounters while deciding. On top of that the organisation runs three separate businesses that were all claiming the top of the homepage, so someone arriving to book safety training first had to work out which of the three they were looking at.",
     baselineStats: [
-      { value: "340 calls", label: "Monthly repetitive student queries regarding course prerequisites" },
-      { value: "12%", label: "Online cohort registration conversion from course view page" },
-      { value: "6.5 min", label: "Time needed to discover upcoming class dates" }
+      { value: "Certificates as documents", label: "accreditation lived in scanned files, not on the site" },
+      { value: "Three lines, one page", label: "training, measurement services and room hire competing for the same space" },
+      { value: "Unstructured course pages", label: "no consistent shape for duration, format, prerequisites or outline" }
     ],
     solutions: [
-      { title: "Interactive Course Prerequisite Checker", body: "Step-by-step 30-second eligibility quiz verifying flight hours, age, and medical certificate requirements." },
-      { title: "Live Cohort Availability Grid", body: "Real-time seat counter showing remaining spots per semester with instant waitlist capability." },
-      { title: "1-Click PDF Syllabus Download", body: "Gated syllabus download capturing student lead contacts for automated nurture email follow-ups." }
+      {
+        title: "Accreditation Traced to Source",
+        body: "The four trust marks on the site are not decoration — each was mapped back to the document it stands for before it was drawn: the CCQM ISO 9001:2015 registration, the CAAT approval and two government endorsements. Working from the certificates themselves is what kept the row to what the centre can evidence."
+      },
+      {
+        title: "Three Service Lines, One Order",
+        body: "Training, occupational measurement (light, sound and heat) and room hire — Foxtrot, Lima and Oscar at thirty seats each, sixty combined — each get their own block in a fixed order down the homepage. Separating them means a visitor recognises within a screen which one they came for."
+      },
+      {
+        title: "A Schedule Table That Answers Booking Questions",
+        body: "The public training schedule carries cohort number, dates, course, room, general and member pricing, location and a registration action on a single row. The questions a prospective student would otherwise phone in are answered where they are asked."
+      },
+      {
+        title: "One Course Detail Template",
+        body: "Every course renders the same fields — subject, duration, delivery format, participant and instructor qualification, objectives, outline and evaluation method. Across fourteen courses that consistency is what lets someone compare two of them before choosing."
+      }
     ],
     impactTable: [
-      { metric: "Online cohort enrollment rate", before: "12%", after: "21%", delta: "+76%" },
-      { metric: "Repetitive call center questions", before: "340 / mo", after: "168 / mo", delta: "−50%" },
-      { metric: "Prospective student lead captures", before: "85 / mo", after: "240 / mo", delta: "+182%" }
+      { metric: "Accreditation", before: "Scanned certificates held off-site", after: "Four marks traced to source documents", delta: "Surfaced" },
+      { metric: "Service lines", before: "Competing on one page", after: "Three blocks in a fixed order", delta: "Separated" },
+      { metric: "Course information", before: "Shaped per course", after: "One template across 14 courses", delta: "Standardised" },
+      { metric: "Booking a public cohort", before: "Enquiry required first", after: "Dates, pricing and registration in the row", delta: "Self-serve" }
     ],
-    deliverables: ["Curriculum Directory UI", "Eligibility Checker Tool", "Student Portal Wireframes", "Mobile Responsive Layout"]
+    quote:
+      "A training centre's product is trust, and here that trust was sitting in a filing cabinet as four certificates. The design work was less about presenting courses than about moving those documents to the moment someone decides whether to enrol.",
+    quoteRole: "Design rationale · PATC Website",
+    learnings: [
+      "Working from the issued certificate rather than a list of claims keeps a trust row honest — you can only show a mark you are able to point at a document for.",
+      "An organisation with several revenue lines will each want the top of the homepage; fixing the order is a design decision that stops the visitor having to do the sorting.",
+      "A course catalogue is a comparison tool before it is a reading tool, which makes template consistency worth more than any single page's polish."
+    ],
+    deliverables: ["Marketing Site", "Course Catalogue & Detail Template", "Public Training Schedule", "Accreditation Pages"]
   },
   {
     id: "the-right-office",
