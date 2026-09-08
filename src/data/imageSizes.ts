@@ -102,6 +102,7 @@ export const imageSizes: Record<string, [number, number, number[]]> = {
   "/img/process/embark-real-estate/6.webp": [1280, 1139, [480]],
   "/img/process/embark-real-estate/7.webp": [2031, 1114, [480, 1200]],
   "/img/process/embark-real-estate/8.webp": [2538, 772, [480, 1200]],
+  "/img/process/endless-eco/01.webp": [1814, 1136, [480, 1200]],
   "/img/process/happy-training/01.webp": [942, 1438, [480]],
   "/img/process/kanna-app/01.webp": [1658, 922, [480, 1200]],
   "/img/process/kanna-app/02.webp": [1878, 1284, [480, 1200]],

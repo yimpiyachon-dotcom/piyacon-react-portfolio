@@ -962,35 +962,67 @@ export const webProjects = [
   },
   {
     id: "endless-eco",
-    title: "Endless Eco",
+    title: "Endless Eco Website",
     client: "BEURDEV CO., LTD.",
     timeline: "May 2024 – Aug 2024",
     role: "Lead UX/UI Designer",
-    category: "Web Design & Renewable Energy",
-    tags: ["Solar", "Calculator", "Local SEO", "Lead Gen"],
+    category: "Web Design & Multi-Line Retail",
+    platform: "Responsive Marketing & Catalogue Site",
+    industry: "Solar, Electric Vehicles & Building Hardware",
+    tags: ["Solar", "E-Motorcycle", "Catalogue", "Multi-Line"],
+    stack: ["Figma", "Design System", "Thai Typography", "Catalogue Templates"],
     image: "/img/cover/endless-eco.webp",
-    imageAlt: "Endless Eco solar rooftop installation website with savings calculator",
-    metric: "Up to 70% Bill Cut",
-    metricBadge: "Free Site Survey",
-    overview: "Bilingual site for a solar rooftop installer in Chachoengsao, built around a savings calculator that turns an abstract investment into a number the visitor can act on.",
-    problem: "Solar is a high-consideration purchase where the buyer's real question is financial, not technical — how much will I save and when do I break even — but installer sites lead with equipment specifications and hide the economics behind a quote request.",
+    imageAlt: "Endless Eco website — solar rooftop, Deco electric motorcycles and Häfele fittings given separate sections",
+    metric: "3 Business Lines",
+    metricBadge: "Solar · E-Motorcycles · Häfele",
+    hook: "One company selling solar rooftops, electric motorcycles and Häfele bathroom fittings — the design problem was giving three unrelated businesses one coherent site.",
+    overview:
+      "The site for Enless Eco, a Chachoengsao company running three unrelated businesses under one roof: solar rooftop installation, the Deco electric motorcycle brand, and Häfele sanitary and hardware distribution. Rather than forcing them through one funnel, each gets its own top-level section, its own product treatment and its own stream in the blog, with the homepage doing only the work of introducing the company and pointing at all three.",
+    kpis: [
+      { value: "3 lines", label: "Solar rooftop, Deco motorcycles, Häfele fittings", sub: "each with its own nav section and blog stream" },
+      { value: "12 models", label: "Electric motorcycles listed individually by name", sub: "with a customer review section beneath them" },
+      { value: "11 categories", label: "Häfele catalogue sidebar with search", sub: "kitchen, sanitary, bathroom, smart technology, lighting" },
+    ],
+    problem:
+      "Three unrelated product lines under one company is a navigation problem before it is a marketing one. A homeowner pricing a solar roof, a rider choosing a scooter and a contractor sourcing bathroom fittings have nothing in common except the company they happened to land on, and a homepage trying to serve all three ends up serving none of them. Each audience had to reach its own section in one move, without the other two getting in the way.",
     baselineStats: [
-      { value: "Spec-led", label: "Installers present equipment before financial return" },
-      { value: "Quote-gated", label: "Savings and payback only available on enquiry" },
-      { value: "Unclear", label: "Permit and installation process not explained upfront" }
+      { value: "Three unrelated lines", label: "solar, motorcycles and hardware sharing one company" },
+      { value: "No shared audience", label: "a homeowner, a rider and a contractor want different pages" },
+      { value: "Content undifferentiated", label: "articles from all three lines competing in one feed" }
     ],
     solutions: [
-      { title: "Interactive Savings Calculator", body: "Visitors enter their monthly bill and daytime usage share to get recommended system size, monthly savings, payback period and 25-year total — answering the financial question before any contact is required." },
-      { title: "Four-Step Process Transparency", body: "The journey from free site survey through design, PEA permits and switch-on stated openly, including that Endless Eco handles all utility paperwork — the part homeowners most fear." },
-      { title: "Bilingual Local-SEO Structure", body: "Thai and English served together throughout, with geographic targeting for Chachoengsao and the Eastern provinces, since solar buying is a local search behaviour." }
+      {
+        title: "One Section per Business, Straight From the Nav",
+        body: "DECO and HAFELE sit as top-level navigation items beside HOME, BLOG and CONTACT US. A visitor reaches the line they came for in a single click, and no line has to be explained by way of another."
+      },
+      {
+        title: "A Product Treatment That Fits Each Line",
+        body: "Deco lists twelve motorcycle models as a named grid with customer reviews underneath, because a rider buys on model and on what other riders said. Häfele runs as a searchable catalogue with an eleven-category sidebar, because a contractor arrives already knowing the category. Solar shows installed sites as reference photography, because a homeowner is judging whether roofs like theirs have actually been done."
+      },
+      {
+        title: "The Blog Split Four Ways",
+        body: "Articles are grouped into general, Solar cell, Deco and Häfele streams rather than one reverse-chronological feed. The same content system then serves three audiences without any of them reading past the other two to reach their own."
+      },
+      {
+        title: "Contact Carried in the Header",
+        body: "Call and LINE buttons sit inside the navigation bar on every page and repeat through the homepage sections. Across all three lines the enquiry is a phone call or a LINE message, so the site never routes it through a form it does not need."
+      }
     ],
     impactTable: [
-      { metric: "Financial answer", before: "Quote required", after: "Instant calculator", delta: "Self-serve" },
-      { metric: "Process visibility", before: "Not explained", after: "4 steps published", delta: "Transparent" },
-      { metric: "Language coverage", before: "Single language", after: "Thai and English", delta: "Bilingual" }
+      { metric: "Reaching a business line", before: "Explained through the company", after: "Its own top-level nav section", delta: "Direct" },
+      { metric: "Product presentation", before: "One shared treatment", after: "Model grid, catalogue, site reference", delta: "Fitted" },
+      { metric: "Article discovery", before: "Single mixed feed", after: "Four streams by business line", delta: "Segmented" },
+      { metric: "Enquiry route", before: "Contact form", after: "Call and LINE in the header", delta: "Direct" }
     ],
-    deliverables: ["Marketing Site", "Savings Calculator UI", "Portfolio & Blog Templates", "Bilingual TH/EN System"]
-
+    quote:
+      "A homeowner pricing a solar roof, a rider choosing a scooter and a contractor sourcing bathroom fittings share nothing except the company they landed on. The design job was to stop making any of them read the other two.",
+    quoteRole: "Design rationale · Endless Eco Website",
+    learnings: [
+      "When one company runs unrelated lines, giving each its own top-level section beats any attempt to invent a shared story for them.",
+      "Each line needed a different product treatment — a named model grid, a searchable catalogue, installation reference photography — because each buyer arrives already knowing something different.",
+      "Splitting the blog by business line lets one content system serve three audiences, which a single reverse-chronological feed cannot do."
+    ],
+    deliverables: ["Marketing Site", "Deco Product Pages", "Häfele Catalogue", "Blog Streams by Business Line", "Contact & Location"]
   },
   {
     id: "cwnh-hospital",
