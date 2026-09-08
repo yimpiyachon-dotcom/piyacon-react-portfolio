@@ -135,29 +135,62 @@ export const webProjects = [
     timeline: "Feb 2024 – Oct 2024",
     role: "Lead UX/UI Designer",
     category: "Web Design & Tech Agency",
-    tags: ["Tech", "Agency", "Interactive", "Dark Mode"],
+    platform: "Responsive Marketing Website",
+    industry: "Software Development Agency",
+    tags: ["Agency", "Software House", "Dark Mode", "Pricing"],
+    stack: ["Figma", "Design System", "Dark UI", "Thai Typography"],
     image: "/img/cover/beurdev-agency.webp",
-    imageAlt: "Digital engineering and software consultancy agency flagship showcase",
-    metric: "2.4× Inbound Inquiries",
-    metricBadge: "+120% Case Reads",
-    overview: "Agency portfolio and digital engineering case study showcase featuring dark mode aesthetics, interactive case study filters, and tokenized layouts.",
-    problem: "Previous agency website presented services generically without highlighting enterprise engineering depth or design system credentials.",
+    imageAlt: "Beurdev agency site rebuild — dark engineering-led marketing site naming the tech stack and publishing package pricing",
+    metric: "4 Priced Packages",
+    metricBadge: "8 Named Technologies",
+    hook: "An agency site that answers the two questions a prospect actually has — what do you build with, and what does it cost — before they have to ask for either.",
+    overview:
+      "The flagship site for Beurdev, the software house behind much of the client work in this portfolio. The rebuild replaced a five-page, illustration-led marketing site with a dark, engineering-led one that names the frameworks the team builds with and publishes package pricing on the page — the two things the previous site made every prospect ask for by email.",
+    kpis: [
+      { value: "4 packages", label: "Priced on the page, 4,900–54,500 ฿", sub: "scope and inclusions listed per tier" },
+      { value: "8 technologies", label: "Named across iOS, front end and back end", sub: "React Native, Flutter, React, Vue, Angular, NestJS, Laravel, Django" },
+      { value: "3 stages", label: "Design, Build, Roll Out", sub: "shown as Starting, On Progress and Success" },
+    ],
+    problem:
+      "The previous site was a five-page marketing template on a light teal palette, carried by stock illustration. It described services in general terms, named no technologies and published no prices — so a prospect assessing a software house could not tell whether the team built in what their project needed, or worked within the budget they had, without making contact first. Every enquiry started from zero.",
     baselineStats: [
-      { value: "7 inbound", label: "Monthly qualified enterprise project inquiries" },
-      { value: "45 sec", label: "Average page dwell time before visitor departure" },
-      { value: "22%", label: "Case study completion reading rate" }
+      { value: "No stack named", label: "services described in general terms, no technologies listed" },
+      { value: "No prices", label: "budget fit could only be established by making contact" },
+      { value: "Template look", label: "illustration-led light theme that read as any small agency" }
     ],
     solutions: [
-      { title: "Impact-Driven Case Study Cards", body: "Replaced vague client logos with measurable before/after metrics prominently surfaced directly on the index grid." },
-      { title: "Engineered Dark-Mode Aesthetic", body: "JetBrains Mono typography paired with high-contrast emerald highlights communicating technical mastery." },
-      { title: "Direct Calendly Strategy Booking", body: "Eliminated back-and-forth email scheduling by embedding instant scoping consultation calendars." }
+      {
+        title: "Dark Ground as a Positioning Choice",
+        body: "The rebuild moved from light teal and stock illustration to a dark ground with green accents and code texture. For a technical service the visual register is part of the argument — the old palette positioned the team as a marketing shop, which is not what they are being hired as."
+      },
+      {
+        title: "The Stack, Named",
+        body: "iOS App, Front End and Back End each list the actual frameworks: React Native and Flutter; React, Vue and Angular; NestJS, Laravel and Django. A prospect with an existing codebase or a hiring constraint can check compatibility on the page instead of asking and waiting."
+      },
+      {
+        title: "Four Packages With Prices on the Page",
+        body: "Scope is published rather than quoted — one, three and five page builds at 4,900, 14,500 and 24,500 baht, plus a 54,500 baht tier carrying a new design. Every tier lists the same baseline inclusions: responsive layouts, a back-office CMS and Google Analytics."
+      },
+      {
+        title: "Engagement Model as Three Stages",
+        body: "Design, Build and Roll Out are presented as Starting, On Progress and Success, with QA and testing named inside the final stage rather than left implied. A client can place their project in the sequence using vocabulary they were given before the work began."
+      }
     ],
     impactTable: [
-      { metric: "Monthly inbound client inquiries", before: "7 leads", after: "17 leads", delta: "+142%" },
-      { metric: "Case study readership depth", before: "22%", after: "58%", delta: "+163%" },
-      { metric: "Average session time on portfolio", before: "45 sec", after: "3.2 min", delta: "+326%" }
+      { metric: "Technology stack", before: "Not stated", after: "8 frameworks across 3 groups", delta: "Disclosed" },
+      { metric: "Pricing", before: "Quote on enquiry", after: "4 tiers published with inclusions", delta: "Published" },
+      { metric: "Visual positioning", before: "Light illustrated template", after: "Dark engineering-led system", delta: "Repositioned" },
+      { metric: "Engagement model", before: "Undescribed", after: "Design → Build → Roll Out", delta: "Named" }
     ],
-    deliverables: ["Agency Flagship Site", "Case Study Template Engine", "Interactive Capability Matrix", "Brand Guidelines"]
+    quote:
+      "A prospect choosing a software house runs two checks: can you build in what my project needs, and can you do it for what I have. The old site answered neither without an email — and publishing both costs you only the enquiries that were never going to close.",
+    quoteRole: "Design rationale · Beurdev Agency",
+    learnings: [
+      "Publishing prices filters rather than deters — the enquiries that stop arriving are the ones that would not have closed, and the ones that do arrive already know the budget.",
+      "Naming frameworks is a stronger credibility signal than describing capability, because it is checkable; a claim a visitor can verify carries weight that a claim they cannot does not.",
+      "For a technical service the visual register is an argument on its own, and a light illustrated template was quietly making the wrong one."
+    ],
+    deliverables: ["Agency Flagship Site", "Dark Design System", "Package & Pricing Structure", "Tech Stack & Process Sections"]
   },
   {
     id: "patc-institute",
