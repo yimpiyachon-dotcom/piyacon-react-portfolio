@@ -5,6 +5,7 @@ import { projects } from "./data/projects";
 import { allProjects } from "./data/allProjects";
 import { webProjects } from "./data/webProjects";
 import { processSteps } from "./data/processSteps";
+import { career } from "./data/career";
 import { imageSizes } from "./data/imageSizes";
 
 /**
@@ -2422,173 +2423,9 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
       </div>
 
       {/* About Strip Banner */}
-      <section
-        style={{
-          background: "linear-gradient(180deg, #0F1114 0%, #131417 100%)",
-          border: "1px solid #24262B",
-          borderRadius: 16,
-          padding: "44px 40px",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: 40,
-          alignItems: "center",
-          marginBottom: 96,
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        {/* Grid pattern — same as hero */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage: `
-              linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px",
-            maskImage: "radial-gradient(ellipse 90% 100% at 50% 50%, black 30%, transparent 90%)",
-            WebkitMaskImage: "radial-gradient(ellipse 90% 100% at 50% 50%, black 30%, transparent 90%)",
-          }}
-        />
+      <CareerMarquee />
 
-        {/* Aurora orbs — same palette & motion as hero */}
-        <div
-          aria-hidden="true"
-          style={{ position: "absolute", inset: 0, pointerEvents: "none", filter: "blur(75px)", opacity: 0.4, mixBlendMode: "screen" }}
-        >
-          <div
-            className="aurora-orb"
-            style={{
-              position: "absolute", top: "-30%", left: "-8%", width: 380, height: 380, borderRadius: "50%",
-              background: "radial-gradient(circle, #10B981 0%, rgba(16,185,129,0) 70%)",
-              animation: "float-emerald 20s ease-in-out infinite",
-            }}
-          />
-          <div
-            className="aurora-orb"
-            style={{
-              position: "absolute", bottom: "-35%", right: "-6%", width: 360, height: 360, borderRadius: "50%",
-              background: "radial-gradient(circle, #3B82F6 0%, rgba(59,130,246,0) 70%)",
-              animation: "float-blue 24s ease-in-out infinite",
-            }}
-          />
-          <div
-            className="aurora-orb"
-            style={{
-              position: "absolute", top: "10%", left: "50%", width: 240, height: 240, borderRadius: "50%",
-              background: "radial-gradient(circle, #D4E157 0%, rgba(212,225,87,0) 70%)",
-              animation: "float-lime 16s ease-in-out infinite",
-            }}
-          />
-        </div>
-
-        {/* Soft vignette to keep edges clean */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(180deg, rgba(10,11,13,0.15) 0%, transparent 20%, transparent 80%, rgba(10,11,13,0.25) 100%)",
-            pointerEvents: "none",
-          }}
-        />
-
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <div
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 11,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "#6EE7B7",
-              marginBottom: 12,
-            }}
-          >
-            Executive Leadership & Systems Thinking
-          </div>
-          <h2
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontSize: 26,
-              fontWeight: 700,
-              color: "#F5F5F4",
-              margin: "0 0 12px",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Research-grounded, systems-minded, impact-measured.
-          </h2>
-          <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 15,
-              color: "#9CA0A8",
-              lineHeight: 1.65,
-              margin: 0,
-            }}
-          >
-            I lead end-to-end design — from field research with farmers and facility technicians to scalable tokenized design systems in Figma.
-            My core differentiator is translating dense domain logic (GIS, real-time IoT hardware telemetry, automated ML) into intuitive
-            dashboards that non-technical stakeholders can operate with confidence.
-          </p>
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 280, position: "relative", zIndex: 1 }}>
-          <button
-            onClick={onSelectCv}
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontSize: 14,
-              fontWeight: 700,
-              color: "#0A0B0D",
-              background: "#6EE7B7",
-              padding: "12px 24px",
-              borderRadius: 8,
-              border: "none",
-              cursor: "pointer",
-              textAlign: "center",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 8,
-              boxShadow: "0 4px 14px rgba(110,231,183,0.3)",
-              transition: "transform 150ms",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          >
-            <span>📄</span> Download & View Full CV
-          </button>
-          <button
-            onClick={onContact}
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 14,
-              fontWeight: 600,
-              color: "#F5F5F4",
-              background: "#24262B",
-              border: "1px solid #383B42",
-              padding: "12px 24px",
-              borderRadius: 8,
-              cursor: "pointer",
-              textAlign: "center",
-              transition: "all 150ms",
-              boxShadow: "0 4px 14px rgba(0,0,0,0.35)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(110,231,183,0.5)";
-              e.currentTarget.style.color = "#6EE7B7";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "#383B42";
-              e.currentTarget.style.color = "#F5F5F4";
-            }}
-          >
-            Get In Touch
-          </button>
-        </div>
-      </section>
+      <CtaBanner onSelectCv={onSelectCv} />
 
       {/* Footer */}
       <footer
@@ -2617,6 +2454,179 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
         </div>
       </footer>
     </div>
+  );
+}
+
+/**
+ * Closing call to action, sitting between the last content section and the
+ * footer.
+ *
+ * The channels are one segmented strip rather than a scatter of links so the
+ * row reads as a single control. Each cell is a real target: mail and phone
+ * hand off to the device, LINE and LinkedIn open externally, and the resume
+ * opens the same modal the rest of the page uses, so nothing here is a
+ * decorative restatement of the contact modal.
+ */
+/**
+ * The career record as an auto-scrolling rail of testimonial-style cards.
+ *
+ * The About page shows the same entries as a vertical list where the reader is
+ * already committed to detail; here the point is to pass the whole record in
+ * front of someone skimming the home page, so it moves on its own. The track
+ * holds two copies of the list and travels exactly one copy's width, which is
+ * what makes the loop seamless — the clone is hidden from assistive tech so the
+ * record is not announced twice. Motion stops on hover and on keyboard focus,
+ * and a reader who has asked for reduced motion gets a plain scrollable row.
+ */
+function CareerMarquee() {
+  const card = (c: (typeof career)[number], i: number) => (
+    <figure className="career-card" key={i}>
+      <blockquote className="career-card-desc">{c.desc}</blockquote>
+      <figcaption className="career-card-foot">
+        <CompanyLogo src={c.logo} name={c.company} eager />
+        <div style={{ minWidth: 0 }}>
+          <span className="career-card-company">{c.company}</span>
+          <span className="career-card-role">{c.role}</span>
+          <span className="career-card-period">{c.period}</span>
+        </div>
+      </figcaption>
+    </figure>
+  );
+
+  return (
+    <section style={{ marginBottom: 96 }} aria-labelledby="career-heading">
+      <div
+        style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 11,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "#828790",
+          marginBottom: 12,
+        }}
+      >
+        Career Track Record
+      </div>
+      <h2
+        id="career-heading"
+        style={{
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
+          fontSize: 26,
+          fontWeight: 700,
+          color: "#F5F5F4",
+          margin: "0 0 28px",
+          letterSpacing: "-0.02em",
+        }}
+      >
+        Where I&rsquo;ve Made An Impact
+      </h2>
+
+      <div className="career-rail">
+        <div className="career-track">
+          {career.map(card)}
+          <div className="career-clone" aria-hidden="true">
+            {career.map(card)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CtaBanner({ onSelectCv }: { onSelectCv: Handler }) {
+  const channels = [
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/piyachon-wanburi-b207691ab/",
+      icon: (
+        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+      ),
+    },
+    {
+      label: "LINE",
+      href: "https://line.me/ti/p/SHGZ_Lx9Jn",
+      icon: (
+        <path d="M24 10.31C24 4.94 18.62.57 12 .57S0 4.94 0 10.31c0 4.81 4.27 8.85 10.04 9.61.39.09.92.26 1.06.59.12.3.08.77.04 1.08l-.17 1.02c-.04.3-.24 1.19 1.05.65 1.29-.54 6.92-4.08 9.44-6.98C23.18 14.39 24 12.46 24 10.31zM7.7 13.51H5.32a.63.63 0 0 1-.63-.63V8.11a.63.63 0 0 1 1.26 0v4.14H7.7a.63.63 0 0 1 0 1.26zm2.47-.63a.63.63 0 0 1-1.26 0V8.11a.63.63 0 0 1 1.26 0v4.77zm5.74 0a.63.63 0 0 1-1.14.38l-2.44-3.32v2.94a.63.63 0 0 1-1.26 0V8.11a.63.63 0 0 1 1.13-.38l2.46 3.33V8.11a.63.63 0 0 1 1.25 0v4.77zm3.85-3.02a.63.63 0 0 1 0 1.26h-1.75v1.13h1.75a.63.63 0 0 1 0 1.26h-2.39a.63.63 0 0 1-.62-.63V8.11a.63.63 0 0 1 .62-.63h2.39a.63.63 0 0 1 0 1.26h-1.75v1.12h1.75z" />
+      ),
+    },
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/CebrAa",
+      icon: (
+        <path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z" />
+      ),
+    },
+    { label: "Mail", href: "mailto:yimpiyachon@gmail.com", stroke: true, icon: (<><rect x="2.5" y="4.5" width="19" height="15" rx="2" /><path d="m3 6.5 9 6 9-6" /></>) },
+    {
+      label: "Phone",
+      href: "tel:+66944989917",
+      stroke: true,
+      icon: (
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+      ),
+    },
+  ];
+
+  return (
+    <section className="cta-banner" aria-labelledby="cta-heading">
+      <p className="cta-live">
+        <span className="cta-live-dot" aria-hidden="true" />
+        Open for Middle / Senior Product Design roles
+      </p>
+
+      <h2 id="cta-heading" className="cta-heading">
+        Let’s build high-impact platforms together.
+      </h2>
+
+      <div className="cta-channels">
+        {channels.map((c) => (
+          <a
+            key={c.label}
+            className="cta-channel"
+            href={c.href}
+            {...(c.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >
+            <svg
+              className="cta-channel-icon"
+              viewBox="0 0 24 24"
+              width="17"
+              height="17"
+              aria-hidden="true"
+              focusable="false"
+              fill={c.stroke ? "none" : "currentColor"}
+              stroke={c.stroke ? "currentColor" : undefined}
+              strokeWidth={c.stroke ? 1.7 : undefined}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {c.icon}
+            </svg>
+            {c.label}
+          </a>
+        ))}
+        {/* The resume opens the existing modal, so it is a button, not a link. */}
+        <button type="button" className="cta-channel" onClick={onSelectCv}>
+          <svg
+            className="cta-channel-icon"
+            viewBox="0 0 24 24"
+            width="17"
+            height="17"
+            aria-hidden="true"
+            focusable="false"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.7}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z" />
+            <path d="M14 2.5V8h5.5" />
+            <path d="M8.5 13.5h7M8.5 17h4.5" />
+          </svg>
+          Resume
+        </button>
+      </div>
+    </section>
   );
 }
 
@@ -3009,7 +3019,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
  * Company mark for the career list. Falls back to the initials tile when the
  * logo file is missing, so the row still reads correctly either way.
  */
-function CompanyLogo({ src, name }: { src?: string; name: string }) {
+function CompanyLogo({ src, name, eager = false }: { src?: string; name: string; eager?: boolean }) {
   const [failed, setFailed] = useState(!src);
   const initials = name
     .replace(/\s*(CO\.|LTD\.|\(.*\)).*/i, "")
@@ -3052,8 +3062,13 @@ function CompanyLogo({ src, name }: { src?: string; name: string }) {
         <img
           src={src}
           alt=""
-          loading="lazy"
+          // A card in the moving rail can sit far outside the viewport at load
+          // time, so lazy loading there shows an empty tile that only fills in
+          // as the card drifts past. These marks total 23 KB across four files.
+          loading={eager ? "eager" : "lazy"}
           decoding="async"
+          width={44}
+          height={44}
           onError={() => setFailed(true)}
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
         />
@@ -3437,43 +3452,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
         </h2>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-          {[
-            {
-              company: "VARUNA CO., LTD. (ARV / PTTEP)",
-              logo: "/img/logos/varuna.webp",
-              role: "Middle UX/UI Designer",
-              period: "Oct 2024 – Present",
-              desc: "Leading UX/UI for Smart Forest carbon GIS analytics, Smart Watcher security SOC platform, and Forest of Tomorrow ecosystem.",
-            },
-            {
-              company: "BEURDEV CO., LTD.",
-              logo: "/img/logos/beyourdev.webp",
-              role: "Lead UX/UI Designer",
-              period: "Feb 2024 – Oct 2024",
-              desc: "Delivered 40+ digital marketing web portals, high-conversion real estate showcases, and TH Health appointment systems.",
-            },
-            {
-              company: "HAPPY THREE CREATION CO., LTD.",
-              logo: "/img/logos/happy-three-creation.webp",
-              role: "Senior UX/UI Designer",
-              period: "Aug 2023 – Feb 2024",
-              desc: "Designed Area 22 IoT gateway management back office (400+ nodes) and Dr. Smoothlife clinical telemedicine workspace.",
-            },
-            {
-              company: "VARUNA CO., LTD. (ARV / PTTEP)",
-              logo: "/img/logos/varuna.webp",
-              role: "UX/UI Designer",
-              period: "June 2022 – Aug 2023",
-              desc: "Designed Kanna agricultural diagnostic mobile app (15,000+ farmers) and VLM land management administrative tools.",
-            },
-            {
-              company: "ALL ABOUT YOU CO., LTD.",
-              logo: "/img/logos/all-about-you.webp",
-              role: "UX/UI Designer",
-              period: "March 2021 – June 2022",
-              desc: "Designed clean beauty e-commerce storefront, streamlining checkout and reducing shopping cart abandonment by 44%.",
-            },
-          ].map((c, i) => (
+          {career.map((c, i) => (
             <div
               key={i}
               style={{

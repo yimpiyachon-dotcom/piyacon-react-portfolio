@@ -606,3 +606,243 @@ body {
 .case-tabs::-webkit-scrollbar {
   display: none;
 }
+
+/* ---- Closing call to action ----
+   Sits between the last section and the footer, and deliberately carries no
+   panel of its own: every section above it is already a bordered card, so a
+   sixth one read as a repeat rather than as the closing statement. Open space
+   and the size of the headline do the separating instead. */
+.cta-banner {
+  position: relative;
+  margin: 0 0 56px;
+  padding: 44px 40px;
+  border: 1px solid #24262b;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #0f1114 0%, #131417 100%);
+}
+
+.cta-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 20px;
+  padding: 6px 13px 6px 11px;
+  border: 1px solid rgba(110, 231, 183, 0.32);
+  border-radius: 999px;
+  background: rgba(110, 231, 183, 0.08);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #6ee7b7;
+}
+
+.cta-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6ee7b7;
+  box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.55);
+  animation: cta-pulse 2s ease-out infinite;
+}
+
+@keyframes cta-pulse {
+  70%  { box-shadow: 0 0 0 7px rgba(110, 231, 183, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(110, 231, 183, 0); }
+}
+
+.cta-heading {
+  margin: 0 0 32px;
+  max-width: 18ch;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  /* Scales with the viewport so the line never has to be broken by hand. */
+  font-size: clamp(30px, 5.2vw, 52px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #f5f5f4;
+}
+
+/* The 1px background showing through the grid gaps draws the dividers, so the
+   rule stays crisp however the cells wrap. */
+.cta-channels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid #2b2e35;
+  border-radius: 12px;
+  background: #2b2e35;
+  overflow: hidden;
+}
+
+/* An odd count leaves the last cell alone in a two-column row; letting it span
+   keeps the strip square instead of ending on a gap. */
+.cta-channels > :last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+/* Six cells need ~140px each to hold "LinkedIn" at 13px mono without crowding,
+   so the row only opens up once there is width for it. */
+@media (min-width: 560px) {
+  .cta-channels {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .cta-channels > :last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .cta-channels {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.cta-channel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 17px 12px;
+  border: 0;
+  background: #17191e;
+  color: #f5f5f4;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+.cta-channel:hover {
+  background: #1f2229;
+  color: #6ee7b7;
+}
+.cta-channel:focus-visible {
+  outline: 2px solid #6ee7b7;
+  outline-offset: -2px;
+}
+.cta-channel-icon {
+  flex-shrink: 0;
+}
+
+@media (max-width: 620px) {
+  .cta-heading {
+    margin-bottom: 26px;
+  }
+  /* The badge wraps to two lines on a phone; centring the dot on the whole
+     block leaves it floating between them, so pin it to the first line. */
+  .cta-live {
+    align-items: flex-start;
+  }
+  .cta-live-dot {
+    margin-top: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-live-dot {
+    animation: none;
+  }
+}
+
+/* ---- Career rail (home page) ----
+   Two copies of the list travel exactly one copy's width, so the loop is
+   seamless. The clone is display:contents so its cards join the same flex row
+   rather than collapsing into a single item. */
+.career-rail {
+  overflow: hidden;
+  /* Fades the cards into the page edge instead of cutting them on a hard line. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.career-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: career-scroll 62s linear infinite;
+}
+
+.career-clone {
+  display: contents;
+}
+
+/* Half the gap has to come off the 50%, or the seam shows as a jump. */
+@keyframes career-scroll {
+  to {
+    transform: translateX(calc(-50% - 8px));
+  }
+}
+
+.career-rail:hover .career-track,
+.career-rail:focus-within .career-track {
+  animation-play-state: paused;
+}
+
+.career-card {
+  flex: 0 0 clamp(280px, 78vw, 380px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0;
+  padding: 24px;
+  background: #131417;
+  border: 1px solid #24262b;
+  border-radius: 14px;
+}
+
+.career-card-desc {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #c8cbd1;
+}
+
+.career-card-foot {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid #24262b;
+}
+
+.career-card-company {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f5f5f4;
+  line-height: 1.35;
+}
+
+.career-card-role {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #9ca0a8;
+  margin-top: 2px;
+}
+
+.career-card-period {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #6ee7b7;
+  margin-top: 6px;
+}
+
+/* Without the animation the rail would be a dead, unreachable row, so it
+   becomes an ordinary scroller and the duplicate cards are dropped. */
+@media (prefers-reduced-motion: reduce) {
+  .career-rail {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .career-track {
+    animation: none;
+  }
+  .career-clone {
+    display: none;
+  }
+}
