@@ -512,10 +512,16 @@ body {
    all at 100% width made the tall ones 1000px+ on a phone and squashed the wide
    ones to a 93px strip nobody can read. */
 .process-shot {
+  position: relative;
   border-radius: 12px;
   border: 1px solid #24262b;
   background: #1b1d21;
   overflow: hidden;
+  /* A strip below the board for the enlarge control. Overlaying the control on
+     the image covered part of it, which is the very complaint this change is
+     answering — and a wide board is only ~95px tall on a phone, so the pill sat
+     across most of it. */
+  padding-bottom: 34px;
 }
 
 /* On a phone a portrait board at full width is fine — you scroll it. On a wide
@@ -531,25 +537,62 @@ body {
   }
 }
 
-/* Wide boards stay legible by keeping a usable scale and letting the reader
-   pan, rather than shrinking the whole map into an unreadable band. */
-.process-shot.is-wide {
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
+/* Wide boards used to be rendered at 860px inside the column and panned. On a
+   390px phone that left 520px of the board — 60% of it — off-screen behind a
+   scrollbar touch devices never draw, which reads as content simply missing.
+   Every board now renders complete; the detail is reached through the viewer. */
+
+/* The whole board is the hit area, so a tap anywhere opens it. The pill is the
+   only cue that this is possible, so it stays visible rather than appearing on
+   hover, which a touch device cannot do. */
+.process-shot-open {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 7px 10px;
+  background: none;
+  border: 0;
+  cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
 }
-@media (max-width: 860px) {
-  .process-shot.is-wide > .img-frame {
-    width: 860px;
-    max-width: none;
-  }
+.process-shot-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  line-height: 1;
+  color: #9ca0a8;
+  background: #17191e;
+  border: 1px solid #3a3d44;
+  border-radius: 999px;
+  padding: 5px 10px;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+.process-shot-open:hover .process-shot-pill,
+.process-shot-open:focus-visible .process-shot-pill {
+  background: #6ee7b7;
+  border-color: #6ee7b7;
+  color: #0a0b0d;
+}
+.process-shot-open:focus-visible {
+  outline: 2px solid #6ee7b7;
+  outline-offset: -2px;
 }
 
-.process-shot.is-wide::-webkit-scrollbar {
-  height: 6px;
+.shot-lightbox-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #f5f5f4;
+  background: #17191e;
+  border: 1px solid #3a3d44;
+  border-radius: 8px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
 }
-.process-shot.is-wide::-webkit-scrollbar-thumb {
-  background: #3a3d44;
-  border-radius: 3px;
+.shot-lightbox-btn:hover {
+  background: #24262b;
+  border-color: #6ee7b7;
 }
 
 /* The two case-study tab labels are 388px of nowrap text, which overflows a

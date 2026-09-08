@@ -1194,12 +1194,140 @@ function BaselineStat({ stats }: { stats: Stat[] }) {
 }
 
 
+/**
+ * Fullscreen viewer for one walkthrough board.
+ *
+ * The boards are Figma exports running up to 3.9:1, so on a phone a whole board
+ * only fits the content column at a size nobody can read. Hiding the remainder
+ * behind a horizontal scroll made the reader believe the image was cut off, so
+ * every board is now shown complete and the detail lives here on demand: the
+ * viewer opens fitted to the screen and one tap switches to actual pixels,
+ * panning in both directions.
+ */
+function ShotLightbox({ shot, onClose }: { shot: { src: string; alt: string } | null; onClose: Handler }) {
+  const [actualSize, setActualSize] = useState(false);
+
+  useEffect(() => {
+    if (!shot) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    // The page behind must not scroll away under the viewer on touch.
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previous;
+    };
+  }, [shot, onClose]);
+
+  if (!shot) return null;
+
+  const naturalWidth = imageSizes[shot.src]?.[0];
+
+  return (
+    <div
+      className="shot-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={shot.alt}
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 120,
+        background: "rgba(10, 11, 13, 0.95)",
+        backdropFilter: "blur(12px)",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 12,
+          padding: "14px 16px",
+          flexShrink: 0,
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 12,
+            color: "#9CA0A8",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {shot.alt}
+        </span>
+        <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
+          <button
+            type="button"
+            className="shot-lightbox-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActualSize((v) => !v);
+            }}
+            aria-label={actualSize ? "Fit image to screen" : "View image at actual size"}
+          >
+            {actualSize ? "Fit" : "Zoom in"}
+          </button>
+          <button type="button" className="shot-lightbox-btn" onClick={onClose} aria-label="Close image viewer">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          flex: 1,
+          minHeight: 0,
+          overflow: actualSize ? "auto" : "hidden",
+          display: "flex",
+          alignItems: actualSize ? "flex-start" : "center",
+          justifyContent: actualSize ? "flex-start" : "center",
+          padding: actualSize ? 0 : "0 12px 16px",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
+        {/* The full file, never the narrow variant: this view exists to show detail. */}
+        <img
+          src={shot.src}
+          alt={shot.alt}
+          onClick={() => setActualSize((v) => !v)}
+          style={
+            actualSize
+              ? { width: naturalWidth, maxWidth: "none", height: "auto", display: "block", cursor: "zoom-out" }
+              : {
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  width: "auto",
+                  height: "auto",
+                  objectFit: "contain",
+                  display: "block",
+                  borderRadius: 8,
+                  cursor: "zoom-in",
+                }
+          }
+        />
+      </div>
+    </div>
+  );
+}
+
 function CaseStudy({ project, onBack, onHome }: {
   project: Project;
   onBack: Handler;
   onHome: Handler;
 }) {
   const [activeTab, setActiveTab] = useState("overview");
+  const [zoomedShot, setZoomedShot] = useState<{ src: string; alt: string } | null>(null);
   const steps = processSteps[project.id] ?? [];
 
   // Web & brand entries are written up progressively, so a case study may not
@@ -1456,20 +1584,35 @@ function CaseStudy({ project, onBack, onHome }: {
                   {s.body}
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                  {s.images.map((src, i) => (
-                    <div
-                      key={i}
-                      className={`process-shot${isWideShot(src) ? " is-wide" : ""}`}
-                    >
-                      <LazyImage
-                        src={src}
-                        alt={`${s.title} — visual ${i + 1}`}
-                        frameStyle={shotFrameStyle(src)}
-                        sizes="(max-width: 940px) 100vw, 892px"
-                        style={{ width: "100%", display: "block" }}
-                      />
-                    </div>
-                  ))}
+                  {s.images.map((src, i) => {
+                    const shotAlt = `${s.title} — visual ${i + 1}`;
+                    return (
+                      <div
+                        key={i}
+                        className={`process-shot${isWideShot(src) ? " is-wide" : ""}`}
+                      >
+                        <LazyImage
+                          src={src}
+                          alt={shotAlt}
+                          frameStyle={shotFrameStyle(src)}
+                          sizes="(max-width: 940px) 100vw, 892px"
+                          style={{ width: "100%", display: "block" }}
+                        />
+                        {/* Covers the board so a tap anywhere opens it, and carries
+                            the only visible affordance that enlarging is possible. */}
+                        <button
+                          type="button"
+                          className="process-shot-open"
+                          onClick={() => setZoomedShot({ src, alt: shotAlt })}
+                          aria-label={`Enlarge ${shotAlt}`}
+                        >
+                          <span className="process-shot-pill" aria-hidden="true">
+                            {isWideShot(src) ? "⤢ Wide board — tap to read" : "⤢ Enlarge"}
+                          </span>
+                        </button>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ))}
@@ -1899,6 +2042,12 @@ function CaseStudy({ project, onBack, onHome }: {
         </button>
 
       </div>
+
+      <ShotLightbox
+        key={zoomedShot?.src ?? "none"}
+        shot={zoomedShot}
+        onClose={() => setZoomedShot(null)}
+      />
     </div>
   );
 }
