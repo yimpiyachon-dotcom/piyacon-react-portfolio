@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { PROFILE_IMG } from "./data/portfolioData";
 
 /**
@@ -6892,17 +6892,96 @@ function ScrollToTop() {
   );
 }
 
+/**
+ * URL routing.
+ *
+ * The app is a single page with no routing library: routes are parsed from
+ * location.pathname and pushed with the History API. That gives every view a
+ * real, shareable URL, makes the browser back button work, and lets analytics
+ * tell the pages apart. Vercel is configured (vercel.json) to serve index.html
+ * for these paths so a direct visit or refresh does not 404.
+ */
+type Route = { page: "home" | "projects" | "about" | "stack" | "case-study"; projectId: string | null };
+
+const HOME_ROUTE: Route = { page: "home", projectId: null };
+const STATIC_PAGES = ["projects", "about", "stack"] as const;
+
+function parseRoute(pathname: string): Route {
+  const caseMatch = pathname.match(/^\/case\/([^/]+)\/?$/);
+  if (caseMatch) {
+    const id = decodeURIComponent(caseMatch[1]);
+    // An unknown id would render nothing, so treat it as a bad link and fall
+    // back to the project index rather than a blank page.
+    if (projects.some((p) => p.id === id)) return { page: "case-study", projectId: id };
+    return { page: "projects", projectId: null };
+  }
+
+  const segment = pathname.replace(/^\/+|\/+$/g, "");
+  const staticPage = STATIC_PAGES.find((name) => name === segment);
+  return staticPage ? { page: staticPage, projectId: null } : HOME_ROUTE;
+}
+
+function routeToPath(route: Route): string {
+  if (route.page === "case-study" && route.projectId) return `/case/${route.projectId}`;
+  return route.page === "home" ? "/" : `/${route.page}`;
+}
+
+const PAGE_TITLES: Record<Route["page"], string> = {
+  home: "Piyachon Wanburi — Senior UX/UI Designer",
+  projects: "All Projects — Piyachon Wanburi",
+  about: "About — Piyachon Wanburi",
+  stack: "Stack — Piyachon Wanburi",
+  "case-study": "Case Study — Piyachon Wanburi",
+};
+
 export default function App() {
-  const [activeProject, setActiveProject] = useState<string | null>(null);
-  const [page, setPage] = useState("home");
+  const [route, setRoute] = useState<Route>(() => parseRoute(window.location.pathname));
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [cvModalOpen, setCvModalOpen] = useState(false);
   const [previewItem, setPreviewItem] = useState<Project | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  const { page, projectId: activeProject } = route;
+
   const selectedCaseStudy = useMemo(() => {
     return projects.find((p) => p.id === activeProject);
   }, [activeProject]);
+
+  const navigate = useCallback((next: Route) => {
+    const path = routeToPath(next);
+    if (path !== window.location.pathname) window.history.pushState(null, "", path);
+    setRoute(next);
+  }, []);
+
+  const goTo = useCallback(
+    (name: Exclude<Route["page"], "case-study">) => () => navigate({ page: name, projectId: null }),
+    [navigate],
+  );
+
+  const openCaseStudy = useCallback(
+    (id: string) => navigate({ page: "case-study", projectId: id }),
+    [navigate],
+  );
+
+  // The back/forward buttons change the URL without going through navigate(),
+  // so mirror the browser's history state back into React here.
+  useEffect(() => {
+    const syncFromUrl = () => setRoute(parseRoute(window.location.pathname));
+    window.addEventListener("popstate", syncFromUrl);
+    return () => window.removeEventListener("popstate", syncFromUrl);
+  }, []);
+
+  // A normalised path keeps a stray "/Projects/" or "/case/unknown" from
+  // sitting in the address bar after it has already been resolved to a view.
+  useEffect(() => {
+    const canonical = routeToPath(route);
+    if (window.location.pathname !== canonical) {
+      window.history.replaceState(null, "", canonical);
+    }
+    document.title = selectedCaseStudy
+      ? `${selectedCaseStudy.title} — Piyachon Wanburi`
+      : PAGE_TITLES[route.page];
+  }, [route, selectedCaseStudy]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -6919,24 +6998,12 @@ export default function App() {
 
       {/* Navigation Header */}
       <Nav
-        onHome={() => {
-          setActiveProject(null);
-          setPage("home");
-        }}
-        onProjects={() => {
-          setActiveProject(null);
-          setPage("projects");
-        }}
-        onAbout={() => {
-          setActiveProject(null);
-          setPage("about");
-        }}
-        onStack={() => {
-          setActiveProject(null);
-          setPage("stack");
-        }}
+        onHome={goTo("home")}
+        onProjects={goTo("projects")}
+        onAbout={goTo("about")}
+        onStack={goTo("stack")}
         onContact={() => setContactModalOpen(true)}
-        currentPage={activeProject ? "case-study" : page}
+        currentPage={page}
       />
 
       {/* Conditional View Rendering */}
@@ -6948,42 +7015,34 @@ export default function App() {
           /* Keyed by project so switching case studies remounts with a fresh tab state. */
           key={selectedCaseStudy.id}
           project={selectedCaseStudy}
-          onBack={() => {
-            setActiveProject(null);
-            setPage("projects");
-          }}
-          onHome={() => {
-            setActiveProject(null);
-            setPage("home");
-          }}
+          onBack={goTo("projects")}
+          onHome={goTo("home")}
         />
       ) : page === "projects" ? (
         <ProjectsPage
-          onSelect={(id) => {
-            setActiveProject(id);
-          }}
-          onBack={() => setPage("home")}
+          onSelect={openCaseStudy}
+          onBack={goTo("home")}
           onSelectWebPreview={(item) => setPreviewItem(item)}
           onContact={() => setContactModalOpen(true)}
         />
       ) : page === "about" ? (
         <AboutPage
-          onBack={() => setPage("home")}
-          onProjects={() => setPage("projects")}
+          onBack={goTo("home")}
+          onProjects={goTo("projects")}
           onContact={() => setContactModalOpen(true)}
           onSelectCv={() => setCvModalOpen(true)}
         />
       ) : page === "stack" ? (
         <StackPage
-          onBack={() => setPage("home")}
-          onProjects={() => setPage("projects")}
+          onBack={goTo("home")}
+          onProjects={goTo("projects")}
           onContact={() => setContactModalOpen(true)}
         />
       ) : (
         <HomePage
-          onSelect={(id) => setActiveProject(id)}
-          onProjects={() => setPage("projects")}
-          onAbout={() => setPage("about")}
+          onSelect={openCaseStudy}
+          onProjects={goTo("projects")}
+          onAbout={goTo("about")}
           onContact={() => setContactModalOpen(true)}
           onSelectCv={() => setCvModalOpen(true)}
         />

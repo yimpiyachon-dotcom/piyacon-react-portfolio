@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { Analytics } from '@vercel/analytics/react';
 import { ErrorBoundary } from './ErrorBoundary';
 
 const rootEl = document.getElementById('root');
@@ -11,5 +12,6 @@ ReactDOM.createRoot(rootEl).render(
     <ErrorBoundary>
       <App />
     </ErrorBoundary>
+    <Analytics />
   </React.StrictMode>,
 );
