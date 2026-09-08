@@ -706,35 +706,67 @@ export const webProjects = [
   },
   {
     id: "chaocom-thailand",
-    title: "Chaocom Thailand",
+    title: "Chaocom Thailand Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Mar 2024 – Jun 2024",
     role: "Lead UX/UI Designer",
     category: "Web Design & IT Rental",
+    platform: "Responsive Marketing & Lead-Gen Site",
+    industry: "IT Equipment Rental",
     tags: ["B2B", "Rental", "Corporate IT", "Lead Gen"],
+    stack: ["Figma", "Design System", "Thai Typography", "Form UX"],
     image: "/img/cover/chaocom-thailand.webp",
-    imageAlt: "ChaoCom Thailand computer and notebook rental service website",
+    imageAlt: "Chaocom Thailand website — computer and notebook rental, published replacement terms and quotation request",
     metric: "Daily · Monthly · Yearly",
-    metricBadge: "No Minimum Order",
-    overview: "Lead-generation site for a computer and notebook rental service, built to convert corporate clients renting IT equipment for offices, training sessions, seminars and events.",
-    problem: "Companies renting IT equipment weigh it against buying outright, but the rental case — no capital outlay, no depreciation, immediate replacement, tax deductibility — was never argued anywhere a prospect could find it before contacting sales.",
+    metricBadge: "1-Day Replacement in Bangkok",
+    hook: "Renting IT is weighed against buying it — so the site argues the case, terms and failure handling included, before it shows a single laptop.",
+    overview:
+      "A lead-generation site for Chaocom Thailand, a computer and notebook rental service supplying offices, training sessions, seminars and events. It is structured as an argument before a catalogue: five reasons to rent rather than buy, the delivery and replacement terms stated in the open, then the machines, then a quotation form specific enough for sales to price directly.",
+    kpis: [
+      { value: "From 1 unit", label: "No minimum rental quantity", sub: "stated as a reason on the homepage, not buried in terms" },
+      { value: "1–3 days", label: "Free replacement when hardware fails", sub: "one day in Bangkok, one to three upcountry" },
+      { value: "3 classes", label: "Laptop, MacBook and desktop with models named", sub: "Dell, Lenovo, HP, Acer and Apple" },
+    ],
+    problem:
+      "A company renting IT equipment is not comparing rental providers, it is comparing renting against buying. That decision turns on things a product page never addresses: whether capital has to be committed, what happens when a machine fails mid-project, and whether a five-laptop training session is even large enough to be worth quoting. None of it was argued anywhere a prospect could reach, so every enquiry opened by re-explaining the model from scratch.",
     baselineStats: [
-      { value: "Unargued", label: "Rent-versus-buy case not made on site" },
-      { value: "Unlisted", label: "Available machine models not shown to prospects" },
-      { value: "Assumed", label: "Buyers expected a minimum order requirement" }
+      { value: "Unargued", label: "the rent-versus-buy case not made anywhere on site" },
+      { value: "Terms unstated", label: "delivery, replacement and failure handling unpublished" },
+      { value: "Minimum assumed", label: "prospects expected an order minimum and did not ask" }
     ],
     solutions: [
-      { title: "Rent-Versus-Buy Argument Structure", body: "Five reasons stated up front: zero capital risk, maintained hardware with instant replacement, no minimum rental quantity, advisory support, and rental treated as a 100% deductible expense." },
-      { title: "Equipment Catalogue by Class", body: "Available machines shown by category — laptop, MacBook and desktop — with named models from Dell, Lenovo, HP, Acer and Apple so prospects can match specification before enquiring." },
-      { title: "Structured Quotation Funnel", body: "A dedicated quotation form capturing company, equipment type, quantity, rental period and delivery location, replacing an open-ended contact form with a request sales can price directly." }
+      {
+        title: "Five Reasons, Before the Catalogue",
+        body: "The homepage argues the model before showing a machine: no capital risk, maintained hardware with immediate replacement, no minimum rental quantity, advisory support, and rental treated as an operating expense rather than a capital purchase. The audience is someone who has not yet decided to rent, so the argument has to come first."
+      },
+      {
+        title: "Failure Handling Published as a Term",
+        body: "The service conditions page states what happens when a machine breaks: a replacement delivered free within one day in Bangkok, one to three days in the surrounding provinces and upcountry, with software issues resolved remotely. For a client running a seminar on Tuesday, that single term is the decision."
+      },
+      {
+        title: "Equipment Catalogue by Class, Models Named",
+        body: "Laptop, MacBook and desktop, each with actual models — Dell, Lenovo, HP and Acer laptops; MacBook Air M1, MacBook Pro M1, MacBook Air M2 and iMac 2021; Dell and Lenovo Core i3 through i7 desktops. A prospect matches a specification rather than describing one and waiting to hear whether it exists."
+      },
+      {
+        title: "A Quotation Form Sales Can Price",
+        body: "The request captures company and address, contact, purpose of rental, rental period, required specification, quantity, and the collection and return dates — a brief rather than an open contact box. The documents needed to rent, including the company certificate, Por Por 20 and signatory ID, are listed separately so nothing stalls after the quote is accepted."
+      }
     ],
     impactTable: [
-      { metric: "Rent-versus-buy positioning", before: "Not stated", after: "Five-reason argument", delta: "Argued" },
-      { metric: "Equipment visibility", before: "Not listed", after: "3 classes, named models", delta: "Catalogued" },
-      { metric: "Enquiry quality", before: "Open contact form", after: "Structured quotation request", delta: "Qualified" }
+      { metric: "Rent-versus-buy case", before: "Explained by sales, per enquiry", after: "Five reasons on the homepage", delta: "Argued" },
+      { metric: "What happens on failure", before: "Asked during negotiation", after: "1 day Bangkok, 1–3 days upcountry, free", delta: "Published" },
+      { metric: "Minimum order", before: "Assumed by prospects", after: "Stated: one unit is enough", delta: "Removed" },
+      { metric: "Enquiry quality", before: "Open contact form", after: "Structured quotation brief", delta: "Qualified" }
+    ],
+    quote:
+      "Nobody shopping for rental laptops is comparing rental companies — they are deciding whether to rent at all. The homepage has to win that argument before the catalogue is worth showing.",
+    quoteRole: "Design rationale · Chaocom Thailand Website",
+    learnings: [
+      "When a service competes against not using the service at all, the homepage's job is the argument, and the catalogue earns its place only after that argument lands.",
+      "Publishing the failure terms — how fast a replacement arrives and at whose cost — moves a rental decision further than any amount of copy about reliability.",
+      "Listing the paperwork required to rent removes the stall that happens after a quote is accepted, a step most enquiry flows leave to a later email."
     ],
     deliverables: ["Lead Generation Site", "Equipment Catalogue", "Quotation Request Flow", "Service Terms Pages"]
-
   },
   {
     id: "thanada-construction",

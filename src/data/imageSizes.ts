@@ -75,6 +75,7 @@ export const imageSizes: Record<string, [number, number, number[]]> = {
   "/img/process/beurdev-agency/01.webp": [1108, 1324, [480]],
   "/img/process/beurdev-agency/02.webp": [1440, 4415, [480]],
   "/img/process/billion-plus/01.webp": [1594, 1126, [480, 1200]],
+  "/img/process/chaocom-thailand/01.webp": [1870, 1412, [480, 1200]],
   "/img/process/contracable/1.webp": [1942, 1214, [480, 1200]],
   "/img/process/contracable/2.webp": [1814, 1260, [480, 1200]],
   "/img/process/contracable/3.webp": [2540, 658, [480, 1200]],
