@@ -2575,7 +2575,7 @@ function CtaBanner({ onSelectCv }: { onSelectCv: Handler }) {
       </p>
 
       <h2 id="cta-heading" className="cta-heading">
-        Let’s build high-impact platforms together.
+        Let’s build high-impact <span className="cta-accent">platforms</span> together.
       </h2>
 
       <div className="cta-channels">

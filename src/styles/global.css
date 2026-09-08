@@ -608,28 +608,65 @@ body {
 }
 
 /* ---- Closing call to action ----
-   Sits between the last section and the footer, and deliberately carries no
-   panel of its own: every section above it is already a bordered card, so a
-   sixth one read as a repeat rather than as the closing statement. Open space
-   and the size of the headline do the separating instead. */
+   Sits between the last content section and the footer, and is the one place on
+   the page that goes loud: a lit emerald-to-blue rim, a graded field behind it,
+   and two abstract curves. Everything is painted — no image ships for this. */
 .cta-banner {
   position: relative;
   margin: 0 0 56px;
-  padding: 44px 40px;
-  border: 1px solid #24262b;
-  border-radius: 16px;
-  background: linear-gradient(180deg, #0f1114 0%, #131417 100%);
+  padding: 56px 48px;
+  /* 1px, the same rim weight as the project and walkthrough cards, and the
+     stops carry alpha so the rim sits against the page rather than shouting
+     over it. */
+  border: 1px solid transparent;
+  border-radius: 24px;
+  overflow: hidden;
+  isolation: isolate;
+  /* Two-layer trick: the dark field is clipped to the padding box while the lit
+     gradient fills the border box, which is how a gradient border is drawn
+     without wrapping the panel in an extra element. */
+  background:
+    radial-gradient(62% 78% at 100% 108%, rgba(41, 128, 255, 0.34) 0%, rgba(41, 128, 255, 0) 60%) padding-box,
+    radial-gradient(34% 52% at 99% 40%, rgba(31, 108, 235, 0.14) 0%, rgba(31, 108, 235, 0) 68%) padding-box,
+    radial-gradient(52% 84% at 1% 52%, rgba(16, 231, 160, 0.11) 0%, rgba(16, 231, 160, 0) 64%) padding-box,
+    linear-gradient(104deg, #061917 0%, #04121a 46%, #04121f 74%, #071a3c 100%) padding-box,
+    linear-gradient(104deg, rgba(52, 245, 197, 0.42) 0%, rgba(31, 168, 224, 0.30) 46%, rgba(17, 82, 240, 0.45) 100%) border-box;
+  box-shadow: 0 24px 70px -40px rgba(0, 0, 0, 0.9);
+}
+
+/* The 48px rule the hero draws, faded out before the border so the grid never
+   terminates on a visible edge. */
+.cta-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 68% 82% at 46% 34%, #000 10%, transparent 76%);
+  mask-image: radial-gradient(ellipse 68% 82% at 46% 34%, #000 10%, transparent 76%);
+}
+
+/* Everything readable sits above every decorative layer. */
+.cta-live,
+.cta-heading,
+.cta-channels {
+  position: relative;
+  z-index: 1;
 }
 
 .cta-live {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  margin: 0 0 20px;
-  padding: 6px 13px 6px 11px;
-  border: 1px solid rgba(110, 231, 183, 0.32);
+  margin: 0 0 22px;
+  padding: 7px 15px 7px 12px;
+  border: 1px solid rgba(110, 231, 183, 0.42);
   border-radius: 999px;
-  background: rgba(110, 231, 183, 0.08);
+  background: rgba(4, 22, 24, 0.55);
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   color: #6ee7b7;
@@ -650,31 +687,36 @@ body {
 }
 
 .cta-heading {
-  margin: 0 0 32px;
-  max-width: 18ch;
+  margin: 0 0 34px;
+  max-width: 17ch;
   font-family: 'Plus Jakarta Sans', sans-serif;
   /* Scales with the viewport so the line never has to be broken by hand. */
-  font-size: clamp(30px, 5.2vw, 52px);
+  font-size: clamp(30px, 5.2vw, 54px);
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.03em;
-  color: #f5f5f4;
+  color: #ffffff;
 }
 
-/* The 1px background showing through the grid gaps draws the dividers, so the
-   rule stays crisp however the cells wrap. */
+.cta-accent {
+  color: #6ee7b7;
+}
+
+/* One translucent bar rather than six tiles: the cells are separated by short
+   accent ticks, so the row reads as a single control sitting on the field. */
 .cta-channels {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  border: 1px solid #2b2e35;
-  border-radius: 12px;
-  background: #2b2e35;
+  border: 1px solid rgba(110, 231, 183, 0.22);
+  border-radius: 14px;
+  background: rgba(3, 16, 22, 0.55);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   overflow: hidden;
 }
 
 /* An odd count leaves the last cell alone in a two-column row; letting it span
-   keeps the strip square instead of ending on a gap. */
+   keeps the bar square instead of ending on a gap. */
 .cta-channels > :last-child:nth-child(odd) {
   grid-column: 1 / -1;
 }
@@ -697,13 +739,14 @@ body {
 }
 
 .cta-channel {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  padding: 17px 12px;
+  gap: 10px;
+  padding: 19px 12px;
   border: 0;
-  background: #17191e;
+  background: none;
   color: #f5f5f4;
   font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
@@ -711,8 +754,42 @@ body {
   cursor: pointer;
   transition: background 150ms ease, color 150ms ease;
 }
+
+/* The tick marks the seam between cells. It is suppressed on whichever cell
+   starts a row, which is why the column count is fixed per breakpoint rather
+   than left to auto-fit. */
+.cta-channel::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 20px;
+  transform: translateY(-50%);
+  background: rgba(52, 245, 197, 0.55);
+}
+.cta-channels > :nth-child(odd)::after {
+  display: none;
+}
+@media (min-width: 560px) {
+  .cta-channels > :nth-child(odd)::after {
+    display: block;
+  }
+  .cta-channels > :nth-child(3n + 1)::after {
+    display: none;
+  }
+}
+@media (min-width: 900px) {
+  .cta-channels > :nth-child(3n + 1)::after {
+    display: block;
+  }
+  .cta-channels > :first-child::after {
+    display: none;
+  }
+}
+
 .cta-channel:hover {
-  background: #1f2229;
+  background: rgba(110, 231, 183, 0.10);
   color: #6ee7b7;
 }
 .cta-channel:focus-visible {
@@ -724,6 +801,10 @@ body {
 }
 
 @media (max-width: 620px) {
+  .cta-banner {
+    padding: 34px 20px;
+    border-radius: 20px;
+  }
   .cta-heading {
     margin-bottom: 26px;
   }
