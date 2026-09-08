@@ -11,7 +11,7 @@ export const projects = [
     platform: "Web Application (GIS)",
     industry: "ClimateTech / SaaS",
     stack: ["Figma", "Design Tokens", "GIS Data Viz", "BaseBlocksUI"],
-    image: "/img/29658f48d987.webp",
+    image: "/img/cover/smart-forest.webp",
     imageAlt: "Aerial forest canopy with GIS digital heatmaps and telemetry overlay",
     badges: [
       { label: "−58% Audit Time", positive: true },
@@ -72,7 +72,7 @@ export const projects = [
     platform: "Web Application · Mobile",
     industry: "IoT / Security Tech",
     stack: ["Figma", "Design Tokens", "Real-time Telemetry", "AI/ML UI"],
-    image: "/img/554d49d59f04.webp",
+    image: "/img/cover/smart-watcher.webp",
     imageAlt: "Security monitoring control room screens with camera feeds",
     badges: [
       { label: "−71% Alert Fatigue", positive: true },
@@ -132,7 +132,7 @@ export const projects = [
     platform: "Web Back Office",
     industry: "Industrial IoT / Admin SaaS",
     stack: ["Figma", "Design System", "Hardware Telemetry", "RBAC"],
-    image: "/img/3543491536f9.webp",
+    image: "/img/cover/area-22.webp",
     imageAlt: "Industrial IoT analytics dashboard with live telemetry and data charts",
     badges: [
       { label: "−62% Setup Time", positive: true },
@@ -192,7 +192,7 @@ export const projects = [
     platform: "Mobile App + Web CMS",
     industry: "Smart Agriculture / AgriTech",
     stack: ["Figma", "User Research", "Offline UX", "Mobile Design"],
-    image: "/img/0ab2d8607d79.webp",
+    image: "/img/cover/kanna-app.webp",
     imageAlt: "Agricultural sensor technology and smartphone plant disease inspection",
     badges: [
       { label: "+91% Diagnostic Accuracy", positive: true },
@@ -252,7 +252,7 @@ export const projects = [
     platform: "Mobile App + Web Admin CMS",
     industry: "HealthTech / Telemedicine",
     stack: ["Figma", "Design Tokens", "Design System", "Telehealth UX"],
-    image: "/img/d0cdd8d25c34.webp",
+    image: "/img/cover/dr-smoothlife.webp",
     imageAlt: "Doctor utilizing telemedicine workspace and digital consultation platform",
     badges: [
       { label: "+68% Consultation Comp", positive: true },
@@ -312,7 +312,7 @@ export const projects = [
     platform: "Responsive E-Commerce Website",
     industry: "Healthcare / E-Commerce",
     stack: ["Figma", "Design Tokens", "IA Restructure", "Responsive Web"],
-    image: "/img/e31230fbfd68.webp",
+    image: "/img/cover/th-health.webp",
     imageAlt: "TH Health symptom-based health e-commerce platform on desktop",
     badges: [
       { label: "Symptom-First IA", positive: null },
@@ -373,7 +373,7 @@ export const projects = [
     platform: "Web Dashboard (Responsive Desktop)",
     industry: "ClimateTech / GIS",
     stack: ["Figma", "GIS Data Viz", "Design System", "Dashboard UX"],
-    image: "/img/750fb6ce74a9.webp",
+    image: "/img/cover/land-monitoring.webp",
     imageAlt: "VLM satellite-based forest monitoring and environmental analytics dashboard",
     badges: [
       { label: "Geospatial Viz", positive: null },
@@ -434,7 +434,7 @@ export const projects = [
     platform: "Responsive E-Commerce Website",
     industry: "Retail / Beauty E-Commerce",
     stack: ["Figma", "Design System", "CRM UX", "Branding"],
-    image: "/img/db981951ef74.webp",
+    image: "/img/cover/all-about-you.webp",
     imageAlt: "ALL ABOUT YOU omnichannel skincare e-commerce and CRM platform",
     badges: [
       { label: "Omnichannel CRM", positive: null },
@@ -495,7 +495,7 @@ export const projects = [
     platform: "Responsive Web & Mobile Web",
     industry: "PropTech / Real Estate",
     stack: ["Figma", "Map UX", "Component Library", "Responsive Web"],
-    image: "/img/4fc15c9dca65.webp",
+    image: "/img/cover/embark-real-estate.webp",
     imageAlt: "Embark neighborhood-centric real estate brokerage platform",
     badges: [
       { label: "Neighborhood Map", positive: null },
