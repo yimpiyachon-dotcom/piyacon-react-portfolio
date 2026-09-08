@@ -282,21 +282,71 @@ const customStyles = `
     .img-frame > img { opacity: 1; transform: none; }
   }
 
+  /* Printing the resume.
+     The old rule only flipped visibility, but the resume lives inside a fixed,
+     height-capped, scrolling modal — so the printer got one clipped viewport
+     (usually blank). Everything below unwinds that chrome and lets the resume
+     flow as normal page content across as many sheets as it needs. */
   @media print {
+    @page {
+      size: A4;
+      margin: 14mm;
+    }
+    html, body {
+      background: #FFFFFF !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
     body * {
       visibility: hidden;
+    }
+    .print-hide {
+      display: none !important;
     }
     #resume-print-area, #resume-print-area * {
       visibility: visible;
     }
-    #resume-print-area {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
+    /* Unpin the modal: static flow, no height cap, no scroll container. */
+    .cv-modal-overlay {
+      position: static !important;
+      display: block !important;
+      padding: 0 !important;
+      background: none !important;
+      backdrop-filter: none !important;
+    }
+    .cv-modal-dialog {
+      max-width: none !important;
+      max-height: none !important;
+      overflow: visible !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
       background: #FFFFFF !important;
+      display: block !important;
+    }
+    #resume-print-area {
+      position: static !important;
+      max-height: none !important;
+      overflow: visible !important;
+      padding: 0 !important;
+      background: #FFFFFF !important;
+    }
+    /* Force legible ink: the on-screen palette is near-black on near-black. */
+    #resume-print-area, #resume-print-area * {
       color: #111827 !important;
-      padding: 24px;
+      background: transparent !important;
+      box-shadow: none !important;
+      border-color: #D1D5DB !important;
+    }
+    #resume-print-area img {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+    /* Keep a section from being split across a page break mid-heading. */
+    #resume-print-area h1,
+    #resume-print-area h2,
+    #resume-print-area h3 {
+      break-after: avoid;
     }
   }
 
@@ -4071,27 +4121,6 @@ function CaseStudy({ project, onBack, onHome }: {
           ← Back to all projects
         </button>
 
-        <a
-          href="https://piyachonwanburi.framer.website/"
-          target="_blank"
-          rel="noreferrer"
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontSize: 13,
-            fontWeight: 600,
-            color: "#6EE7B7",
-            background: "#1B1D21",
-            border: "1px solid rgba(110,231,183,0.3)",
-            borderRadius: 6,
-            padding: "8px 16px",
-            textDecoration: "none",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-          }}
-        >
-          View on Framer Live Portfolio ↗
-        </a>
       </div>
     </div>
   );
@@ -4709,10 +4738,13 @@ function ProjectsPage({ onSelect, onBack, onSelectWebPreview, onContact }: {
   };
   const getTagColor = (tag: string) => (tagColors as Record<string, string>)[tag] ?? "#9CA0A8";
 
+  // Counts come from the project data rather than being written into the label,
+  // so adding a project cannot leave the chips claiming a stale total.
+  const pad = (n: number) => String(n).padStart(2, "0");
   const filters = [
-    { key: "all", label: "All Works (29)" },
-    { key: "apps", label: "Web Applications & Platforms" },
-    { key: "web", label: "Web & Brand Design (20)" },
+    { key: "all", label: `All Works (${allProjects.apps.length + allProjects.web.length})` },
+    { key: "apps", label: `Web Applications & Platforms (${pad(allProjects.apps.length)})` },
+    { key: "web", label: `Web & Brand Design (${pad(allProjects.web.length)})` },
   ];
 
   const filteredApps = useMemo(() => {
@@ -5905,87 +5937,17 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
   );
 }
 
-function CvModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClose: Handler; onShowToast?: ShowToast }) {
+function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
   if (!isOpen) return null;
 
   const handlePrint = () => {
     window.print();
   };
 
-  const handleDownloadMarkdown = () => {
-    const cvText = `# PIYACHON WANBURI (Yim)
-UX/UI DESIGNER
-Phone: 094-498-9917
-Email: yimpiyachon@gmail.com
-Location: Thailand, Bangkok Base
-Portfolio: https://piyachonwanburi.framer.website/
-
-## ABOUT ME
-UX/UI Designer with 5+ years of experience designing SaaS platforms, Healthcare Systems, IoT Solutions, Real Estate Platforms, and Mobile Applications. Experienced in leading end-to-end product design processes from user research > information architecture > wireframing, prototyping > usability testing > to developer handoff.
-
-## EXPERIENCE
-
-### Middle UX/UI DESIGNER — AI and Robotics Ventures Company Limited (VARUNA CO., LTD.)
-Oct 2024 – Present
-- Led UX/UI design for Smart Watch ecosystem
-- Designed Smart Forest monitoring platform
-- Developed Forest of tomorrow platform
-- Created user flows, wireframes and prototypes
-- Collaborated closely with PMs and engineering teams
-
-### Lead UX/UI DESIGNER — BEURDEV CO., LTD.
-Feb 2024 – Oct 2024
-- Led UX/UI design for TH Healthy healthcare platform
-- Designed real estate web platform and high-converting landing pages
-- Delivered 40+ marketing websites and campaign pages
-- Established design standards and token libraries across projects
-
-### Senior UX/UI DESIGNER — HAPPY THREE CREATION CO., LTD.
-Aug 2023 – Feb 2024
-- Designed Area 22 IoT device management platform
-- Developed UX/UI for Smooth Life web & App
-- Created online learning and booking platform
-- Produced interactive prototypes for stakeholder validation
-
-### UX/UI DESIGNER — AI and Robotics Ventures Company Limited (VARUNA CO., LTD.)
-June 2022 – Aug 2023
-- Designed Kanna mobile application and back-office system
-- Developed VLM area management platform
-- Conducted user research and usability testing
-- Worked closely with developers during implementation
-
-### UX/UI DESIGNER — ALL ABOUT YOU CO., LTD.
-March 2021 – June 2022
-- Designed e-commerce website experience
-- Improved user journeys and conversion flows
-- Created responsive UI across web platforms
-
-## CORE SKILLS
-- UX Research, Information Architecture, User Flow, Wireframing, Prototyping, Design Systems, Usability Testing
-- Tools: Figma, Framer, Adobe CC (XD, AI, PS)
-- AI Tooling: ChatGPT, Gemini, Claude, Figma Make
-
-## EDUCATION
-- Bachelor of Architecture and Design, Product Design — King Mongkut's University of Technology North Bangkok (KMUTNB), 2016–2020
-- Complete UX/UI Design, BorntoDev (2020)
-- Usability Design and Psychology for Digital Products, Skooldio
-- Information Architecture, Skooldio
-`;
-
-    const blob = new Blob([cvText], { type: "text/markdown;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", "Resume_Piyachon_Wanburi_2026.md");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    onShowToast?.("Resume downloaded as Markdown file!");
-  };
 
   return (
     <div
-      className="modal-overlay"
+      className="modal-overlay cv-modal-overlay"
       onClick={onClose}
       style={{
         position: "fixed",
@@ -6000,6 +5962,7 @@ March 2021 – June 2022
       }}
     >
       <div
+        className="cv-modal-dialog"
         onClick={(e) => e.stopPropagation()}
         style={{
           background: "#131417",
@@ -6017,6 +5980,7 @@ March 2021 – June 2022
       >
         {/* Top Action Bar */}
         <div
+          className="print-hide"
           style={{
             padding: "16px 24px",
             borderBottom: "1px solid #24262B",
@@ -6054,21 +6018,6 @@ March 2021 – June 2022
               }}
             >
               <span>🖨️</span> Print / Save PDF
-            </button>
-            <button
-              onClick={handleDownloadMarkdown}
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 12,
-                color: "#9CA0A8",
-                background: "#1B1D21",
-                border: "1px solid #24262B",
-                borderRadius: 6,
-                padding: "6px 12px",
-                cursor: "pointer",
-              }}
-            >
-              Download .MD
             </button>
             <button
               onClick={onClose}
@@ -6150,9 +6099,7 @@ March 2021 – June 2022
                 ✉️ yimpiyachon@gmail.com
               </div>
               <a
-                href="https://piyachonwanburi.framer.website/"
-                target="_blank"
-                rel="noreferrer"
+                href="https://www.yimpiyachon.com/"
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: 12,
@@ -6160,7 +6107,7 @@ March 2021 – June 2022
                   textDecoration: "underline",
                 }}
               >
-                piyachonwanburi.framer.website ↗
+                www.yimpiyachon.com
               </a>
             </div>
           </div>
@@ -6758,28 +6705,7 @@ function PreviewModal({ project, onClose }: { project: Project | null; onClose: 
           )}
 
           {/* Action Row */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid #24262B", paddingTop: 20, flexWrap: "wrap", gap: 12 }}>
-            <a
-              href="https://piyachonwanburi.framer.website/"
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                background: "#1B1D21",
-                border: "1px solid #24262B",
-                color: "#6EE7B7",
-                padding: "8px 18px",
-                borderRadius: 8,
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 12,
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-              }}
-            >
-              View on Live Framer Portfolio ↗
-            </a>
-
+          <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", borderTop: "1px solid #24262B", paddingTop: 20, flexWrap: "wrap", gap: 12 }}>
             <button
               onClick={onClose}
               style={{
@@ -7051,11 +6977,7 @@ export default function App() {
       </div>
 
       {/* Interactive Overlays */}
-      <CvModal
-        isOpen={cvModalOpen}
-        onClose={() => setCvModalOpen(false)}
-        onShowToast={setToastMessage}
-      />
+      <CvModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />
 
       <ContactModal
         isOpen={contactModalOpen}
