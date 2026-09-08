@@ -1148,7 +1148,7 @@ function CaseStudy({ project, onBack, onHome }: {
   onHome: Handler;
 }) {
   const [activeTab, setActiveTab] = useState("overview");
-  const steps = (processSteps as Record<string, { step: string; title: string; body: string; images: string[] }[]>)[project.id] || [];
+  const steps = processSteps[project.id] ?? [];
 
   return (
     <div style={{ maxWidth: 940, margin: "0 auto", padding: "96px 24px 120px" }}>
