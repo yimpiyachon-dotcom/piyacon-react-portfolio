@@ -5061,6 +5061,63 @@ function ProjectsPage({ onSelect, onBack, onSelectWebPreview, onContact }: {
   );
 }
 
+/**
+ * Company mark for the career list. Falls back to the initials tile when the
+ * logo file is missing, so the row still reads correctly either way.
+ */
+function CompanyLogo({ src, name }: { src?: string; name: string }) {
+  const [failed, setFailed] = useState(!src);
+  const initials = name
+    .replace(/\s*(CO\.|LTD\.|\(.*\)).*/i, "")
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("");
+
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        width: 44,
+        height: 44,
+        borderRadius: 10,
+        flexShrink: 0,
+        // Each mark ships with its own backdrop, so the tile only shows
+        // through for the initials fallback.
+        background: "#1B1D21",
+        border: "1px solid #24262B",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+      }}
+    >
+      {failed ? (
+        <span
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 13,
+            fontWeight: 700,
+            color: "#6EE7B7",
+          }}
+        >
+          {initials}
+        </span>
+      ) : (
+        <img
+          src={src}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onError={() => setFailed(true)}
+          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+        />
+      )}
+    </div>
+  );
+}
+
 function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
   onBack: Handler;
   onProjects: Handler;
@@ -5439,30 +5496,35 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           {[
             {
               company: "VARUNA CO., LTD. (ARV / PTTEP)",
+              logo: "/img/logos/varuna.avif",
               role: "Middle UX/UI Designer",
               period: "Oct 2024 – Present",
               desc: "Leading UX/UI for Smart Forest carbon GIS analytics, Smart Watcher security SOC platform, and Forest of Tomorrow ecosystem.",
             },
             {
               company: "BEURDEV CO., LTD.",
+              logo: "/img/logos/beyourdev.avif",
               role: "Lead UX/UI Designer",
               period: "Feb 2024 – Oct 2024",
               desc: "Delivered 40+ digital marketing web portals, high-conversion real estate showcases, and TH Health appointment systems.",
             },
             {
               company: "HAPPY THREE CREATION CO., LTD.",
+              logo: "/img/logos/happy-three-creation.avif",
               role: "Senior UX/UI Designer",
               period: "Aug 2023 – Feb 2024",
               desc: "Designed Area 22 IoT gateway management back office (400+ nodes) and Dr. Smoothlife clinical telemedicine workspace.",
             },
             {
               company: "VARUNA CO., LTD. (ARV / PTTEP)",
+              logo: "/img/logos/varuna.avif",
               role: "UX/UI Designer",
               period: "June 2022 – Aug 2023",
               desc: "Designed Kanna agricultural diagnostic mobile app (15,000+ farmers) and VLM land management administrative tools.",
             },
             {
               company: "ALL ABOUT YOU CO., LTD.",
+              logo: "/img/logos/all-about-you.avif",
               role: "UX/UI Designer",
               period: "March 2021 – June 2022",
               desc: "Designed clean beauty e-commerce storefront, streamlining checkout and reducing shopping cart abandonment by 44%.",
@@ -5482,16 +5544,19 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
                 gap: 12,
               }}
             >
-              <div style={{ maxWidth: 640 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-                  <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4" }}>
-                    {c.company}
-                  </span>
-                  <span className="tag-chip">{c.role}</span>
+              <div style={{ display: "flex", gap: 14, alignItems: "flex-start", maxWidth: 640 }}>
+                <CompanyLogo src={c.logo} name={c.company} />
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" }}>
+                    <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4" }}>
+                      {c.company}
+                    </span>
+                    <span className="tag-chip">{c.role}</span>
+                  </div>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", margin: 0, lineHeight: 1.5 }}>
+                    {c.desc}
+                  </p>
                 </div>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", margin: 0, lineHeight: 1.5 }}>
-                  {c.desc}
-                </p>
               </div>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#6EE7B7" }}>
                 {c.period}
@@ -6266,9 +6331,18 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
     onShowToast?.(`Copied: ${label}`);
   };
 
-  const contactItems = [
+  const contactItems: {
+    label: string;
+    value: string;
+    copyText: string;
+    copyLabel?: string;
+    href: string | null;
+  }[] = [
     { label: "EMAIL",    value: "yimpiyachon@gmail.com", copyText: "yimpiyachon@gmail.com", href: null },
     { label: "PHONE",    value: "094-498-9917",           copyText: "094-498-9917",           href: null },
+    // The LINE row copies the ID rather than the URL: pasting an ID into LINE's
+    // own search is how people actually add a contact there.
+    { label: "LINE",     value: "yimpycc",                 copyText: "yimpycc",                copyLabel: "LINE ID", href: "https://line.me/ti/p/SHGZ_Lx9Jn" },
     { label: "LINKEDIN", value: "piyachon-wanburi",       copyText: "https://www.linkedin.com/in/piyachon-wanburi-b207691ab/", href: "https://www.linkedin.com/in/piyachon-wanburi-b207691ab/" },
   ];
 
@@ -6360,7 +6434,7 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
                   </div>
                 )}
               </div>
-              <button onClick={() => copy(item.copyText, item.value)} style={copyBtnStyle}>Copy</button>
+              <button onClick={() => copy(item.copyText, item.copyLabel ?? item.value)} style={copyBtnStyle}>Copy</button>
             </div>
           ))}
         </div>
