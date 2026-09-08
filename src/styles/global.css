@@ -240,6 +240,12 @@ body {
   to   { background-position: -60% 0; }
 }
 .img-frame > img {
+  /* The width/height attributes that reserve the box are presentational hints:
+     an author `width: 100%` overrides the width hint but leaves the height hint
+     standing, so the image kept its full pixel height and was cropped by the
+     frame. Resetting height here restores proportional scaling, while a call
+     site that sets its own height inline still wins. */
+  height: auto;
   opacity: 0;
   transition: opacity 420ms ease, transform 420ms ease;
   transform: scale(1.02);
@@ -498,4 +504,62 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #3A3E46;
+}
+
+/* ---- Design-process screenshots ----
+   These are Figma board exports and their shapes vary enormously: a stacked
+   mobile flow is 0.33:1 while a desktop workflow map is 3.86:1. Rendering them
+   all at 100% width made the tall ones 1000px+ on a phone and squashed the wide
+   ones to a 93px strip nobody can read. */
+.process-shot {
+  border-radius: 12px;
+  border: 1px solid #24262b;
+  background: #1b1d21;
+  overflow: hidden;
+}
+
+/* On a phone a portrait board at full width is fine — you scroll it. On a wide
+   screen the same board stretches across the content column and runs past
+   2,000px tall, so cap it by width: aspect-ratio turns the cap into a height. */
+.process-shot > .img-frame {
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .process-shot:not(.is-wide) > .img-frame {
+    max-width: calc(var(--shot-ratio, 1.6) * 1100px);
+  }
+}
+
+/* Wide boards stay legible by keeping a usable scale and letting the reader
+   pan, rather than shrinking the whole map into an unreadable band. */
+.process-shot.is-wide {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+@media (max-width: 860px) {
+  .process-shot.is-wide > .img-frame {
+    width: 860px;
+    max-width: none;
+  }
+}
+
+.process-shot.is-wide::-webkit-scrollbar {
+  height: 6px;
+}
+.process-shot.is-wide::-webkit-scrollbar-thumb {
+  background: #3a3d44;
+  border-radius: 3px;
+}
+
+/* The two case-study tab labels are 388px of nowrap text, which overflows a
+   390px phone and clips the second one. Scrolling the row keeps both reachable
+   without shrinking the labels into abbreviations. */
+.case-tabs {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.case-tabs::-webkit-scrollbar {
+  display: none;
 }

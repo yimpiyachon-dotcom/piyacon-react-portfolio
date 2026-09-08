@@ -32,10 +32,31 @@ const srcSetFor = (src?: string) => {
   return `${src.replace(/\.(\w+)$/, `-${VARIANT_WIDTH}w.$1`)} ${VARIANT_WIDTH}w, ${src} ${size[0]}w`;
 };
 
-/** Reserves a walkthrough image's box before it loads, so nothing below it moves. */
-const aspectRatioOf = (src: string) => {
+/**
+ * A walkthrough board wider than about 2:1 is a workflow map rather than a
+ * screenshot; squeezed to phone width it becomes an unreadable strip, so it is
+ * presented in a horizontally scrollable frame instead.
+ */
+const isWideShot = (src: string) => {
   const size = imageSizes[src];
-  return size ? `${size[0]} / ${size[1]}` : undefined;
+  return !!size && size[0] / size[1] > 2.2;
+};
+
+/**
+ * Frame styling for one walkthrough board.
+ *
+ * aspect-ratio reserves the box before the file arrives, so nothing below it
+ * moves. The ratio is also published as a custom property: on wide screens the
+ * stylesheet uses it to cap a portrait board's height, which otherwise reaches
+ * 2,700px for a stacked mobile flow rendered across the content column.
+ */
+const shotFrameStyle = (src: string): React.CSSProperties => {
+  const size = imageSizes[src];
+  if (!size) return {};
+  return {
+    aspectRatio: `${size[0]} / ${size[1]}`,
+    ["--shot-ratio" as string]: String(size[0] / size[1]),
+  };
 };
 
 const highFetchPriority = { fetchpriority: "high" } as unknown as React.ImgHTMLAttributes<HTMLImageElement>;
@@ -1312,6 +1333,7 @@ function CaseStudy({ project, onBack, onHome }: {
       {/* Tab Navigation */}
       {steps.length > 0 && (
         <div
+          className="case-tabs"
           style={{
             display: "inline-flex",
             gap: 4,
@@ -1437,17 +1459,12 @@ function CaseStudy({ project, onBack, onHome }: {
                   {s.images.map((src, i) => (
                     <div
                       key={i}
-                      style={{
-                        borderRadius: 12,
-                        overflow: "hidden",
-                        border: "1px solid #24262B",
-                        background: "#1B1D21",
-                      }}
+                      className={`process-shot${isWideShot(src) ? " is-wide" : ""}`}
                     >
                       <LazyImage
                         src={src}
                         alt={`${s.title} — visual ${i + 1}`}
-                        frameStyle={{ aspectRatio: aspectRatioOf(src) }}
+                        frameStyle={shotFrameStyle(src)}
                         sizes="(max-width: 940px) 100vw, 892px"
                         style={{ width: "100%", display: "block" }}
                       />
