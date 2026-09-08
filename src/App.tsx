@@ -1588,7 +1588,7 @@ function CaseStudy({ project, onBack, onHome }: {
       ) : (
       <>
 
-      {kpis.length > 0 || project.hook && (
+      {(kpis.length > 0 || project.hook) && (
         <>
 {/* Executive Summary */}
       <section style={{ marginBottom: 64 }}>
@@ -1602,7 +1602,7 @@ function CaseStudy({ project, onBack, onHome }: {
             marginBottom: 16,
           }}
         >
-          Executive Summary & Quantified Impact
+          Executive Summary & Impact
         </div>
         <KpiScoreboard kpis={kpis} />
         <p

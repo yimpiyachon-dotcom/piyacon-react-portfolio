@@ -67,33 +67,66 @@ export const webProjects = [
   {
     id: "aluminium-loop",
     title: "Aluminium Loop",
-    client: "BEURDEV CO., LTD.",
-    timeline: "Jun 2024 – Sep 2024",
-    role: "Lead UX/UI Designer",
-    category: "Web Design & Industrial",
-    tags: ["Manufacturing", "Circular", "Corporate", "ESG"],
+    client: "Aluminium Loop",
+    timeline: "Mar 2026 – May 2026",
+    role: "Freelance UX/UI Designer",
+    category: "Web Redesign & Sustainability",
+    platform: "Responsive Marketing Website",
+    industry: "Recycling / Circular Packaging",
+    tags: ["Heuristic Evaluation", "Redesign", "Sustainability", "Bilingual"],
+    stack: ["Figma", "Heuristic Evaluation", "Design System", "Thai Typography"],
     image: "/img/cover/aluminium-loop.webp",
-    imageAlt: "Industrial aluminum recycling circular economy portal and carbon emissions tracker",
-    metric: "−40% Bounce Rate",
-    metricBadge: "+85% Spec Downloads",
-    overview: "Sustainable manufacturing brand experience showcasing closed-loop aluminum recycling metrics, supply chain provenance, and carbon-reduction audit proof.",
-    problem: "Global B2B procurement heads doubted circular sustainability claims without empirical smelting data and third-party ISO verification metrics.",
+    imageAlt: "Aluminium Loop website redesign — heuristic audit of the live site and a rebuilt bilingual marketing surface",
+    metric: "Audit-Led Redesign",
+    metricBadge: "11 Page Templates",
+    hook: "A freelance engagement that started by auditing the client's live site against named usability heuristics, then rebuilt it on what the audit found.",
+    overview:
+      "A redesign of the public website for Aluminium Loop, a Thai closed-loop aluminium can recycling business. The engagement began as a heuristic evaluation of the site already in production — each finding written against a named heuristic so it could be argued rather than asserted — and the redesign that followed rebuilt the marketing surface as eleven bilingual templates on a single dark-ground system. Delivered as a complete design; not yet in production at the time of writing.",
+    kpis: [
+      { value: "Heuristic audit", label: "Live site reviewed section by section", sub: "each finding tied to a named heuristic and a specific fix" },
+      { value: "11 templates", label: "Landing, about, solutions, editorial, contact", sub: "one dark-ground system across the whole site" },
+      { value: "TH / EN", label: "Bilingual throughout", sub: "language toggle in the primary navigation" },
+    ],
+    problem:
+      "The company was already publishing real, externally sourced recycling figures — cans returned, CO₂e avoided against the US EPA WARM model, energy saved — but the page structure worked against them. The counter carrying those numbers filled the entire desktop viewport, so nothing below it was visible and no cue suggested the page continued; the hero headline sat off the grid the rest of the page used; and reading an actual drop-off location meant leaving the site's main page for a separate one.",
     baselineStats: [
-      { value: "58%", label: "Initial visitor bounce rate on corporate sustainability page" },
-      { value: "9%", label: "Procurement visitors downloading raw technical data sheets" },
-      { value: "11 days", label: "Average inquiry-to-quote response turnaround" }
+      { value: "Full-screen counter", label: "the What We Do figure filled the viewport with no visible next section" },
+      { value: "Off-grid hero", label: "headline block misaligned with the content beneath it" },
+      { value: "Off-page branch lookup", label: "finding a drop-off point meant leaving the page holding everything else" }
     ],
     solutions: [
-      { title: "Verified ESG Metrics Telemetry", body: "Prominent live data strip visualizing cumulative metric tons of recycled scrap and avoided CO₂ emissions." },
-      { title: "Interactive Closed-Loop Visualizer", body: "Step-by-step schematic detailing collection, shredding, green smelting, and remanufacturing specifications." },
-      { title: "B2B Request for Quotation (RFQ) Fast-Track", body: "Direct spec upload drawer allowing buyers to submit alloy technical requirements in under 60 seconds." }
+      {
+        title: "Heuristic Evaluation Before Any Redesign",
+        body: "Six sections of the live site were reviewed against named heuristics — Proximity, Consistency & Standards, Closure & Continuity, Match Between System and the Real World, Recognition Rather Than Recall. Naming the heuristic is what turned each note from an opinion about polish into a fix the client could act on."
+      },
+      {
+        title: "Impact Figures Reformatted as a Stat Row",
+        body: "The recycling figures kept their prominence but lost the full-screen treatment, sitting instead as a compact row that lets the next section break the fold. The same content the audit found unreadable now gets read, because a visitor can see there is more page to scroll."
+      },
+      {
+        title: "Branch Table Beside the Map",
+        body: "The nationwide branch map gained the location table inline, using horizontal space that was already empty. Someone looking for a drop-off point near them no longer has to leave the page and find their way back."
+      },
+      {
+        title: "One System Across Eleven Templates",
+        body: "Landing, closed-loop recycling, our story, founder, what we do, sustainable solutions, article index and detail, news index and detail, and contact — all built on a dark ground that lets the aluminium product photography carry the pages, in Thai and English."
+      }
     ],
     impactTable: [
-      { metric: "Corporate website bounce rate", before: "58%", after: "35%", delta: "−40%" },
-      { metric: "Alloy specification downloads", before: "140 / mo", after: "260 / mo", delta: "+85%" },
-      { metric: "Direct B2B procurement inquiries", before: "12 / mo", after: "34 / mo", delta: "+183%" }
+      { metric: "What We Do section", before: "Full-screen can counter", after: "Compact stat row above the fold break", delta: "Continued" },
+      { metric: "Hero headline", before: "Off the page grid", after: "Aligned to the content grid", delta: "Aligned" },
+      { metric: "Branch lookup", before: "Separate page behind a link", after: "Table inline beside the map", delta: "Inlined" },
+      { metric: "Headings and partner logos", before: "Mixed alignment, undersized logos", after: "One alignment rule, raised logo scale", delta: "Unified" }
     ],
-    deliverables: ["Industrial Corporate Portal", "Circular Diagram Graphics", "RFQ Quick Form", "ESG Proof Architecture"]
+    quote:
+      "An audit that says a page looks unpolished can be dismissed. An audit that says the headline breaks the grid the rest of the page follows, and names the heuristic, is a fix — and that difference is what got the redesign commissioned.",
+    quoteRole: "Design rationale · Aluminium Loop",
+    learnings: [
+      "Naming the heuristic behind a finding is what makes a critique commissionable; without it, the client hears taste rather than a problem.",
+      "A number given the whole viewport reads as the end of the page, not as emphasis — scale bought attention here at the cost of everything below it.",
+      "A link that leaves the page is a real cost on a site with one main surface: the visitor has to decide to come back, and some of them will not."
+    ],
+    deliverables: ["Heuristic Evaluation Report", "Bilingual Page Template Set", "Editorial & News Templates", "Sustainable Solutions Pages"]
   },
   {
     id: "beurdev-agency",
