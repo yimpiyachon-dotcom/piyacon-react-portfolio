@@ -578,35 +578,67 @@ export const webProjects = [
   },
   {
     id: "thaimanee-craft",
-    title: "Thaimanee Craft",
+    title: "Thaimanee Craft Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Feb 2024 – Apr 2024",
     role: "Lead UX/UI Designer",
     category: "Web Design & Manufacturing",
+    platform: "Responsive Corporate Website",
+    industry: "Plastic Injection Moulding / OEM",
     tags: ["Manufacturing", "OEM", "Industrial", "Bilingual"],
+    stack: ["Figma", "Design System", "Bilingual TH/EN", "Thai Typography"],
     image: "/img/cover/thaimanee-craft.webp",
-    imageAlt: "Thaimanee Craft plastic injection moulding and OEM manufacturing website",
-    metric: "4 Product Categories",
-    metricBadge: "ISO 9001:2015",
-    overview: "Corporate site for a plastic injection moulding and mould-making manufacturer, built to present OEM capability and production capacity to industrial buyers in both Thai and English.",
-    problem: "OEM manufacturing buyers evaluate suppliers on capability and capacity, not marketing copy — but the company had no way to show its machine inventory, tonnage range or product range to prospects before a factory visit.",
+    imageAlt: "Thaimanee Craft website — published machine inventory, clamping tonnage range and four production categories",
+    metric: "73 Machines Published",
+    metricBadge: "35–1,200 Ton Range",
+    hook: "OEM buyers qualify a factory on its machine list and its tonnage range. Publishing both turns the first enquiry into a shortlist decision the buyer has already made.",
+    overview:
+      "The corporate site for Thaimanee Craft, a Thai OEM plastic injection moulder and mould maker operating since 1983. It is built for industrial buyers rather than browsers: the machine inventory and clamping range are published outright, work is organised into the four things the factory actually does, and everything runs in Thai and English so an overseas buyer reaches the same evidence a domestic one does.",
+    kpis: [
+      { value: "73 machines", label: "26 mould-making, 47 injection", sub: "CNC, W-CUT, EDM and milling named individually" },
+      { value: "35–1,200 tons", label: "Injection clamping range published", sub: "a buyer checks their part fits before enquiring" },
+      { value: "Since 1983", label: "Four decades of end-to-end plastic parts manufacture", sub: "ISO 9001:2015, bilingual Thai and English" },
+    ],
+    problem:
+      "An OEM buyer sourcing injection moulding qualifies a factory on two things before anything else: what machines it runs, and whether its clamping tonnage covers their part. Neither is marketing copy — they are pass or fail filters, and a supplier who publishes neither cannot be shortlisted without a call or a factory visit. That is a slow gate for a domestic buyer and close to an impassable one for an overseas buyer working in English.",
     baselineStats: [
-      { value: "No catalogue", label: "Product capability not visible to prospective buyers" },
-      { value: "Thai only", label: "No English entry point for overseas OEM enquiries" },
-      { value: "Unstated", label: "Machine capacity and certification not published" }
+      { value: "Capacity unstated", label: "machine inventory and tonnage range not published" },
+      { value: "No capability catalogue", label: "nothing for a buyer to match their own part against" },
+      { value: "Thai only", label: "no English entry point for overseas OEM enquiries" }
     ],
     solutions: [
-      { title: "Capability-Led Product Catalogue", body: "Work organised into four categories — moulds, plastic injection, assembly and screen printing — with real production photography so buyers can match their part against existing output." },
-      { title: "Published Production Capacity", body: "Machine inventory stated explicitly: 26 CNC, W-CUT, EDM and milling machines, 47 injection machines, and a tonnage range from 35 to 1,200 tons, alongside ISO 9001:2015 certification." },
-      { title: "Bilingual Corporate Structure", body: "Thai and English toggle across company history, vision, mission and objectives, giving overseas buyers a route into the same credibility material domestic clients see." }
+      {
+        title: "Machine Inventory Published Outright",
+        body: "The homepage states it plainly: 26 mould-making machines across CNC, W-CUT, EDM and milling, 47 injection machines, and a clamping range from 35 to 1,200 tons. A buyer can confirm their part fits the range before writing an email, which is the only thing the first visit needs to achieve."
+      },
+      {
+        title: "Four Categories, Real Production Photography",
+        body: "Moulds, plastic injection, assembly and screen printing each carry a photo grid of parts the factory has actually produced rather than stock imagery. An OEM buyer matches their component against existing output by eye, so the photography is doing evidence work rather than decoration."
+      },
+      {
+        title: "Quality and Technology as Their Own Sections",
+        body: "Technology and Quality Control & Standards sit in the top-level navigation alongside products, with ISO 9001:2015 in the footer of every page. For a supplier that gets audited rather than browsed, those belong in the nav rather than buried inside an About page."
+      },
+      {
+        title: "Bilingual Throughout, Not Just the Entry Page",
+        body: "The Thai and English toggle carries across company history, vision, mission and objectives — the mission is written out in English on the page itself — so an overseas buyer reaches the same credibility material rather than a reduced summary of it."
+      }
     ],
     impactTable: [
-      { metric: "Product capability visibility", before: "Not published", after: "4 categories with photography", delta: "Catalogued" },
-      { metric: "Production capacity disclosure", before: "Unstated", after: "Machine count and tonnage published", delta: "Transparent" },
-      { metric: "Language coverage", before: "Thai only", after: "Thai and English", delta: "Bilingual" }
+      { metric: "Checking clamping tonnage", before: "Call or factory visit", after: "35–1,200 tons on the homepage", delta: "Self-serve" },
+      { metric: "Machine capability", before: "Unstated", after: "26 mould-making, 47 injection", delta: "Published" },
+      { metric: "Matching a part", before: "Nothing to compare against", after: "Four categories of production photography", delta: "Catalogued" },
+      { metric: "Overseas enquiry route", before: "Thai only", after: "Thai and English throughout", delta: "Bilingual" }
+    ],
+    quote:
+      "A moulding buyer's first question is whether your press can close on their part. Answering it on the homepage costs one line and removes the only reason they had to call before shortlisting you.",
+    quoteRole: "Design rationale · Thaimanee Craft Website",
+    learnings: [
+      "Capacity figures a supplier may treat as internal are the buyer's shortlisting criteria, and publishing them converts a phone call into a decision that has already been made.",
+      "Photography of the factory's own parts does evidence work that stock imagery cannot, because the buyer is matching their component against it rather than looking at it.",
+      "Putting quality and technology in the top-level navigation reflects how an audited supplier is actually assessed, instead of hiding both inside an About page."
     ],
     deliverables: ["Corporate Marketing Site", "Product Category System", "Bilingual TH/EN UI", "Capability & Certification Pages"]
-
   },
   {
     id: "supakit-amulet",
