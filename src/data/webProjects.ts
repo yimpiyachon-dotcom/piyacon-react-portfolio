@@ -262,30 +262,63 @@ export const webProjects = [
     client: "BEURDEV CO., LTD.",
     timeline: "May 2024 – Jul 2024",
     role: "Senior UX/UI Designer",
-    category: "Web Design & PropTech",
-    tags: ["PropTech", "Coworking", "Booking", "Flex Space"],
+    category: "Web Design & Business Services",
+    platform: "Responsive Marketing Website",
+    industry: "Serviced Offices / Business Services",
+    tags: ["Serviced Office", "Business Services", "Expatriate", "Bangkok"],
+    stack: ["Figma", "Design System", "Card System", "Responsive Layout"],
     image: "/img/cover/the-right-office.webp",
-    imageAlt: "Flexible coworking space and private office suite on-demand booking portal",
-    metric: "+62% Desk Bookings",
-    metricBadge: "4.8★ Booking CSAT",
-    overview: "Modern workspace leasing and meeting room reservation platform with instant availability filtering and flexible membership tier calculators.",
-    problem: "Remote teams and startups struggled to compare physical layout amenities and view real-time meeting room availability without calling the front desk.",
+    imageAlt: "The Right Office website rebuild — serviced office, visa advisory, accounting and incorporation services for foreign businesses in Bangkok",
+    metric: "6 Services Structured",
+    metricBadge: "Fixed-Width Site Rebuilt",
+    hook: "Six services sold to one customer — a foreign business setting up in Thailand — rebuilt out of a site that buried all six in prose.",
+    overview:
+      "The website for The Right Office, a Bangkok provider whose business runs wider than desks: serviced and virtual offices, visa and work permit advisory, accounting, secretarial services and company incorporation for foreign businesses operating in Thailand. The rebuild replaced a fixed-width site from an earlier web era with a responsive one organised around those six services and the single audience they share.",
+    kpis: [
+      { value: "6 services", label: "Office, virtual office, visa, accounting, secretarial, incorporation", sub: "each card opens with the question it answers" },
+      { value: "1 audience", label: "Foreign businesses and expatriates setting up in Thailand", sub: "address, permit, company and tax treated as one need" },
+      { value: "6 client logos", label: "Including DHL, DSV, TRUMPF and Harmless Harvest", sub: "moved onto the homepage beneath the services" },
+    ],
+    problem:
+      "The site being replaced was built for a desktop monitor and an earlier web — fixed width, dense paragraph blocks, body text at a size no phone would render usefully. Underneath that, the six services the business actually sells were described inside running prose, so a visitor who needed a work permit and an office and a tax filing could not see that one provider covered all three. For a client base of foreigners setting up in Thailand, that combination is the entire proposition.",
     baselineStats: [
-      { value: "48%", label: "Drop-off rate when booking conference rooms" },
-      { value: "15 min", label: "Average phone confirmation time with concierge" },
-      { value: "31%", label: "Unoccupied weekend hot desk capacity" }
+      { value: "Fixed-width layout", label: "built for a desktop monitor, unusable on a phone" },
+      { value: "Services in prose", label: "six offerings described inside paragraphs rather than addressable" },
+      { value: "Proof unused", label: "the client roster did not appear where a visitor was deciding" }
     ],
     solutions: [
-      { title: "Floor-Plan Visual Room Selector", body: "Interactive architectural floor layout displaying active room occupation, video conferencing hardware, and natural light ratings." },
-      { title: "Instant QR Access Pass Integration", body: "Immediate digital pass issuance added directly to Apple Wallet & Google Wallet upon confirmation." },
-      { title: "Flexible Team Credit Management", body: "Company billing dashboard allowing managers to assign workspace booking credits across departments seamlessly." }
+      {
+        title: "Six Services, Six Cards",
+        body: "Serviced office, virtual office, visa and work permit advisory, accounting, secretarial services and business incorporation each get a card that opens with the question it answers — \"Are you a start-up that needs a prestigious office address?\", \"Do you run a small business that needs an impressive address?\" A visitor self-identifies before reading any description."
+      },
+      {
+        title: "One Audience Across Every Service",
+        body: "The six are unrelated as products and identical as a customer: someone landing in Bangkok to set up a business needs the address, the permit, the company and the tax filing in the same month. Ordering the site around that person rather than around the service catalogue is what lets a single visit cover all six."
+      },
+      {
+        title: "Client Logos as the Credibility Layer",
+        body: "TRUMPF, Harmless Harvest, H&R, DHL and DSV sit on the homepage directly under the services. For a provider handling a foreign company's legal and tax presence in an unfamiliar jurisdiction, who already trusts them is the strongest argument available."
+      },
+      {
+        title: "The Inclusions List, Kept but Structured",
+        body: "The old site's long list — BTS Chong Nonsi location, 24-hour access seven days a week, personalised reception and PABX, call forwarding, direct line with IDD, video conferencing, daily cleaning — was the most genuinely useful content it had. It was kept in full and given a heading and a shape rather than trimmed for looking dense."
+      }
     ],
     impactTable: [
-      { metric: "Completed meeting room bookings", before: "210 / mo", after: "340 / mo", delta: "+62%" },
-      { metric: "Desk check-in wait time at reception", before: "4.5 min", after: "15 sec", delta: "−94%" },
-      { metric: "Weekend hot-desk utilization", before: "24%", after: "61%", delta: "+154%" }
+      { metric: "Layout", before: "Fixed width, desktop only", after: "Responsive across devices", delta: "Rebuilt" },
+      { metric: "Service discovery", before: "Described inside paragraphs", after: "Six cards, each led by a question", delta: "Addressable" },
+      { metric: "Client proof", before: "Absent from the homepage", after: "Logo row beneath the services", delta: "Surfaced" },
+      { metric: "Inclusions list", before: "Undifferentiated block of text", after: "Kept in full, given structure", delta: "Retained" }
     ],
-    deliverables: ["Coworking Reservation App", "Interactive Floorplan Selector", "Wallet Pass UI", "Admin Management Console"]
+    quote:
+      "The six services look unrelated until you notice they are the same customer in the same month — someone landing in Bangkok who needs an address, a permit, a company and a tax filing. Ordering the site around that person, not the catalogue, is the whole decision.",
+    quoteRole: "Design rationale · The Right Office",
+    learnings: [
+      "A dense list is not automatically something to delete — the old site's inclusions list was its most useful content, and the fix was structure rather than removal.",
+      "Opening a service card with the question it answers lets a visitor self-select faster than any description of the service can.",
+      "When several products share one customer, ordering the site around the customer beats ordering it around the catalogue."
+    ],
+    deliverables: ["Marketing Site", "Service Card System", "Responsive Rebuild", "Client Proof & Location Pages"]
   },
   {
     id: "max-solution",
