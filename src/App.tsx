@@ -805,10 +805,10 @@ function Nav({
 
 function KpiStrip() {
   const items = [
-    { value: "5+ Yrs", label: "Product UX experience", accent: "#6EE7B7", accentRgb: "110,231,183" },
-    { value: "5 Core", label: "Data & IoT platforms", accent: "#3B82F6", accentRgb: "59,130,246" },
-    { value: "−68%", label: "Avg. workflow friction reduction", accent: "#A78BFA", accentRgb: "167,139,250" },
-    { value: "40+", label: "Delivered web & brand systems", accent: "#FCD34D", accentRgb: "252,211,77" },
+    { value: "5+ Yrs", label: "Product UX experience" },
+    { value: "5 Core", label: "Data & IoT platforms" },
+    { value: "−68%", label: "Avg. workflow friction reduction" },
+    { value: "40+", label: "Delivered web & brand systems" },
   ];
   return (
     <div
@@ -820,39 +820,9 @@ function KpiStrip() {
       }}
     >
       {items.map((item, i) => (
-        <div
-          key={i}
-          style={{
-            position: "relative",
-            overflow: "hidden",
-            background: "#131417",
-            border: "1px solid #24262B",
-            borderRadius: 14,
-            padding: "20px 24px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 4,
-          }}
-        >
-          {/* Bottom glow */}
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              bottom: -50,
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: 200,
-              height: 160,
-              background: `radial-gradient(circle, rgba(${item.accentRgb},0.25) 0%, transparent 70%)`,
-              filter: "blur(10px)",
-              pointerEvents: "none",
-            }}
-          />
+        <div key={i} className="kpi-card">
           <span
             style={{
-              position: "relative",
-              zIndex: 1,
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 28,
               fontWeight: 700,
@@ -864,8 +834,6 @@ function KpiStrip() {
           </span>
           <span
             style={{
-              position: "relative",
-              zIndex: 1,
               fontFamily: "'Inter', sans-serif",
               fontSize: 13,
               color: "#9CA0A8",
@@ -880,11 +848,6 @@ function KpiStrip() {
   );
 }
 
-/**
- * Image that reserves its box, shimmers while the bitmap streams in, then
- * cross-fades it. The frame div carries the layout the surrounding markup used
- * to put on a plain wrapper, so call sites keep the same DOM depth.
- */
 function LazyImage({
   src,
   alt,
