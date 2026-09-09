@@ -1421,6 +1421,11 @@ function CaseStudy({ project, onBack, onHome }: {
           src={project.image}
           alt={project.imageAlt || project.title}
           frameStyle={{ width: "100%", height: "100%" }}
+          // Above the fold and the largest thing on a case page, so it is this
+          // page's Largest Contentful Paint element. Left lazy it was fetched at
+          // low priority after layout and landed at 3.6 s; eager lets the preload
+          // scanner pull it straight out of the prerendered markup.
+          eager
           sizes="(max-width: 940px) 100vw, 892px"
           onError={(e) => {
             e.currentTarget.src = "https://placehold.co/900x560/1a1b1f/6EE7B7?text=Hero+Platform+Mockup";

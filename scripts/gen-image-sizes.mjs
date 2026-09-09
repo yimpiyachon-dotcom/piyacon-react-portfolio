@@ -14,7 +14,7 @@
  * pulled the 2,560px original every time. The middle tier is what that gap
  * needed — measured at 3.69 MB before it existed.
  */
-const VARIANT_WIDTHS = [480, 1200];
+const VARIANT_WIDTHS = [480, 640, 800, 1200];
 import { existsSync, readdirSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import sharp from 'sharp';
@@ -38,7 +38,11 @@ for (const file of walk(ROOT).sort()) {
 
   // A tier only earns its extra request when the original is meaningfully
   // wider than it; otherwise the browser gains nothing by switching files.
-  const tiers = VARIANT_WIDTHS.filter((w) => width > w * 1.3);
+  // 1.15 rather than 1.3: a 412px phone at DPR 1.75 asks for ~721 device pixels,
+  // and the old 480/1200 ladder had nothing between, so every full-width image
+  // fell through to the original — PageSpeed measured 404 KiB of overshoot on
+  // the homepage alone.
+  const tiers = VARIANT_WIDTHS.filter((w) => width > w * 1.15);
   for (const w of tiers) {
     const variant = file.replace(/\.(\w+)$/, `-${w}w.$1`);
     if (!existsSync(variant)) await sharp(file).resize({ width: w }).webp({ quality: 82 }).toFile(variant);
