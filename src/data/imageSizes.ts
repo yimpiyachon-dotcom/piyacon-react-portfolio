@@ -233,4 +233,5 @@ export const imageSizes: Record<string, [number, number, number[]]> = {
   "/img/process/unionchemical/03.webp": [2411, 949, [480, 1200]],
   "/img/process/unionchemical/04.webp": [2465, 702, [480, 1200]],
   "/img/process/unionchemical/05.webp": [2215, 1036, [480, 1200]],
+  "/img/process/zea-management/01.webp": [1518, 1182, [480]],
 };

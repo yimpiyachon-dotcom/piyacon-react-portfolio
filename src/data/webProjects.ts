@@ -1218,34 +1218,66 @@ export const webProjects = [
   },
   {
     id: "zea-management",
-    title: "Zea Management",
+    title: "Zea Management Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Jul 2024 – Oct 2024",
     role: "Senior UX/UI Designer",
     category: "Web Design & Business Services",
+    platform: "Six-Page Corporate Site",
+    industry: "Accounting & Back Office Outsourcing",
     tags: ["Back Office", "Accounting", "B2B", "Corporate"],
+    stack: ["Figma", "Design System", "Thai Typography", "Component Library"],
     image: "/img/cover/zea-management.webp",
-    imageAlt: "Zea Corp back office and accounting outsourcing website",
+    imageAlt: "Zea Management website — black and gold identity, four service lines, client seals and a wall of seminar posters",
     metric: "4 Service Lines",
-    metricBadge: "Outsourced Back Office",
-    overview: "Corporate site for a back-office outsourcing firm handling accounting, audit, tax and company registration for businesses that would rather not run those functions in-house.",
-    problem: "Outsourcing your accounts means handing a stranger your financial records, so the decision runs on credibility — but service firms typically list what they do without evidencing why they can be trusted with it.",
+    metricBadge: "6 Seminars Documented",
+    hook: "The seminar posters are not decoration on this site. Training is one of the four things the firm sells, so the speaking record is both the proof of expertise and the portfolio for a service line.",
+    overview:
+      "Six-page corporate site for Zea Management Consultant Co., Ltd. (ZEACORP), a back-office firm selling four lines: accounting and financial-statement closing, advisory, company registration, and paid training. The last of those changes how the whole site works — a firm that teaches tax courses can prove its expertise by showing the courses, so the homepage carries a wall of seminar posters where a competitor would have written a paragraph about experience.",
+    kpis: [
+      { value: "4 service lines", label: "Accounting, advisory, registration, training", sub: "each a card on its own services page" },
+      { value: "6 seminars", label: "Speaking record shown as the actual course posters", sub: "three of them TAX ADVISOR courses, the rest HR and labour law" },
+      { value: "3 steps", label: "The whole engagement path published up front", sub: "state your need, fill the Google Form, get the consultation" },
+    ],
+    problem:
+      "Outsourcing your accounts means handing a stranger your financial records, and the decision runs almost entirely on credibility. Accounting firms respond by claiming experience in prose, which reads identically whoever writes it. The second problem was the process itself — businesses put off starting an outsourcing conversation because they cannot tell what starting one commits them to.",
     baselineStats: [
-      { value: "Undifferentiated", label: "Service scope presented as a flat list" },
-      { value: "Unproven", label: "Expertise claimed without supporting evidence" },
-      { value: "Unclear", label: "Engagement process not explained to prospects" }
+      { value: "Undifferentiated", label: "service scope presented as a flat list" },
+      { value: "Unproven", label: "expertise claimed in prose rather than evidenced" },
+      { value: "Unclear", label: "engagement process not explained to prospects" }
     ],
     solutions: [
-      { title: "Three-Step Engagement Explainer", body: "The path to working together reduced to three steps — brief, Google Form, consultation — removing the ambiguity that stops businesses starting an outsourcing conversation." },
-      { title: "Credibility Through Proof", body: "Client logos and a record of speaking engagements including tax advisory seminars, evidencing recognised expertise rather than asserting it." },
-      { title: "Premium Dark Identity", body: "A black and gold visual system that signals professional financial services, distinguishing the firm from the generic templates common in the accounting category." }
+      {
+        title: "The Speaking Record as the Evidence",
+        body: "Six seminar posters run on the homepage as they were actually published — three TAX ADVISOR courses, one priced at ฿3,000, and sessions on HR and labour law — with the firm's own principal on the speaker panels. A poster with a date, a venue and a fee is a harder claim than any sentence about years of experience, because it was already sold to someone else."
+      },
+      {
+        title: "Four Lines, One Card Each",
+        body: "Accounting and financial-statement closing, advisory, business registration and training each get a card with its own photograph on the services page. Naming training alongside the other three is what makes the seminar wall read as a portfolio rather than as a boast."
+      },
+      {
+        title: "The Engagement Path in Three Steps",
+        body: "State what you need, fill in the Google Form, receive the consultation — published as three numbered steps with icons. Naming the Google Form matters more than it looks: it tells a prospect the first move is a form rather than a meeting, which is the thing that stops people starting."
+      },
+      {
+        title: "Black and Gold, Against the Category",
+        body: "A dark identity with gold rules and gold buttons, carried across all six pages and built as reusable components. Thai accounting sites default to white and blue templates, and a firm selling premium advisory has to look unlike the firms selling bookkeeping by the hour."
+      }
     ],
     impactTable: [
-      { metric: "Engagement process", before: "Not explained", after: "3 steps published", delta: "Clarified" },
-      { metric: "Credibility evidence", before: "Claimed", after: "Clients and speaking record", delta: "Demonstrated" },
-      { metric: "Category positioning", before: "Generic", after: "Premium dark identity", delta: "Differentiated" }
+      { metric: "Credibility", before: "Claimed in prose", after: "6 published seminars, principal on the panel", delta: "Evidenced" },
+      { metric: "Service scope", before: "Flat list", after: "4 lines, one card each", delta: "Structured" },
+      { metric: "Engagement", before: "Not explained", after: "3 steps, form named", delta: "Published" },
+      { metric: "Category position", before: "Generic template", after: "Black and gold system, 6 pages", delta: "Differentiated" }
+    ],
+    quote:
+      "A course poster with a date, a venue and a price on it is a stronger credential than any paragraph about years of experience, because somebody already paid to attend it.",
+    quoteRole: "Design rationale · Zea Management Website",
+    learnings: [
+      "When a firm teaches what it sells, the teaching material is the best evidence it has, and it belongs on the homepage rather than buried in an about page.",
+      "Publishing the first step of an engagement — and naming it as a form, not a meeting — removes the commitment a prospect is quietly afraid of.",
+      "In a category where every competitor uses the same white-and-blue template, the visual system itself is a positioning decision rather than a matter of taste."
     ],
     deliverables: ["Corporate Marketing Site", "Service Pages", "Article Templates", "Contact & Enquiry Flow"]
-
   }
 ];
