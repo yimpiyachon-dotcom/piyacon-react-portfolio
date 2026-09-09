@@ -1296,6 +1296,10 @@ function CaseStudy({ project, onBack, onHome }: {
   const [activeTab, setActiveTab] = useState("overview");
   const [zoomedShot, setZoomedShot] = useState<{ src: string; alt: string } | null>(null);
   const steps = processSteps[project.id] ?? [];
+  // Both panels are rendered so the prerendered HTML carries the walkthrough
+  // too; the inactive one is hidden rather than unmounted, which keeps its
+  // text in the markup for crawlers while its lazy images stay unfetched.
+  const showProcess = activeTab === "process" && steps.length > 0;
 
   // Web & brand entries are written up progressively, so a case study may not
   // carry every section yet. Reading through these defaults lets a partial
@@ -1467,8 +1471,8 @@ function CaseStudy({ project, onBack, onHome }: {
         </div>
       )}
 
-      {activeTab === "process" && steps.length > 0 ? (
-        <section style={{ marginBottom: 64 }}>
+      {steps.length > 0 && (
+        <section hidden={!showProcess} style={{ marginBottom: 64, ...(showProcess ? null : { display: "none" }) }}>
           <div
             style={{
               fontFamily: "'JetBrains Mono', monospace",
@@ -1585,8 +1589,8 @@ function CaseStudy({ project, onBack, onHome }: {
             ))}
           </div>
         </section>
-      ) : (
-      <>
+      )}
+      <div hidden={showProcess} style={showProcess ? { display: "none" } : undefined}>
 
       {(kpis.length > 0 || project.hook) && (
         <>
@@ -1975,8 +1979,7 @@ function CaseStudy({ project, onBack, onHome }: {
         </>
       )}
 
-      </>
-      )}
+      </div>
 
       {/* Footer Nav inside Case Study */}
       <div

@@ -14,7 +14,6 @@ export const webProjects = [
     image: "/img/cover/contracable.webp",
     imageAlt: "Contractable Thai legal document platform — template catalogue, guided form and live document preview",
     metric: "Word & PDF Output",
-    metricBadge: "Guided Form + Live Preview",
     hook: "Legal paperwork without a lawyer — pick a Thai contract template, answer the questions, watch the document write itself.",
     overview:
       "A Thai-language platform for producing legal documents without a lawyer. A user browses a catalogue of business and personal templates, fills in a guided form while the finished contract renders live beside it, then downloads the result as Word or PDF. Accounts keep completed documents and purchase receipts.",
@@ -62,7 +61,6 @@ export const webProjects = [
       "Splitting templates into business and personal lets people self-identify before they meet legal vocabulary, which is where a general list loses them.",
       "Thai legal text is dense and long-form: type scale and line height carried more of the usability work here than layout did."
     ],
-    deliverables: ["Marketing Site", "Template Catalogue", "Guided Document Flow", "Member Area & Account Settings", "Article Templates"]
   },
   {
     id: "aluminium-loop",
@@ -78,7 +76,6 @@ export const webProjects = [
     image: "/img/cover/aluminium-loop.webp",
     imageAlt: "Aluminium Loop website redesign — heuristic audit of the live site and a rebuilt bilingual marketing surface",
     metric: "Audit-Led Redesign",
-    metricBadge: "11 Page Templates",
     hook: "A freelance engagement that started by auditing the client's live site against named usability heuristics, then rebuilt it on what the audit found.",
     overview:
       "A redesign of the public website for Aluminium Loop, a Thai closed-loop aluminium can recycling business. The engagement began as a heuristic evaluation of the site already in production — each finding written against a named heuristic so it could be argued rather than asserted — and the redesign that followed rebuilt the marketing surface as eleven bilingual templates on a single dark-ground system. Delivered as a complete design; not yet in production at the time of writing.",
@@ -126,7 +123,6 @@ export const webProjects = [
       "A number given the whole viewport reads as the end of the page, not as emphasis — scale bought attention here at the cost of everything below it.",
       "A link that leaves the page is a real cost on a site with one main surface: the visitor has to decide to come back, and some of them will not."
     ],
-    deliverables: ["Heuristic Evaluation Report", "Bilingual Page Template Set", "Editorial & News Templates", "Sustainable Solutions Pages"]
   },
   {
     id: "beurdev-agency",
@@ -142,7 +138,6 @@ export const webProjects = [
     image: "/img/cover/beurdev-agency.webp",
     imageAlt: "Beurdev agency site rebuild — dark engineering-led marketing site naming the tech stack and publishing package pricing",
     metric: "4 Priced Packages",
-    metricBadge: "8 Named Technologies",
     hook: "An agency site that answers the two questions a prospect actually has — what do you build with, and what does it cost — before they have to ask for either.",
     overview:
       "The flagship site for Beurdev, the software house behind much of the client work in this portfolio. The rebuild replaced a five-page, illustration-led marketing site with a dark, engineering-led one that names the frameworks the team builds with and publishes package pricing on the page — the two things the previous site made every prospect ask for by email.",
@@ -190,7 +185,6 @@ export const webProjects = [
       "Naming frameworks is a stronger credibility signal than describing capability, because it is checkable; a claim a visitor can verify carries weight that a claim they cannot does not.",
       "For a technical service the visual register is an argument on its own, and a light illustrated template was quietly making the wrong one."
     ],
-    deliverables: ["Agency Flagship Site", "Dark Design System", "Package & Pricing Structure", "Tech Stack & Process Sections"]
   },
   {
     id: "patc-institute",
@@ -206,7 +200,6 @@ export const webProjects = [
     image: "/img/cover/patc-institute.webp",
     imageAlt: "Pattaya Aviation Training Center website — accreditation marks, course catalogue and public training schedule",
     metric: "4 Accreditations Surfaced",
-    metricBadge: "14 Courses · 3 Service Lines",
     hook: "A training centre whose authority sat in a filing cabinet as four certificates — the site's job was to move them to the point where someone decides whether to enrol.",
     overview:
       "The website for Pattaya Aviation Training Center, a Thai aviation and occupational safety training provider. The site carries three separate lines of business — public and in-house training, occupational measurement services, and meeting room hire — and puts the centre's accreditations, each traced back to the certificate that issues it, in front of anyone weighing up a course.",
@@ -254,7 +247,6 @@ export const webProjects = [
       "An organisation with several revenue lines will each want the top of the homepage; fixing the order is a design decision that stops the visitor having to do the sorting.",
       "A course catalogue is a comparison tool before it is a reading tool, which makes template consistency worth more than any single page's polish."
     ],
-    deliverables: ["Marketing Site", "Course Catalogue & Detail Template", "Public Training Schedule", "Accreditation Pages"]
   },
   {
     id: "the-right-office",
@@ -270,7 +262,6 @@ export const webProjects = [
     image: "/img/cover/the-right-office.webp",
     imageAlt: "The Right Office website rebuild — serviced office, visa advisory, accounting and incorporation services for foreign businesses in Bangkok",
     metric: "6 Services Structured",
-    metricBadge: "Fixed-Width Site Rebuilt",
     hook: "Six services sold to one customer — a foreign business setting up in Thailand — rebuilt out of a site that buried all six in prose.",
     overview:
       "The website for The Right Office, a Bangkok provider whose business runs wider than desks: serviced and virtual offices, visa and work permit advisory, accounting, secretarial services and company incorporation for foreign businesses operating in Thailand. The rebuild replaced a fixed-width site from an earlier web era with a responsive one organised around those six services and the single audience they share.",
@@ -318,7 +309,6 @@ export const webProjects = [
       "Opening a service card with the question it answers lets a visitor self-select faster than any description of the service can.",
       "When several products share one customer, ordering the site around the customer beats ordering it around the catalogue."
     ],
-    deliverables: ["Marketing Site", "Service Card System", "Responsive Rebuild", "Client Proof & Location Pages"]
   },
   {
     id: "max-solution",
@@ -334,7 +324,6 @@ export const webProjects = [
     image: "/img/cover/max-solution.webp",
     imageAlt: "Max Solution website — access control hardware catalogue, quotation request and named customer installations",
     metric: "9 Customer References",
-    metricBadge: "Models & Dates Per Install",
     hook: "A security-hardware supplier whose strongest sales asset was its install list — so the site was built to make every reference checkable down to the model number.",
     overview:
       "The website for Max Solution, a Thai supplier and installer of access-control hardware — face scanners, card readers, swing and flap gates, automatic door sensors. It is built around two assets the business already had and was not putting to work: a catalogue buyers want to browse by device type, and two decades of named installations at international schools, restaurant groups and manufacturers that could be shown with the models and dates attached.",
@@ -382,10 +371,9 @@ export const webProjects = [
       "Deployment scale in the customer's own words carries further than any claim the supplier makes about its own capacity.",
       "A trade buyer often knows the device before they know the brand, which makes a category strip above the marketing worth the homepage space it takes."
     ],
-    deliverables: ["Marketing Site", "Product Catalogue Structure", "Customer Reference System", "Quotation Request Flow"]
   },
   {
-    id: "orgenees-wellness",
+    id: "orgeness-wellness",
     title: "Orgeness Orange Juice Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Jun 2024 – Aug 2024",
@@ -395,10 +383,9 @@ export const webProjects = [
     industry: "Food Manufacturing / Wholesale & OEM",
     tags: ["Manufacturing", "Wholesale", "OEM", "FMCG"],
     stack: ["Figma", "Design System", "Thai Typography", "Catalogue Templates"],
-    image: "/img/cover/orgenees-wellness.webp",
+    image: "/img/cover/orgeness-wellness.webp",
     imageAlt: "Orgeness fresh orange juice website — wholesale price tiers, four formulas and OEM contract production",
     metric: "4 Formulas · 5 Sizes",
-    metricBadge: "Wholesale Tiers Published",
     hook: "A juice factory that earns from cases, not bottles — so the site publishes the wholesale break-points instead of making a reseller ask for them.",
     overview:
       "The site for ORGENESS GROUP, a fresh orange juice factory selling wholesale and OEM contract production. It is built to convert resellers and own-brand clients rather than individual shoppers: four formulas each get their own page, every bottle size carries a retail price and two quantity break-points, and contract manufacturing runs as a second track alongside the catalogue.",
@@ -446,7 +433,6 @@ export const webProjects = [
       "When buyers stock one line rather than the range, giving each formula its own page beats a variant selector that assumes they are comparing.",
       "For food-grade buyers the certification is not a trust badge at the bottom of the page — it is a screening gate that has to sit before the product story."
     ],
-    deliverables: ["Wholesale Marketing Site", "Product & Pricing Pages", "OEM Enquiry Flow", "Article & SEO Templates"]
   },
   {
     id: "billion-plus",
@@ -462,7 +448,6 @@ export const webProjects = [
     image: "/img/cover/billion-plus.webp",
     imageAlt: "Billion Plus Service website — industrial floor-cleaning machine catalogue, specification tables and rental",
     metric: "5 Machine Classes",
-    metricBadge: "Sized by m²/hr, Not Model",
     hook: "Facilities buyers do not know model names — they know how many square metres have to be clean before the next shift. The catalogue was built on that number.",
     overview:
       "The site for Billion Plus Service, a Thai supplier of industrial floor-cleaning machines running three lines: sales, rental and repair. The catalogue is organised by machine class and by cleaning throughput in square metres per hour, so a facilities buyer can size equipment against the floor they actually have instead of working backwards from model names.",
@@ -510,7 +495,6 @@ export const webProjects = [
       "Keeping the wireframe on the board beside the finished pages is what kept the structural argument reviewable once the visual design arrived.",
       "When a business sells, rents and repairs, saying so in the hero costs three words and stops a rental customer bouncing off a sales page."
     ],
-    deliverables: ["Wireframes", "Product Catalogue System", "Rental Specification Tables", "Responsive Marketing Site"]
   },
   {
     id: "unionchemical",
@@ -526,7 +510,6 @@ export const webProjects = [
     image: "/img/cover/unionchemical.webp",
     imageAlt: "Union Chemical and Equipment corporate website — certification architecture, four ethanol products and ESG section",
     metric: "Corporate Site, 20+ Pages",
-    metricBadge: "ESG + Health as 4th Pillar",
     hook: "An ethanol manufacturer selling into food and pharmaceutical supply chains, where the buyer's first question is never the product — it is which certificates you hold.",
     overview:
       "The corporate site for Union Chemical and Equipment (UC&E), a Thai ethanol manufacturer supplying food, pharmaceutical and industrial customers. It is weighted toward governance rather than catalogue: four products sit inside a structure that gives at least as much room to certification, company history, ESG and organisational structure, because in a regulated supply chain those are what a buyer audits before a grade is ever discussed.",
@@ -574,7 +557,6 @@ export const webProjects = [
       "The same history can serve two readers differently — a dated table for someone verifying a year, a timeline for someone forming an impression — which makes showing it twice correct rather than redundant.",
       "Health sitting alongside the standard three ESG pillars fits a manufacturer whose output reaches food and pharmaceutical chains better than folding it into Social would have."
     ],
-    deliverables: ["Corporate Website", "Certification & Standards Architecture", "Product & Packaging Templates", "ESG Section", "Careers & CV Submission"]
   },
   {
     id: "thaimanee-craft",
@@ -590,7 +572,6 @@ export const webProjects = [
     image: "/img/cover/thaimanee-craft.webp",
     imageAlt: "Thaimanee Craft website — published machine inventory, clamping tonnage range and four production categories",
     metric: "73 Machines Published",
-    metricBadge: "35–1,200 Ton Range",
     hook: "OEM buyers qualify a factory on its machine list and its tonnage range. Publishing both turns the first enquiry into a shortlist decision the buyer has already made.",
     overview:
       "The corporate site for Thaimanee Craft, a Thai OEM plastic injection moulder and mould maker operating since 1983. It is built for industrial buyers rather than browsers: the machine inventory and clamping range are published outright, work is organised into the four things the factory actually does, and everything runs in Thai and English so an overseas buyer reaches the same evidence a domestic one does.",
@@ -638,7 +619,6 @@ export const webProjects = [
       "Photography of the factory's own parts does evidence work that stock imagery cannot, because the buyer is matching their component against it rather than looking at it.",
       "Putting quality and technology in the top-level navigation reflects how an audited supplier is actually assessed, instead of hiding both inside an About page."
     ],
-    deliverables: ["Corporate Marketing Site", "Product Category System", "Bilingual TH/EN UI", "Capability & Certification Pages"]
   },
   {
     id: "supakit-amulet",
@@ -654,7 +634,6 @@ export const webProjects = [
     image: "/img/cover/supakit-amulet.webp",
     imageAlt: "Supakit Watthumongkol website — die-struck and 3D sculpted portfolio, workshop photography and founder-fronted enquiry",
     metric: "2 Craft Disciplines",
-    metricBadge: "Owner's Direct Line, Site-Wide",
     hook: "In amulet commissioning the order goes to a person, not a company — so the founder's face and his own mobile number sit on the homepage rather than behind a contact form.",
     overview:
       "The site for Supakit Watthumongkol, a Thai amulet and Buddhist-object foundry. Commissioning sacred objects is a trust decision made on craftsmanship and on who answers the phone, so the site is built around two things: photographic evidence of finished work and of the production floor, and the founder placed personally at every point where an enquiry starts.",
@@ -702,7 +681,6 @@ export const webProjects = [
       "Shooting metalwork on black is a functional decision rather than a stylistic one — the client is judging relief and finish, and a busy background removes the only evidence they have.",
       "Documenting the production floor answers a quality question that no written claim about quality control can reach."
     ],
-    deliverables: ["Portfolio Site", "Work Category System", "Article & News Templates", "Contact & Location Pages"]
   },
   {
     id: "chaocom-thailand",
@@ -718,7 +696,6 @@ export const webProjects = [
     image: "/img/cover/chaocom-thailand.webp",
     imageAlt: "Chaocom Thailand website — computer and notebook rental, published replacement terms and quotation request",
     metric: "Daily · Monthly · Yearly",
-    metricBadge: "1-Day Replacement in Bangkok",
     hook: "Renting IT is weighed against buying it — so the site argues the case, terms and failure handling included, before it shows a single laptop.",
     overview:
       "A lead-generation site for Chaocom Thailand, a computer and notebook rental service supplying offices, training sessions, seminars and events. It is structured as an argument before a catalogue: five reasons to rent rather than buy, the delivery and replacement terms stated in the open, then the machines, then a quotation form specific enough for sales to price directly.",
@@ -766,7 +743,6 @@ export const webProjects = [
       "Publishing the failure terms — how fast a replacement arrives and at whose cost — moves a rental decision further than any amount of copy about reliability.",
       "Listing the paperwork required to rent removes the stall that happens after a quote is accepted, a step most enquiry flows leave to a later email."
     ],
-    deliverables: ["Lead Generation Site", "Equipment Catalogue", "Quotation Request Flow", "Service Terms Pages"]
   },
   {
     id: "thanada-construction",
@@ -782,7 +758,6 @@ export const webProjects = [
     image: "/img/cover/thanada-construction.webp",
     imageAlt: "Thanada Construction website — design and construction portfolios kept separate, full organisation chart published",
     metric: "Design + Build",
-    metricBadge: "13 Functions, 3 Departments",
     hook: "A homeowner choosing a builder is really asking whether anyone will still answer after handover — so the organisation chart, warranty function included, is published in full.",
     overview:
       "Portfolio and enquiry site for Thanada Construction, a Thai residential design-and-build contractor. Completed work is split into design and construction so a homeowner can judge each separately, and the organisation chart is published in full — three departments and thirteen named functions, quality warranty among them — because the question behind choosing a builder is whether the company has the people to finish the job and to answer afterwards.",
@@ -830,7 +805,6 @@ export const webProjects = [
       "An organisation chart is unusually persuasive for a high-commitment service, because it converts a claim about capability into a countable list of roles.",
       "Build decisions have long lead times, which makes content for people who are not ready to enquire a functional part of the site rather than an optional extra."
     ],
-    deliverables: ["Portfolio Site", "Service Category System", "Article Templates", "Contact & Enquiry Pages"]
   },
   {
     id: "happy-training",
@@ -846,7 +820,6 @@ export const webProjects = [
     image: "/img/cover/happy-training.webp",
     imageAlt: "Happy Training website redesign — a flat column of course links rebuilt as fifteen grouped, filterable categories",
     metric: "15 Course Groups",
-    metricBadge: "Flat Text List → Filtered Catalogue",
     hook: "The old site put every course in one column of plain text links — over a hundred of them, ungrouped. Making that catalogue navigable was the entire redesign.",
     overview:
       "A redesign for Happy Training, a Thai corporate training institute. The site it replaced listed every course as a plain text link in a single continuous column with no grouping, no imagery and no hierarchy. The rebuild turns that into fifteen course groups, image-led cards with a category filter, and the four delivery formats stated before the catalogue — so an HR buyer can shortlist by the capability gap they are trying to close.",
@@ -894,7 +867,6 @@ export const webProjects = [
       "In a long list, image cards are not decoration — they give the eye something to scan by, which is the difference between reading a page and finding something on it.",
       "Corporate training buyers choose a delivery format as deliberately as a topic, so the format belongs before the course list rather than inside each course page."
     ],
-    deliverables: ["Site Redesign", "Course Catalogue System", "Category Filter UI", "Responsive Marketing Site"]
   },
   {
     id: "once-accounting",
@@ -910,7 +882,6 @@ export const webProjects = [
     image: "/img/cover/once-accounting.webp",
     imageAlt: "Once Accounting sale page — three published registration packages, four-step process and repeated contact bar",
     metric: "3 Pricing Tiers",
-    metricBadge: "Two Offer Versions",
     hook: "Ad traffic arrives with two questions — what does it cost and how long does it take — so the page answers both in the first screen and repeats the phone number after every block.",
     overview:
       "A single-page sale page for Once Accounting, a Thai accounting firm selling company registration and monthly bookkeeping. It is built as a paid-advertising destination rather than a corporate site: three packages priced openly, a four-step process anchored to a one-week completion, a client wall carrying Shell and MG, and a contact bar after every block. The pricing section exists in two versions, the second reframing the third tier as a discounted logo design add-on.",
@@ -958,7 +929,6 @@ export const webProjects = [
       "Disclosing the government fee that sits outside the quoted figure protects the number's credibility, which is worth more on a sale page than a lower headline would be.",
       "Designing the offer block twice forced the third tier's job to be decided explicitly — package or cross-sell — in a way that arguing about it in the abstract would not have."
     ],
-    deliverables: ["Sale Page Design", "Pricing Comparison Blocks", "Process Explainer Graphics", "Logo & Brand Assets", "Mobile Layouts"]
   },
   {
     id: "endless-eco",
@@ -974,7 +944,6 @@ export const webProjects = [
     image: "/img/cover/endless-eco.webp",
     imageAlt: "Endless Eco website — solar rooftop, Deco electric motorcycles and Häfele fittings given separate sections",
     metric: "3 Business Lines",
-    metricBadge: "Solar · E-Motorcycles · Häfele",
     hook: "One company selling solar rooftops, electric motorcycles and Häfele bathroom fittings — the design problem was giving three unrelated businesses one coherent site.",
     overview:
       "The site for Enless Eco, a Chachoengsao company running three unrelated businesses under one roof: solar rooftop installation, the Deco electric motorcycle brand, and Häfele sanitary and hardware distribution. Rather than forcing them through one funnel, each gets its own top-level section, its own product treatment and its own stream in the blog, with the homepage doing only the work of introducing the company and pointing at all three.",
@@ -1022,7 +991,6 @@ export const webProjects = [
       "Each line needed a different product treatment — a named model grid, a searchable catalogue, installation reference photography — because each buyer arrives already knowing something different.",
       "Splitting the blog by business line lets one content system serve three audiences, which a single reverse-chronological feed cannot do."
     ],
-    deliverables: ["Marketing Site", "Deco Product Pages", "Häfele Catalogue", "Blog Streams by Business Line", "Contact & Location"]
   },
   {
     id: "cwnh-hospital",
@@ -1038,7 +1006,6 @@ export const webProjects = [
     image: "/img/cover/cwnh-hospital.webp",
     imageAlt: "Chaeng Watthana Nursing Home website — named care team, published rate with inclusions, nearby transfer hospitals",
     metric: "24-Hour Care",
-    metricBadge: "From ฿19,000 / month",
     hook: "Publishing the monthly rate is easy. Publishing the eight things it includes is what stops a family bracing for what will be extra.",
     overview:
       "Site for Chaeng Watthana Nursing Home, a 24-hour elderly care centre, designed for the adult child deciding where to place a parent. That decision is made on trust rather than on features, so the site names the care team, shows the actual rooms, publishes the rate together with the eight things it covers, and lists the nearby hospitals a resident would be transferred to in an emergency.",
@@ -1086,7 +1053,6 @@ export const webProjects = [
       "In care, photography is evidence rather than atmosphere — a visit should confirm what the family already saw online instead of revealing it.",
       "The fear driving this kind of decision is usually unspoken, and answering it unprompted does more than any amount of reassurance written into the copy."
     ],
-    deliverables: ["Marketing Site", "Service & Pricing Pages", "Team Profile Layouts", "Article Templates", "Facility Photography Set"]
   },
   {
     id: "pumacha-lifestyle",
@@ -1102,7 +1068,6 @@ export const webProjects = [
     image: "/img/cover/pumacha-lifestyle.webp",
     imageAlt: "Pumacha website — factory-direct claim, twelve bag types, and a bag collection carrying Coca-Cola and FWD work",
     metric: "One-Stop Service",
-    metricBadge: "Factory Direct, No Agent",
     hook: "Every garment factory says it makes good work. This one says it is the factory, not an agent — so the site had to show a production floor rather than a portfolio.",
     overview:
       "Single-page site for Pumacha Co., Ltd., a garment and bag OEM producing premium promotional goods for corporate buyers. The page is built around one claim the client leads with — that they are the factory and no agent sits in between — and everything else on it exists to make that claim checkable: photographs from their own sewing floor, a named list of what they can produce, and a bag collection carrying work done for brands the buyer already knows.",
@@ -1150,7 +1115,6 @@ export const webProjects = [
       "Naming capability item by item disqualifies the wrong buyer early, which is worth more to a factory than a larger volume of enquiries.",
       "In promotional goods, a recognisable client logo on past work carries more weight than any description of quality control."
     ],
-    deliverables: ["Corporate Marketing Site", "Product Collection Layouts", "Capability Pages", "Contact & Enquiry Flow"]
   },
   {
     id: "clean-all-kleen",
@@ -1166,7 +1130,6 @@ export const webProjects = [
     image: "/img/cover/clean-all-kleen.webp",
     imageAlt: "Clean All Kleen sale page — three service lines, eight facility types and a grid of completed industrial jobs",
     metric: "3 Service Lines",
-    metricBadge: "8 Facility Types",
     hook: "An industrial-estate contractor moving into homes and condos. The site had to keep the heavy-duty credibility while stopping it from scaring off a homeowner.",
     overview:
       "Single-page site for Clean All Kleen, the cleaning arm of Magic Equipment Co., Ltd. The parent company built its business inside industrial estates and then widened out to serve a broader mix of clients, so the page carries three service lines — big cleaning, industrial oil and grease removal, and drain and grease-trap dredging — across eight named facility types, with a gallery of completed jobs doing the work that a service description cannot.",
@@ -1214,7 +1177,6 @@ export const webProjects = [
       "In facility services the photograph that closes the enquiry is of the crew and their protective equipment, not of a finished clean room.",
       "A parent company with an industrial history is an asset to a new consumer-facing brand, and burying it throws away the only proof the new name does not yet have."
     ],
-    deliverables: ["Sale Page Design", "Service Category Blocks", "Work Gallery Layout", "Contact & Map Section"]
   },
   {
     id: "zea-management",
@@ -1230,7 +1192,6 @@ export const webProjects = [
     image: "/img/cover/zea-management.webp",
     imageAlt: "Zea Management website — black and gold identity, four service lines, client seals and a wall of seminar posters",
     metric: "4 Service Lines",
-    metricBadge: "6 Seminars Documented",
     hook: "The seminar posters are not decoration on this site. Training is one of the four things the firm sells, so the speaking record is both the proof of expertise and the portfolio for a service line.",
     overview:
       "Six-page corporate site for Zea Management Consultant Co., Ltd. (ZEACORP), a back-office firm selling four lines: accounting and financial-statement closing, advisory, company registration, and paid training. The last of those changes how the whole site works — a firm that teaches tax courses can prove its expertise by showing the courses, so the homepage carries a wall of seminar posters where a competitor would have written a paragraph about experience.",
@@ -1278,6 +1239,5 @@ export const webProjects = [
       "Publishing the first step of an engagement — and naming it as a form, not a meeting — removes the commitment a prospect is quietly afraid of.",
       "In a category where every competitor uses the same white-and-blue template, the visual system itself is a positioning decision rather than a matter of taste."
     ],
-    deliverables: ["Corporate Marketing Site", "Service Pages", "Article Templates", "Contact & Enquiry Flow"]
   }
 ];
