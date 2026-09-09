@@ -4255,6 +4255,7 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
     // own search is how people actually add a contact there.
     { label: "LINE",     value: "yimpycc",                 copyText: "yimpycc",                copyLabel: "LINE ID", href: "https://line.me/ti/p/SHGZ_Lx9Jn" },
     { label: "LINKEDIN", value: "piyachon-wanburi",       copyText: "https://www.linkedin.com/in/piyachon-wanburi-b207691ab/", href: "https://www.linkedin.com/in/piyachon-wanburi-b207691ab/" },
+    { label: "FACEBOOK", value: "Piyachon Wanburi",        copyText: "https://www.facebook.com/CebrAa", href: "https://www.facebook.com/CebrAa" },
   ];
 
   const fieldStyle = {
