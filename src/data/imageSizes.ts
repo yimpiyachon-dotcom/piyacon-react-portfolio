@@ -79,6 +79,7 @@ export const imageSizes: Record<string, [number, number, number[]]> = {
   "/img/process/contracable/1.webp": [1942, 1214, [480, 1200]],
   "/img/process/contracable/2.webp": [1814, 1260, [480, 1200]],
   "/img/process/contracable/3.webp": [2540, 658, [480, 1200]],
+  "/img/process/cwnh-hospital/01.webp": [1208, 1424, [480]],
   "/img/process/dr-smoothlife/01.webp": [1808, 811, [480, 1200]],
   "/img/process/dr-smoothlife/02.webp": [1820, 920, [480, 1200]],
   "/img/process/dr-smoothlife/03.webp": [1775, 489, [480, 1200]],

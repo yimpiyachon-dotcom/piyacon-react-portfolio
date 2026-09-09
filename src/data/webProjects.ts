@@ -1026,35 +1026,67 @@ export const webProjects = [
   },
   {
     id: "cwnh-hospital",
-    title: "CWNH Nursing Home",
+    title: "CWNH Website",
     client: "BEURDEV CO., LTD.",
     timeline: "Jun 2024 – Sep 2024",
     role: "Lead UX/UI Designer",
     category: "Web Design & Elderly Care",
+    platform: "Responsive Marketing Site",
+    industry: "Elderly Care / Nursing Home",
     tags: ["Elderly Care", "Healthcare", "Trust", "Lead Gen"],
+    stack: ["Figma", "Design System", "Thai Typography", "Photography Direction"],
     image: "/img/cover/cwnh-hospital.webp",
-    imageAlt: "Chaeng Watthana Nursing Home elderly care centre website",
+    imageAlt: "Chaeng Watthana Nursing Home website — named care team, published rate with inclusions, nearby transfer hospitals",
     metric: "24-Hour Care",
     metricBadge: "From ฿19,000 / month",
-    overview: "Site for a 24-hour elderly care home, designed for adult children choosing where to place a parent — a decision driven by trust in the people and the facility, not by feature lists.",
-    problem: "Families choosing a nursing home are deciding who will care for their parent daily, often while feeling guilty about the decision. Care centre sites typically list services and stay silent on the two things that actually settle it: who the staff are and what the rooms genuinely look like.",
+    hook: "Publishing the monthly rate is easy. Publishing the eight things it includes is what stops a family bracing for what will be extra.",
+    overview:
+      "Site for Chaeng Watthana Nursing Home, a 24-hour elderly care centre, designed for the adult child deciding where to place a parent. That decision is made on trust rather than on features, so the site names the care team, shows the actual rooms, publishes the rate together with the eight things it covers, and lists the nearby hospitals a resident would be transferred to in an emergency.",
+    kpis: [
+      { value: "8 inclusions", label: "Exactly what the monthly rate covers", sub: "meals, vitals monitoring, laundry, 24-hour CCTV" },
+      { value: "7 hospitals", label: "Nearby emergency transfer destinations named", sub: "shown on the contact page beside the map" },
+      { value: "Team named", label: "Doctor, nurses and caregivers with photographs", sub: "families entrust a person, not a building" },
+    ],
+    problem:
+      "A family choosing a nursing home is deciding who will look after their parent every day, usually while carrying guilt about the decision itself. What settles it is not a service list — it is who the staff are, what the rooms actually look like, what the money covers, and what happens if something goes wrong at three in the morning. Care centre sites are typically silent on all four, leaving the family to find out by visiting and asking questions they find uncomfortable to ask.",
     baselineStats: [
-      { value: "Unseen staff", label: "Care team not introduced to prospective families" },
-      { value: "No facility view", label: "Rooms and equipment not shown honestly" },
-      { value: "Price on request", label: "Monthly and daily rates not published" }
+      { value: "Unseen staff", label: "care team not introduced before a visit" },
+      { value: "No facility view", label: "rooms and equipment not shown honestly" },
+      { value: "Price on request", label: "monthly and daily rates not published" }
     ],
     solutions: [
-      { title: "Care Team Introduction", body: "Named staff with photographs and credentials — doctor, nurses, caregivers — because families are entrusting a person, not a facility, and want to see who that person is before visiting." },
-      { title: "Honest Facility Photography", body: "Real photographs of rooms, beds, medical equipment and daily activities rather than stock imagery, letting families assess conditions before committing to a site visit." },
-      { title: "Published Care Rates", body: "Monthly and daily pricing stated openly from ฿19,000 per month and ฿1,000 per day, with the inclusions listed, so families can assess affordability without an uncomfortable enquiry call." }
+      {
+        title: "The Care Team, Named and Photographed",
+        body: "Doctor, nurses and caregivers appear with photographs and credentials. A family is entrusting a person rather than a facility, and wants to see who that person is before they arrange a visit rather than after."
+      },
+      {
+        title: "The Rate and the Eight Things It Covers",
+        body: "Pricing is published from ฿19,000 a month and ฿1,000 a day, and directly beneath it an eight-item block states what the rate includes — 24-hour care, three meals and two snacks, vital-signs monitoring, laundry, 24-hour CCTV and the rest. Publishing a price answers half the question; publishing the inclusions answers the half a family would otherwise brace for."
+      },
+      {
+        title: "Honest Facility Photography",
+        body: "Real photographs of rooms, beds, oxygen equipment and daily activities rather than stock imagery, produced as a dedicated set. Assessing conditions from home is the point — a visit should confirm what the family already saw rather than reveal it."
+      },
+      {
+        title: "Nearby Hospitals Named",
+        body: "Seven local hospitals sit on the contact page beside the map, as the transfer destinations in an emergency. The unspoken fear behind the whole decision is what happens when something goes wrong at night, and naming them answers it without the family having to ask."
+      }
     ],
     impactTable: [
-      { metric: "Care team visibility", before: "Not introduced", after: "Named staff with photos", delta: "Personal" },
-      { metric: "Facility transparency", before: "Not shown", after: "Real room photography", delta: "Honest" },
-      { metric: "Pricing disclosure", before: "On request", after: "Monthly and daily published", delta: "Open" }
+      { metric: "Care team", before: "Not introduced", after: "Named staff with photographs", delta: "Personal" },
+      { metric: "Facility", before: "Not shown", after: "Real room and equipment photography", delta: "Honest" },
+      { metric: "Pricing", before: "On request", after: "Monthly and daily, with 8 inclusions", delta: "Open" },
+      { metric: "Emergency plan", before: "Unaddressed", after: "Seven nearby hospitals named", delta: "Answered" }
     ],
-    deliverables: ["Marketing Site", "Service & Pricing Pages", "Team Profile Layouts", "Article Templates"]
-
+    quote:
+      "The question a family cannot bring themselves to ask on a first call is what happens at three in the morning. Naming the hospitals a resident would be taken to answers it before they have to.",
+    quoteRole: "Design rationale · CWNH Website",
+    learnings: [
+      "Publishing a price answers half a family's question, and publishing what the price includes answers the half they were reluctant to ask about.",
+      "In care, photography is evidence rather than atmosphere — a visit should confirm what the family already saw online instead of revealing it.",
+      "The fear driving this kind of decision is usually unspoken, and answering it unprompted does more than any amount of reassurance written into the copy."
+    ],
+    deliverables: ["Marketing Site", "Service & Pricing Pages", "Team Profile Layouts", "Article Templates", "Facility Photography Set"]
   },
   {
     id: "pumacha-lifestyle",
