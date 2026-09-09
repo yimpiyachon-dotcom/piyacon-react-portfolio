@@ -1095,30 +1095,62 @@ export const webProjects = [
     timeline: "Mar 2024 – May 2024",
     role: "Senior UX/UI Designer",
     category: "Web Design & Garment Manufacturing",
+    platform: "Single-Page Corporate Site",
+    industry: "Garment & Bag OEM Manufacturing",
     tags: ["Manufacturing", "OEM", "Garment", "B2B"],
+    stack: ["Figma", "Design System", "Thai Typography", "Photography Direction"],
     image: "/img/cover/pumacha-lifestyle.webp",
-    imageAlt: "Pumacha garment and bag OEM manufacturing website",
+    imageAlt: "Pumacha website — factory-direct claim, twelve bag types, and a bag collection carrying Coca-Cola and FWD work",
     metric: "One-Stop Service",
-    metricBadge: "Oeko-Tex Certified",
-    overview: "Site for a garment and bag OEM manufacturer producing premium promotional apparel, positioned to win corporate buyers sourcing production directly rather than through agents.",
-    problem: "Corporate buyers sourcing promotional apparel usually reach factories through agents, paying a margin without knowing who actually produces their order — and factories that sell direct have no way to prove they are the manufacturer rather than another intermediary.",
+    metricBadge: "Factory Direct, No Agent",
+    hook: "Every garment factory says it makes good work. This one says it is the factory, not an agent — so the site had to show a production floor rather than a portfolio.",
+    overview:
+      "Single-page site for Pumacha Co., Ltd., a garment and bag OEM producing premium promotional goods for corporate buyers. The page is built around one claim the client leads with — that they are the factory and no agent sits in between — and everything else on it exists to make that claim checkable: photographs from their own sewing floor, a named list of what they can produce, and a bag collection carrying work done for brands the buyer already knows.",
+    kpis: [
+      { value: "12 bag types", label: "Production capability listed by name", sub: "shopping, cosmetic, messenger, drawstring, backpack, tote, camera, cooler and more" },
+      { value: "No agent", label: "The site's own headline claim, set full-width", sub: "\"we are the factory, so we can control the quality\"" },
+      { value: "7 contact points", label: "Call and LINE buttons through a single-page scroll", sub: "header plus after every content block" },
+    ],
+    problem:
+      "Corporate buyers sourcing promotional apparel usually reach factories through agents, paying a margin to someone who does not produce the order. A factory selling direct has the better offer and the harder pitch, because from a website an agent and a manufacturer look identical — both show finished product photography. The page had to prove which one it was.",
     baselineStats: [
-      { value: "Agent-mediated", label: "Buyers reaching factories through intermediaries" },
-      { value: "Unproven", label: "No evidence distinguishing factory from trading agent" },
-      { value: "Unstated", label: "Testing certification not surfaced to buyers" }
+      { value: "Agent-mediated", label: "buyers reaching factories through intermediaries" },
+      { value: "Indistinguishable", label: "a trading agent's site looks like a factory's" },
+      { value: "Capability unstated", label: "what can actually be produced not listed" }
     ],
     solutions: [
-      { title: "Direct-From-Factory Positioning", body: "The no-agent argument stated explicitly and backed with production floor photography — cutting, sewing and finishing lines — so buyers can see the operation rather than take the claim on trust." },
-      { title: "Capability & Product Range Display", body: "Garment categories and a bag collection shown together, including work produced for recognised brands, demonstrating the range a one-stop supplier is expected to cover." },
-      { title: "Certification as Buying Signal", body: "Oeko-Tex testing certification surfaced prominently, since it is the standard corporate buyers screen on when the order includes childrenswear." }
+      {
+        title: "The Claim, Then the Evidence For It",
+        body: "\"We are the factory, not an agent, so we can control the quality\" runs full-width across the page as its own statement. Immediately around it sit photographs from the client's own operation — cutting tables, sewing lines, finished stock stacked on the floor, staff working. An agent can borrow product photography, but not pictures of a floor they do not have."
+      },
+      {
+        title: "Capability Written Out, Not Implied",
+        body: "Twelve bag types are named in a single block — shopping, cosmetic, wallet, pocket book, messenger, body, hip and waist, drawstring, backpack, tote, camera, cooler — alongside uniform, hats and caps. A buyer with a specific brief finds their item on the list or does not, which is faster for both sides than an enquiry that ends in a no."
+      },
+      {
+        title: "A Bag Collection That Names Its Clients",
+        body: "The collection grid shows work carrying Coca-Cola and FWD branding rather than unbranded samples. For a promotional-goods buyer, seeing a brand that already trusted this factory settles more than any capability paragraph does."
+      },
+      {
+        title: "Contact Carried the Length of the Scroll",
+        body: "A call button and LINE account sit in the header and repeat after every block — seven points across one page. A single-page site converts wherever the reader stops, so the exit is placed everywhere rather than waiting in the footer."
+      }
     ],
     impactTable: [
-      { metric: "Supply chain positioning", before: "Reached via agents", after: "Direct factory contact", delta: "Disintermediated" },
-      { metric: "Production capability evidence", before: "Claimed only", after: "Factory floor photography", delta: "Shown" },
-      { metric: "Certification visibility", before: "Not stated", after: "Oeko-Tex surfaced", delta: "Published" }
+      { metric: "Supply chain position", before: "Reached via agents", after: "Factory-direct claim, stated outright", delta: "Disintermediated" },
+      { metric: "Production evidence", before: "Claimed only", after: "Own factory floor photographed", delta: "Shown" },
+      { metric: "Capability", before: "Unstated", after: "12 bag types named", delta: "Listed" },
+      { metric: "Enquiry route", before: "Footer only", after: "7 call and LINE points", delta: "Multiplied" }
+    ],
+    quote:
+      "From a website, a trading agent and a real factory look the same — both post photographs of finished bags. The only thing an agent cannot show you is their own sewing floor.",
+    quoteRole: "Design rationale · Pumacha Website",
+    learnings: [
+      "When a business leads with one claim, the job is not to repeat it louder but to place beside it the one thing a competitor could not fake.",
+      "Naming capability item by item disqualifies the wrong buyer early, which is worth more to a factory than a larger volume of enquiries.",
+      "In promotional goods, a recognisable client logo on past work carries more weight than any description of quality control."
     ],
     deliverables: ["Corporate Marketing Site", "Product Collection Layouts", "Capability Pages", "Contact & Enquiry Flow"]
-
   },
   {
     id: "clean-all-kleen",
@@ -1127,30 +1159,62 @@ export const webProjects = [
     timeline: "Apr 2024 – Jun 2024",
     role: "UX/UI Designer",
     category: "Web Design & Facility Services",
+    platform: "Single-Page Sale Page",
+    industry: "Commercial & Industrial Cleaning",
     tags: ["Facility Services", "B2B", "Sale Page", "Lead Gen"],
+    stack: ["Figma", "Wireframing", "Design System", "Thai Typography"],
     image: "/img/cover/clean-all-kleen.webp",
-    imageAlt: "Clean All Kleen commercial and industrial cleaning service sale page",
+    imageAlt: "Clean All Kleen sale page — three service lines, eight facility types and a grid of completed industrial jobs",
     metric: "3 Service Lines",
-    metricBadge: "Industrial & Commercial",
-    overview: "Single-page site for a commercial cleaning contractor covering big cleaning, industrial cleanroom work and drain de-greasing across factories, offices, malls and showrooms.",
-    problem: "Commercial cleaning contracts are awarded on evidence that the contractor has handled comparable sites, but service companies typically describe what they offer in text without showing a single job they have completed.",
+    metricBadge: "8 Facility Types",
+    hook: "An industrial-estate contractor moving into homes and condos. The site had to keep the heavy-duty credibility while stopping it from scaring off a homeowner.",
+    overview:
+      "Single-page site for Clean All Kleen, the cleaning arm of Magic Equipment Co., Ltd. The parent company built its business inside industrial estates and then widened out to serve a broader mix of clients, so the page carries three service lines — big cleaning, industrial oil and grease removal, and drain and grease-trap dredging — across eight named facility types, with a gallery of completed jobs doing the work that a service description cannot.",
+    kpis: [
+      { value: "3 service lines", label: "Big cleaning, industrial grease removal, drain dredging", sub: "each with its own card, photograph and one-line scope" },
+      { value: "8 facility types", label: "Named rather than implied", sub: "house, condo, showroom, restaurant, mall, office, factory, warehouse" },
+      { value: "Industrial origin", label: "Operating under Magic Equipment Co., Ltd.", sub: "built in industrial estates, then widened to broader clients" },
+    ],
+    problem:
+      "Commercial cleaning is bought on evidence that the contractor has already handled a comparable site, and most service companies offer only a description of what they do. The harder problem here was a split audience: the same page had to satisfy a factory manager pricing a grease-trap job and a homeowner booking a big clean, without the industrial half making the domestic half feel like the wrong place to be.",
     baselineStats: [
-      { value: "Undifferentiated", label: "Service lines not separated by site type" },
-      { value: "No evidence", label: "Completed jobs not shown to prospective clients" },
-      { value: "Unclear scope", label: "Facility types served not stated explicitly" }
+      { value: "Undifferentiated", label: "service lines not separated by site type" },
+      { value: "No evidence", label: "completed jobs not shown to prospective clients" },
+      { value: "Unclear scope", label: "facility types served not stated explicitly" }
     ],
     solutions: [
-      { title: "Three-Service Structure", body: "Work divided into big cleaning, industrial cleanroom service and drain de-greasing, each with its own imagery so a facility manager can identify their requirement immediately rather than reading a paragraph." },
-      { title: "Completed Work Evidence Grid", body: "A photo grid of real jobs — factory floors, ducting, upholstery, crews in protective equipment — giving procurement the comparable-site evidence that decides commercial cleaning contracts." },
-      { title: "Scope Stated in the Hero", body: "The facility types served listed up front — homes, condos, offices, factories, restaurants, malls, showrooms — so a visitor knows within seconds whether the contractor covers their site." }
+      {
+        title: "Three Lines, Three Cards, Three Photographs",
+        body: "Big cleaning, industrial cleaning for embedded oil and grease, and drain and grease-trap dredging each get a card carrying a photograph of that exact work and a single line of scope. A facility manager identifies their job from the picture before reading anything, which is faster than any paragraph describing a range of services."
+      },
+      {
+        title: "The Eight Site Types, Written Out",
+        body: "House, condo, showroom, restaurant, shopping mall, office building, factory and warehouse are named in the hero and again in the service copy, together with post-construction and renovation cleaning. Listing them is what lets the page serve a homeowner and a plant manager at once — each finds their own word and stops worrying about the other."
+      },
+      {
+        title: "A Job Gallery Instead of a Claim",
+        body: "Eight photographs of completed work: a sump being pressure-washed, kitchen extraction ducting stripped, rope access on a glass facade, a pool, a hotel room, a lift car, and a crew of seven in full protective coveralls. The PPE photograph is the one that settles an industrial enquiry, because it shows the contractor already works to that standard."
+      },
+      {
+        title: "The Parent Company Shown, Not Hidden",
+        body: "Magic Equipment Co., Ltd. appears with its logo and registered address in the contact block beside the map. For a business moving from industrial estates into domestic work, the older company is the credential rather than something to keep quiet about — it is the evidence that the crew has done harder jobs than yours."
+      }
     ],
     impactTable: [
-      { metric: "Service presentation", before: "Text description", after: "3 lines with imagery", delta: "Structured" },
-      { metric: "Completed work evidence", before: "None shown", after: "Job photography grid", delta: "Documented" },
-      { metric: "Coverage clarity", before: "Implied", after: "Facility types listed", delta: "Explicit" }
+      { metric: "Service presentation", before: "Text description", after: "3 lines, each with its own photograph", delta: "Structured" },
+      { metric: "Completed work", before: "None shown", after: "8-job gallery including PPE crew", delta: "Documented" },
+      { metric: "Coverage", before: "Implied", after: "8 facility types named twice", delta: "Explicit" },
+      { metric: "Credibility", before: "New brand alone", after: "Magic Equipment shown as parent", delta: "Anchored" }
+    ],
+    quote:
+      "A contractor coming out of the industrial estates already has the harder credential. The design problem was showing it to a factory manager without making a homeowner feel they had opened the wrong website.",
+    quoteRole: "Design rationale · Clean All Kleen",
+    learnings: [
+      "When one page serves two very different buyers, naming every site type outright does more than any attempt to write copy general enough to cover both.",
+      "In facility services the photograph that closes the enquiry is of the crew and their protective equipment, not of a finished clean room.",
+      "A parent company with an industrial history is an asset to a new consumer-facing brand, and burying it throws away the only proof the new name does not yet have."
     ],
     deliverables: ["Sale Page Design", "Service Category Blocks", "Work Gallery Layout", "Contact & Map Section"]
-
   },
   {
     id: "zea-management",
