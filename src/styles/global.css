@@ -451,7 +451,10 @@ body {
   transform: translateY(-2px) scale(1.05);
   background: rgba(110, 231, 183, 0.18) !important;
   border-color: rgba(110, 231, 183, 0.5) !important;
-  color: #A7F3D0 !important;
+  /* The accent green, not the lighter #A7F3D0 it used to be: the tint and the
+     border on this chip are both 6EE7B7, so a second green in the label read as
+     a different brand colour on hover. */
+  color: #6EE7B7 !important;
 }
 @keyframes floatBubble {
   0% { transform: translateY(0) scale(0.8); opacity: 1; }
