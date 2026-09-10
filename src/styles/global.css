@@ -956,3 +956,45 @@ body {
     background: rgba(24, 26, 31, 0.82);
   }
 }
+
+/* --- About story portrait ---------------------------------------------- */
+/* The frame is remounted on every change (keyed on the index), so the fade
+   runs once per photo rather than needing a transition between two layers. */
+.story-frame {
+  animation: story-fade 420ms ease-out both;
+}
+
+@keyframes story-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Matches the 4s timer in StoryPortrait. Driven by transform so the fill is
+   composited and never touches layout. */
+.story-progress {
+  animation: story-progress 4000ms linear both;
+}
+
+@keyframes story-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* The arrows sit in the gutter beside the card, so they stay quiet until
+   pointed at — the same border-lights-up move the rest of the site uses. */
+.story-arrow {
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.story-arrow:hover {
+  border-color: rgba(110, 231, 183, 0.5);
+  color: #6EE7B7;
+  background: #24262B;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-frame,
+  .story-progress {
+    animation: none;
+  }
+}

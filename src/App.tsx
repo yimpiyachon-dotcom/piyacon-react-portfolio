@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import "./styles/global.css";
-import { PROFILE_IMG } from "./data/profile";
+import { PROFILE_IMG, STORY_IMGS } from "./data/profile";
 import { projects } from "./data/projects";
 import { allProjects } from "./data/allProjects";
 import { webProjects } from "./data/webProjects";
@@ -2726,7 +2726,11 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
           top: -60,
           left: "50%",
           transform: "translateX(-50%)",
-          width: "900px",
+          // Capped at the container so a 900px glow does not push the page
+          // 240px wider than a phone screen and make every page scroll
+          // sideways. It is a soft radial, so a narrower one just reads as a
+          // smaller glow rather than as a clipped edge.
+          width: "min(900px, 100%)",
           height: "420px",
           background: "radial-gradient(circle, rgba(110,231,183,0.16) 0%, rgba(110,231,183,0) 70%)",
           filter: "blur(40px)",
@@ -3070,6 +3074,177 @@ function CompanyLogo({ src, name, eager = false }: { src?: string; name: string;
   );
 }
 
+/**
+ * The About portrait, cycled like an Instagram story.
+ *
+ * Only the current frame is in the DOM: stacking all seven would have the page
+ * download every candid shot on load, which is the opposite of the work that
+ * took this site to a 97. The neighbouring frames are warmed with off-DOM
+ * Image()s instead, so either arrow swaps instantly without costing the
+ * initial paint.
+ *
+ * Index 0 is the professional portrait, so the prerendered HTML and the first
+ * paint are byte-identical to what they were before the rotation existed.
+ *
+ * The name plate lives here rather than in AboutPage because the arrows sit
+ * outside the 340px card, in the gutter the grid column was already wasting,
+ * and everything that shares the index has to share one component.
+ */
+function StoryPortrait() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  // Someone who has asked the system to reduce motion should not be handed a
+  // picture that changes under them; they get the portrait and the arrows,
+  // with nothing moving unless they ask for it.
+  const still =
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+  const step = useCallback(
+    (delta: number) => setIndex((i) => (i + delta + STORY_IMGS.length) % STORY_IMGS.length),
+    [],
+  );
+
+  useEffect(() => {
+    if (still || paused) return;
+    const id = window.setTimeout(() => step(1), 4000);
+    return () => window.clearTimeout(id);
+  }, [index, paused, still, step]);
+
+  // Warm both neighbours so neither arrow lands on a blank box on a slow line.
+  useEffect(() => {
+    for (const delta of [1, -1]) {
+      const img = new Image();
+      img.src = STORY_IMGS[(index + delta + STORY_IMGS.length) % STORY_IMGS.length];
+    }
+  }, [index]);
+
+  const src = STORY_IMGS[index];
+
+  const arrow = (delta: number, glyph: string, label: string) => (
+    <button
+      type="button"
+      onClick={() => step(delta)}
+      aria-label={label}
+      className="story-arrow"
+      style={{
+        flex: "0 0 auto",
+        width: 36,
+        height: 36,
+        borderRadius: 9999,
+        background: "#1B1D21",
+        border: "1px solid #24262B",
+        color: "#F5F5F4",
+        fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+        fontSize: 15,
+        lineHeight: 1,
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 0,
+      }}
+    >
+      {glyph}
+    </button>
+  );
+
+  return (
+    <div
+      style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {arrow(-1, "‹", "Previous photo")}
+
+      <div
+        style={{
+          position: "relative",
+          flex: "1 1 auto",
+          minWidth: 0,
+          maxWidth: 340,
+          borderRadius: 16,
+          overflow: "hidden",
+          border: "1px solid rgba(110,231,183,0.3)",
+        }}
+      >
+        <img
+          key={index}
+          className={still ? undefined : "story-frame"}
+          loading="lazy"
+          decoding="async"
+          src={src}
+          srcSet={srcSetFor(src)}
+          sizes="340px"
+          alt="Piyachon Wanburi"
+          onError={(e) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&fit=crop&auto=format";
+          }}
+          style={{
+            width: "100%",
+            aspectRatio: "3/4",
+            objectFit: "cover",
+            objectPosition: "center 20%",
+            display: "block",
+          }}
+        />
+
+        {/* Progress rail — the story convention: one segment per frame, the
+            active one filling over the same 4s the timer runs. */}
+        <div style={{ position: "absolute", top: 10, left: 10, right: 10, display: "flex", gap: 4 }}>
+          {STORY_IMGS.map((_, i) => (
+            <div
+              key={i}
+              style={{
+                flex: 1,
+                height: 2,
+                borderRadius: 2,
+                background: "rgba(245,245,244,0.25)",
+                overflow: "hidden",
+              }}
+            >
+              <div
+                className={i === index && !paused && !still ? "story-progress" : undefined}
+                style={{
+                  height: "100%",
+                  background: "#6EE7B7",
+                  transformOrigin: "left",
+                  transform: i < index || (i === index && (paused || still)) ? "scaleX(1)" : "scaleX(0)",
+                }}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            bottom: 14,
+            left: 14,
+            right: 14,
+            background: "rgba(10,11,13,0.85)",
+            backdropFilter: "blur(8px)",
+            padding: "10px 14px",
+            borderRadius: 10,
+            border: "1px solid rgba(255,255,255,0.1)",
+            pointerEvents: "none",
+          }}
+        >
+          <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 14, fontWeight: 700, color: "#F5F5F4" }}>
+            Piyachon Wanburi (Yim)
+          </div>
+          <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7" }}>
+            Bangkok · KMUTNB Architecture and design
+          </div>
+        </div>
+      </div>
+
+      {arrow(1, "›", "Next photo")}
+    </div>
+  );
+}
+
 function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
   onBack: Handler;
   onProjects: Handler;
@@ -3086,7 +3261,11 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           top: -60,
           left: "50%",
           transform: "translateX(-50%)",
-          width: "900px",
+          // Capped at the container so a 900px glow does not push the page
+          // 240px wider than a phone screen and make every page scroll
+          // sideways. It is a soft radial, so a narrower one just reads as a
+          // smaller glow rather than as a clipped edge.
+          width: "min(900px, 100%)",
           height: "420px",
           background: "radial-gradient(circle, rgba(110,231,183,0.16) 0%, rgba(110,231,183,0) 70%)",
           filter: "blur(40px)",
@@ -3206,46 +3385,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           padding: "36px 36px",
         }}
       >
-        <div style={{ position: "relative", maxWidth: 340, margin: "0 auto", width: "100%" }}>
-          <img
-            loading="lazy"
-            decoding="async"
-            src={PROFILE_IMG}
-            alt="Piyachon Wanburi"
-            onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&fit=crop&auto=format";
-            }}
-            style={{
-              width: "100%",
-              aspectRatio: "3/4",
-              objectFit: "cover",
-              objectPosition: "center 20%",
-              borderRadius: 16,
-              border: "1px solid rgba(110,231,183,0.3)",
-              display: "block",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              bottom: 14,
-              left: 14,
-              right: 14,
-              background: "rgba(10,11,13,0.85)",
-              backdropFilter: "blur(8px)",
-              padding: "10px 14px",
-              borderRadius: 10,
-              border: "1px solid rgba(255,255,255,0.1)",
-            }}
-          >
-            <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 14, fontWeight: 700, color: "#F5F5F4" }}>
-              Piyachon Wanburi (Yim)
-            </div>
-            <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7" }}>
-              Bangkok · KMUTNB Architecture Alum
-            </div>
-          </div>
-        </div>
+        <StoryPortrait />
 
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 22, fontWeight: 700, color: "#F5F5F4", margin: 0 }}>
@@ -3262,22 +3402,6 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           </p>
 
           <div style={{ display: "flex", gap: 12, marginTop: 12, flexWrap: "wrap" }}>
-            <button
-              onClick={onProjects}
-              style={{
-                fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
-                fontSize: 13,
-                fontWeight: 700,
-                color: "#0A0B0D",
-                background: "#6EE7B7",
-                padding: "10px 18px",
-                borderRadius: 8,
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              Explore 29 Projects →
-            </button>
             <button
               onClick={onSelectCv}
               style={{
@@ -3546,11 +3670,15 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
         </div>
       </section>
 
-      {/* Bottom Action Footer */}
-      <div
+      <CtaBanner onSelectCv={onSelectCv} />
+
+      {/* Footer — the same shape as the Stack page and the homepage:
+          attribution left, one action right. The contact button that used to
+          sit here is gone because the CTA above already carries every channel. */}
+      <footer
         style={{
           borderTop: "1px solid #24262B",
-          paddingTop: 36,
+          paddingTop: 32,
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -3558,45 +3686,37 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           gap: 16,
         }}
       >
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginLeft: "auto" }}>
-          <button
-            onClick={onProjects}
-            style={{
-              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
-              fontSize: 13,
-              fontWeight: 700,
-              color: "#0A0B0D",
-              background: "#6EE7B7",
-              padding: "10px 20px",
-              borderRadius: 8,
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Explore 29 Projects ↓
-          </button>
-          <button
-            onClick={onContact}
-            style={{
-              fontFamily: "'Inter', 'Inter Fallback', sans-serif",
-              fontSize: 13,
-              color: "#F5F5F4",
-              background: "#1B1D21",
-              border: "1px solid #24262B",
-              padding: "10px 18px",
-              borderRadius: 8,
-              cursor: "pointer",
-            }}
-          >
-            Contact Piyachon
-          </button>
-        </div>
-      </div>
+        <span
+          style={{
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+            fontSize: 12,
+            color: "#828790",
+          }}
+        >
+          © 2026 Piyachon Wanburi · Senior UX/UI Specialist · Bangkok
+        </span>
+        <button
+          onClick={onProjects}
+          style={{
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
+            fontSize: 13,
+            fontWeight: 700,
+            color: "#0A0B0D",
+            background: "#6EE7B7",
+            padding: "10px 20px",
+            borderRadius: 8,
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Explore 29 Projects ↓
+        </button>
+      </footer>
     </div>
   );
 }
 
-function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProjects: Handler; onContact: Handler }) {
+function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProjects: Handler; onSelectCv: Handler }) {
   // SVG logos as data URIs – no external dependency
   const LOGOS = {
     figma: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 57'%3E%3Cpath fill='%23F24E1E' d='M19 28.5a9.5 9.5 0 0 1 9.5-9.5h0a9.5 9.5 0 0 1 0 19h0A9.5 9.5 0 0 1 19 28.5z'/%3E%3Cpath fill='%23FF7262' d='M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 0 1-19 0z'/%3E%3Cpath fill='%231ABCFE' d='M19 0v19h9.5a9.5 9.5 0 0 0 0-19z'/%3E%3Cpath fill='%230ACF83' d='M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z'/%3E%3Cpath fill='%23A259FF' d='M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z'/%3E%3C/svg%3E",
@@ -3672,7 +3792,11 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
           top: -60,
           left: "50%",
           transform: "translateX(-50%)",
-          width: "900px",
+          // Capped at the container so a 900px glow does not push the page
+          // 240px wider than a phone screen and make every page scroll
+          // sideways. It is a soft radial, so a narrower one just reads as a
+          // smaller glow rather than as a clipped edge.
+          width: "min(900px, 100%)",
           height: "420px",
           background: "radial-gradient(circle, rgba(110,231,183,0.16) 0%, rgba(110,231,183,0) 70%)",
           filter: "blur(40px)",
@@ -3868,11 +3992,16 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
         ))}
       </div>
 
-      {/* Bottom Action Footer */}
-      <div
+      <CtaBanner onSelectCv={onSelectCv} />
+
+      {/* Footer — same shape as the homepage: attribution left, action right.
+          The contact button is gone because the CTA above now carries every
+          channel, and repeating it here made the row read as two competing
+          asks rather than one closing step. */}
+      <footer
         style={{
           borderTop: "1px solid #24262B",
-          paddingTop: 36,
+          paddingTop: 32,
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -3880,40 +4009,32 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
           gap: 16,
         }}
       >
-        <div style={{ display: "flex", gap: 12, marginLeft: "auto" }}>
-          <button
-            onClick={onProjects}
-            style={{
-              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
-              fontSize: 13,
-              fontWeight: 700,
-              color: "#0A0B0D",
-              background: "#6EE7B7",
-              padding: "10px 20px",
-              borderRadius: 8,
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Explore 29 Projects ↓
-          </button>
-          <button
-            onClick={onContact}
-            style={{
-              fontFamily: "'Inter', 'Inter Fallback', sans-serif",
-              fontSize: 13,
-              color: "#F5F5F4",
-              background: "#1B1D21",
-              border: "1px solid #24262B",
-              padding: "10px 18px",
-              borderRadius: 8,
-              cursor: "pointer",
-            }}
-          >
-            Contact Piyachon
-          </button>
-        </div>
-      </div>
+        <span
+          style={{
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+            fontSize: 12,
+            color: "#828790",
+          }}
+        >
+          © 2026 Piyachon Wanburi · Senior UX/UI Specialist · Bangkok
+        </span>
+        <button
+          onClick={onProjects}
+          style={{
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
+            fontSize: 13,
+            fontWeight: 700,
+            color: "#0A0B0D",
+            background: "#6EE7B7",
+            padding: "10px 20px",
+            borderRadius: 8,
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Explore 29 Projects ↓
+        </button>
+      </footer>
     </div>
   );
 }
@@ -4620,7 +4741,7 @@ export default function App() {
         <StackPage
           onBack={goTo("home")}
           onProjects={goTo("projects")}
-          onContact={() => setContactModalOpen(true)}
+          onSelectCv={() => setCvModalOpen(true)}
         />
       ) : (
         <HomePage
