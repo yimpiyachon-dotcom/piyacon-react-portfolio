@@ -3122,29 +3122,14 @@ function StoryPortrait() {
 
   const src = STORY_IMGS[index];
 
-  const arrow = (delta: number, glyph: string, label: string) => (
+  // Styling lives in global.css rather than inline because the arrows change
+  // position at narrow widths, and a media query cannot override inline style.
+  const arrow = (delta: number, glyph: string, label: string, side: string) => (
     <button
       type="button"
       onClick={() => step(delta)}
       aria-label={label}
-      className="story-arrow"
-      style={{
-        flex: "0 0 auto",
-        width: 36,
-        height: 36,
-        borderRadius: 9999,
-        background: "#1B1D21",
-        border: "1px solid #24262B",
-        color: "#F5F5F4",
-        fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-        fontSize: 15,
-        lineHeight: 1,
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 0,
-      }}
+      className={`story-arrow story-arrow-${side}`}
     >
       {glyph}
     </button>
@@ -3152,23 +3137,13 @@ function StoryPortrait() {
 
   return (
     <div
-      style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}
+      className="story-row"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {arrow(-1, "‹", "Previous photo")}
+      {arrow(-1, "‹", "Previous photo", "prev")}
 
-      <div
-        style={{
-          position: "relative",
-          flex: "1 1 auto",
-          minWidth: 0,
-          maxWidth: 340,
-          borderRadius: 16,
-          overflow: "hidden",
-          border: "1px solid rgba(110,231,183,0.3)",
-        }}
-      >
+      <div className="story-card">
         <img
           key={index}
           className={still ? undefined : "story-frame"}
@@ -3240,7 +3215,7 @@ function StoryPortrait() {
         </div>
       </div>
 
-      {arrow(1, "›", "Next photo")}
+      {arrow(1, "›", "Next photo", "next")}
     </div>
   );
 }
@@ -3382,8 +3357,8 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           background: "#131417",
           border: "1px solid #24262B",
           borderRadius: 20,
-          padding: "36px 36px",
         }}
+        className="about-split"
       >
         <StoryPortrait />
 
@@ -3543,7 +3518,11 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
                   {item.phase}
                 </span>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginTop: 6, marginBottom: 2 }}>
-                  <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 16, fontWeight: 700, color: item.accent, opacity: 0.7 }}>
+                  {/* No opacity here: fading the accent to 70% composited the
+                      blue phase down to #2f61b3 (3.05:1) and the purple to
+                      #7b67b6 (3.9:1), which is what Lighthouse was failing.
+                      At full strength they are 5.01:1 and 6.77:1. */}
+                  <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 16, fontWeight: 700, color: item.accent }}>
                     {item.step}
                   </span>
                 </div>
