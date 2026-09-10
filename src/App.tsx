@@ -202,7 +202,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                 <div className="nav-dot" />
                 <span
                   style={{
-                    fontFamily: "'JetBrains Mono', monospace",
+                    fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                     fontSize: 11,
                     color: "#6EE7B7",
                     fontWeight: 600,
@@ -229,7 +229,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                   borderRadius: 100,
                   padding: "6px 12px",
                   color: "#E2E8F0",
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                   fontSize: 11,
                   display: "flex",
                   alignItems: "center",
@@ -266,7 +266,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                 <div style={{ marginBottom: 2 }}>
                   <div
                     style={{
-                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
                       fontSize: 22,
                       fontWeight: 800,
                       color: "#F5F5F4",
@@ -277,7 +277,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                   </div>
                   <div
                     style={{
-                      fontFamily: "'JetBrains Mono', monospace",
+                      fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                       fontSize: 12,
                       color: "#6EE7B7",
                       marginTop: 3,
@@ -328,19 +328,19 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
               <div>
                 {/* Header row */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                     // DESIGNER DNA
                   </div>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790" }}>Flip ↻</span>
+                  <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#828790" }}>Flip ↻</span>
                 </div>
 
                 {/* Headline */}
-                <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 17, fontWeight: 700, color: "#F5F5F4", marginBottom: 8 }}>
+                <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 17, fontWeight: 700, color: "#F5F5F4", marginBottom: 8 }}>
                   5+ Years Crafting Systems
                 </div>
 
                 {/* Bio */}
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.5, margin: "0 0 16px" }}>
+                <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.5, margin: "0 0 16px" }}>
                   Product design alumnus from KMUTNB. Specializing in complex data models, progressive disclosure, and enterprise token architectures.
                 </p>
 
@@ -350,7 +350,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                     <span
                       key={t}
                       style={{
-                        fontFamily: "'JetBrains Mono', monospace",
+                        fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                         fontSize: 10,
                         padding: "3px 8px",
                         borderRadius: 6,
@@ -380,7 +380,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                     border: "none",
                     borderRadius: 8,
                     padding: "10px",
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
                     fontWeight: 700,
                     fontSize: 12,
                     cursor: "pointer",
@@ -401,7 +401,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                     border: "1px solid #24262B",
                     borderRadius: 8,
                     padding: "10px",
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "'Inter', 'Inter Fallback', sans-serif",
                     fontSize: 12,
                     cursor: "pointer",
                   }}
@@ -414,7 +414,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
         </div>
       </div>
 
-      <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#F5F5F4", fontSize: 11, fontFamily: "'JetBrains Mono', monospace" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#F5F5F4", fontSize: 11, fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace" }}>
         <span>✨ Move cursor to tilt in 3D</span>
         <span>·</span>
         <button
@@ -454,7 +454,7 @@ function Nav({
         setMobileOpen(false);
       }}
       style={{
-        fontFamily: "'JetBrains Mono', monospace",
+        fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
         fontSize: 12,
         fontWeight: 500,
         color: active ? "#6EE7B7" : "#9CA0A8",
@@ -530,7 +530,7 @@ function Nav({
           <button
             onClick={onHome}
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
               fontWeight: 800,
               fontSize: 18,
               color: "#F5F5F4",
@@ -550,7 +550,7 @@ function Nav({
               className="nav-role-badge"
               style={{
                 fontSize: 10,
-                fontFamily: "'JetBrains Mono', monospace",
+                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                 background: "#1B1D21",
                 border: "1px solid #24262B",
                 padding: "2px 7px",
@@ -574,7 +574,7 @@ function Nav({
           <button
             onClick={onContact}
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
               fontSize: 12,
               fontWeight: 700,
               background: "#6EE7B7",
@@ -674,7 +674,7 @@ function Nav({
             <div className="nav-dot" />
             <span
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
+                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                 fontSize: 12,
                 color: "#6EE7B7",
                 fontWeight: 500,
@@ -690,7 +690,7 @@ function Nav({
               setMobileOpen(false);
             }}
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 14,
               fontWeight: 500,
               color: currentPage === "home" ? "#6EE7B7" : "#F5F5F4",
@@ -711,7 +711,7 @@ function Nav({
               setMobileOpen(false);
             }}
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 14,
               fontWeight: 500,
               color: currentPage === "projects" ? "#6EE7B7" : "#F5F5F4",
@@ -736,7 +736,7 @@ function Nav({
               setMobileOpen(false);
             }}
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 14,
               fontWeight: 500,
               color: currentPage === "about" ? "#6EE7B7" : "#F5F5F4",
@@ -757,7 +757,7 @@ function Nav({
               setMobileOpen(false);
             }}
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 14,
               fontWeight: 500,
               color: currentPage === "stack" ? "#6EE7B7" : "#F5F5F4",
@@ -778,7 +778,7 @@ function Nav({
               setMobileOpen(false);
             }}
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
               fontSize: 14,
               fontWeight: 700,
               background: "#6EE7B7",
@@ -825,7 +825,7 @@ function KpiStrip() {
         <div key={i} className="kpi-card">
           <span
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 28,
               fontWeight: 700,
               color: "#F5F5F4",
@@ -836,7 +836,7 @@ function KpiStrip() {
           </span>
           <span
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Inter', 'Inter Fallback', sans-serif",
               fontSize: 13,
               color: "#9CA0A8",
               lineHeight: 1.4,
@@ -957,7 +957,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
             position: "absolute",
             bottom: 14,
             left: 14,
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Inter', 'Inter Fallback', sans-serif",
             fontSize: 13,
             color: "#6EE7B7",
             fontWeight: 600,
@@ -985,7 +985,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           <h3
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
               fontSize: 20,
               fontWeight: 700,
               color: "#F5F5F4",
@@ -997,7 +997,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
           </h3>
           <p
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Inter', 'Inter Fallback', sans-serif",
               fontSize: 14,
               color: "#9CA0A8",
               margin: 0,
@@ -1029,10 +1029,10 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
             gap: 8,
           }}
         >
-          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#6EE7B7" }}>
+          <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#6EE7B7" }}>
             {project.client}
           </span>
-          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790" }}>
+          <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#828790" }}>
             {project.timeline}
           </span>
         </div>
@@ -1081,7 +1081,7 @@ function KpiScoreboard({ kpis }: { kpis: Kpi[] }) {
         >
           <div
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 38,
               fontWeight: 700,
               color: "#6EE7B7",
@@ -1094,7 +1094,7 @@ function KpiScoreboard({ kpis }: { kpis: Kpi[] }) {
           </div>
           <div
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
               fontSize: 14,
               fontWeight: 600,
               color: "#F5F5F4",
@@ -1105,7 +1105,7 @@ function KpiScoreboard({ kpis }: { kpis: Kpi[] }) {
           </div>
           <div
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 12,
               color: "#828790",
               letterSpacing: "0.02em",
@@ -1134,7 +1134,7 @@ function BaselineStat({ stats }: { stats: Stat[] }) {
         >
           <div
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 28,
               fontWeight: 700,
               color: "#FCA5A5",
@@ -1146,7 +1146,7 @@ function BaselineStat({ stats }: { stats: Stat[] }) {
           </div>
           <div
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Inter', 'Inter Fallback', sans-serif",
               fontSize: 13,
               color: "#9CA0A8",
               lineHeight: 1.4,
@@ -1222,7 +1222,7 @@ function ShotLightbox({ shot, onClose }: { shot: { src: string; alt: string } | 
       >
         <span
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 12,
             color: "#9CA0A8",
             overflow: "hidden",
@@ -1328,7 +1328,7 @@ function CaseStudy({ project, onBack, onHome }: {
           border: "1px solid #24262B",
           borderRadius: 100,
           cursor: "pointer",
-          fontFamily: "'JetBrains Mono', monospace",
+          fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
           fontSize: 13,
           color: "#9CA0A8",
           transition: "all 150ms",
@@ -1352,7 +1352,7 @@ function CaseStudy({ project, onBack, onHome }: {
         <button
           onClick={onHome}
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 13,
             color: "#828790",
             background: "none",
@@ -1382,7 +1382,7 @@ function CaseStudy({ project, onBack, onHome }: {
         </div>
         <h1
           style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
             fontSize: "clamp(34px, 5.5vw, 52px)",
             fontWeight: 800,
             color: "#F5F5F4",
@@ -1395,7 +1395,7 @@ function CaseStudy({ project, onBack, onHome }: {
         </h1>
         <div
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 14,
             color: "#6EE7B7",
             letterSpacing: "0.02em",
@@ -1457,7 +1457,7 @@ function CaseStudy({ project, onBack, onHome }: {
               key={t.key}
               onClick={() => setActiveTab(t.key)}
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
+                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                 fontSize: 12,
                 fontWeight: 600,
                 padding: "9px 18px",
@@ -1480,7 +1480,7 @@ function CaseStudy({ project, onBack, onHome }: {
         <section hidden={!showProcess} style={{ marginBottom: 64, ...(showProcess ? null : { display: "none" }) }}>
           <div
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 11,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
@@ -1492,7 +1492,7 @@ function CaseStudy({ project, onBack, onHome }: {
           </div>
           <h2
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
               fontSize: "clamp(24px, 3vw, 32px)",
               fontWeight: 800,
               color: "#F5F5F4",
@@ -1504,7 +1504,7 @@ function CaseStudy({ project, onBack, onHome }: {
           </h2>
           <p
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Inter', 'Inter Fallback', sans-serif",
               fontSize: 15,
               color: "#9CA0A8",
               lineHeight: 1.65,
@@ -1522,7 +1522,7 @@ function CaseStudy({ project, onBack, onHome }: {
                 <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 10 }}>
                   <span
                     style={{
-                      fontFamily: "'JetBrains Mono', monospace",
+                      fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                       fontSize: 13,
                       fontWeight: 700,
                       color: "#6EE7B7",
@@ -1537,7 +1537,7 @@ function CaseStudy({ project, onBack, onHome }: {
                   </span>
                   <h3
                     style={{
-                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
                       fontSize: 19,
                       fontWeight: 700,
                       color: "#F5F5F4",
@@ -1549,7 +1549,7 @@ function CaseStudy({ project, onBack, onHome }: {
                 </div>
                 <p
                   style={{
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "'Inter', 'Inter Fallback', sans-serif",
                     fontSize: 15,
                     color: "#9CA0A8",
                     lineHeight: 1.7,
@@ -1603,7 +1603,7 @@ function CaseStudy({ project, onBack, onHome }: {
       <section style={{ marginBottom: 64 }}>
         <div
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
@@ -1616,7 +1616,7 @@ function CaseStudy({ project, onBack, onHome }: {
         <KpiScoreboard kpis={kpis} />
         <p
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Inter', 'Inter Fallback', sans-serif",
             fontSize: 16,
             color: "#9CA0A8",
             marginTop: 20,
@@ -1637,7 +1637,7 @@ function CaseStudy({ project, onBack, onHome }: {
       <section style={{ marginBottom: 64 }}>
         <div
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
@@ -1649,7 +1649,7 @@ function CaseStudy({ project, onBack, onHome }: {
         </div>
         <h2
           style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
             fontSize: 30,
             fontWeight: 700,
             color: "#F5F5F4",
@@ -1661,7 +1661,7 @@ function CaseStudy({ project, onBack, onHome }: {
         </h2>
         <p
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Inter', 'Inter Fallback', sans-serif",
             fontSize: 16,
             color: "#9CA0A8",
             lineHeight: 1.7,
@@ -1683,7 +1683,7 @@ function CaseStudy({ project, onBack, onHome }: {
       <section style={{ marginBottom: 64 }}>
         <div
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
@@ -1695,7 +1695,7 @@ function CaseStudy({ project, onBack, onHome }: {
         </div>
         <h2
           style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
             fontSize: 30,
             fontWeight: 700,
             color: "#F5F5F4",
@@ -1721,7 +1721,7 @@ function CaseStudy({ project, onBack, onHome }: {
             >
               <div
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                   fontSize: 13,
                   color: "#6EE7B7",
                   fontWeight: 600,
@@ -1734,7 +1734,7 @@ function CaseStudy({ project, onBack, onHome }: {
               <div>
                 <div
                   style={{
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
                     fontSize: 17,
                     fontWeight: 700,
                     color: "#F5F5F4",
@@ -1745,7 +1745,7 @@ function CaseStudy({ project, onBack, onHome }: {
                 </div>
                 <div
                   style={{
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "'Inter', 'Inter Fallback', sans-serif",
                     fontSize: 14,
                     color: "#9CA0A8",
                     lineHeight: 1.6,
@@ -1769,7 +1769,7 @@ function CaseStudy({ project, onBack, onHome }: {
       <section style={{ marginBottom: 64 }}>
         <div
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
@@ -1781,7 +1781,7 @@ function CaseStudy({ project, onBack, onHome }: {
         </div>
         <h2
           style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
             fontSize: 30,
             fontWeight: 700,
             color: "#F5F5F4",
@@ -1808,7 +1808,7 @@ function CaseStudy({ project, onBack, onHome }: {
                   <th
                     key={h}
                     style={{
-                      fontFamily: "'JetBrains Mono', monospace",
+                      fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                       fontSize: 11,
                       letterSpacing: "0.08em",
                       textTransform: "uppercase",
@@ -1836,7 +1836,7 @@ function CaseStudy({ project, onBack, onHome }: {
                 >
                   <td
                     style={{
-                      fontFamily: "'Inter', sans-serif",
+                      fontFamily: "'Inter', 'Inter Fallback', sans-serif",
                       fontSize: 14,
                       color: "#9CA0A8",
                       padding: "16px 20px",
@@ -1846,7 +1846,7 @@ function CaseStudy({ project, onBack, onHome }: {
                   </td>
                   <td
                     style={{
-                      fontFamily: "'JetBrains Mono', monospace",
+                      fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                       fontSize: 14,
                       color: "#828790",
                       padding: "16px 20px",
@@ -1857,7 +1857,7 @@ function CaseStudy({ project, onBack, onHome }: {
                   <td
                     className="after-val"
                     style={{
-                      fontFamily: "'JetBrains Mono', monospace",
+                      fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                       fontSize: 14,
                       color: "#F5F5F4",
                       padding: "16px 20px",
@@ -1868,7 +1868,7 @@ function CaseStudy({ project, onBack, onHome }: {
                   </td>
                   <td
                     style={{
-                      fontFamily: "'JetBrains Mono', monospace",
+                      fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                       fontSize: 14,
                       color: "#6EE7B7",
                       padding: "16px 20px",
@@ -1896,7 +1896,7 @@ function CaseStudy({ project, onBack, onHome }: {
         >
           <p
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
               fontSize: 17,
               color: "#F5F5F4",
               lineHeight: 1.6,
@@ -1908,7 +1908,7 @@ function CaseStudy({ project, onBack, onHome }: {
           </p>
           <span
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 12,
               color: "#6EE7B7",
               letterSpacing: "0.04em",
@@ -1930,7 +1930,7 @@ function CaseStudy({ project, onBack, onHome }: {
       <section style={{ marginBottom: 64 }}>
         <div
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
@@ -1942,7 +1942,7 @@ function CaseStudy({ project, onBack, onHome }: {
         </div>
         <h2
           style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
             fontSize: 30,
             fontWeight: 700,
             color: "#F5F5F4",
@@ -1957,7 +1957,7 @@ function CaseStudy({ project, onBack, onHome }: {
             <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
               <span
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                   fontSize: 13,
                   color: "#6EE7B7",
                   marginTop: 2,
@@ -1968,7 +1968,7 @@ function CaseStudy({ project, onBack, onHome }: {
               </span>
               <p
                 style={{
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Inter', 'Inter Fallback', sans-serif",
                   fontSize: 15,
                   color: "#9CA0A8",
                   lineHeight: 1.7,
@@ -2001,7 +2001,7 @@ function CaseStudy({ project, onBack, onHome }: {
         <button
           onClick={onBack}
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 13,
             color: "#828790",
             background: "none",
@@ -2269,7 +2269,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
                 border: "1px solid rgba(110,231,183,0.2)",
                 borderRadius: 100,
                 padding: "6px 14px",
-                fontFamily: "'JetBrains Mono', monospace",
+                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                 fontSize: 12,
                 color: "#6EE7B7",
                 letterSpacing: "0.04em",
@@ -2283,7 +2283,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
 
             <h1
               style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
                 fontSize: "clamp(58px, 7.5vw, 76px)",
                 fontWeight: 800,
                 color: "#F5F5F4",
@@ -2299,7 +2299,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
 
             <div
               style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
                 fontSize: "clamp(22px, 2.6vw, 24px)",
                 fontWeight: 700,
                 color: "#F5F5F4",
@@ -2312,7 +2312,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
 
             <p
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Inter', 'Inter Fallback', sans-serif",
                 fontSize: "clamp(16px, 2.5vw, 18px)",
                 color: "#9CA0A8",
                 maxWidth: 580,
@@ -2329,7 +2329,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
               <button
                 onClick={onProjects}
                 style={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
                   fontSize: 14,
                   fontWeight: 700,
                   background: "#6EE7B7",
@@ -2352,7 +2352,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
               <button
                 onClick={onAbout}
                 style={{
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Inter', 'Inter Fallback', sans-serif",
                   fontSize: 14,
                   fontWeight: 500,
                   background: "#131417",
@@ -2430,7 +2430,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
       >
         <span
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 12,
             color: "#828790",
           }}
@@ -2486,7 +2486,7 @@ function CareerMarquee() {
     <section style={{ marginBottom: 96 }} aria-labelledby="career-heading">
       <div
         style={{
-          fontFamily: "'JetBrains Mono', monospace",
+          fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
           fontSize: 11,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
@@ -2499,7 +2499,7 @@ function CareerMarquee() {
       <h2
         id="career-heading"
         style={{
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
+          fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
           fontSize: 26,
           fontWeight: 700,
           color: "#F5F5F4",
@@ -2626,7 +2626,7 @@ function SectionDivider({ label, count }: { label: string; count: number }) {
         style={{
           margin: 0,
           fontWeight: 400,
-          fontFamily: "'JetBrains Mono', monospace",
+          fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
           fontSize: 11,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
@@ -2639,7 +2639,7 @@ function SectionDivider({ label, count }: { label: string; count: number }) {
       <div style={{ flex: 1, height: 1, background: "#24262B" }} />
       <span
         style={{
-          fontFamily: "'JetBrains Mono', monospace",
+          fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
           fontSize: 11,
           color: "#6EE7B7",
           background: "#1B1D21",
@@ -2746,7 +2746,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
           border: "1px solid #24262B",
           borderRadius: 100,
           cursor: "pointer",
-          fontFamily: "'JetBrains Mono', monospace",
+          fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
           fontSize: 13,
           color: "#9CA0A8",
           backdropFilter: "blur(12px)",
@@ -2770,7 +2770,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
         <button
           onClick={onBack}
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 13,
             color: "#828790",
             background: "none",
@@ -2787,7 +2787,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
         </button>
         <div
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
@@ -2799,7 +2799,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
         </div>
         <h1
           style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
             fontSize: "clamp(34px, 5.5vw, 54px)",
             fontWeight: 800,
             color: "#F5F5F4",
@@ -2812,7 +2812,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
         </h1>
         <p
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Inter', 'Inter Fallback', sans-serif",
             fontSize: 16,
             color: "#9CA0A8",
             lineHeight: 1.6,
@@ -2831,7 +2831,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
                 key={f.key}
                 onClick={() => setFilter(f.key)}
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                   fontSize: 12,
                   fontWeight: 500,
                   letterSpacing: "0.04em",
@@ -2861,7 +2861,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
               borderRadius: 8,
               padding: "8px 14px",
               color: "#F5F5F4",
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Inter', 'Inter Fallback', sans-serif",
               fontSize: 13,
               outline: "none",
               minWidth: 260,
@@ -2933,7 +2933,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
                       position: "absolute",
                       bottom: 10,
                       right: 12,
-                      fontFamily: "'JetBrains Mono', monospace",
+                      fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                       fontSize: 11,
                       color: "#6EE7B7",
                       fontWeight: 600,
@@ -2945,10 +2945,10 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
 
                 <div style={{ padding: "16px 18px 18px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
                   <div>
-                    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", marginBottom: 3 }}>
+                    <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", marginBottom: 3 }}>
                       {p.title}
                     </div>
-                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", textTransform: "uppercase" }}>
+                    <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#828790", textTransform: "uppercase" }}>
                       {p.category}
                     </div>
                   </div>
@@ -2958,7 +2958,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
                       <span
                         key={t}
                         style={{
-                          fontFamily: "'JetBrains Mono', monospace",
+                          fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                           fontSize: 10,
                           padding: "2px 8px",
                           borderRadius: 100,
@@ -2981,13 +2981,13 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
 
       {/* Projects Footer */}
       <div style={{ borderTop: "1px solid #24262B", paddingTop: 36, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#828790" }}>
+        <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#828790" }}>
           {filteredApps.length + filteredWeb.length} of {allProjects.apps.length + allProjects.web.length} projects shown
         </span>
         <button
           onClick={onContact}
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Inter', 'Inter Fallback', sans-serif",
             fontSize: 13,
             color: "#F5F5F4",
             background: "#1B1D21",
@@ -3039,7 +3039,7 @@ function CompanyLogo({ src, name, eager = false }: { src?: string; name: string;
       {failed ? (
         <span
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 13,
             fontWeight: 700,
             color: "#6EE7B7",
@@ -3106,7 +3106,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           border: "1px solid #24262B",
           borderRadius: 100,
           cursor: "pointer",
-          fontFamily: "'JetBrains Mono', monospace",
+          fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
           fontSize: 13,
           color: "#9CA0A8",
           backdropFilter: "blur(12px)",
@@ -3129,7 +3129,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
         <button
           onClick={onBack}
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 13,
             color: "#828790",
             background: "none",
@@ -3147,7 +3147,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
 
         <div
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
@@ -3160,7 +3160,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
 
         <h1
           style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
             fontSize: "clamp(36px, 6vw, 56px)",
             fontWeight: 800,
             color: "#F5F5F4",
@@ -3175,7 +3175,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
 
         <p
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Inter', 'Inter Fallback', sans-serif",
             fontSize: 16,
             color: "#9CA0A8",
             lineHeight: 1.6,
@@ -3234,25 +3234,25 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
               border: "1px solid rgba(255,255,255,0.1)",
             }}
           >
-            <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 14, fontWeight: 700, color: "#F5F5F4" }}>
+            <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 14, fontWeight: 700, color: "#F5F5F4" }}>
               Piyachon Wanburi (Yim)
             </div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#6EE7B7" }}>
+            <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7" }}>
               Bangkok · KMUTNB Architecture Alum
             </div>
           </div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 22, fontWeight: 700, color: "#F5F5F4", margin: 0 }}>
+          <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 22, fontWeight: 700, color: "#F5F5F4", margin: 0 }}>
             Translating complex domain data into effortless human actions
           </h2>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
+          <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
             Coming from a formal background in Architecture & Product Design at KMUTNB, I look at software interfaces like physical buildings:
             spatial hierarchy, foundational durability, and purposeful wayfinding. When designing mission-critical dashboards,
             operators and analysts don't need decorative elements—they need clarity, speed, and cognitive ease under pressure.
           </p>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
+          <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
             Over the past 5 years, I've designed across ARV (PTTEP Varuna), Beurdev, and Happy Three Creation, shipping GIS monitoring tools,
             remote hardware gateways, teleconsultation systems, and 40+ high-converting web applications.
           </p>
@@ -3261,7 +3261,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             <button
               onClick={onProjects}
               style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
                 fontSize: 13,
                 fontWeight: 700,
                 color: "#0A0B0D",
@@ -3277,7 +3277,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             <button
               onClick={onSelectCv}
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
+                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                 fontSize: 12,
                 color: "#F5F5F4",
                 background: "#1B1D21",
@@ -3292,7 +3292,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             <button
               onClick={onContact}
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Inter', 'Inter Fallback', sans-serif",
                 fontSize: 13,
                 color: "#6EE7B7",
                 background: "transparent",
@@ -3310,10 +3310,10 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
 
       {/* 4-Step Methodology */}
       <section style={{ marginBottom: 64 }}>
-        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
+        <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
           METHODOLOGY
         </div>
-        <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 26, fontWeight: 700, color: "#F5F5F4", margin: "0 0 24px" }}>
+        <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 26, fontWeight: 700, color: "#F5F5F4", margin: "0 0 24px" }}>
           How I Lead End-to-End Product Design
         </h2>
 
@@ -3389,7 +3389,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
                   position: "absolute",
                   bottom: -18,
                   right: -6,
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
                   fontSize: 96,
                   fontWeight: 800,
                   color: `rgba(${item.accentRgb},0.08)`,
@@ -3404,7 +3404,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
               <div style={{ position: "relative", zIndex: 1 }}>
                 <span
                   style={{
-                    fontFamily: "'JetBrains Mono', monospace",
+                    fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                     fontSize: 11,
                     fontWeight: 600,
                     letterSpacing: "0.06em",
@@ -3415,14 +3415,14 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
                   {item.phase}
                 </span>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginTop: 6, marginBottom: 2 }}>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 16, fontWeight: 700, color: item.accent, opacity: 0.7 }}>
+                  <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 16, fontWeight: 700, color: item.accent, opacity: 0.7 }}>
                     {item.step}
                   </span>
                 </div>
-                <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", margin: "0 0 8px" }}>
+                <h3 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", margin: "0 0 8px" }}>
                   {item.title}
                 </h3>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.55, margin: 0 }}>
+                <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.55, margin: 0 }}>
                   {item.desc}
                 </p>
               </div>
@@ -3433,10 +3433,10 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
 
       {/* Experience Highlights */}
       <section style={{ marginBottom: 64 }}>
-        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
+        <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
           CAREER TRACK RECORD
         </div>
-        <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 26, fontWeight: 700, color: "#F5F5F4", margin: "0 0 24px" }}>
+        <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 26, fontWeight: 700, color: "#F5F5F4", margin: "0 0 24px" }}>
           Where I've Made An Impact
         </h2>
 
@@ -3460,17 +3460,17 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
                 <CompanyLogo src={c.logo} name={c.company} />
                 <div style={{ minWidth: 0 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" }}>
-                    <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4" }}>
+                    <span style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4" }}>
                       {c.company}
                     </span>
                     <span className="tag-chip">{c.role}</span>
                   </div>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", margin: 0, lineHeight: 1.5 }}>
                     {c.desc}
                   </p>
                 </div>
               </div>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#6EE7B7" }}>
+              <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#6EE7B7" }}>
                 {c.period}
               </span>
             </div>
@@ -3480,7 +3480,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
 
       {/* Education & Certifications */}
       <section style={{ marginBottom: 64 }}>
-        <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 26, fontWeight: 700, color: "#F5F5F4", margin: "0 0 24px" }}>
+        <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 26, fontWeight: 700, color: "#F5F5F4", margin: "0 0 24px" }}>
           Education
         </h2>
 
@@ -3499,10 +3499,10 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           >
             <span style={{ fontSize: 20, lineHeight: 1, marginTop: 2 }}>🎓</span>
             <div>
-              <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", marginBottom: 4 }}>
+              <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", marginBottom: 4 }}>
                 Bachelor of Architecture and Design, Product Design
               </div>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#9CA0A8", letterSpacing: "0.02em" }}>
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#9CA0A8", letterSpacing: "0.02em" }}>
                 KING MONGKUT'S UNIVERSITY OF TECHNOLOGY NORTH BANGKOK (KMUTNB), 2016 – 2020
               </div>
             </div>
@@ -3530,10 +3530,10 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             >
               <span style={{ fontSize: 18, lineHeight: 1, marginTop: 2 }}>📜</span>
               <div>
-                <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 15, fontWeight: 700, color: "#F5F5F4", marginBottom: 3 }}>
+                <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 15, fontWeight: 700, color: "#F5F5F4", marginBottom: 3 }}>
                   {cert.title}
                 </div>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#9CA0A8" }}>
+                <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#9CA0A8" }}>
                   {cert.school}, {cert.year}
                 </div>
               </div>
@@ -3558,7 +3558,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           <button
             onClick={onProjects}
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
               fontSize: 13,
               fontWeight: 700,
               color: "#0A0B0D",
@@ -3574,7 +3574,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           <button
             onClick={onContact}
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Inter', 'Inter Fallback', sans-serif",
               fontSize: 13,
               color: "#F5F5F4",
               background: "#1B1D21",
@@ -3692,7 +3692,7 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
           border: "1px solid #24262B",
           borderRadius: 100,
           cursor: "pointer",
-          fontFamily: "'JetBrains Mono', monospace",
+          fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
           fontSize: 13,
           color: "#9CA0A8",
           backdropFilter: "blur(12px)",
@@ -3715,7 +3715,7 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
         <button
           onClick={onBack}
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 13,
             color: "#828790",
             background: "none",
@@ -3733,7 +3733,7 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
 
         <div
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
@@ -3746,7 +3746,7 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
 
         <h1
           style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
             fontSize: "clamp(36px, 6vw, 56px)",
             fontWeight: 800,
             color: "#F5F5F4",
@@ -3761,7 +3761,7 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
 
         <p
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Inter', 'Inter Fallback', sans-serif",
             fontSize: 16,
             color: "#9CA0A8",
             lineHeight: 1.6,
@@ -3787,10 +3787,10 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
             }}
           >
             <div style={{ marginBottom: 20 }}>
-              <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 20, fontWeight: 700, color: "#F5F5F4", margin: "0 0 6px" }}>
+              <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 20, fontWeight: 700, color: "#F5F5F4", margin: "0 0 6px" }}>
                 {cat.category}
               </h2>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", margin: 0 }}>
+              <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", margin: 0 }}>
                 {cat.desc}
               </p>
             </div>
@@ -3833,13 +3833,13 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
                           />
                         </div>
                       )}
-                      <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 14, fontWeight: 700, color: "#F5F5F4" }}>
+                      <span style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 14, fontWeight: 700, color: "#F5F5F4" }}>
                         {it.name}
                       </span>
                     </div>
                     <span
                       style={{
-                        fontFamily: "'JetBrains Mono', monospace",
+                        fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                         fontSize: 10,
                         color: "#6EE7B7",
                         background: "rgba(110,231,183,0.1)",
@@ -3854,7 +3854,7 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
                       {it.level}
                     </span>
                   </div>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: "#9CA0A8", lineHeight: 1.5, margin: 0 }}>
+                  <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 12, color: "#9CA0A8", lineHeight: 1.5, margin: 0 }}>
                     {it.detail}
                   </p>
                 </div>
@@ -3880,7 +3880,7 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
           <button
             onClick={onProjects}
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
               fontSize: 13,
               fontWeight: 700,
               color: "#0A0B0D",
@@ -3896,7 +3896,7 @@ function StackPage({ onBack, onProjects, onContact }: { onBack: Handler; onProje
           <button
             onClick={onContact}
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Inter', 'Inter Fallback', sans-serif",
               fontSize: 13,
               color: "#F5F5F4",
               background: "#1B1D21",
@@ -3974,7 +3974,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
         >
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <span style={{ fontSize: 18 }}>📄</span>
-            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 16, color: "#F5F5F4" }}>
+            <span style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontWeight: 700, fontSize: 16, color: "#F5F5F4" }}>
               Piyachon Wanburi (Yim) — Resume 2026
             </span>
           </div>
@@ -3983,7 +3983,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
             <button
               onClick={handlePrint}
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
+                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                 fontSize: 12,
                 color: "#0A0B0D",
                 background: "#6EE7B7",
@@ -4060,29 +4060,29 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
                 }}
               />
               <div>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#6EE7B7", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 4 }}>
+                <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 4 }}>
                   Senior UX/UI Designer
                 </div>
-                <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 28, fontWeight: 800, margin: "0 0 4px", letterSpacing: "-0.03em" }}>
+                <h1 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 28, fontWeight: 800, margin: "0 0 4px", letterSpacing: "-0.03em" }}>
                   PIYACHON WANBURI <span style={{ color: "#6EE7B7", fontWeight: 700 }}>(Yim)</span>
                 </h1>
-                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#9CA0A8" }}>
+                <div style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8" }}>
                   Thailand, Bangkok Base · 5+ Years Experience
                 </div>
               </div>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 6, textAlign: "right" }}>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: "#F5F5F4" }}>
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: "#F5F5F4" }}>
                 📞 094-498-9917
               </div>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: "#6EE7B7" }}>
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: "#6EE7B7" }}>
                 ✉️ yimpiyachon@gmail.com
               </div>
               <a
                 href="https://www.yimpiyachon.com/"
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                   fontSize: 12,
                   color: "#9CA0A8",
                   textDecoration: "underline",
@@ -4095,10 +4095,10 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
 
           {/* About Statement */}
           <div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8 }}>
               About Me
             </div>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
+            <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
               UX/UI Designer with 5+ years of experience designing SaaS platforms, Healthcare Systems, IoT Solutions, Real Estate Platforms, and Mobile Applications.
               Experienced in leading end-to-end product design processes from user research → information architecture → wireframing, prototyping → usability testing → to developer handoff.
             </p>
@@ -4106,7 +4106,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
 
           {/* Work Experience */}
           <div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 14 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 14 }}>
               Professional Experience
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
@@ -4169,10 +4169,10 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
               ].map((exp, idx) => (
                 <div key={idx} style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 6, marginBottom: 4 }}>
-                    <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 15, fontWeight: 700, color: "#F5F5F4" }}>
+                    <span style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 15, fontWeight: 700, color: "#F5F5F4" }}>
                       {exp.role} · <span style={{ color: "#6EE7B7" }}>{exp.company}</span>
                     </span>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#828790" }}>
+                    <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#828790" }}>
                       {exp.period}
                     </span>
                   </div>
@@ -4189,19 +4189,19 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
           {/* Skills & Tools */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
             <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", marginBottom: 8 }}>
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", marginBottom: 8 }}>
                 Core UX Skills
               </div>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.6, margin: 0 }}>
+              <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.6, margin: 0 }}>
                 UX Research · Information Architecture · User Flow · Wireframing · Prototyping · Design Systems · Usability Testing
               </p>
             </div>
 
             <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", marginBottom: 8 }}>
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", marginBottom: 8 }}>
                 Design & AI Tools
               </div>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.6, margin: 0 }}>
+              <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.6, margin: 0 }}>
                 Figma · Framer · Adobe CC (XD, Illustrator, Photoshop) · ChatGPT · Claude · Gemini · Figma Make
               </p>
             </div>
@@ -4209,13 +4209,13 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
 
           {/* Education & Certifications */}
           <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>
               Education & Certifications
             </div>
-            <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 14, fontWeight: 700, color: "#F5F5F4", marginBottom: 4 }}>
+            <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 14, fontWeight: 700, color: "#F5F5F4", marginBottom: 4 }}>
               Bachelor of Architecture and Design, Product Design
             </div>
-            <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#9CA0A8", marginBottom: 10 }}>
+            <div style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", marginBottom: 10 }}>
               King Mongkut's University of Technology North Bangkok (KMUTNB) · 2016–2020
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
@@ -4275,7 +4275,7 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
     color: "#6EE7B7",
     borderRadius: 6,
     padding: "5px 12px",
-    fontFamily: "'JetBrains Mono', monospace",
+    fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
     fontSize: 11,
     cursor: "pointer",
     flexShrink: 0,
@@ -4325,10 +4325,10 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
           }}
         >✕</button>
 
-        <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 26, fontWeight: 800, color: "#F5F5F4", margin: "0 0 8px", letterSpacing: "-0.02em" }}>
+        <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 26, fontWeight: 800, color: "#F5F5F4", margin: "0 0 8px", letterSpacing: "-0.02em" }}>
           Get in Touch
         </h2>
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.55, margin: "0 0 24px" }}>
+        <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.55, margin: "0 0 24px" }}>
           Available for senior product design roles and complex enterprise systems.
         </p>
 
@@ -4336,16 +4336,16 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
           {contactItems.map((item) => (
             <div key={item.label} style={fieldStyle}>
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "#828790", textTransform: "uppercase", marginBottom: 3 }}>
+                <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 10, color: "#828790", textTransform: "uppercase", marginBottom: 3 }}>
                   {item.label}
                 </div>
                 {item.href ? (
                   <a href={item.href} target="_blank" rel="noopener noreferrer"
-                    style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: "#6EE7B7", textDecoration: "none", display: "block" }}>
+                    style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: "#6EE7B7", textDecoration: "none", display: "block" }}>
                     {item.value} ↗
                   </a>
                 ) : (
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: "#F5F5F4" }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: "#F5F5F4" }}>
                     {item.value}
                   </div>
                 )}
@@ -4360,7 +4360,7 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
           style={{
             marginTop: 24, width: "100%", padding: "12px",
             background: "#6EE7B7", color: "#0A0B0D",
-            fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 14,
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontWeight: 700, fontSize: 14,
             borderRadius: 8, border: "none", cursor: "pointer",
           }}
         >
@@ -4402,7 +4402,7 @@ function Toast({ message, onClose }: { message: string | null; onClose: Handler 
       }}
     >
       <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#6EE7B7" }} />
-      <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#F5F5F4", fontWeight: 500 }}>
+      <span style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#F5F5F4", fontWeight: 500 }}>
         {message}
       </span>
     </div>
@@ -4510,6 +4510,12 @@ const PAGE_TITLES: Record<Route["page"], string> = {
 
 export default function App() {
   const [route, setRoute] = useState<Route>(() => parseRoute(window.location.pathname));
+  // page-enter fades the view up from opacity 0. That is right for a route
+  // change and wrong for the first load: the prerendered markup is already on
+  // screen, but an element at opacity 0 is not a Largest Contentful Paint
+  // candidate, so LCP was waiting on the fade instead of landing on the paint
+  // that had already happened. Set only once the reader actually navigates.
+  const [hasNavigated, setHasNavigated] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [cvModalOpen, setCvModalOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -4523,6 +4529,7 @@ export default function App() {
   const navigate = useCallback((next: Route) => {
     const path = routeToPath(next);
     if (path !== window.location.pathname) window.history.pushState(null, "", path);
+    setHasNavigated(true);
     setRoute(next);
   }, []);
 
@@ -4539,7 +4546,10 @@ export default function App() {
   // The back/forward buttons change the URL without going through navigate(),
   // so mirror the browser's history state back into React here.
   useEffect(() => {
-    const syncFromUrl = () => setRoute(parseRoute(window.location.pathname));
+    const syncFromUrl = () => {
+      setHasNavigated(true);
+      setRoute(parseRoute(window.location.pathname));
+    };
     window.addEventListener("popstate", syncFromUrl);
     return () => window.removeEventListener("popstate", syncFromUrl);
   }, []);
@@ -4564,6 +4574,7 @@ export default function App() {
   // top progress bar, which is what makes navigation read as a page change.
   const routeKey = activeProject ? `case-study:${activeProject}` : page;
 
+
   return (
     <div style={{ minHeight: "100vh", background: "#0A0B0D" }}>
       {/* Navigation Header */}
@@ -4579,7 +4590,7 @@ export default function App() {
       {/* Conditional View Rendering */}
       <div key={routeKey}>
         <div className="route-progress" aria-hidden="true" />
-        <main className="page-enter">
+        <main className={hasNavigated ? "page-enter" : undefined}>
       {selectedCaseStudy ? (
         <CaseStudy
           /* Keyed by project so switching case studies remounts with a fresh tab state. */
