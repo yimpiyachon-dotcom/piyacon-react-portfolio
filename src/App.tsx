@@ -3147,11 +3147,19 @@ function StoryPortrait() {
         <img
           key={index}
           className={still ? undefined : "story-frame"}
-          loading="lazy"
+          // The first frame is the LCP element on /about, so it must not be
+          // lazy and must be prioritised; Lighthouse fails both checks
+          // otherwise. Later frames are only ever reached by the timer or an
+          // arrow, long after load, so they stay lazy and unprioritised.
+          {...(index === 0 ? highFetchPriority : null)}
+          loading={index === 0 ? "eager" : "lazy"}
           decoding="async"
           src={src}
           srcSet={srcSetFor(src)}
-          sizes="340px"
+          // The card is capped at 340px but fills the column on a phone, where
+          // .about-split drops to 20px of padding inside the page's 24px.
+          // A flat "340px" overstated it by 20px and pulled a wider variant.
+          sizes="(max-width: 700px) calc(100vw - 88px), 340px"
           alt="Piyachon Wanburi"
           onError={(e) => {
             e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&fit=crop&auto=format";
