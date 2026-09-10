@@ -149,7 +149,8 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                 height={1066}
                 src={PROFILE_IMG}
                 srcSet={srcSetFor(PROFILE_IMG)}
-                sizes="(max-width: 700px) 90vw, 360px"
+                // The portrait is a fixed 344px at every viewport.
+                sizes="344px"
                 alt="Piyachon Wanburi (Yim) - Senior UX/UI Designer"
                 onError={(e) => {
                   e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&fit=crop&auto=format";
@@ -857,7 +858,10 @@ function LazyImage({
   style,
   onError,
   eager = false,
-  sizes = "(max-width: 700px) 100vw, 560px",
+  // Measured, not guessed: the card is never the full viewport. At the 412px
+  // profile Lighthouse emulates it renders 362px wide, so "100vw" was asking
+  // for a 721px source and pulling the 800w file when 640w covers it.
+  sizes = "(max-width: 700px) calc(100vw - 48px), (max-width: 940px) 720px, (max-width: 1200px) 520px, 380px",
 }: {
   src?: string;
   alt?: string;
@@ -1426,7 +1430,7 @@ function CaseStudy({ project, onBack, onHome }: {
           // low priority after layout and landed at 3.6 s; eager lets the preload
           // scanner pull it straight out of the prerendered markup.
           eager
-          sizes="(max-width: 940px) 100vw, 892px"
+          sizes="(max-width: 940px) calc(100vw - 50px), 890px"
           onError={(e) => {
             e.currentTarget.src = "https://placehold.co/900x560/1a1b1f/6EE7B7?text=Hero+Platform+Mockup";
           }}
@@ -1571,7 +1575,7 @@ function CaseStudy({ project, onBack, onHome }: {
                           src={src}
                           alt={shotAlt}
                           frameStyle={shotFrameStyle(src)}
-                          sizes="(max-width: 940px) 100vw, 892px"
+                          sizes="(max-width: 940px) calc(100vw - 50px), 890px"
                           style={{ width: "100%", display: "block" }}
                         />
                         {/* Covers the board so a tap anywhere opens it, and carries
