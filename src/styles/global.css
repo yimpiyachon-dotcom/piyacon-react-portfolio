@@ -1174,12 +1174,18 @@ body {
   text-overflow: ellipsis;
 }
 
+/* contain, not cover: the covers are device mockups, and the point of the
+   frame is the screen inside them. Cropping to a fixed box cut the screen off
+   the five square covers by about a third and the two portrait ones by half.
+   The box is 3:2 because 18 of the 29 already are, so most fill it exactly and
+   the rest sit on the page's own background like a site that does not fill the
+   window. */
 .shot-card img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top center;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background: #0a0b0d;
 }
 
 /* Without the animation the rails would be dead, unreachable rows, so they

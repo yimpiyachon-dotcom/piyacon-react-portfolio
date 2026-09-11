@@ -2433,10 +2433,10 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
         ))}
       </div>
 
+      <ShotRails onSelect={onSelect} />
+
       {/* About Strip Banner */}
       <CareerMarquee />
-
-      <ShotRails onSelect={onSelect} />
 
       <CtaBanner onSelectCv={onSelectCv} />
 
