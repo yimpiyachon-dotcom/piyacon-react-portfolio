@@ -1073,3 +1073,131 @@ body {
     animation: none;
   }
 }
+
+/* ---- Shot rails (home page) ----
+   Two rails of browser-framed covers, one per direction, built on the same
+   two-copies-travel-one-copy trick as the career rail above. Every project is
+   in here, so the rails are the only place the homepage shows all 29 without
+   turning into a wall of cards. */
+.shot-rail {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.shot-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: shot-scroll 82s linear infinite;
+}
+
+/* The second rail runs the other way and a little slower, so the two never
+   line up into one block sliding across. */
+.shot-track-reverse {
+  animation-duration: 94s;
+  animation-direction: reverse;
+}
+
+.shot-clone {
+  display: contents;
+}
+
+/* Half the gap comes off the 50%, or the seam shows as a jump. */
+@keyframes shot-scroll {
+  to {
+    transform: translateX(calc(-50% - 8px));
+  }
+}
+
+.shot-rail:hover .shot-track,
+.shot-rail:focus-within .shot-track {
+  animation-play-state: paused;
+}
+
+.shot-card {
+  flex: 0 0 clamp(232px, 64vw, 306px);
+  display: block;
+  padding: 0;
+  text-align: left;
+  background: #131417;
+  border: 1px solid #24262b;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.shot-card:hover,
+.shot-card:focus-visible {
+  border-color: rgba(110, 231, 183, 0.45);
+  transform: translateY(-3px);
+}
+
+/* Browser chrome. The dots stay monochrome rather than red/amber/green: the
+   shape and position already read as a title bar, and three saturated hues
+   would be the only colours on the page that are not the mint accent. */
+.shot-chrome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: #1b1d21;
+  border-bottom: 1px solid #24262b;
+}
+
+.shot-dots {
+  display: flex;
+  gap: 5px;
+  flex: 0 0 auto;
+}
+
+.shot-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3a3d44;
+}
+
+.shot-url {
+  flex: 1;
+  min-width: 0;
+  background: #0a0b0d;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-family: 'JetBrains Mono', 'JetBrains Fallback', monospace;
+  font-size: 12px;
+  color: #9ca0a8;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shot-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Without the animation the rails would be dead, unreachable rows, so they
+   become ordinary scrollers and the duplicate cards are dropped. */
+@media (prefers-reduced-motion: reduce) {
+  .shot-rail {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .shot-track {
+    animation: none;
+  }
+  .shot-clone {
+    display: none;
+  }
+  .shot-card:hover,
+  .shot-card:focus-visible {
+    transform: none;
+  }
+}

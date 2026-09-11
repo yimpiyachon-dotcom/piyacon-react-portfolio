@@ -2436,6 +2436,8 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
       {/* About Strip Banner */}
       <CareerMarquee />
 
+      <ShotRails onSelect={onSelect} />
+
       <CtaBanner onSelectCv={onSelectCv} />
 
       {/* Footer */}
@@ -2539,6 +2541,109 @@ function CareerMarquee() {
             {career.map(card)}
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/**
+ * Every project's cover, framed as a browser window and drifting across two
+ * rails. The homepage shows nine cards in full; this is how the other twenty
+ * get seen without adding another screen of grid to scroll past.
+ *
+ * The address bar carries the project title rather than a domain: the data has
+ * no URL field, and inventing one would put a hostname on screen that does not
+ * exist.
+ */
+function ShotRails({ onSelect }: { onSelect: (id: string) => void }) {
+  const all = useMemo(() => [...projects, ...webProjects], []);
+  const rows = useMemo(() => {
+    const half = Math.ceil(all.length / 2);
+    return [all.slice(0, half), all.slice(half)];
+  }, [all]);
+
+  const card = (p: (typeof all)[number], key: string, cloned: boolean) => (
+    <button
+      key={key}
+      type="button"
+      className="shot-card"
+      // The clone exists only to make the loop seamless; letting it take focus
+      // would put every project in the tab order twice.
+      tabIndex={cloned ? -1 : undefined}
+      aria-hidden={cloned || undefined}
+      onClick={() => onSelect(p.id)}
+    >
+      <span className="shot-chrome">
+        <span className="shot-dots" aria-hidden="true">
+          <span className="shot-dot" />
+          <span className="shot-dot" />
+          <span className="shot-dot" />
+        </span>
+        <span className="shot-url">{p.title}</span>
+      </span>
+      <img
+        loading="lazy"
+        decoding="async"
+        src={p.image}
+        srcSet={srcSetFor(p.image)}
+        sizes="(max-width: 480px) 64vw, 306px"
+        alt={`${p.title} — open the case study`}
+      />
+    </button>
+  );
+
+  return (
+    <section style={{ marginBottom: 96 }} aria-labelledby="shots-heading">
+      <div
+        style={{
+          fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+          fontSize: 12,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "#828790",
+          marginBottom: 12,
+        }}
+      >
+        The Full Archive
+      </div>
+      <h2
+        id="shots-heading"
+        style={{
+          fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
+          fontSize: 26,
+          fontWeight: 700,
+          color: "#F5F5F4",
+          margin: "0 0 10px",
+          letterSpacing: "-0.02em",
+        }}
+      >
+        {all.length} projects, end to end.
+      </h2>
+      <p
+        style={{
+          fontFamily: "'Inter', 'Inter Fallback', sans-serif",
+          fontSize: 15,
+          color: "#9CA0A8",
+          lineHeight: 1.6,
+          margin: "0 0 28px",
+          maxWidth: 620,
+        }}
+      >
+        Enterprise platforms, GIS command centres and brand builds. Pick any
+        cover to read how it was designed.
+      </p>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        {rows.map((row, r) => (
+          <div className="shot-rail" key={r}>
+            <div className={r === 1 ? "shot-track shot-track-reverse" : "shot-track"}>
+              {row.map((p) => card(p, p.id, false))}
+              <span className="shot-clone">
+                {row.map((p) => card(p, `${p.id}-clone`, true))}
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
