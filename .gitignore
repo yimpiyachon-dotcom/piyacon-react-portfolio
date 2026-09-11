@@ -38,3 +38,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AI & Design System Skills
+accessibility/
+components/
+content/
+design-systems/
+frameworks/
+scripts/
+taste/
+tokens/
+workflows/
+.claude/
+CLAUDE.md

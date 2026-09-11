@@ -2247,6 +2247,300 @@ function TypewriterText() {
   );
 }
 
+/**
+ * The design thinking model, played out as the section scrolls past: each of
+ * the three phases gets the stage to itself, then the last frame assembles
+ * them into the double diamond they belong to.
+ *
+ * Colours are the ones the About page's methodology cards already use, so a
+ * visitor who reads both sees one palette rather than two: Discover keeps its
+ * own mint, Design takes the accent from Systemize (creation, ideas) and
+ * Deliver takes Validate's (testing, shipped reality).
+ */
+const DT_ICONS = {
+  // Every icon is drawn to fill roughly 2-22 of the 24 box. Left at their
+  // natural extents they inked about two thirds of it, so a 92px icon read as
+  // a 60px one and the row looked underweight next to the headline.
+
+  // Empathy: a person, and the thing you are actually there for.
+  empathy: (
+    <>
+      <circle cx="9" cy="7" r="4" />
+      <path d="M2 21c0-4 3.1-6.4 7-6.4 1.2 0 2.4.2 3.4.7" />
+      <path d="M18.2 14.3c1.1-1.2 2.8-.7 2.8.9 0 1.5-1.8 3.1-2.8 3.9-1-.8-2.8-2.4-2.8-3.9 0-1.6 1.7-2.1 2.8-.9z" />
+    </>
+  ),
+  // Define: the point all that understanding narrows to.
+  define: (
+    <>
+      <circle cx="10.5" cy="13.5" r="8" />
+      <circle cx="10.5" cy="13.5" r="4.4" />
+      <circle cx="10.5" cy="13.5" r="1.1" />
+      <path d="M10.5 13.5 21 3" />
+      <path d="M17 3h4v4" />
+    </>
+  ),
+  // Ideate: the widest part of the second diamond.
+  ideate: (
+    <>
+      <circle cx="12" cy="10" r="5.6" />
+      <path d="M9.4 17.4h5.2M10.2 20.2h3.6" />
+      <path d="M12 1.2v2.2M4.6 4.2l1.6 1.6M19.4 4.2l-1.6 1.6M2 11.2h2.2M19.8 11.2H22" />
+    </>
+  ),
+  // Prototype: the idea, finally in a frame.
+  prototype: (
+    <>
+      <rect x="2" y="3" width="20" height="18" rx="2.5" />
+      <path d="M2 8h20" />
+      <rect x="5" y="11" width="7" height="7" rx="1" />
+      <path d="M14.5 12h4.5M14.5 15h4.5M14.5 18h3" />
+    </>
+  ),
+  // Test: the part that decides whether any of it was true.
+  test: (
+    <>
+      <rect x="2.5" y="3" width="19" height="18" rx="2.5" />
+      <path d="M8.5 3V1.8A1.2 1.2 0 0 1 9.7.6h4.6a1.2 1.2 0 0 1 1.2 1.2V3" />
+      <path d="M6.5 9.8 8.4 11.7 11.8 8.3" />
+      <path d="M14 10.2h4" />
+      <path d="M6.5 16.3 8.4 18.2 11.8 14.8" />
+      <path d="M14 16.7h4" />
+    </>
+  ),
+};
+
+const DT_PHASES = [
+  {
+    title: "Discover",
+    line: "Understanding ends in insight",
+    accent: "#6EE7B7",
+    shape: "hexagon" as const,
+    steps: [
+      { label: "Empathy", icon: DT_ICONS.empathy },
+      { label: "Define", icon: DT_ICONS.define },
+    ],
+  },
+  {
+    title: "Design",
+    line: "Creation ends in ideas",
+    accent: "#A78BFA",
+    shape: "triangle" as const,
+    steps: [{ label: "Ideate", icon: DT_ICONS.ideate }],
+  },
+  {
+    title: "Deliver",
+    line: "Delivery ends in reality",
+    accent: "#FCD34D",
+    shape: "square" as const,
+    steps: [
+      { label: "Prototype", icon: DT_ICONS.prototype },
+      { label: "Test", icon: DT_ICONS.test },
+    ],
+  },
+];
+
+function DtIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <svg
+      className="dt-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {children}
+    </svg>
+  );
+}
+
+/**
+ * Tells a visitor there is more below the fold.
+ *
+ * The hero ends on the KPI row and the next thing down is a sticky stage, so
+ * without a cue the page looks like it stops there — the screen below the KPIs
+ * is empty until you scroll into it.
+ */
+/* Drawn as SVG rather than as a bordered box: a clip-path cuts a border off
+   with the rest of the box, so anything that is not a circle or a rectangle
+   has no outline to speak of. non-scaling-stroke (set in CSS on the shape)
+   keeps every one of them at a hairline however far the bank is scaled. */
+const DT_ORBIT_SHAPES = {
+  circle: <circle cx="50" cy="50" r="49" />,
+  square: <rect x="1" y="1" width="98" height="98" rx="3" />,
+  triangle: <polygon points="50,3 95,92 5,92" />,
+  hexagon: <polygon points="50,2 92,26 92,74 50,98 8,74 8,26" />,
+};
+
+type DtShape = keyof typeof DT_ORBIT_SHAPES;
+
+/**
+ * A bank of overlapping outlines behind a frame's headline. The dark middle of
+ * the stage was reading as a hole; the shapes give it structure at a weight
+ * that stays behind the type, and they widen as the frame's window passes so
+ * the backdrop is never the same twice. Each phase carries its own shape, so
+ * the three of them are told apart by silhouette and not by colour alone.
+ */
+function DtOrbits({ shape }: { shape: DtShape }) {
+  return (
+    <span className={`dt-orbits dt-orbits-${shape}`} aria-hidden="true">
+      {[0, 1, 2, 3, 4, 5].map((i) => (
+        <svg className="dt-orbit" key={i} viewBox="0 0 100 100" style={{ ["--i" as string]: i }}>
+          {DT_ORBIT_SHAPES[shape]}
+        </svg>
+      ))}
+    </span>
+  );
+}
+
+function ScrollCue() {
+  return (
+    <div className="scroll-cue" aria-hidden="true">
+      <span className="scroll-cue-label">Scroll</span>
+      <span className="scroll-cue-rail">
+        <span className="scroll-cue-dot" />
+      </span>
+    </div>
+  );
+}
+
+function DesignThinking() {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    // A sequence that only makes sense once it has moved is no use to someone
+    // who asked for less motion; they get every frame laid out at once, which
+    // the stylesheet handles from the same media query.
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = el.getBoundingClientRect();
+      const travel = r.height - window.innerHeight;
+      const p = travel <= 0 ? 1 : Math.min(1, Math.max(0, -r.top / travel));
+      // Written straight to the node: routing this through React state would
+      // re-render the whole section on every frame of every scroll.
+      el.style.setProperty("--p", p.toFixed(4));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // Each frame owns a window of the scroll. --from/--to fade it at the edges;
+  // --span lets the stylesheet turn the section's global progress into a local
+  // 0-to-1 for that window, which is what every entrance below is timed on.
+  // 0.38 wide on a 0.27 step: the 0.11 of overlap is exactly how long a frame
+  // takes to fade at the rate the stylesheet uses, so one hands over to the
+  // next without a dark beat in between.
+  //
+  // The first frame opens at -0.12 rather than 0 so that it is already fully
+  // opaque when the stage pins. Held at a partial opacity instead, its mint
+  // eyebrow composited down to #316250 — 2.8:1 on the page background, which
+  // axe reports as a contrast failure on page load. It still plays its
+  // entrance: the layer is solid, the pieces inside it are what move.
+  const WINDOW = 0.38;
+  const win = (from: number) =>
+    ({ "--from": from, "--to": from + WINDOW, "--span": 1 / WINDOW }) as React.CSSProperties;
+
+  return (
+    <section className="dt" ref={ref} aria-labelledby="dt-heading">
+      <h2 id="dt-heading" className="dt-sr">
+        How I work: the design thinking model
+      </h2>
+
+      <div className="dt-stage">
+        {DT_PHASES.map((phase, i) => (
+          <div
+            className="dt-layer dt-phase"
+            key={phase.title}
+            style={{ ...win(i * 0.27 - 0.12), ["--accent" as string]: phase.accent }}
+          >
+            {/* A wash of the phase colour that swells behind the icons. It is
+                the only thing on the frame that is not type, and it is what
+                gives each phase its own temperature. */}
+            <span className="dt-glow" aria-hidden="true" />
+            <DtOrbits shape={phase.shape} />
+
+            <p className="dt-eyebrow dt-rise" style={{ ["--delay" as string]: 0 }}>
+              {String(i + 1).padStart(2, "0")} · {phase.title}
+            </p>
+            <p className="dt-line dt-rise" style={{ ["--delay" as string]: 0.06 }}>
+              {phase.line}
+            </p>
+            <div className="dt-steps">
+              {phase.steps.map((s, j) => (
+                <React.Fragment key={s.label}>
+                  {j > 0 && (
+                    <span className="dt-join dt-rise" style={{ ["--delay" as string]: 0.16 }} aria-hidden="true">
+                      <span className="dt-join-line" />
+                    </span>
+                  )}
+                  <span className="dt-step dt-rise" style={{ ["--delay" as string]: 0.12 + j * 0.06 }}>
+                    <span className="dt-ring">
+                      <DtIcon>{s.icon}</DtIcon>
+                    </span>
+                    <span className="dt-step-label">{s.label}</span>
+                  </span>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {/* The three of them, finally on one screen. */}
+        <div className="dt-layer dt-all" style={{ ...win(0.69), ["--to" as string]: 2 }}>
+          <DtOrbits shape="circle" />
+
+          <p className="dt-all-title dt-rise" style={{ ["--delay" as string]: 0 }}>
+            Design Thinking Model
+          </p>
+
+          <div className="dt-groups">
+            {DT_PHASES.map((phase, i) => (
+              <div
+                className="dt-group dt-rise"
+                key={phase.title}
+                style={{ ["--accent" as string]: phase.accent, ["--delay" as string]: 0.1 + i * 0.07 }}
+              >
+                <div className="dt-group-icons">
+                  {phase.steps.map((s) => (
+                    <span className="dt-step" key={s.label}>
+                      <span className="dt-ring">
+                        <DtIcon>{s.icon}</DtIcon>
+                      </span>
+                      <span className="dt-step-label">{s.label}</span>
+                    </span>
+                  ))}
+                </div>
+                <span className="dt-group-bar" aria-hidden="true" />
+                <p className="dt-group-title">{phase.title}</p>
+                <p className="dt-group-line">{phase.line}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
   onSelect: (id: string) => void;
   onProjects: Handler;
@@ -2401,7 +2695,10 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
         </div>
 
         <KpiStrip />
+        <ScrollCue />
       </section>
+
+      <DesignThinking />
 
       {/* Featured Web Application Projects */}
       <div className="section-head" style={{ marginBottom: 32 }}>
