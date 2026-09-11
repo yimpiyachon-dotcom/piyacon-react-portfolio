@@ -938,15 +938,31 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
             background: "linear-gradient(to bottom, rgba(10,11,13,0.2) 0%, rgba(10,11,13,0.75) 100%)",
           }}
         />
-        {/* Badges */}
-        {project.badges && project.badges[0] && (
-          <div style={{ position: "absolute", top: 14, left: 14 }}>
-            <div className="metric-badge">{project.badges[0].label}</div>
-          </div>
-        )}
-        {project.badges && project.badges[1] && (
-          <div style={{ position: "absolute", top: 14, right: 14 }}>
-            <div className="metric-badge metric-badge-neutral">{project.badges[1].label}</div>
+        {/* Badges — the top pair share one row rather than being anchored to
+            opposite corners independently. Anchored separately they had no way
+            to know about each other, so a card with two long labels (Dr.
+            Smoothlife) overlapped them by 6px at 11px type and 33px at 12px.
+            marginLeft:auto keeps the second one right-aligned whether it sits
+            beside the first or wraps below it. */}
+        {project.badges && (project.badges[0] || project.badges[1]) && (
+          <div
+            style={{
+              position: "absolute",
+              top: 14,
+              left: 14,
+              right: 14,
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "flex-start",
+              gap: 8,
+            }}
+          >
+            {project.badges[0] && <div className="metric-badge">{project.badges[0].label}</div>}
+            {project.badges[1] && (
+              <div className="metric-badge metric-badge-neutral" style={{ marginLeft: "auto" }}>
+                {project.badges[1].label}
+              </div>
+            )}
           </div>
         )}
         {project.badges && project.badges[2] && (
