@@ -965,11 +965,10 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
             )}
           </div>
         )}
-        {project.badges && project.badges[2] && (
-          <div style={{ position: "absolute", bottom: 14, right: 14 }}>
-            <div className="metric-badge">{project.badges[2].label}</div>
-          </div>
-        )}
+        {/* No third badge down here: it sat bottom-right, which is the same
+            strip the hover CTA occupies, and on the narrower cards the two
+            overlapped by up to 20px. The cover already carries two metrics and
+            the rest are in the card body, so the badge was the one to drop. */}
         {/* Hover CTA */}
         <div
           className="cta-reveal"
