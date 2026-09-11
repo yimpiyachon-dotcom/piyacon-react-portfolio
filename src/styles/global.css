@@ -1081,6 +1081,12 @@ body {
    turning into a wall of cards. */
 .shot-rail {
   overflow: hidden;
+  /* The vertical padding is what the hover lift moves into. overflow:hidden
+     clips at the padding box, so without it a raised card lost its top edge
+     and its accent border to the rail and read as a rendering fault. It cannot
+     be solved by letting one axis overflow: a box with overflow-x hidden
+     computes overflow-y to auto, which would put a scrollbar here. */
+  padding: 10px 0;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
@@ -1174,17 +1180,20 @@ body {
   text-overflow: ellipsis;
 }
 
-/* contain, not cover: the covers are device mockups, and the point of the
-   frame is the screen inside them. Cropping to a fixed box cut the screen off
-   the five square covers by about a third and the two portrait ones by half.
-   The box is 3:2 because 18 of the 29 already are, so most fill it exactly and
-   the rest sit on the page's own background like a site that does not fill the
-   window. */
+/* The box is 3:2 because 18 of the 29 covers already are, so most are shown
+   untouched. The other eleven are zoomed to fill it from the centre rather
+   than letterboxed: bars down the side of a third of the rail looked like a
+   loading fault, and a centred crop of a 1:1 or portrait mockup still keeps
+   the whole device screen, which is checked per cover.
+
+   Centre, not top: cropping only the bottom is what cut the screens off the
+   taller mockups in the first place. */
 .shot-card img {
   display: block;
   width: 100%;
   aspect-ratio: 3 / 2;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   background: #0a0b0d;
 }
 
