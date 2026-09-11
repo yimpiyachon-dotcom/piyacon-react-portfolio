@@ -16,7 +16,6 @@ export const projects = [
     badges: [
       { label: "−58% Audit Time", positive: true },
       { label: "12-Screen System", positive: null },
-      { label: "3-Role IA", positive: null },
     ],
     kpis: [
       { value: "−58%", label: "Field survey dependency", sub: "audit hours reduced per month" },
@@ -77,7 +76,6 @@ export const projects = [
     badges: [
       { label: "−71% Alert Fatigue", positive: true },
       { label: "+88% Response Rate", positive: true },
-      { label: "4.8★ CSAT", positive: null },
     ],
     kpis: [
       { value: "−71%", label: "Operator alert fatigue", sub: "false-positive dismissals/shift" },
@@ -137,7 +135,6 @@ export const projects = [
     badges: [
       { label: "−62% Setup Time", positive: true },
       { label: "99.4% Node Uptime", positive: true },
-      { label: "400+ Gateways", positive: null },
     ],
     kpis: [
       { value: "−62%", label: "Node provisioning time", sub: "batch hardware setup per technician" },
@@ -197,7 +194,6 @@ export const projects = [
     badges: [
       { label: "+91% Diagnostic Accuracy", positive: true },
       { label: "15k+ Farmers", positive: null },
-      { label: "−40% Crop Loss", positive: true },
     ],
     kpis: [
       { value: "+91%", label: "Crop disease triage rate", sub: "via offline on-device camera ML" },
@@ -255,9 +251,8 @@ export const projects = [
     image: "/img/cover/dr-smoothlife.webp",
     imageAlt: "Doctor utilizing telemedicine workspace and digital consultation platform",
     badges: [
-      { label: "+68% Consultation Comp", positive: true },
-      { label: "−52% Prescription Drop", positive: true },
-      { label: "3.2m Avg Connect", positive: null },
+      { label: "+68% Call Completion", positive: true },
+      { label: "−52% Cart Drop-off", positive: true },
     ],
     kpis: [
       { value: "+68%", label: "Consultation completion", sub: "zero tech dropouts during calls" },
@@ -317,7 +312,6 @@ export const projects = [
     badges: [
       { label: "Symptom-First IA", positive: null },
       { label: "Multi-Gateway Checkout", positive: null },
-      { label: "Mobile-First", positive: null },
     ],
     kpis: [
       { value: "↓ Friction", label: "Symptom-based discovery", sub: "products mapped to symptoms, not chemical names" },
@@ -378,7 +372,6 @@ export const projects = [
     badges: [
       { label: "Geospatial Viz", positive: null },
       { label: "Modular Dashboard", positive: null },
-      { label: "Real-Time Alerts", positive: null },
     ],
     kpis: [
       { value: "1 view", label: "Unified metric dashboard", sub: "vs. fragmented single-purpose GIS tools" },
@@ -439,7 +432,6 @@ export const projects = [
     badges: [
       { label: "Omnichannel CRM", positive: null },
       { label: "Branding Refresh", positive: null },
-      { label: "O2O Loyalty", positive: null },
     ],
     kpis: [
       { value: "O2O", label: "Unified loyalty sync", sub: "points & coupons valid online and in-store" },
@@ -500,7 +492,6 @@ export const projects = [
     badges: [
       { label: "Neighborhood Map", positive: null },
       { label: "Progressive Disclosure", positive: null },
-      { label: "Lead Gen UX", positive: null },
     ],
     kpis: [
       { value: "1 journey", label: "Discovery + neighborhood", sub: "eliminated cross-app tab fatigue" },

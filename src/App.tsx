@@ -954,7 +954,10 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
               display: "flex",
               flexWrap: "wrap",
               alignItems: "flex-start",
-              gap: 8,
+              // 6, not 8: three of the pairs needed 335px of a 334px row at
+              // 412px and wrapped over a single pixel. Two back gets all of
+              // them onto one line without the labels having to shrink again.
+              gap: 6,
             }}
           >
             {project.badges[0] && <div className="metric-badge">{project.badges[0].label}</div>}
