@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx}\" \"*.{json,html,js}\"",
     "check": "node scripts/check-assets.mjs && node scripts/check-data.mjs && node scripts/check-render.mjs && knip",
-    "generate": "node scripts/gen-fonts.mjs && node scripts/gen-image-sizes.mjs && node scripts/gen-sitemap.mjs"
+    "generate": "node scripts/gen-fonts.mjs && node scripts/gen-image-sizes.mjs && node scripts/gen-og.mjs && node scripts/gen-sitemap.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

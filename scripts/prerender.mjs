@@ -23,7 +23,24 @@ execFileSync('npx', ['vite', 'build', '--ssr', 'src/entry-server.tsx', '--outDir
 });
 
 installDomStubs();
-const { render, routeTitles } = await import(`../${SSR_OUT}/entry-server.js`);
+const { render, routes } = await import(`../${SSR_OUT}/entry-server.js`);
+
+const SITE = 'https://www.yimpiyachon.com';
+/** HTML-escapes a value being written into an attribute. */
+const attr = (v) => v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+
+/**
+ * Rewrites one meta tag's content. Throws rather than silently doing nothing:
+ * a renamed attribute in index.html would otherwise ship 33 pages that all
+ * unfurl as the template default, which is the bug this replaces.
+ */
+function setMeta(html, key, value) {
+  // index.html wraps the longer tags across lines, so attributes may be
+  // separated by a newline rather than a single space.
+  const tag = new RegExp(`(<meta\\s+(?:property|name)="${key}"\\s+content=")[^"]*(")`);
+  if (!tag.test(html)) throw new Error(`index.html has no ${key} meta tag to fill`);
+  return html.replace(tag, `$1${attr(value)}$2`);
+}
 
 let template = readFileSync(join(DIST, 'index.html'), 'utf8');
 
@@ -53,13 +70,29 @@ const HERO_PRELOAD = /\s*<link\s+rel="preload"\s+as="image"[\s\S]*?\/>/;
 if (!HERO_PRELOAD.test(template)) console.warn('[prerender] hero preload not found');
 
 let written = 0;
-for (const [path, title] of Object.entries(routeTitles)) {
+for (const [path, meta] of Object.entries(routes)) {
   const base = path === '/' ? template : template.replace(HERO_PRELOAD, '');
-  const html = base
+  const url = SITE + path;
+  let html = base
     .replace(ROOT, `<div id="root">${render(path)}</div>`)
-    .replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
-    .replace(/(<link rel="canonical" href="https:\/\/www\.yimpiyachon\.com)\/"/, `$1${path === '/' ? '/' : path}"`)
-    .replace(/(<meta property="og:url" content="https:\/\/www\.yimpiyachon\.com)\/"/, `$1${path === '/' ? '/' : path}"`);
+    .replace(/<title>[^<]*<\/title>/, `<title>${attr(meta.title)}</title>`)
+    .replace(/(<link rel="canonical" href="https:\/\/www\.yimpiyachon\.com)\/"/, `$1${path === '/' ? '/' : path}"`);
+
+  // Crawlers and link unfurlers never run the JS, so whatever these say in the
+  // static file is final. Every route stamps its own.
+  for (const [key, value] of [
+    ['description', meta.description],
+    ['og:url', url],
+    ['og:title', meta.shareTitle],
+    ['og:description', meta.description],
+    ['og:image', SITE + meta.image],
+    ['og:image:alt', meta.shareTitle],
+    ['twitter:title', meta.shareTitle],
+    ['twitter:description', meta.description],
+    ['twitter:image', SITE + meta.image],
+  ]) {
+    html = setMeta(html, key, value);
+  }
 
   const file = path === '/' ? join(DIST, 'index.html') : join(DIST, path.slice(1), 'index.html');
   mkdirSync(dirname(file), { recursive: true });

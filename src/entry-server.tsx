@@ -11,4 +11,4 @@ export function render(pathname: string) {
   );
 }
 
-export { routeTitles } from './routes';
+export { routes, routeTitles } from './routes';

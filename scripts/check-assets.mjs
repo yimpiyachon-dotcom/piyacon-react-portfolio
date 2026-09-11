@@ -46,6 +46,16 @@ const referenced = new Set(
   [...sourceText.matchAll(/["'(](\/[\w\-./]+\.(?:webp|avif|png|jpe?g|svg|gif|ico))/gi)].map((m) => m[1]),
 );
 
+// The share cards are addressed as `${OG_DIR}/${p.id}.jpg` in src/routes.ts,
+// which no literal-path scan can see. Deriving them from the ids instead means
+// this still fails both ways: a card with no case study is an orphan, and a
+// case study with no card is reported missing.
+for (const file of ['src/data/projects.ts', 'src/data/webProjects.ts']) {
+  for (const m of readFileSync(file, 'utf8').matchAll(/^ {4}id: "([^"]+)"/gm)) {
+    referenced.add(`/og/${m[1]}.jpg`);
+  }
+}
+
 // The narrow srcset siblings are generated from their originals and referenced
 // only through a template literal, so they count as referenced whenever the
 // original is.
