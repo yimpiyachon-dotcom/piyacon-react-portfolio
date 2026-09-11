@@ -1080,6 +1080,7 @@ body {
    in here, so the rails are the only place the homepage shows all 29 without
    turning into a wall of cards. */
 .shot-rail {
+  position: relative;
   overflow: hidden;
   /* The vertical padding is what the hover lift moves into. overflow:hidden
      clips at the padding box, so without it a raised card lost its top edge
@@ -1087,8 +1088,34 @@ body {
      be solved by letting one axis overflow: a box with overflow-x hidden
      computes overflow-y to auto, which would put a scrollbar here. */
   padding: 10px 0;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+/* The edges used to fade with mask-image. Two painted gradients do the same
+   thing here because the page behind them is a flat #0A0B0D, and they cost far
+   less: a mask makes the browser composite the whole rail through a mask layer
+   on every frame the track moves, which is the kind of work a phone shows as
+   stutter. The width is fixed rather than a percentage — at 4% a 412px screen
+   faded over 16px, so a card leaving the rail was chopped rather than faded and
+   looked like half a card. */
+.shot-rail::before,
+.shot-rail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 56px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shot-rail::before {
+  left: 0;
+  background: linear-gradient(to right, #0a0b0d, rgba(10, 11, 13, 0));
+}
+
+.shot-rail::after {
+  right: 0;
+  background: linear-gradient(to left, #0a0b0d, rgba(10, 11, 13, 0));
 }
 
 .shot-track {
@@ -1202,8 +1229,11 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .shot-rail {
     overflow-x: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
+  }
+  /* The fades would sit over a row the reader is scrolling by hand. */
+  .shot-rail::before,
+  .shot-rail::after {
+    display: none;
   }
   .shot-track {
     animation: none;

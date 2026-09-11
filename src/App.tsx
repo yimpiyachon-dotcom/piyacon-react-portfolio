@@ -2586,7 +2586,13 @@ function ShotRails({ onSelect }: { onSelect: (id: string) => void }) {
         decoding="async"
         src={p.image}
         srcSet={srcSetFor(p.image)}
-        sizes="(max-width: 480px) 64vw, 306px"
+        // Capped below the card's real width on purpose. A 3x phone asking for
+        // its true 264px pulls the 800w tier, and 29 of those are 55 MB of
+        // decoded bitmap held for a rail that is decoration — enough for iOS
+        // to start evicting and re-decoding them, which is seen as covers
+        // blanking out and the row stuttering. 213px keeps phones on the 640w
+        // tier: 35 MB, and still 2.4x the pixels the box actually shows.
+        sizes="(max-width: 700px) 213px, 306px"
         alt={`${p.title} — open the case study`}
       />
     </button>
