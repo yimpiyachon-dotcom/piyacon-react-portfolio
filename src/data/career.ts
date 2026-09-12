@@ -16,7 +16,7 @@ export const career: CareerEntry[] = [
     company: "VARUNA CO., LTD. (ARV / PTTEP)",
     logo: "/img/logos/varuna.webp",
     role: "Middle UX/UI Designer",
-    period: "Oct 2024 – Present",
+    period: "Oct 2024 – May 2026",
     desc: "Leading UX/UI for Smart Forest carbon GIS analytics, Smart Watcher security SOC platform, and Forest of Tomorrow ecosystem.",
   },
   {
@@ -45,6 +45,6 @@ export const career: CareerEntry[] = [
     logo: "/img/logos/all-about-you.webp",
     role: "UX/UI Designer",
     period: "March 2021 – June 2022",
-    desc: "Designed clean beauty e-commerce storefront, streamlining checkout and reducing shopping cart abandonment by 44%.",
+    desc: "Designed clean beauty e-commerce storefront, improving the shopping experience from product discovery through checkout.",
   },
 ];
