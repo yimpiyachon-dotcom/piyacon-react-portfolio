@@ -806,10 +806,10 @@ function Nav({
 
 function KpiStrip() {
   const items = [
-    { value: "5+ Yrs", label: "Product UX experience" },
-    { value: "5 Core", label: "Data & IoT platforms" },
-    { value: "−68%", label: "Avg. workflow friction reduction" },
-    { value: "40+", label: "Delivered web & brand systems" },
+    { value: "5+ Years", label: "UX/UI Design Experience" },
+    { value: "5 Core", label: "SaaS, IoT & Data Platforms" },
+    { value: "29 Projects", label: "Web & Mobile Products" },
+    { value: "End-to-End", label: "Research to Delivery" },
   ];
   return (
     <div
@@ -2598,7 +2598,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
             >
               <span>● Available for work</span>
               <span style={{ color: "#828790" }}>/</span>
-              <span style={{ color: "#F5F5F4" }}>Immediately Available</span>
+              <span style={{ color: "#F5F5F4" }}>Ready to start</span>
             </div>
 
             <h1
@@ -2640,8 +2640,9 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
                 margin: 0,
               }}
             >
-              Senior UX/UI product designer who ships measurable business outcomes, not just static mockups.
-              Specialized in high-complexity data products — Industrial IoT command centers, carbon GIS analytics, and clinical healthcare systems.
+              Senior UX/UI Designer with 5+ years of experience designing digital products across SaaS, IoT, GIS,
+              healthcare, and mobile. I like working on complex problems and turning them into experiences that
+              feel simple and easy to use.
             </p>
 
             {/* Quick action buttons */}
@@ -2666,8 +2667,8 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
                 onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
                 onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
               >
-                <span>Explore All 29 Projects</span>
-                <span>↓</span>
+                <span>Explore my projects</span>
+                <span aria-hidden="true">↓</span>
               </button>
               <button
                 onClick={onAbout}
@@ -2683,7 +2684,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
                   cursor: "pointer",
                 }}
               >
-                Design Approach & Bio
+                About me &amp; my process <span aria-hidden="true">→</span>
               </button>
             </div>
           </div>
