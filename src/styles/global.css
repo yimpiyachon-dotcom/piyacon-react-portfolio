@@ -968,6 +968,9 @@ body {
   flex-direction: column;
   gap: 4px;
   padding: 20px 24px;
+  /* So the value below can size itself off this card rather than off the
+     viewport: the card is what actually runs out of room. */
+  container-type: inline-size;
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.045);
@@ -975,6 +978,18 @@ body {
   backdrop-filter: blur(16px) saturate(130%);
   /* A single lit pixel along the top edge is what sells the pane as glass. */
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/* The longest value, "29 Projects", measures 179px at 28px, and the card is
+   only 143px wide inside its padding at the tightest four-across viewport
+   (around 860px), where it broke to two lines. cqi is already the content box,
+   so 0.152 is a shade under 28 / 179: the type is as large as one line of the
+   longest value allows and stays at 28px everywhere there is room. The flat
+   declaration above it is the fallback wherever container units are not
+   understood. */
+.kpi-value {
+  font-size: 28px;
+  font-size: clamp(20px, calc(100cqi * 0.152), 28px);
 }
 
 /* Without backdrop-filter the wash alone would leave the card almost invisible

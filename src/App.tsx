@@ -825,9 +825,9 @@ function KpiStrip() {
       {items.map((item, i) => (
         <div key={i} className="kpi-card">
           <span
+            className="kpi-value"
             style={{
               fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-              fontSize: 28,
               fontWeight: 700,
               color: "#F5F5F4",
               letterSpacing: "-0.02em",
@@ -2641,8 +2641,8 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
               }}
             >
               Senior UX/UI Designer with 5+ years of experience designing digital products across SaaS, IoT, GIS,
-              healthcare, and mobile. I like working on complex problems and turning them into experiences that
-              feel simple and easy to use.
+              healthcare, and mobile. I&nbsp;like working on complex problems and turning them into experiences
+              that feel simple and easy to use.
             </p>
 
             {/* Quick action buttons */}
