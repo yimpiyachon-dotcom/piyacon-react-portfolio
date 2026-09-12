@@ -959,6 +959,23 @@ body {
   }
 }
 
+/* ---- Hero call-to-action row ----
+   The pair has to stay on one line, and the room it has is the row, not the
+   window: at 768 the window is wide but the hero is two columns, so the row is
+   only 336px. Sizing the type and the side padding off the row keeps both
+   buttons on one line from 320px up, and they wrap below that rather than
+   pushing the page sideways. */
+.hero-cta-row {
+  container-type: inline-size;
+}
+
+.hero-cta {
+  font-size: 14px;
+  padding: 12px 22px;
+  font-size: clamp(11px, calc(100cqi * 0.039), 14px);
+  padding: 12px clamp(10px, calc(100cqi * 0.038), 22px);
+}
+
 /* ---- Hero KPI cards ----
    Frosted glass over the hero's own gradient and orbs: the tint is a plain
    white wash rather than a colour, so the panel takes whatever is behind it

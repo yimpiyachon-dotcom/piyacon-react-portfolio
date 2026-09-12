@@ -209,7 +209,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                     fontWeight: 600,
                   }}
                 >
-                  Active in Bangkok · 5+ Yrs
+                  Active in Bangkok
                 </span>
               </div>
 
@@ -285,41 +285,24 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                       marginBottom: 10,
                     }}
                   >
-                    Senior UX/UI Designer · Bangkok
+                    Senior UX/UI Designer
                   </div>
                 </div>
 
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                  <span
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onOpenAbout?.();
-                    }}
-                    className="tag-chip floating-interactive-chip"
-                    style={{ fontSize: 10, background: "rgba(10,11,13,0.85)" }}
-                  >
-                    🔍 User Research
-                  </span>
-                  <span
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onOpenAbout?.();
-                    }}
-                    className="tag-chip floating-interactive-chip"
-                    style={{ fontSize: 10, background: "rgba(10,11,13,0.85)" }}
-                  >
-                    🏛️ KMUTNB
-                  </span>
-                  <span
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onOpenAbout?.();
-                    }}
-                    className="tag-chip floating-interactive-chip"
-                    style={{ fontSize: 10, background: "rgba(10,11,13,0.85)" }}
-                  >
-                    🧪 Usability Testing
-                  </span>
+                  {["UX Research", "Product Design", "Usability Testing"].map((t) => (
+                    <span
+                      key={t}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenAbout?.();
+                      }}
+                      className="tag-chip floating-interactive-chip"
+                      style={{ fontSize: 10, background: "rgba(10,11,13,0.85)" }}
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
@@ -336,18 +319,19 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                 </div>
 
                 {/* Headline */}
-                <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 17, fontWeight: 700, color: "#F5F5F4", marginBottom: 8 }}>
-                  5+ Years Crafting Systems
+                <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 17, fontWeight: 700, color: "#F5F5F4", lineHeight: 1.25, marginBottom: 8 }}>
+                  I Make Complex Things Feel Simple
                 </div>
 
                 {/* Bio */}
                 <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.5, margin: "0 0 16px" }}>
-                  Product design alumnus from KMUTNB. Specializing in complex data models, progressive disclosure, and enterprise token architectures.
+                  5+ years designing digital experiences, from user research and information architecture to
+                  wireframes, UI design, prototyping, and usability testing.
                 </p>
 
                 {/* Skill chips */}
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                  {["Figma", "Design Tokens", "GIS Viz", "IoT Dashboards", "Maze", "GA4"].map((t) => (
+                  {["UX Research", "UI Design", "Prototyping", "Design Systems"].map((t) => (
                     <span
                       key={t}
                       style={{
@@ -593,7 +577,7 @@ function Nav({
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <span>Contact</span>
-            <span>✉</span>
+            <LineIcon name="mail" size={14} />
           </button>
         </div>
 
@@ -796,7 +780,7 @@ function Nav({
             }}
           >
             <span>Contact</span>
-            <span>✉</span>
+            <LineIcon name="mail" size={14} />
           </button>
         </div>
       </div>
@@ -2361,6 +2345,57 @@ function DtIcon({ children }: { children: React.ReactNode }) {
   );
 }
 
+/* Stroke icons on the same 24 grid and the same weight as the ones in the
+   design thinking model, so a button or a list row carries a drawing rather
+   than a platform emoji: an emoji is a different shape, weight and colour on
+   every device and never matches the rest of the page. */
+const LINE_ICONS = {
+  file: (
+    <>
+      <path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z" />
+      <path d="M14 2.5v5h5" />
+      <path d="M8.5 13h7M8.5 17h7" />
+    </>
+  ),
+  mail: (
+    <>
+      <rect x="2.5" y="5" width="19" height="14" rx="2" />
+      <path d="m3.2 6.4 8.8 5.9 8.8-5.9" />
+    </>
+  ),
+  cap: (
+    <>
+      <path d="M22 9 12 4.5 2 9l10 4.5z" />
+      <path d="M6 11v4.4c0 1.4 2.7 2.4 6 2.4s6-1 6-2.4V11" />
+    </>
+  ),
+  seal: (
+    <>
+      <circle cx="12" cy="9" r="5.5" />
+      <path d="M9 13.6 8 21.5l4-2.2 4 2.2-1-7.9" />
+    </>
+  ),
+};
+
+function LineIcon({ name, size = 16 }: { name: keyof typeof LINE_ICONS; size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      style={{ flexShrink: 0 }}
+    >
+      {LINE_ICONS[name]}
+    </svg>
+  );
+}
+
 /**
  * Tells a visitor there is more below the fold.
  *
@@ -2646,45 +2681,52 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
             </p>
 
             {/* Quick action buttons */}
-            <div style={{ display: "flex", gap: 12, marginTop: 32, flexWrap: "wrap" }}>
+            {/* One row at every width: the labels never wrap, and the type and
+                the side padding give ground together as the screen narrows. */}
+            <div className="hero-cta-row" style={{ display: "flex", gap: 10, marginTop: 32, flexWrap: "wrap", alignItems: "stretch" }}>
               <button
                 onClick={onProjects}
+                className="hero-cta"
                 style={{
                   fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
-                  fontSize: 14,
                   fontWeight: 700,
                   background: "#6EE7B7",
                   color: "#0A0B0D",
                   border: "none",
                   borderRadius: 8,
-                  padding: "12px 24px",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
+                  justifyContent: "center",
                   gap: 8,
+                  whiteSpace: "nowrap",
                   transition: "transform 150ms",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
                 onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
               >
-                <span>Explore my projects</span>
+                <span>Explore my 29 projects</span>
                 <span aria-hidden="true">↓</span>
               </button>
               <button
                 onClick={onAbout}
+                className="hero-cta"
                 style={{
                   fontFamily: "'Inter', 'Inter Fallback', sans-serif",
-                  fontSize: 14,
                   fontWeight: 500,
                   background: "#131417",
                   color: "#F5F5F4",
                   border: "1px solid #24262B",
                   borderRadius: 8,
-                  padding: "12px 20px",
                   cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 8,
+                  whiteSpace: "nowrap",
                 }}
               >
-                About me &amp; my process <span aria-hidden="true">→</span>
+                About me <span aria-hidden="true">→</span>
               </button>
             </div>
           </div>
@@ -3767,23 +3809,36 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             margin: "0 0 20px",
           }}
         >
-          Design grounded in research, <br />
-          <span style={{ color: "#6EE7B7" }}>proven by business metrics.</span>
+          Making complex products <br />
+          <span style={{ color: "#6EE7B7" }}>easier to understand and use.</span>
         </h1>
 
-        <p
+        <div
           style={{
-            fontFamily: "'Inter', 'Inter Fallback', sans-serif",
-            fontSize: 16,
-            color: "#9CA0A8",
-            lineHeight: 1.6,
-            margin: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: 14,
             maxWidth: 720,
           }}
         >
-          I am Piyachon Wanburi (Yim), a Senior Product & UX/UI Designer based in Bangkok with over 5 years of experience.
-          I specialize in solving high-complexity interface challenges across ClimateTech GIS, Industrial IoT, Telehealth, and Scalable Enterprise Platforms.
-        </p>
+          {[
+            "I'm Piyachon, a Senior UX/UI Designer based in Bangkok with 5+ years of experience designing digital products across SaaS, IoT, GIS, healthcare, and mobile.",
+            "I enjoy working on complex problems — understanding the people, workflows, and information behind them, then turning them into experiences that feel simple and easy to use.",
+          ].map((line) => (
+            <p
+              key={line}
+              style={{
+                fontFamily: "'Inter', 'Inter Fallback', sans-serif",
+                fontSize: 16,
+                color: "#9CA0A8",
+                lineHeight: 1.6,
+                margin: 0,
+              }}
+            >
+              {line}
+            </p>
+          ))}
+        </div>
       </div>
 
       {/* Split Profile & Story */}
@@ -3804,12 +3859,18 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 22, fontWeight: 700, color: "#F5F5F4", margin: 0 }}>
-            Translating complex domain data into effortless human actions
+            My background shapes how I design.
           </h2>
           <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
-            Coming from a formal background in Architecture & Product Design at KMUTNB, I look at software interfaces like physical buildings:
-            spatial hierarchy, foundational durability, and purposeful wayfinding. When designing mission-critical dashboards,
-            operators and analysts don't need decorative elements—they need clarity, speed, and cognitive ease under pressure.
+            Before UX/UI, I studied Architecture &amp; Product Design at KMUTNB. That background taught me to think about
+            structure, space, hierarchy, and how people move through an environment.
+          </p>
+          <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
+            I bring the same mindset into digital products — especially when working with complex systems, dashboards,
+            and data-heavy interfaces.
+          </p>
+          <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
+            Good design doesn't need to make things look complicated. It should make complicated things feel clear.
           </p>
           <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
             Over the past 5 years, I've designed across ARV (PTTEP Varuna), Beurdev, and Happy Three Creation, shipping GIS monitoring tools,
@@ -3828,9 +3889,13 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
                 padding: "10px 16px",
                 borderRadius: 8,
                 cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
               }}
             >
-              📄 View Full CV
+              <LineIcon name="file" />
+              View Full CV
             </button>
             <button
               onClick={onContact}
@@ -3843,9 +3908,13 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
                 padding: "10px 16px",
                 borderRadius: 8,
                 cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
               }}
             >
-              Get In Touch ✉
+              Get In Touch
+              <LineIcon name="mail" />
             </button>
           </div>
         </div>
@@ -3857,42 +3926,42 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           METHODOLOGY
         </div>
         <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 26, fontWeight: 700, color: "#F5F5F4", margin: "0 0 24px" }}>
-          How I Lead End-to-End Product Design
+          How I approach a design problem
         </h2>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(230px, 100%), 1fr))", gap: 16 }}>
           {[
             {
               step: "01",
-              phase: "Discover",
+              phase: "Understand",
               accent: "#6EE7B7",
               accentRgb: "110,231,183",
-              title: "Contextual Inquiry & Field Discovery",
-              desc: "Direct field interviews with operators, farmers, and analysts. Uncovering the exact points of cognitive friction and operational bottlenecks before sketching.",
+              title: "Start with the people and the problem",
+              desc: "Talk to users, understand their context, and find out where things actually get difficult.",
             },
             {
               step: "02",
-              phase: "Structure",
+              phase: "Define",
               accent: "#3B82F6",
               accentRgb: "59,130,246",
-              title: "Information Architecture & Data Mapping",
-              desc: "Transforming dense schemas (GIS coordinates, IoT sensor packets, EHR medical notes) into prioritized user journeys with progressive disclosure.",
+              title: "Make sense of what we learned",
+              desc: "Turn research, business needs, and user problems into clear priorities and journeys.",
             },
             {
               step: "03",
-              phase: "Systemize",
+              phase: "Design",
               accent: "#A78BFA",
               accentRgb: "167,139,250",
-              title: "Design Systems & Token Architecture",
-              desc: "Building Figma components linked with semantic tokens and engineering variables (BaseBlocksUI) for zero-debt developer handoffs.",
+              title: "Explore, simplify, and iterate",
+              desc: "Explore different ideas, prototype early, and work closely with the team to shape the right solution.",
             },
             {
               step: "04",
               phase: "Validate",
               accent: "#FCD34D",
               accentRgb: "252,211,77",
-              title: "Empirical Usability Testing",
-              desc: "Moderated task-completion tests with measurable KPI benchmarks (turnaround times, error rate reductions, CSAT) ensuring real business outcomes.",
+              title: "Test it before calling it done",
+              desc: "Put designs in front of real users, learn what works, and improve based on evidence.",
             },
           ].map((item, idx) => (
             <div
@@ -4044,7 +4113,9 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
               gap: 14,
             }}
           >
-            <span style={{ fontSize: 20, lineHeight: 1, marginTop: 2 }}>🎓</span>
+            <span style={{ color: "#6EE7B7", marginTop: 3, display: "flex" }}>
+              <LineIcon name="cap" size={20} />
+            </span>
             <div>
               <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", marginBottom: 4 }}>
                 Bachelor of Architecture and Design, Product Design
@@ -4075,7 +4146,9 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
                 gap: 14,
               }}
             >
-              <span style={{ fontSize: 18, lineHeight: 1, marginTop: 2 }}>📜</span>
+              <span style={{ color: "#828790", marginTop: 3, display: "flex" }}>
+                <LineIcon name="seal" size={18} />
+              </span>
               <div>
                 <div style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 15, fontWeight: 700, color: "#F5F5F4", marginBottom: 3 }}>
                   {cert.title}
