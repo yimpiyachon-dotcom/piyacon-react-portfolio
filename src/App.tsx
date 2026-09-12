@@ -4233,43 +4233,44 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
 
   const stackCategories = [
     {
-      category: "Product & UI/UX Design",
-      desc: "Daily tools used for system wireframing, high-fidelity prototypes, and design system governance.",
+      category: "01 · Design",
+      desc: "Tools I use to turn ideas into clear, usable interfaces.",
       items: [
-        { name: "Figma", level: "Expert / Daily", detail: "Variables, Token Studio, Auto-Layout 5.0, Dev Mode, Component Variants", logo: LOGOS.figma },
-        { name: "Framer", level: "Advanced", detail: "Interactive prototypes, custom React overrides, responsive landing engines", logo: LOGOS.framer },
-        { name: "Adobe XD / AI / PS", level: "Proficient", detail: "Vector illustration, asset export, image retouching, legacy conversion", logo: LOGOS.adobe },      ],
-    },
-    {
-      category: "Generative AI & Accelerated Workflow",
-      desc: "Leveraging state-of-the-art AI to automate research synthesis, copy variations, and code bridging.",
-      items: [
-        { name: "ChatGPT", level: "Daily Workflow", detail: "User interview scripts, heuristic checklists, copy refinement, persona simulation", logo: LOGOS.openai },
-        { name: "Claude", level: "Daily Workflow", detail: "Multimodal analysis, rapid feature scoping, code bridging, UX critique", logo: LOGOS.anthropic },
-        { name: "Google Gemini", level: "Daily Workflow", detail: "Multimodal analysis of telemetry screenshots, rapid feature scoping", logo: LOGOS.gemini },
-        { name: "Figma AI Plugins", level: "Integrated", detail: "Rapid prototype scaffolding, dummy data generation, token consistency check", logo: LOGOS.figmai },
+        { name: "Figma", level: "Advanced · Daily", detail: "UI Design · Wireframing · Prototyping · Design Systems · Dev Handoff", logo: LOGOS.figma },
+        { name: "Framer", level: "Advanced", detail: "Responsive Design · Interactive Prototypes · Motion · Web Design", logo: LOGOS.framer },
+        { name: "Adobe Creative Cloud", level: "Advanced", detail: "Illustrator · Photoshop · Visual Assets · Image Editing", logo: LOGOS.adobe },
       ],
     },
     {
-      category: "UX Research, Analytics & Testing",
-      desc: "Data-informed toolchains for behavioral tracking, user journey analytics, and usability validation.",
+      category: "02 · AI-Assisted Workflow",
+      desc: "Using AI to explore ideas faster and spend more time on design decisions.",
       items: [
-        { name: "Maze", level: "Usability Testing", detail: "Unmoderated remote usability testing, task completion rates, mission click maps", logo: LOGOS.maze },
-        { name: "Google Analytics", level: "Tracking State Analysis", detail: "User event tracking, conversion funnel diagnostics, retention & session analysis", logo: LOGOS.ga },
-        { name: "Hotjar", level: "Tracking Behavior", detail: "Visual heatmaps, scroll depth behavior, session recordings, real-time user feedback", logo: LOGOS.hotjar },
-        { name: "Notion", level: "Research Docs", detail: "Research synthesis, UX documentation, affinity mapping, project wikis", logo: LOGOS.notion },
+        { name: "ChatGPT", level: "Daily", detail: "Research Support · UX Exploration · Copy Refinement · Documentation", logo: LOGOS.openai },
+        { name: "Claude", level: "Daily", detail: "UX Critique · Prototyping · Product Exploration · Claude Code · Front-end Implementation", logo: LOGOS.anthropic },
+        { name: "Gemini", level: "Regular", detail: "Visual Analysis · Research Support · Idea Exploration", logo: LOGOS.gemini },
+        { name: "Figma AI", level: "As Needed", detail: "Prototype Exploration · Content Generation · Design Assistance", logo: LOGOS.figmai },
       ],
     },
     {
-      category: "Frontend Hand-off & Collaboration",
-      desc: "Speaking the engineer's language to guarantee pixel-accurate, performance-driven implementation.",
+      category: "03 · Research & Testing",
+      desc: "Tools I use to understand users and validate design decisions.",
       items: [
-        { name: "HTML5 / CSS3", level: "Basic", detail: "Responsive layout structure, basic flex/grid layouts, utility-first token alignment", logo: LOGOS.html },
-        { name: "Tailwind CSS", level: "Basic", detail: "Utility-first CSS framework, rapid responsive layout, design token alignment", logo: LOGOS.tailwind },
-        { name: "React", level: "Understanding", detail: "State management intuition, props architecture, modular component thinking", logo: LOGOS.react },
-        { name: "Miro", level: "Collaborative", detail: "Collaborative whiteboarding, affinity mapping, user journey diagrams, and design workshop facilitation", logo: LOGOS.miro },
-        { name: "Git & GitHub", level: "Basics", detail: "Branching awareness, asset synchronizations, PR design QA reviews", logo: LOGOS.github },
-        { name: "Jira & Linear", level: "Collaborative", detail: "Ticket-based sprint planning, design task tracking, cross-team visibility", logo: LOGOS.jira },
+        { name: "Maze", level: "Usability Testing", detail: "Task Completion · User Feedback · Usability Insights", logo: LOGOS.maze },
+        { name: "Google Analytics", level: "Analytics", detail: "Event Tracking · User Behavior · Conversion Analysis", logo: LOGOS.ga },
+        { name: "Hotjar", level: "Behavior Analysis", detail: "Heatmaps · Session Recordings · Scroll Behavior", logo: LOGOS.hotjar },
+        { name: "Notion", level: "Documentation", detail: "Research Notes · Synthesis · Project Documentation", logo: LOGOS.notion },
+      ],
+    },
+    {
+      category: "04 · Collaboration & Development",
+      desc: "Working closely with developers to make sure designs work beyond the screen.",
+      items: [
+        { name: "HTML / CSS", level: "Working Knowledge", detail: "Responsive Layouts · Basic Structure · Styling", logo: LOGOS.html },
+        { name: "React", level: "Working Knowledge", detail: "Component Structure · Responsive UI · Front-end Collaboration", logo: LOGOS.react },
+        { name: "Tailwind CSS", level: "Basic", detail: "Responsive Styling · Layout · Design Token Alignment", logo: LOGOS.tailwind },
+        { name: "Git & GitHub", level: "Basic", detail: "Version Control · Design QA · Collaboration", logo: LOGOS.github },
+        { name: "Jira / Linear", level: "Collaboration", detail: "Sprint Planning · Design Tasks · Team Communication", logo: LOGOS.jira },
+        { name: "Miro", level: "Workshops", detail: "User Journeys · Affinity Mapping · Design Workshops", logo: LOGOS.miro },
       ],
     },
   ];
@@ -4361,7 +4362,7 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
             marginBottom: 12,
           }}
         >
-          ENGINEERING & DESIGN CAPABILITIES
+          // TOOLS &amp; WORKFLOW
         </div>
 
         <h1
@@ -4375,8 +4376,7 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
             margin: "0 0 20px",
           }}
         >
-          My Technical & <br />
-          <span style={{ color: "#6EE7B7" }}>Design Stack</span>
+          How I <span style={{ color: "#6EE7B7" }}>Design &amp; Work</span>
         </h1>
 
         <p
@@ -4389,8 +4389,8 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
             maxWidth: 680,
           }}
         >
-          A comprehensive breakdown of tools, frameworks, token architectures, and domain skillsets
-          I employ daily to engineer zero-friction interfaces for high-scale enterprise platforms.
+          The tools I use to turn user insights into clear interfaces — from research and wireframes to
+          prototyping, testing, and developer handoff.
         </p>
       </div>
 
@@ -4407,10 +4407,20 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
             }}
           >
             <div style={{ marginBottom: 20 }}>
-              <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 20, fontWeight: 700, color: "#F5F5F4", margin: "0 0 6px" }}>
+              <h2
+                style={{
+                  fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "#6EE7B7",
+                  margin: "0 0 8px",
+                }}
+              >
                 {cat.category}
               </h2>
-              <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", margin: 0 }}>
+              <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 15, color: "#9CA0A8", margin: 0 }}>
                 {cat.desc}
               </p>
             </div>
@@ -4467,7 +4477,6 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
                         borderRadius: 4,
                         border: "1px solid rgba(110,231,183,0.25)",
                         whiteSpace: "nowrap",
-                        marginLeft: 8,
                         flexShrink: 0,
                       }}
                     >
