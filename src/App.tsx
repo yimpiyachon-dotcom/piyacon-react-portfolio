@@ -3692,7 +3692,7 @@ function StoryPortrait() {
             Piyachon Wanburi (Yim)
           </div>
           <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7" }}>
-            Bangkok · KMUTNB Architecture and design
+            Bangkok · Architecture &amp; Product Design
           </div>
         </div>
       </div>
@@ -3873,8 +3873,8 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             Good design doesn't need to make things look complicated. It should make complicated things feel clear.
           </p>
           <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.65, margin: 0 }}>
-            Over the past 5 years, I've designed across ARV (PTTEP Varuna), Beurdev, and Happy Three Creation, shipping GIS monitoring tools,
-            remote hardware gateways, teleconsultation systems, and 40+ high-converting web applications.
+            Over the past 5 years, I've worked across ARV (PTTEP Varuna), Beurdev, and Happy Three Creation, designing GIS
+            monitoring tools, IoT systems, teleconsultation platforms, and web applications.
           </p>
 
           <div style={{ display: "flex", gap: 12, marginTop: 12, flexWrap: "wrap" }}>
