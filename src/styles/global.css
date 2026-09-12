@@ -836,11 +836,36 @@ body {
    Two copies of the list travel exactly one copy's width, so the loop is
    seamless. The clone is display:contents so its cards join the same flex row
    rather than collapsing into a single item. */
+/* The edges are painted, not masked. A mask promotes the masked element to its
+   own composited layer, and this one is the whole doubled track - twelve cards
+   at up to 380px plus gaps, which on a 3x phone is a backing store far past
+   what iOS will allocate, so Safari dropped the layer and the rail rendered as
+   an empty band. Two gradients of the page colour cost one paint and clip
+   nothing. */
 .career-rail {
+  position: relative;
   overflow: hidden;
-  /* Fades the cards into the page edge instead of cutting them on a hard line. */
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.career-rail::before,
+.career-rail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 56px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.career-rail::before {
+  left: 0;
+  background: linear-gradient(to right, #0a0b0d, rgba(10, 11, 13, 0));
+}
+
+.career-rail::after {
+  right: 0;
+  background: linear-gradient(to left, #0a0b0d, rgba(10, 11, 13, 0));
 }
 
 .career-track {
@@ -925,8 +950,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .career-rail {
     overflow-x: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
   }
   .career-track {
     animation: none;
@@ -1265,8 +1288,14 @@ body {
      rhythm — on a tall display it reached 267px. Pulling the neighbours in by
      that same leftover holds the gap still: the section still owns a screen of
      scrolling, the empty half of it just stops being spacing. */
-  --slack: clamp(0px, calc((100svh - 760px) / 2), 160px);
-  margin: calc(-96px - var(--slack)) -24px calc(-64px - var(--slack));
+  --slack: clamp(0px, calc((100svh - 534px) / 2), 300px);
+  /* The assembled frame is taller than a phase frame, so centring every frame
+     leaves a bigger gap under the last one than over the first. --tail is that
+     difference, given back to the bottom margin instead of to stage padding:
+     padding would buy the symmetry by pushing every frame off centre, which is
+     the half a reader actually looks at. */
+  --tail: 64px;
+  margin: calc(-96px - var(--slack)) -24px calc(-64px - var(--slack) + var(--tail));
   position: relative;
 }
 
@@ -1289,12 +1318,7 @@ body {
   height: 100svh;
   overflow: hidden;
   place-items: center;
-  /* The frame is centred in the stage, so half the gap a reader sees above and
-     below it is (viewport - frame) / 2, and the last frame is the tallest of
-     the four. Padding at the foot lifts every frame by half of it, which is
-     what squares the gap above the first frame against the gap below the last
-     one; the margins alone can only move the whole section. */
-  padding: 0 24px 80px;
+  padding: 0 24px;
   text-align: center;
 }
 
@@ -1356,7 +1380,7 @@ body {
 .dt-orbits {
   position: absolute;
   left: 50%;
-  top: calc(50% + 24px);
+  top: calc(50% + 52px);
   width: 0;
   height: 0;
   pointer-events: none;
@@ -1374,6 +1398,15 @@ body {
     translateX(calc((var(--i) - 2.5) * clamp(24px, 4.6vw, 64px)))
     scale(calc(0.84 + var(--lp) * 0.22))
     rotate(calc((var(--i) - 2.5) * var(--orbit-rot, 0deg)));
+}
+
+/* The next section rises into the empty foot of the stage, and it is the
+   assembled frame that is on screen when it does, so its bank is lifted by
+   half of that rise - otherwise the rings cross the heading below (measured
+   105px of bleed at 768x1024). The phase frames are alone on screen and keep
+   the plain drop. */
+.dt-all .dt-orbits {
+  top: calc(50% + 52px - var(--slack) * 0.5);
 }
 
 .dt-orbit > * {
@@ -1414,7 +1447,7 @@ body {
   position: relative;
   margin: 0 0 clamp(32px, 4.5vw, 56px);
   font-family: 'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif;
-  font-size: clamp(30px, min(9vw, 13vh), 104px);
+  font-size: clamp(26px, min(7.6vw, 11vh), 88px);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.02;
@@ -1481,7 +1514,7 @@ body {
   position: relative;
   margin: 0 0 clamp(32px, 5vw, 60px);
   font-family: 'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif;
-  font-size: clamp(34px, min(10vw, 15vh), 118px);
+  font-size: clamp(26px, min(7.6vw, 11vh), 88px);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 0.98;
@@ -1558,10 +1591,8 @@ body {
    share of a phone viewport. Both are retuned against the measurement. */
 @media (max-width: 760px) {
   .dt {
-    --slack: clamp(0px, calc((100svh - 600px) / 2), 200px);
-  }
-  .dt-stage {
-    padding-bottom: 144px;
+    --slack: clamp(0px, calc((100svh - 396px) / 2), 300px);
+    --tail: 132px;
   }
   .dt-groups {
     flex-direction: column;
@@ -1605,7 +1636,7 @@ body {
      viewport width covers only a band across the middle. Widen it past the
      screen — the stage clips it — so it reaches the last row. */
   .dt-all .dt-orbits {
-    top: calc(44% + 24px);
+    top: calc(44% + 52px);
   }
   .dt-all .dt-orbit {
     width: min(760px, 150vw, calc(0.88 * (100svh - 340px)));
@@ -1630,10 +1661,8 @@ body {
    again. Retuned against the measurement, same as the other two branches. */
 @media (min-width: 761px) and (max-width: 1024px) {
   .dt {
-    --slack: clamp(0px, calc((100svh - 656px) / 2), 220px);
-  }
-  .dt-stage {
-    padding-bottom: 64px;
+    --slack: clamp(0px, calc((100svh - 492px) / 2), 320px);
+    --tail: 56px;
   }
 }
 
@@ -1641,7 +1670,7 @@ body {
    is far less screen left over, so only the slack changes. */
 @media (min-width: 761px) and (max-width: 1024px) and (max-height: 820px) {
   .dt {
-    --slack: clamp(0px, calc((100svh - 716px) / 2), 220px);
+    --slack: clamp(0px, calc((100svh - 516px) / 2), 320px);
   }
 }
 
@@ -1649,8 +1678,9 @@ body {
    the assembled one does not, and the foot padding that squares them on a tall
    screen overshoots here. */
 @media (min-width: 1025px) and (max-height: 800px) {
-  .dt-stage {
-    padding-bottom: 16px;
+  .dt {
+    --slack: clamp(0px, calc((100svh - 520px) / 2), 280px);
+    --tail: 56px;
   }
 }
 

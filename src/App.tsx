@@ -815,7 +815,7 @@ function KpiStrip() {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fit, minmax(min(190px, 100%), 1fr))",
         gap: 16,
         marginTop: 48,
         position: "relative",
@@ -1083,7 +1083,7 @@ function KpiScoreboard({ kpis }: { kpis: Kpi[] }) {
       ref={ref}
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fit, minmax(min(220px, 100%), 1fr))",
         gap: 1,
         background: "#24262B",
         border: "1px solid #24262B",
@@ -1143,7 +1143,7 @@ function KpiScoreboard({ kpis }: { kpis: Kpi[] }) {
 
 function BaselineStat({ stats }: { stats: Stat[] }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(200px, 100%), 1fr))", gap: 12 }}>
       {stats.map((s, i) => (
         <div
           key={i}
@@ -2123,10 +2123,14 @@ function HeroBackground() {
         }}
       />
 
+      {/* The orbs are 480px circles placed by percentage, so on a narrow phone
+          they reach well past the viewport and widen the page. Nothing above
+          them clipped, so the wrapper does. */}
       <div
         style={{
           position: "absolute",
           inset: 0,
+          overflow: "hidden",
           filter: "blur(90px)",
           opacity: 0.55,
           mixBlendMode: "screen",
@@ -2313,7 +2317,7 @@ const DT_ICONS = {
 const DT_PHASES = [
   {
     title: "Discover",
-    line: "Understanding ends in insight",
+    line: "Start with understanding",
     accent: "#6EE7B7",
     shape: "hexagon" as const,
     steps: [
@@ -2323,14 +2327,14 @@ const DT_PHASES = [
   },
   {
     title: "Design",
-    line: "Creation ends in ideas",
+    line: "Turn insights into ideas",
     accent: "#A78BFA",
     shape: "triangle" as const,
     steps: [{ label: "Ideate", icon: DT_ICONS.ideate }],
   },
   {
     title: "Deliver",
-    line: "Delivery ends in reality",
+    line: "Turn ideas into reality",
     accent: "#FCD34D",
     shape: "square" as const,
     steps: [
@@ -2569,7 +2573,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(320px, 100%), 1fr))",
             gap: 48,
             alignItems: "center",
           }}
@@ -2720,7 +2724,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fill, minmax(min(360px, 100%), 1fr))",
           gap: 28,
           marginBottom: 96,
         }}
@@ -3061,7 +3065,6 @@ function SectionDivider({ label, count }: { label: string; count: number }) {
           letterSpacing: "0.1em",
           textTransform: "uppercase",
           color: "#828790",
-          whiteSpace: "nowrap",
         }}
       >
         {label}
@@ -3298,7 +3301,9 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
               fontFamily: "'Inter', 'Inter Fallback', sans-serif",
               fontSize: 13,
               outline: "none",
-              minWidth: 260,
+              // A flat 260 is wider than a 280px screen once the gutters are
+              // off, and an input keeps an intrinsic width besides.
+              minWidth: "min(260px, 100%)",
             }}
           />
         </div>
@@ -3308,7 +3313,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
       {(filter === "all" || filter === "apps") && (
         <section style={{ marginBottom: 72 }}>
           <SectionDivider label="Web Applications & Platforms" count={filteredApps.length} />
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))", gap: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(350px, 100%), 1fr))", gap: 24 }}>
             {filteredApps.map((p) => {
               const fullProject = projects.find((item) => item.id === p.id);
               return (
@@ -3327,7 +3332,7 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
       {(filter === "all" || filter === "web") && (
         <section style={{ marginBottom: 72 }}>
           <SectionDivider label="Web & Brand Design Projects" count={filteredWeb.length} />
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 18 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))", gap: 18 }}>
             {filteredWeb.map((p, i) => (
               <div
                 key={p.id || i}
@@ -3784,7 +3789,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(320px, 100%), 1fr))",
           gap: 36,
           alignItems: "center",
           marginBottom: 64,
@@ -3854,7 +3859,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           How I Lead End-to-End Product Design
         </h2>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: 16 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(230px, 100%), 1fr))", gap: 16 }}>
           {[
             {
               step: "01",
@@ -4336,7 +4341,7 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
               </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 14 }}>
               {cat.items.map((it, itemIdx) => (
                 <div
                   key={itemIdx}
@@ -4350,7 +4355,7 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
                     gap: 8,
                   }}
                 >
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "space-between", alignItems: "flex-start" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                       {it.logo && (
                         <div style={{
@@ -4725,7 +4730,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
           </div>
 
           {/* Skills & Tools */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(220px, 100%), 1fr))", gap: 16 }}>
             <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
               <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", marginBottom: 8 }}>
                 Core UX Skills
