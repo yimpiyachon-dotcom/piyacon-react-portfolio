@@ -544,7 +544,7 @@ function Nav({
                 fontWeight: 600,
               }}
             >
-              Senior UX/UI
+              Experience Designer
             </span>
           </button>
         </div>
