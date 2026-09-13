@@ -299,13 +299,27 @@ body {
     height: auto !important;
     overflow: visible !important;
   }
-  body * {
-    visibility: hidden;
-  }
   .print-hide {
     display: none !important;
   }
-  #resume-print-area, #resume-print-area * {
+  /* Hiding the rest of the page with visibility left every hidden element
+     holding its space, so the printer walked through twelve blank sheets of
+     the page behind the modal before it reached the resume on sheet thirteen.
+     Anything that neither contains the resume nor belongs to it now leaves the
+     flow entirely. Both rules are scoped to the resume actually being on
+     screen - unscoped, they printed every other page of the site blank. */
+  body:has(#resume-print-area) * {
+    visibility: hidden;
+  }
+  body:has(#resume-print-area)
+    :not(:has(#resume-print-area)):not(#resume-print-area):not(#resume-print-area *) {
+    display: none !important;
+  }
+  /* Scoped the same way as the rule above on purpose: :has() carries the
+     specificity of the id inside it, so an unscoped #resume-print-area * would
+     lose to body:has(#resume-print-area) * and the resume printed blank. */
+  body:has(#resume-print-area) #resume-print-area,
+  body:has(#resume-print-area) #resume-print-area * {
     visibility: visible;
   }
   /* Unpin the modal: static flow, no height cap, no scroll container. */

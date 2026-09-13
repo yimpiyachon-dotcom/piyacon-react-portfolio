@@ -2401,6 +2401,18 @@ const LINE_ICONS = {
       <path d="M9 13.6 8 21.5l4-2.2 4 2.2-1-7.9" />
     </>
   ),
+  printer: (
+    <>
+      <path d="M6.5 8.5V2.5h11v6" />
+      <path d="M6.5 17.5H4a1.5 1.5 0 0 1-1.5-1.5v-5a2 2 0 0 1 2-2h15a2 2 0 0 1 2 2v5a1.5 1.5 0 0 1-1.5 1.5h-2.5" />
+      <rect x="6.5" y="14.5" width="11" height="7" rx="1.5" />
+    </>
+  ),
+  phone: (
+    <>
+      <path d="M21.5 17v2.5a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19.2 19.2 0 0 1-5.9-5.9 19.5 19.5 0 0 1-3-8.6 2 2 0 0 1 2-2.2H6.4a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.5 9.6a15.5 15.5 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
+    </>
+  ),
 };
 
 function LineIcon({ name, size = 16 }: { name: keyof typeof LINE_ICONS; size?: number }) {
@@ -2828,7 +2840,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
             color: "#828790",
           }}
         >
-          © 2026 Piyachon Wanburi · Senior UX/UI Specialist · Bangkok
+          © 2026 Piyachon Wanburi · Senior UX/UI Designer · Bangkok
         </span>
         <div style={{ display: "flex", gap: 20 }}>
           <span style={{ color: "#828790", fontSize: 13 }}>094-498-9917</span>
@@ -3155,10 +3167,9 @@ function SectionDivider({ label, count }: { label: string; count: number }) {
   );
 }
 
-function ProjectsPage({ onSelect, onBack, onContact }: {
+function ProjectsPage({ onSelect, onBack }: {
   onSelect: (id: string) => void;
   onBack: Handler;
-  onContact: Handler;
 }) {
   const [filter, setFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -3489,23 +3500,11 @@ function ProjectsPage({ onSelect, onBack, onContact }: {
       {/* Projects Footer */}
       <div style={{ borderTop: "1px solid #24262B", paddingTop: 36, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#828790" }}>
+          © 2026 Piyachon Wanburi · Senior UX/UI Designer · Bangkok
+        </span>
+        <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#828790" }}>
           {filteredApps.length + filteredWeb.length} of {allProjects.apps.length + allProjects.web.length} projects shown
         </span>
-        <button
-          onClick={onContact}
-          style={{
-            fontFamily: "'Inter', 'Inter Fallback', sans-serif",
-            fontSize: 13,
-            color: "#F5F5F4",
-            background: "#1B1D21",
-            border: "1px solid #24262B",
-            padding: "10px 18px",
-            borderRadius: 8,
-            cursor: "pointer",
-          }}
-        >
-          Contact Piyachon
-        </button>
       </div>
     </div>
   );
@@ -3717,7 +3716,7 @@ function StoryPortrait() {
             Piyachon Wanburi (Yim)
           </div>
           <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7" }}>
-            Bangkok · Architecture &amp; Product Design
+            Bangkok · Senior UX/UI Designer
           </div>
         </div>
       </div>
@@ -4210,7 +4209,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             color: "#828790",
           }}
         >
-          © 2026 Piyachon Wanburi · Senior UX/UI Specialist · Bangkok
+          © 2026 Piyachon Wanburi · Senior UX/UI Designer · Bangkok
         </span>
         <button
           onClick={onProjects}
@@ -4542,7 +4541,7 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
             color: "#828790",
           }}
         >
-          © 2026 Piyachon Wanburi · Senior UX/UI Specialist · Bangkok
+          © 2026 Piyachon Wanburi · Senior UX/UI Designer · Bangkok
         </span>
         <button
           onClick={onProjects}
@@ -4624,7 +4623,9 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ fontSize: 18 }}>📄</span>
+            <span style={{ color: "#6EE7B7", display: "flex" }}>
+              <LineIcon name="file" size={18} />
+            </span>
             <span style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontWeight: 700, fontSize: 16, color: "#F5F5F4" }}>
               Piyachon Wanburi (Yim) — Resume 2026
             </span>
@@ -4648,7 +4649,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
                 gap: 6,
               }}
             >
-              <span>🖨️</span> Print / Save PDF
+              <LineIcon name="printer" size={14} /> Print / Save PDF
             </button>
             <button
               onClick={onClose}
@@ -4724,11 +4725,13 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 6, textAlign: "right" }}>
-              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: "#F5F5F4" }}>
-                📞 094-498-9917
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: "#F5F5F4", display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 7 }}>
+                <LineIcon name="phone" size={14} />
+                <span>094-498-9917</span>
               </div>
-              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: "#6EE7B7" }}>
-                ✉️ yimpiyachon@gmail.com
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: "#6EE7B7", display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 7 }}>
+                <LineIcon name="mail" size={14} />
+                <span>yimpiyachon@gmail.com</span>
               </div>
               <a
                 href="https://www.yimpiyachon.com/"
@@ -4850,10 +4853,46 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
 
             <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
               <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", marginBottom: 8 }}>
-                Design & AI Tools
+                Design
               </div>
               <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.6, margin: 0 }}>
-                Figma · Framer · Adobe CC (XD, Illustrator, Photoshop) · ChatGPT · Claude · Gemini · Figma Make
+                Figma · Framer · Adobe Creative Cloud (Illustrator, Photoshop)
+              </p>
+            </div>
+
+            <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", marginBottom: 8 }}>
+                AI-Assisted Workflow
+              </div>
+              <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.6, margin: 0 }}>
+                ChatGPT · Claude (incl. Claude Code) · Gemini · Figma AI
+              </p>
+            </div>
+
+            <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", marginBottom: 8 }}>
+                Research & Testing
+              </div>
+              <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.6, margin: 0 }}>
+                Maze · Google Analytics · Hotjar · Notion
+              </p>
+            </div>
+
+            <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", marginBottom: 8 }}>
+                Development
+              </div>
+              <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.6, margin: 0 }}>
+                HTML / CSS · React · Tailwind CSS · Git & GitHub
+              </p>
+            </div>
+
+            <div style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
+              <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", textTransform: "uppercase", marginBottom: 8 }}>
+                Collaboration
+              </div>
+              <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.6, margin: 0 }}>
+                Jira / Linear · Miro
               </p>
             </div>
           </div>
@@ -4870,9 +4909,17 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
               King Mongkut's University of Technology North Bangkok (KMUTNB) · 2016–2020
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              <span className="tag-chip">Complete UX/UI with Adobe XD, BorntoDev (2020)</span>
-              <span className="tag-chip">Usability Design & Psychology for Digital Products, Skooldio</span>
-              <span className="tag-chip">Information Architecture, Skooldio</span>
+              {[
+                { title: "Intro to Web Accessibility", school: "Skooldio", year: "2026" },
+                { title: "Information Architecture", school: "Skooldio", year: "2026" },
+                { title: "Usability Design and Psychology for Digital Products", school: "Skooldio", year: "2025" },
+                { title: "Complete UX/UI Design", school: "BorntoDev", year: "2020" },
+                { title: "UX/UI with Adobe XD", school: "BorntoDev", year: "2020" },
+              ].map((cert) => (
+                <span className="tag-chip" key={cert.title}>
+                  {cert.title} — {cert.school}, {cert.year}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -4881,7 +4928,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
   );
 }
 
-function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClose: Handler; onShowToast?: ShowToast }) {
+function ContactModal({ isOpen, onClose, onShowToast, onResume }: { isOpen: boolean; onClose: Handler; onShowToast?: ShowToast; onResume?: Handler }) {
   if (!isOpen) return null;
 
   const copy = async (text: string, label: string) => {
@@ -5006,13 +5053,37 @@ function ContactModal({ isOpen, onClose, onShowToast }: { isOpen: boolean; onClo
           ))}
         </div>
 
+        {/* The resume is the other thing a reader wants from this panel, so it
+            sits with the actions rather than among the details to copy. It
+            hands over to the resume modal, which is why this one closes. */}
+        {onResume && (
+          <button
+            onClick={() => {
+              onClose();
+              onResume();
+            }}
+            style={{
+              marginTop: 24, width: "100%", padding: "12px",
+              background: "#6EE7B7", color: "#0A0B0D",
+              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontWeight: 700, fontSize: 14,
+              borderRadius: 8, border: "none", cursor: "pointer",
+              display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+            }}
+          >
+            <LineIcon name="file" size={15} />
+            View Resume
+          </button>
+        )}
+
+        {/* Closing is not the affirmative action here, so it stops wearing the
+            accent fill: reading the resume leads, and this stays neutral. */}
         <button
           onClick={onClose}
           style={{
-            marginTop: 24, width: "100%", padding: "12px",
-            background: "#6EE7B7", color: "#0A0B0D",
-            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontWeight: 700, fontSize: 14,
-            borderRadius: 8, border: "none", cursor: "pointer",
+            marginTop: 10, width: "100%", padding: "12px",
+            background: "transparent", color: "#9CA0A8",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontWeight: 600, fontSize: 14,
+            borderRadius: 8, border: "1px solid #24262B", cursor: "pointer",
           }}
         >
           Close
@@ -5254,7 +5325,6 @@ export default function App() {
         <ProjectsPage
           onSelect={openCaseStudy}
           onBack={goTo("home")}
-          onContact={() => setContactModalOpen(true)}
         />
       ) : page === "about" ? (
         <AboutPage
@@ -5288,6 +5358,7 @@ export default function App() {
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
         onShowToast={setToastMessage}
+        onResume={() => setCvModalOpen(true)}
       />
 
       {/* Toast Feedback */}
