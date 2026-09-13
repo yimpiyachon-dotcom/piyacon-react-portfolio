@@ -982,15 +982,23 @@ body {
 
 /* On a phone the animated track is a promoted layer ten cards wide, which at
    3x is past what iOS will rasterise in one go - it drops the layer and the
-   rail renders as an empty band. A touch reader gets an ordinary snap scroller
-   instead: one copy of the record, nothing promoted, nothing to drop. The next
-   card peeks past the edge, which is the cue that the row scrolls. */
+   rail renders as an empty band. A touch reader gets a real scroller instead,
+   which paints only what is on screen; CareerMarquee walks it along with
+   scrollLeft so the row still drifts and still loops, and a swipe takes it
+   over whenever the reader wants. Both copies stay in the DOM - the wrap
+   lands on identical content, which is what hides it.
+   The edge gradients are absolutely positioned inside what is now the scroll
+   box, so they would travel with the cards instead of sitting at the edges. */
 @media (hover: none) and (pointer: coarse) {
   .career-rail {
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .career-rail::-webkit-scrollbar {
+    display: none;
   }
   .career-rail::before,
   .career-rail::after {
@@ -998,12 +1006,6 @@ body {
   }
   .career-track {
     animation: none;
-  }
-  .career-clone {
-    display: none;
-  }
-  .career-card {
-    scroll-snap-align: center;
   }
 }
 
