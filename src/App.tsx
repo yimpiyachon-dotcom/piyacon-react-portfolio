@@ -3172,7 +3172,6 @@ function ProjectsPage({ onSelect, onBack }: {
   onBack: Handler;
 }) {
   const [filter, setFilter] = useState("all");
-  const [searchQuery, setSearchQuery] = useState("");
 
   const tagColors = {
     Healthcare: "#6EE7B7",
@@ -3201,28 +3200,6 @@ function ProjectsPage({ onSelect, onBack }: {
     { key: "apps", label: `Web Applications & Platforms (${pad(allProjects.apps.length)})` },
     { key: "web", label: `Web & Brand Design (${pad(allProjects.web.length)})` },
   ];
-
-  const filteredApps = useMemo(() => {
-    return allProjects.apps.filter((p) => {
-      const q = searchQuery.toLowerCase();
-      return (
-        p.title.toLowerCase().includes(q) ||
-        p.category.toLowerCase().includes(q) ||
-        p.tags.some((t) => t.toLowerCase().includes(q))
-      );
-    });
-  }, [searchQuery]);
-
-  const filteredWeb = useMemo(() => {
-    return allProjects.web.filter((p) => {
-      const q = searchQuery.toLowerCase();
-      return (
-        p.title.toLowerCase().includes(q) ||
-        p.category.toLowerCase().includes(q) ||
-        p.tags.some((t) => t.toLowerCase().includes(q))
-      );
-    });
-  }, [searchQuery]);
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 24px 120px", position: "relative" }}>
@@ -3365,35 +3342,15 @@ function ProjectsPage({ onSelect, onBack }: {
               </button>
             ))}
           </div>
-
-          <input
-            type="text"
-            placeholder="Search by title, domain, tech..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            style={{
-              background: "#131417",
-              border: "1px solid #24262B",
-              borderRadius: 8,
-              padding: "8px 14px",
-              color: "#F5F5F4",
-              fontFamily: "'Inter', 'Inter Fallback', sans-serif",
-              fontSize: 13,
-              outline: "none",
-              // A flat 260 is wider than a 280px screen once the gutters are
-              // off, and an input keeps an intrinsic width besides.
-              minWidth: "min(260px, 100%)",
-            }}
-          />
         </div>
       </div>
 
       {/* Web Applications & Platforms Section */}
       {(filter === "all" || filter === "apps") && (
         <section style={{ marginBottom: 72 }}>
-          <SectionDivider label="Web Applications & Platforms" count={filteredApps.length} />
+          <SectionDivider label="Web Applications & Platforms" count={allProjects.apps.length} />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(350px, 100%), 1fr))", gap: 24 }}>
-            {filteredApps.map((p) => {
+            {allProjects.apps.map((p) => {
               const fullProject = projects.find((item) => item.id === p.id);
               return (
                 <ProjectCard
@@ -3410,9 +3367,9 @@ function ProjectsPage({ onSelect, onBack }: {
       {/* Web & Brand Design Section */}
       {(filter === "all" || filter === "web") && (
         <section style={{ marginBottom: 72 }}>
-          <SectionDivider label="Web & Brand Design Projects" count={filteredWeb.length} />
+          <SectionDivider label="Web & Brand Design Projects" count={allProjects.web.length} />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))", gap: 18 }}>
-            {filteredWeb.map((p, i) => (
+            {allProjects.web.map((p, i) => (
               <div
                 key={p.id || i}
                 onClick={() => onSelect(p.id)}
@@ -3503,7 +3460,7 @@ function ProjectsPage({ onSelect, onBack }: {
           © 2026 Piyachon Wanburi · Senior UX/UI Designer · Bangkok
         </span>
         <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#828790" }}>
-          {filteredApps.length + filteredWeb.length} of {allProjects.apps.length + allProjects.web.length} projects shown
+          {allProjects.apps.length + allProjects.web.length} projects shown
         </span>
       </div>
     </div>
@@ -4940,20 +4897,18 @@ function ContactModal({ isOpen, onClose, onShowToast, onResume }: { isOpen: bool
     }
   };
 
+  // Only the rows with nothing to open carry copy text - the rest are links.
   const contactItems: {
     label: string;
     value: string;
-    copyText: string;
-    copyLabel?: string;
+    copyText?: string;
     href: string | null;
   }[] = [
     { label: "EMAIL",    value: "yimpiyachon@gmail.com", copyText: "yimpiyachon@gmail.com", href: null },
-    { label: "PHONE",    value: "094-498-9917",           copyText: "094-498-9917",           href: null },
-    // The LINE row copies the ID rather than the URL: pasting an ID into LINE's
-    // own search is how people actually add a contact there.
-    { label: "LINE",     value: "yimpycc",                 copyText: "yimpycc",                copyLabel: "LINE ID", href: "https://line.me/ti/p/SHGZ_Lx9Jn" },
-    { label: "LINKEDIN", value: "piyachon-wanburi",       copyText: "https://www.linkedin.com/in/piyachon-wanburi-b207691ab/", href: "https://www.linkedin.com/in/piyachon-wanburi-b207691ab/" },
-    { label: "FACEBOOK", value: "Piyachon Wanburi",        copyText: "https://www.facebook.com/CebrAa", href: "https://www.facebook.com/CebrAa" },
+    { label: "PHONE",    value: "094-498-9917",          copyText: "094-498-9917",          href: null },
+    { label: "LINE",     value: "yimpycc",               href: "https://line.me/ti/p/SHGZ_Lx9Jn" },
+    { label: "LINKEDIN", value: "piyachon-wanburi",      href: "https://www.linkedin.com/in/piyachon-wanburi-b207691ab/" },
+    { label: "FACEBOOK", value: "Piyachon Wanburi",      href: "https://www.facebook.com/CebrAa" },
   ];
 
   const fieldStyle = {
@@ -4978,6 +4933,17 @@ function ContactModal({ isOpen, onClose, onShowToast, onResume }: { isOpen: bool
     cursor: "pointer",
     flexShrink: 0,
     whiteSpace: "nowrap",
+  };
+
+  // Same control, one as a link: a profile is something you open, and copying
+  // a social URL to paste somewhere else is the rarer errand. Email and phone
+  // have nowhere to open, so those keep Copy.
+  const openBtnStyle = {
+    ...copyBtnStyle,
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 5,
+    textDecoration: "none",
   };
 
   return (
@@ -5037,18 +5003,23 @@ function ContactModal({ isOpen, onClose, onShowToast, onResume }: { isOpen: bool
                 <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 10, color: "#828790", textTransform: "uppercase", marginBottom: 3 }}>
                   {item.label}
                 </div>
-                {item.href ? (
-                  <a href={item.href} target="_blank" rel="noopener noreferrer"
-                    style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: "#6EE7B7", textDecoration: "none", display: "block" }}>
-                    {item.value} ↗
-                  </a>
-                ) : (
-                  <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: "#F5F5F4" }}>
-                    {item.value}
-                  </div>
-                )}
+                <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 13, color: item.href ? "#6EE7B7" : "#F5F5F4" }}>
+                  {item.value}
+                </div>
               </div>
-              <button onClick={() => copy(item.copyText, item.copyLabel ?? item.value)} style={copyBtnStyle}>Copy</button>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${item.label.toLowerCase()} profile in a new tab`}
+                  style={openBtnStyle}
+                >
+                  Open <span aria-hidden="true">↗</span>
+                </a>
+              ) : (
+                <button onClick={() => copy(item.copyText ?? item.value, item.value)} style={copyBtnStyle}>Copy</button>
+              )}
             </div>
           ))}
         </div>
