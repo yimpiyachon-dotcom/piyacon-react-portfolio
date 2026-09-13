@@ -2836,81 +2836,6 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
  * and a reader who has asked for reduced motion gets a plain scrollable row.
  */
 function CareerMarquee() {
-  const railRef = useRef<HTMLDivElement>(null);
-
-  /* The CSS marquee animates the whole doubled track, which the browser has to
-     rasterise as one composited layer; on a phone that layer is wide enough
-     that iOS drops it and the rail renders as an empty band. A touch reader
-     gets a real scroller instead, walked along by scrollLeft, so only the part
-     on screen is ever painted. It wraps by exactly one copy's width, and since
-     the two copies are identical the wrap is invisible.
-     Manual swiping wins: the walk stops on touch and picks up again once the
-     finger and the momentum are gone. */
-  useEffect(() => {
-    const rail = railRef.current;
-    if (!rail) return;
-    if (!window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const cards = rail.querySelectorAll<HTMLElement>(".career-card");
-    if (cards.length <= career.length) return;
-    // The clone starts here, so this is one copy's travel, gap included.
-    const period = cards[career.length].offsetLeft - cards[0].offsetLeft;
-    if (period <= 0) return;
-
-    const SPEED = 25; // px/s — the pace the 62s desktop marquee keeps.
-    const SETTLE = 1800; // ms of stillness after a swipe before the walk resumes.
-    let pos = rail.scrollLeft;
-    let held = false;
-    let waitUntil = 0;
-    let onScreen = true;
-    let last = 0;
-    let raf = 0;
-
-    const step = (now: number) => {
-      raf = requestAnimationFrame(step);
-      const dt = last ? Math.min(now - last, 100) / 1000 : 0;
-      last = now;
-      if (held || now < waitUntil || !onScreen || document.hidden) {
-        pos = rail.scrollLeft; // the reader is driving; stay where they left it
-        return;
-      }
-      pos += SPEED * dt;
-      if (pos >= period) pos -= period;
-      rail.scrollLeft = pos;
-    };
-
-    const hold = () => {
-      held = true;
-    };
-    const release = () => {
-      held = false;
-      waitUntil = performance.now() + SETTLE;
-    };
-
-    const io = new IntersectionObserver(([e]) => {
-      onScreen = e.isIntersecting;
-    });
-    io.observe(rail);
-
-    rail.addEventListener("pointerdown", hold, { passive: true });
-    rail.addEventListener("touchstart", hold, { passive: true });
-    window.addEventListener("pointerup", release, { passive: true });
-    window.addEventListener("touchend", release, { passive: true });
-    window.addEventListener("touchcancel", release, { passive: true });
-    raf = requestAnimationFrame(step);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      io.disconnect();
-      rail.removeEventListener("pointerdown", hold);
-      rail.removeEventListener("touchstart", hold);
-      window.removeEventListener("pointerup", release);
-      window.removeEventListener("touchend", release);
-      window.removeEventListener("touchcancel", release);
-    };
-  }, []);
-
   const card = (c: (typeof career)[number], i: number) => (
     <figure className="career-card" key={i}>
       <blockquote className="career-card-desc">{c.desc}</blockquote>
@@ -2953,7 +2878,7 @@ function CareerMarquee() {
         Where I&rsquo;ve Made An Impact
       </h2>
 
-      <div className="career-rail" ref={railRef}>
+      <div className="career-rail">
         <div className="career-track">
           {career.map(card)}
           <div className="career-clone" aria-hidden="true">
