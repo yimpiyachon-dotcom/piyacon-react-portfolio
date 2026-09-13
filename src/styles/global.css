@@ -38,6 +38,20 @@ body {
   50%, 95% { opacity: 0; }
   100% { opacity: 1; }
 }
+/* Both children sit in the same grid cell, so the box is as tall as the taller
+   of them - the hidden longest phrase - and the live text draws over it. */
+.typewriter {
+  display: grid;
+}
+
+.typewriter > * {
+  grid-area: 1 / 1;
+}
+
+.typewriter-reserve {
+  visibility: hidden;
+}
+
 .typewriter-cursor {
   display: inline-block;
   width: 3px;

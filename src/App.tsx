@@ -2065,12 +2065,17 @@ function HeroBackground() {
       }}
     >
       <style>{`
-        /* Translate only, and each orb on its own layer.
+        /* Translate only, and each orb carries its own blur.
            These are 500px+ elements under filter: blur(90px). Scaling one forces
            the blur to be re-rasterised every frame, which on a throttled CPU was
            the bulk of the main-thread work holding up first paint. Moving a
            layer that is already rasterised costs the compositor almost nothing,
-           and at this blur radius the drift reads the same as the pulse did. */
+           and at this blur radius the drift reads the same as the pulse did.
+           The filter has to sit on the orbs rather than on the box around them:
+           one filter over all three makes every frame of every orb dirty that
+           one big blurred surface, so the drift repainted a viewport-sized blur
+           forever. Per orb, each blurred circle is rasterised once and the
+           animation only moves it. */
         .aurora-orb { will-change: transform; }
         @keyframes float-emerald {
           0%, 100% { transform: translate3d(0px, 0px, 0); }
@@ -2095,6 +2100,10 @@ function HeroBackground() {
         style={{
           position: "absolute",
           inset: 0,
+          // The mask below fades out by 793px, so the same cap applies here as
+          // to the orbs: a mask promotes this to its own surface, and without a
+          // ceiling that surface was the full stacked hero on a phone.
+          maxHeight: 900,
           backgroundImage: `
             linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
@@ -2114,6 +2123,13 @@ function HeroBackground() {
         style={{
           position: "absolute",
           inset: 0,
+          // The orbs all end by 753px, and a 90px blur carries maybe 270px
+          // past that. Below 1100px this box holds nothing - but it is the
+          // filtered surface, so on a phone, where the hero column stacks and
+          // the box runs 1799px tall, the browser was blurring a thousand
+          // pixels of empty space on every rasterisation. Capping it is free:
+          // there is nothing down there to clip.
+          maxHeight: 1100,
           overflow: "hidden",
           filter: "blur(90px)",
           opacity: 0.55,
@@ -2228,9 +2244,19 @@ function TypewriterText() {
   }, [text, deleting, phraseIdx]);
 
   return (
-    <span>
-      {text}
-      <span className="typewriter-cursor" style={{ height: "0.9em" }} />
+    <span className="typewriter">
+      {/* The box is sized by the longest phrase, which is the one above, so a
+          shorter phrase typing in cannot change how many lines the hero takes.
+          Reserving a single line was not enough: on a phone the longest phrase
+          wraps to two and the others do not, so the paragraph below moved 28px
+          on every cycle - 0.123 of the page's 0.124 layout shift. */}
+      <span className="typewriter-reserve" aria-hidden="true">
+        {TYPEWRITER_PHRASES[0]}
+      </span>
+      <span>
+        {text}
+        <span className="typewriter-cursor" style={{ height: "0.9em" }} />
+      </span>
     </span>
   );
 }
@@ -2658,7 +2684,6 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
                 fontSize: "clamp(22px, 2.6vw, 24px)",
                 fontWeight: 700,
                 color: "#F5F5F4",
-                minHeight: "1.4em",
                 marginBottom: 20,
               }}
             >
