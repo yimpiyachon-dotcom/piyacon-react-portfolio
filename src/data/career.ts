@@ -17,7 +17,7 @@ export const career: CareerEntry[] = [
     logo: "/img/logos/varuna.webp",
     role: "Middle UX/UI Designer",
     period: "Oct 2024 – May 2026",
-    desc: "Leading UX/UI for Smart Forest carbon GIS analytics, Smart Watcher security SOC platform, and Forest of Tomorrow ecosystem.",
+    desc: "Designed UX/UI for Smart Forest carbon GIS analytics, Smart Watcher Platform, and Forest of Tomorrow ecosystem.",
   },
   {
     company: "BEURDEV CO., LTD.",
@@ -31,20 +31,20 @@ export const career: CareerEntry[] = [
     logo: "/img/logos/happy-three-creation.webp",
     role: "Senior UX/UI Designer",
     period: "Aug 2023 – Feb 2024",
-    desc: "Designed Area 22 IoT gateway management back office (400+ nodes) and Dr. Smoothlife clinical telemedicine workspace.",
+    desc: "Designed Area 22 IoT gateway management back office and Dr. Smoothlife clinical telemedicine workspace.",
   },
   {
     company: "VARUNA CO., LTD. (ARV / PTTEP)",
     logo: "/img/logos/varuna.webp",
     role: "UX/UI Designer",
     period: "June 2022 – Aug 2023",
-    desc: "Designed Kanna agricultural diagnostic mobile app (15,000+ farmers) and VLM land management administrative tools.",
+    desc: "Designed UX/UI for the Kanna agricultural diagnostic mobile app and the VLM land management administrative tools.",
   },
   {
     company: "ALL ABOUT YOU CO., LTD.",
     logo: "/img/logos/all-about-you.webp",
     role: "UX/UI Designer",
     period: "March 2021 – June 2022",
-    desc: "Designed clean beauty e-commerce storefront, improving the shopping experience from product discovery through checkout.",
+    desc: "Designed a clean beauty e-commerce storefront, improving the shopping experience from discovery to checkout.",
   },
 ];

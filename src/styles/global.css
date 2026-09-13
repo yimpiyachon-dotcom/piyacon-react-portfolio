@@ -891,8 +891,12 @@ body {
   animation-play-state: paused;
 }
 
+/* The card width skips the 320-350px band on purpose: in it the five quotes
+   disagree about whether they take three lines or four, which shows up as a
+   void between the quote and the rule on whichever cards came up short. Below
+   the jump every quote takes four lines, above it every quote takes three. */
 .career-card {
-  flex: 0 0 clamp(280px, 78vw, 380px);
+  flex: 0 0 clamp(280px, 78vw, 300px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -956,6 +960,50 @@ body {
   }
   .career-clone {
     display: none;
+  }
+}
+
+/* Below 480px the card is narrow enough that the longest company name wraps to
+   a second line while the shortest keeps one, and because the cards are equal
+   height that one-line difference lands as a void between the quote and the
+   rule. Reserving the second line everywhere puts the rule at the same height
+   on every card. */
+@media (max-width: 479px) {
+  .career-card-company {
+    min-height: calc(2 * 1.35em);
+  }
+}
+
+@media (min-width: 450px) {
+  .career-card {
+    flex: 0 0 clamp(350px, 78vw, 380px);
+  }
+}
+
+/* On a phone the animated track is a promoted layer ten cards wide, which at
+   3x is past what iOS will rasterise in one go - it drops the layer and the
+   rail renders as an empty band. A touch reader gets an ordinary snap scroller
+   instead: one copy of the record, nothing promoted, nothing to drop. The next
+   card peeks past the edge, which is the cue that the row scrolls. */
+@media (hover: none) and (pointer: coarse) {
+  .career-rail {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .career-rail::before,
+  .career-rail::after {
+    display: none;
+  }
+  .career-track {
+    animation: none;
+  }
+  .career-clone {
+    display: none;
+  }
+  .career-card {
+    scroll-snap-align: center;
   }
 }
 
