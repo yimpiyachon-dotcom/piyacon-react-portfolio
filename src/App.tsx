@@ -3861,9 +3861,8 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           {/* One row, split evenly, and a single column once half a row is too
               narrow for the longer label. Reading the CV is what this section
               has been building to, so it takes the accent and the other goes
-              quiet - they were the wrong way round. The type is the nav's:
-              every button on the site reads in the same mono as Home and
-              Projects, rather than each pair picking its own. */}
+              quiet - they were the wrong way round. The type is the home page
+              CTA pairing: Jakarta 700 on the accent, Inter 500 beside it. */}
           <div
             style={{
               display: "grid",
@@ -3875,8 +3874,8 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             <button
               onClick={onSelectCv}
               style={{
-                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-                fontWeight: 500,
+                fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
+                fontWeight: 700,
                 fontSize: 14,
                 color: "#0A0B0D",
                 background: "#6EE7B7",
@@ -3896,7 +3895,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             <button
               onClick={onContact}
               style={{
-                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+                fontFamily: "'Inter', 'Inter Fallback', sans-serif",
                 fontWeight: 500,
                 fontSize: 14,
                 color: "#9CA0A8",
@@ -4188,9 +4187,9 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
         <button
           onClick={onProjects}
           style={{
-            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
             fontSize: 13,
-            fontWeight: 500,
+            fontWeight: 700,
             color: "#0A0B0D",
             background: "#6EE7B7",
             padding: "10px 20px",
@@ -4520,9 +4519,9 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
         <button
           onClick={onProjects}
           style={{
-            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
             fontSize: 13,
-            fontWeight: 500,
+            fontWeight: 700,
             color: "#0A0B0D",
             background: "#6EE7B7",
             padding: "10px 20px",
