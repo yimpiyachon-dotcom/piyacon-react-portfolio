@@ -559,9 +559,9 @@ function Nav({
           <button
             onClick={onContact}
             style={{
-              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 12,
-              fontWeight: 700,
+              fontWeight: 500,
               background: "#6EE7B7",
               color: "#0A0B0D",
               border: "none",
@@ -763,9 +763,9 @@ function Nav({
               setMobileOpen(false);
             }}
             style={{
-              fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
+              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
               fontSize: 14,
-              fontWeight: 700,
+              fontWeight: 500,
               background: "#6EE7B7",
               color: "#0A0B0D",
               border: "none",
@@ -3861,8 +3861,9 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           {/* One row, split evenly, and a single column once half a row is too
               narrow for the longer label. Reading the CV is what this section
               has been building to, so it takes the accent and the other goes
-              quiet - they were the wrong way round, and the two also carried
-              different typefaces for a pair that sits side by side. */}
+              quiet - they were the wrong way round. The type is the nav's:
+              every button on the site reads in the same mono as Home and
+              Projects, rather than each pair picking its own. */}
           <div
             style={{
               display: "grid",
@@ -3875,7 +3876,8 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
               onClick={onSelectCv}
               style={{
                 fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-                fontSize: 12,
+                fontWeight: 500,
+                fontSize: 14,
                 color: "#0A0B0D",
                 background: "#6EE7B7",
                 border: "1px solid #6EE7B7",
@@ -3895,7 +3897,8 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
               onClick={onContact}
               style={{
                 fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-                fontSize: 12,
+                fontWeight: 500,
+                fontSize: 14,
                 color: "#9CA0A8",
                 background: "transparent",
                 border: "1px solid #24262B",
@@ -4185,9 +4188,9 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
         <button
           onClick={onProjects}
           style={{
-            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 13,
-            fontWeight: 700,
+            fontWeight: 500,
             color: "#0A0B0D",
             background: "#6EE7B7",
             padding: "10px 20px",
@@ -4517,9 +4520,9 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
         <button
           onClick={onProjects}
           style={{
-            fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
+            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 13,
-            fontWeight: 700,
+            fontWeight: 500,
             color: "#0A0B0D",
             background: "#6EE7B7",
             padding: "10px 20px",
@@ -4607,14 +4610,14 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
               onClick={handlePrint}
               style={{
                 fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-                fontSize: 12,
+                fontSize: 14,
                 color: "#0A0B0D",
                 background: "#6EE7B7",
                 border: "none",
                 borderRadius: 6,
-                padding: "6px 14px",
+                padding: "7px 16px",
                 cursor: "pointer",
-                fontWeight: 600,
+                fontWeight: 500,
                 display: "flex",
                 alignItems: "center",
                 gap: 6,
