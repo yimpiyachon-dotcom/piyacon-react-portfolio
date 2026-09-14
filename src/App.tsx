@@ -3858,20 +3858,33 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             monitoring tools, IoT systems, teleconsultation platforms, and web applications.
           </p>
 
-          <div style={{ display: "flex", gap: 12, marginTop: 12, flexWrap: "wrap" }}>
+          {/* One row, split evenly, and a single column once half a row is too
+              narrow for the longer label. Reading the CV is what this section
+              has been building to, so it takes the accent and the other goes
+              quiet - they were the wrong way round, and the two also carried
+              different typefaces for a pair that sits side by side. */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(170px, 100%), 1fr))",
+              gap: 12,
+              marginTop: 12,
+            }}
+          >
             <button
               onClick={onSelectCv}
               style={{
                 fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                 fontSize: 12,
-                color: "#F5F5F4",
-                background: "#1B1D21",
-                border: "1px solid #24262B",
+                color: "#0A0B0D",
+                background: "#6EE7B7",
+                border: "1px solid #6EE7B7",
                 padding: "10px 16px",
                 borderRadius: 8,
                 cursor: "pointer",
-                display: "inline-flex",
+                display: "flex",
                 alignItems: "center",
+                justifyContent: "center",
                 gap: 8,
               }}
             >
@@ -3881,16 +3894,17 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             <button
               onClick={onContact}
               style={{
-                fontFamily: "'Inter', 'Inter Fallback', sans-serif",
-                fontSize: 13,
-                color: "#6EE7B7",
+                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+                fontSize: 12,
+                color: "#9CA0A8",
                 background: "transparent",
-                border: "1px solid rgba(110,231,183,0.3)",
+                border: "1px solid #24262B",
                 padding: "10px 16px",
                 borderRadius: 8,
                 cursor: "pointer",
-                display: "inline-flex",
+                display: "flex",
                 alignItems: "center",
+                justifyContent: "center",
                 gap: 8,
               }}
             >
