@@ -420,6 +420,58 @@ body {
   color: #6EE7B7 !important;
 }
 
+/* Impact table: below 600px the 4-column grid cannot fit, so each row becomes a
+   stacked card with the column label above each value. Keeps the same border,
+   radius, type and colours; only the axis changes. */
+@media (max-width: 599px) {
+  .impact-table-wrap {
+    border: none !important;
+    border-radius: 0 !important;
+    overflow-x: visible !important;
+  }
+  .impact-table {
+    display: block;
+    min-width: 0 !important;
+  }
+  .impact-table thead {
+    display: none;
+  }
+  .impact-table tbody {
+    display: block;
+  }
+  .impact-table tbody tr {
+    display: block;
+    border: 1px solid #24262B !important;
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
+  .impact-table tbody tr:last-child {
+    margin-bottom: 0;
+  }
+  .impact-table tbody td {
+    display: block;
+    padding: 8px 18px !important;
+    overflow-wrap: anywhere;
+  }
+  .impact-table tbody tr td:first-child {
+    padding-top: 16px !important;
+  }
+  .impact-table tbody tr td:last-child {
+    padding-bottom: 16px !important;
+  }
+  .impact-table tbody td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: 'JetBrains Mono', 'JetBrains Fallback', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #828790;
+    margin-bottom: 4px;
+  }
+}
+
 .portrait-container {
   perspective: 1200px;
 }

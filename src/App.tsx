@@ -1316,6 +1316,26 @@ function CaseStudy({ project, onBack, onHome }: {
   const impactTable = project.impactTable ?? [];
   const learnings = project.learnings ?? [];
 
+  // Section headings are shared by all nine studies. A study that has nothing
+  // to measure needs to say so in its own words rather than promise "Empirical
+  // Validation", so it can rename the headings it needs and leave the rest.
+  const labels: {
+    problemHeading: string;
+    solutionsHeading: string;
+    impactHeading: string;
+    impactColumns: string[];
+    learningsEyebrow: string;
+    learningsHeading: string;
+  } = {
+    problemHeading: "Problem & Baseline Metrics",
+    solutionsHeading: "Strategic UX Solutions",
+    impactHeading: "Impact & Empirical Validation",
+    impactColumns: ["Key Workflow / Metric", "Before Redesign", "Post Launch", "Net Improvement"],
+    learningsEyebrow: "04 / Retrospective & Seniority",
+    learningsHeading: "Senior Learnings & Scalability",
+    ...(project.sectionLabels ?? {}),
+  };
+
   return (
     <div style={{ maxWidth: 940, margin: "0 auto", padding: "96px 24px 120px" }}>
       {/* Floating back button */}
@@ -1663,7 +1683,7 @@ function CaseStudy({ project, onBack, onHome }: {
             letterSpacing: "-0.02em",
           }}
         >
-          Problem & Baseline Metrics
+          {labels.problemHeading}
         </h2>
         <p
           style={{
@@ -1709,7 +1729,7 @@ function CaseStudy({ project, onBack, onHome }: {
             letterSpacing: "-0.02em",
           }}
         >
-          Strategic UX Solutions
+          {labels.solutionsHeading}
         </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           {solutions.map((s: any, i: number) => (
@@ -1795,11 +1815,12 @@ function CaseStudy({ project, onBack, onHome }: {
             letterSpacing: "-0.02em",
           }}
         >
-          Impact & Empirical Validation
+          {labels.impactHeading}
         </h2>
 
         {/* Before/After table */}
         <div
+          className="impact-table-wrap"
           style={{
             border: "1px solid #24262B",
             borderRadius: 12,
@@ -1807,10 +1828,10 @@ function CaseStudy({ project, onBack, onHome }: {
             marginBottom: 32,
           }}
         >
-          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 520 }}>
+          <table className="impact-table" style={{ width: "100%", borderCollapse: "collapse", minWidth: 520 }}>
             <thead>
               <tr style={{ background: "#1B1D21" }}>
-                {["Key Workflow / Metric", "Before Redesign", "Post Launch", "Net Improvement"].map((h) => (
+                {labels.impactColumns.map((h) => (
                   <th
                     key={h}
                     style={{
@@ -1841,6 +1862,7 @@ function CaseStudy({ project, onBack, onHome }: {
                   }}
                 >
                   <td
+                    data-label={labels.impactColumns[0]}
                     style={{
                       fontFamily: "'Inter', 'Inter Fallback', sans-serif",
                       fontSize: 14,
@@ -1851,6 +1873,7 @@ function CaseStudy({ project, onBack, onHome }: {
                     {row.metric}
                   </td>
                   <td
+                    data-label={labels.impactColumns[1]}
                     style={{
                       fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                       fontSize: 14,
@@ -1862,6 +1885,7 @@ function CaseStudy({ project, onBack, onHome }: {
                   </td>
                   <td
                     className="after-val"
+                    data-label={labels.impactColumns[2]}
                     style={{
                       fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                       fontSize: 14,
@@ -1873,6 +1897,7 @@ function CaseStudy({ project, onBack, onHome }: {
                     {row.after}
                   </td>
                   <td
+                    data-label={labels.impactColumns[3]}
                     style={{
                       fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
                       fontSize: 14,
@@ -1944,7 +1969,7 @@ function CaseStudy({ project, onBack, onHome }: {
             marginBottom: 8,
           }}
         >
-          04 / Retrospective & Seniority
+          {labels.learningsEyebrow}
         </div>
         <h2
           style={{
@@ -1956,7 +1981,7 @@ function CaseStudy({ project, onBack, onHome }: {
             letterSpacing: "-0.02em",
           }}
         >
-          Senior Learnings & Scalability
+          {labels.learningsHeading}
         </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           {learnings.map((l: any, i: number) => (
