@@ -75,58 +75,113 @@ export const projects = [
     title: "Smart Watcher Platform",
     client: "VARUNA CO., LTD. (ARV)",
     timeline: "1 yr 8 mo · Oct 2024 – May 2026",
-    hook: "Hundreds of unclassified CCTV & sensor feeds consolidated into an AI-triaged security operations center.",
+    hook: "Field reporting connected with satellite monitoring, helping teams capture ground observations and cross-check incidents with Smart Forest data.",
+    // The card shows `hook`; the case study opens with `summary`, which carries the
+    // fuller framing of how this platform sits alongside Smart Forest.
+    summary:
+      "Smart Watcher is a field reporting platform designed to complement Smart Forest's satellite monitoring. It allows field officers to report incidents from the ground and connects those observations with satellite data for cross-checking and verification.",
     role: "Lead UX/UI Designer",
-    platform: "Web Application · Mobile",
-    industry: "IoT / Security Tech",
-    stack: ["Figma", "Design Tokens", "Real-time Telemetry", "AI/ML UI"],
+    platform: "Web Application",
+    industry: "Field Reporting / Incident Verification",
+    stack: ["Figma", "Design System", "GIS Workflow", "Field UX"],
     image: "/img/cover/smart-watcher.webp",
     imageAlt: "Security monitoring control room screens with camera feeds",
     badges: [
-      { label: "−71% Alert Fatigue", positive: true },
-      { label: "+88% Response Rate", positive: true },
+      { label: "Field Reporting", positive: true },
+      { label: "Incident Verification", positive: null },
     ],
     kpis: [
-      { value: "−71%", label: "Operator alert fatigue", sub: "false-positive dismissals/shift" },
-      { value: "+88%", label: "Critical incident response rate", sub: "vs. legacy manual surveillance" },
-      { value: "1.8 min", label: "Triage turnaround time", sub: "from 9.4 min baseline" },
+      {
+        value: "Field Reporting",
+        label: "Real-world observations",
+        sub: "Field officers can report incidents directly from the location, providing information that satellite monitoring cannot capture immediately.",
+      },
+      {
+        value: "Connected Monitoring",
+        label: "Smart Forest integration",
+        sub: "Field reports can be connected with satellite observations from Smart Forest to support incident verification.",
+      },
+      {
+        value: "Incident Verification",
+        label: "Cross-checking data",
+        sub: "Combining field observations with satellite data helps teams compare what is happening on the ground with what the monitoring system detects.",
+      },
     ],
+    // Written without performance metrics: the numbers that used to sit here could
+    // not be verified, so each section describes what was designed instead.
+    sectionLabels: {
+      problemEyebrow: "01 / Discovery & Context",
+      problemHeading: "Problem & Baseline",
+      solutionsHeading: "Key Design Decisions",
+      impactHeading: "Outcomes",
+      impactColumns: ["Area", "Before", "After", "Outcome"],
+      learningsEyebrow: "04 / Retrospective",
+      learningsHeading: "What I Learned",
+    },
     problem:
-      "Security operators across industrial facilities were overwhelmed by an average of 340 raw alerts per shift. Without AI prioritization, genuine perimeter breaches and thermal anomalies were buried under false triggers, causing severe operator burnout.",
+      "Satellite monitoring provides valuable coverage across large forest areas, but it cannot observe the same location continuously. Because satellite revisit cycles create a delay between observations, teams need a way to capture what is happening on the ground in the meantime.",
     baselineStats: [
-      { value: "340", label: "avg. raw alerts per operator per 8-hour shift" },
-      { value: "9.4 min", label: "avg. time to classify & dispatch a critical incident" },
-      { value: "83%", label: "of total alerts were non-actionable false positives" },
+      {
+        value: "Satellite revisit cycle",
+        label: "The same area cannot be continuously observed by satellite, creating a gap between monitoring cycles.",
+      },
+      {
+        value: "Limited real-time field context",
+        label: "Satellite data can indicate changes, but it does not always confirm what is happening on the ground.",
+      },
+      {
+        value: "Disconnected verification",
+        label: "Field observations need to be captured and connected with monitoring data so teams can cross-check incidents.",
+      },
     ],
     solutions: [
       {
-        title: "AI-Triage Alert Hierarchy",
-        body: "Replaced raw alert cascades with a 3-tier severity model (Critical, Warning, Low). Inline AI bounding boxes and confidence scores highlight exact incident triggers.",
+        title: "Simple Field Reporting",
+        body: "Designed a straightforward reporting flow so field officers can quickly capture an incident from the location without navigating unnecessary complexity.",
       },
       {
-        title: "Dynamic Spatial Camera Grid",
-        body: "Replaced static 16-up walls with context-aware camera routing that auto-promotes adjacent perimeter feeds when a sensor triggers.",
+        title: "Location-Based Reporting",
+        body: "Connected reports with location information so each observation could be associated with the area where it occurred.",
       },
       {
-        title: "Chronological Incident Handoff",
-        body: "One-click digital incident logging with synchronized timestamps and snapshot packaging, eliminating shift-handoff communication gaps.",
+        title: "Structured Incident Information",
+        body: "Organized report types and supporting information to make field observations easier to understand and compare with monitoring data.",
       },
       {
-        title: "Mobile Field Responder Companion",
-        body: "Lightweight companion view designed for security patrol officers, featuring push-only emergency alerts with 1-tap route guidance.",
+        title: "Connected Verification Workflow",
+        body: "Designed the reporting experience as a complementary layer to Smart Forest, allowing field observations to be used alongside satellite data during incident verification.",
       },
     ],
     impactTable: [
-      { metric: "Actionable alerts per operator shift", before: "340", after: "~15", delta: "−96%" },
-      { metric: "Time to classify critical incident", before: "9.4 min", after: "1.8 min", delta: "−81%" },
-      { metric: "Critical incident response rate", before: "47%", after: "89%", delta: "+88%" },
-      { metric: "Operator retention (6-month)", before: "61%", after: "84%", delta: "+38%" },
+      {
+        metric: "Field observations",
+        before: "Information depended on separate field communication",
+        after: "Incidents can be reported directly from the field",
+        delta: "Structured reporting",
+      },
+      {
+        metric: "Satellite monitoring",
+        before: "Satellite observations operate on revisit cycles",
+        after: "Field reports provide additional ground context between observations",
+        delta: "Complementary data",
+      },
+      {
+        metric: "Incident verification",
+        before: "Field and monitoring information were harder to compare",
+        after: "Field reports can be cross-checked with Smart Forest data",
+        delta: "Cross-checkable",
+      },
+      {
+        metric: "Reporting workflow",
+        before: "Incident information could be fragmented",
+        after: "Structured reporting flow with location and incident details",
+        delta: "Connected workflow",
+      },
     ],
-    quote: "Before this, I closed my shifts feeling exhausted with hundreds of alerts unchecked. Now, high-risk events pop right to the front.",
-    quoteRole: "Senior Control Room Operator, SecureVision Team",
     learnings: [
-      "In high-stress control rooms, color cannot be the sole visual cue: paired severity colors with pulsing geometry, distinct audio frequencies, and keyboard hotkeys.",
-      "Separated alert data feeds from presentation components via WebSocket tokens, allowing backend engineers to connect live computer vision models seamlessly.",
+      "Designing a field reporting product made me think beyond the interface and consider how information moves between people, systems, and real-world conditions.",
+      "Working alongside Smart Forest showed me that different data sources do not always need to replace each other. They can provide complementary perspectives when connected through the right workflow.",
+      "Designing for field conditions reinforced the importance of keeping reporting flows focused, structured, and easy to complete at the point of observation.",
     ],
   },
   {

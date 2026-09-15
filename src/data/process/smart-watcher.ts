@@ -4,7 +4,7 @@ export const steps: ProcessStep[] = [
   {
     step: "01",
     title: "Design Thinking & Process Framing",
-    body: "Framed the engagement around a security operations problem rather than a dashboard request. With hundreds of unclassified CCTV and sensor feeds arriving continuously, the design question was not how to display more, but how to decide what deserves an operator's attention first.",
+    body: "Framed the engagement around a reporting problem rather than a dashboard request. Satellite monitoring already covered the forest areas, so the design question was how a person standing in the plot could record what they were seeing in a form the monitoring side could actually use.",
     images: [
       "/img/process/smart-watcher/01.webp",
       "/img/process/smart-watcher/02.webp",
@@ -13,15 +13,15 @@ export const steps: ProcessStep[] = [
   {
     step: "02",
     title: "Product Ecosystem Mapping",
-    body: "Mapped how the platform connects camera infrastructure, AI classification services, and the control-room operators acting on alerts. Making these dependencies explicit clarified where machine confidence ends and human judgement has to begin.",
+    body: "Mapped how the reporting app sits alongside Smart Forest, the organisations whose plots are being reported on, and the administrators who review what comes in. Making these relationships explicit clarified which information had to travel with every report for it to be worth anything downstream.",
     images: [
       "/img/process/smart-watcher/03.webp",
     ],
   },
   {
     step: "03",
-    title: "Personas & Operator Roles",
-    body: "Defined the operator profiles who live in this system daily — monitoring staff scanning for anomalies versus supervisors auditing after the fact. Their differing tolerance for alert volume drove how aggressively the interface filters and escalates.",
+    title: "Personas & Field Roles",
+    body: "Defined two government-official profiles with very different conditions. One is a technical high user based in Bangkok who monitors plots and reports upward to management, and needs an overview and a dashboard. The other is a low-technology user in Laos who has to walk into the area itself to assess it and had no tool supporting that trip. Both name forest encroachment and burning as the problems they are watching for.",
     images: [
       "/img/process/smart-watcher/04.webp",
     ],
@@ -29,7 +29,7 @@ export const steps: ProcessStep[] = [
   {
     step: "04",
     title: "User Flow Architecture",
-    body: "Structured the flows around the alert lifecycle: detection, triage, verification, resolution. Anchoring navigation to this sequence meant operators always knew what state an incident was in without reconstructing it from scattered screens.",
+    body: "Structured the flows around the report lifecycle for both roles. A field user scans a QR code, picks a report type, fills in the incident and its location, and gets a status back; an administrator receives an email notification and works through report management, status checks and an overall dashboard. Anchoring navigation to that sequence kept both sides looking at the same object.",
     images: [
       "/img/process/smart-watcher/05.webp",
     ],
@@ -37,7 +37,7 @@ export const steps: ProcessStep[] = [
   {
     step: "05",
     title: "Design System & Token Architecture",
-    body: "Built the component system on semantic tokens so severity, status, and confidence levels read consistently across every surface. In a security context this is functional, not cosmetic — colour carries meaning an operator has to parse in under a second.",
+    body: "Built the component system on semantic tokens so status, report type and urgency read consistently across every surface. Consistency matters here because the same report is read on a phone in the field and in a back-office review screen, and the two have to agree at a glance.",
     images: [
       "/img/process/smart-watcher/06.webp",
       "/img/process/smart-watcher/07.webp",
@@ -46,8 +46,8 @@ export const steps: ProcessStep[] = [
   },
   {
     step: "06",
-    title: "Telemetry Chart Primitives",
-    body: "Extended the system with a dedicated chart layer for real-time sensor telemetry. These primitives had to stay legible at a glance while remaining honest about gaps, latency, and low-confidence readings rather than smoothing them away.",
+    title: "Chart Library & Data Visualisation",
+    body: "Adopted a documented Figma chart library as the data-visualisation layer rather than drawing charts by hand, and set its colour, typography and customisation rules against the system tokens. That kept the analytics views consistent with the rest of the product and gave engineering a chart vocabulary that already existed in code.",
     images: [
       "/img/process/smart-watcher/09.webp",
     ],
@@ -55,7 +55,7 @@ export const steps: ProcessStep[] = [
   {
     step: "07",
     title: "Wireframing",
-    body: "Worked through layout density in low fidelity, testing how many concurrent feeds and alerts a single viewport could carry before triage speed degraded. Progressive disclosure kept secondary telemetry accessible without competing for foreground attention.",
+    body: "Worked through the report layout in low fidelity: reporter identity, evidence photos, the issue type, an urgency tag, the description, and how far the viewer is from the reported point. Testing the order in wireframe settled what a reviewer needs to see before scrolling and what can wait.",
     images: [
       "/img/process/smart-watcher/10.webp",
     ],
@@ -63,15 +63,15 @@ export const steps: ProcessStep[] = [
   {
     step: "08",
     title: "UI Design",
-    body: "Resolved wireframes into the production interface — an AI-triaged operations view where feeds, classifications and sensor state converge into one monitoring surface built for sustained use in a control room.",
+    body: "Resolved the wireframes into the production interface — a mobile reporting flow from QR sign-in through photo, location, date and submission, paired with the web side where submitted reports appear on a map with their supporting detail.",
     images: [
       "/img/process/smart-watcher/11.webp",
     ],
   },
   {
     step: "09",
-    title: "CRUD & Management Interfaces",
-    body: "Designed the administrative layer: device registration, zone configuration, rule management and user permissions. These back-office screens are where deployments actually scale, so they were treated as first-class product surfaces rather than afterthoughts.",
+    title: "Report Types & Edge-Case States",
+    body: "Designed the report types the platform supports, including plot acceptance and tree profile, each with its own step sequence, bulk-upload path and detail form. Alongside them sit the states that decide whether a report can be filed at all: no organisation behind the scanned code, location permission denied, a page the account is not allowed to open, camera versus photo-library upload, and logged out.",
     images: [
       "/img/process/smart-watcher/12.webp",
       "/img/process/smart-watcher/13.webp",
@@ -83,7 +83,7 @@ export const steps: ProcessStep[] = [
   {
     step: "10",
     title: "Design Spec & Developer Handoff",
-    body: "Documented components with edge-case states, token references and behavioural notes — including what the interface does when a feed drops, a classification is uncertain, or telemetry goes stale. Failure states in a security system cannot be left to interpretation.",
+    body: "Documented components with edge-case states, token references and behavioural notes — including what the interface does when location is unavailable, a photo cannot be attached, or a scanned code resolves to nothing. A report that fails silently in the field is a report that never reaches the monitoring side.",
     images: [
       "/img/process/smart-watcher/17.webp",
     ],
@@ -91,7 +91,7 @@ export const steps: ProcessStep[] = [
   {
     step: "11",
     title: "Screen Flow & Interactive Prototype",
-    body: "Assembled the full screen flow and a clickable prototype so multi-role navigation could be walked end-to-end. Seeing alert triage as a continuous path exposed transitions that felt correct in isolation but broke the operator's momentum.",
+    body: "Assembled the full screen flow and a clickable prototype so both the field and administrator paths could be walked end-to-end. Seeing report entry as a continuous path exposed transitions that felt correct in isolation but broke the flow of someone filling this in outdoors.",
     images: [
       "/img/process/smart-watcher/18.webp",
       "/img/process/smart-watcher/19.webp",
@@ -100,7 +100,7 @@ export const steps: ProcessStep[] = [
   {
     step: "12",
     title: "Usability Testing",
-    body: "Ran moderated task-completion sessions with operators against the prototype. Measuring time to triage and misclassification recovery — rather than collecting preferences — isolated the friction worth fixing before engineering built against the spec.",
+    body: "Ran moderated task-completion sessions against the prototype. Watching people work through the report flow, rather than collecting preferences, isolated the friction worth fixing before engineering built against the spec.",
     images: [
       "/img/process/smart-watcher/20.webp",
       "/img/process/smart-watcher/21.webp",

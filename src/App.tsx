@@ -1320,6 +1320,7 @@ function CaseStudy({ project, onBack, onHome }: {
   // to measure needs to say so in its own words rather than promise "Empirical
   // Validation", so it can rename the headings it needs and leave the rest.
   const labels: {
+    problemEyebrow: string;
     problemHeading: string;
     solutionsHeading: string;
     impactHeading: string;
@@ -1327,6 +1328,7 @@ function CaseStudy({ project, onBack, onHome }: {
     learningsEyebrow: string;
     learningsHeading: string;
   } = {
+    problemEyebrow: "01 / Discovery & Bottlenecks",
     problemHeading: "Problem & Baseline Metrics",
     solutionsHeading: "Strategic UX Solutions",
     impactHeading: "Impact & Empirical Validation",
@@ -1623,7 +1625,7 @@ function CaseStudy({ project, onBack, onHome }: {
       )}
       <div hidden={showProcess} style={showProcess ? { display: "none" } : undefined}>
 
-      {(kpis.length > 0 || project.hook) && (
+      {(kpis.length > 0 || project.summary || project.hook) && (
         <>
 {/* Executive Summary */}
       <section style={{ marginBottom: 64 }}>
@@ -1649,7 +1651,7 @@ function CaseStudy({ project, onBack, onHome }: {
             lineHeight: 1.65,
           }}
         >
-          {project.hook}
+          {project.summary ?? project.hook}
         </p>
       </section>
 
@@ -1671,7 +1673,7 @@ function CaseStudy({ project, onBack, onHome }: {
             marginBottom: 8,
           }}
         >
-          01 / Discovery & Bottlenecks
+          {labels.problemEyebrow}
         </div>
         <h2
           style={{
