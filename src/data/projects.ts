@@ -189,7 +189,7 @@ export const projects = [
     title: "Area 22 IOT Management",
     client: "HAPPY THREE CREATION CO., LTD.",
     timeline: "7 mo · Aug 2023 – Feb 2024",
-    hook: "Unified remote gateway configuration and live telemetry back-office managing 400+ industrial IoT nodes.",
+    hook: "Area 22 is an industrial IoT gateway management platform designed to make complex administrative and monitoring tasks easier to manage through a structured back-office experience.",
     role: "Senior UX/UI Designer",
     platform: "Web Back Office",
     industry: "Industrial IoT / Admin SaaS",
@@ -197,50 +197,101 @@ export const projects = [
     image: "/img/cover/area-22.webp",
     imageAlt: "Industrial IoT analytics dashboard with live telemetry and data charts",
     badges: [
-      { label: "−62% Setup Time", positive: true },
-      { label: "99.4% Node Uptime", positive: true },
+      { label: "Gateway Management", positive: true },
+      { label: "Back Office Admin", positive: null },
     ],
     kpis: [
-      { value: "−62%", label: "Node provisioning time", sub: "batch hardware setup per technician" },
-      { value: "99.4%", label: "Fleet connectivity health", sub: "zero-packet-loss threshold" },
-      { value: "−85%", label: "Outage diagnostic time", sub: "from 3.2 hrs to 28 mins" },
+      {
+        value: "Gateway Management",
+        label: "Centralized administration",
+        sub: "A back-office platform for managing industrial IoT gateways, configurations, and operational information through a structured web interface.",
+      },
+      {
+        value: "Operational Monitoring",
+        label: "Clear system visibility",
+        sub: "Organized gateway status and technical information into clearer views so users can understand system conditions without navigating fragmented screens.",
+      },
+      {
+        value: "Structured Workflows",
+        label: "From setup to monitoring",
+        sub: "Designed administrative workflows that make technical gateway management more structured, consistent, and easier to follow.",
+      },
     ],
+    // Written without performance metrics: the numbers that used to sit here could
+    // not be verified, so each section describes what was designed instead.
+    sectionLabels: {
+      problemEyebrow: "01 / Discovery & Context",
+      problemHeading: "Problem & Baseline",
+      solutionsHeading: "Key Design Decisions",
+      impactHeading: "Outcomes",
+      impactColumns: ["Area", "Before", "After", "Outcome"],
+      learningsEyebrow: "04 / Retrospective",
+      learningsHeading: "What I Learned",
+    },
     problem:
-      "Facility technicians had to manually SSH into individual sensor gateways across disparate warehouse and plant sites. Disconnected firmware versioning led to 38% configuration errors, frequent packet drops, and costly on-site engineer dispatches.",
+      "Managing industrial IoT gateways involves multiple types of technical information and administrative tasks. Without a clear structure, users can find it difficult to understand gateway status, configure devices, and move between different operational workflows.",
     baselineStats: [
-      { value: "45 min", label: "avg. time to provision a single IoT gateway node" },
-      { value: "38%", label: "node firmware mismatch rate across client facilities" },
-      { value: "3.2 hrs", label: "mean time to locate and diagnose network hardware failure" },
+      {
+        value: "Complex technical information",
+        label: "Gateway status, configuration, and operational information needed to be presented in a way that users could understand and act on.",
+      },
+      {
+        value: "Fragmented administration",
+        label: "Different management tasks required users to move between related workflows and screens.",
+      },
+      {
+        value: "Low information hierarchy",
+        label: "Technical information needed clearer hierarchy so users could quickly distinguish important status information from detailed configuration data.",
+      },
     ],
     solutions: [
       {
-        title: "Batch Provisioning Wizard",
-        body: "Guided 3-step setup UI allowing technicians to configure and test up to 50 gateways simultaneously with automated ping verification.",
+        title: "Structured Gateway Management",
+        body: "Organized gateway-related information and actions into clearer administrative workflows so users could manage devices without unnecessary navigation.",
       },
       {
-        title: "Network Topology Health Canvas",
-        body: "Interactive node canvas displaying mesh connections, signal-to-noise ratios, and battery levels with quick-filtering by facility zone.",
+        title: "Clear Information Hierarchy",
+        body: "Prioritized important gateway status and operational information while keeping detailed technical data available when needed.",
       },
       {
-        title: "Remote FOTA Deployment Queue",
-        body: "Staged Over-The-Air firmware rollouts with instant rollback mechanisms, preventing device bricking during maintenance windows.",
+        title: "Consistent Administrative Patterns",
+        body: "Applied reusable patterns across management screens, forms, tables, and system states to make the back-office experience more consistent.",
       },
       {
-        title: "Granular RBAC Administration",
-        body: "Role-tailored permissions separating plant managers, third-party contractors, and senior system architects.",
+        title: "Connected Management Flow",
+        body: "Designed related administrative workflows with a consistent structure so users could move between setup, configuration, monitoring, and management tasks more easily.",
       },
     ],
     impactTable: [
-      { metric: "Gateway provisioning time", before: "45 min", after: "17 min", delta: "−62%" },
-      { metric: "Firmware mismatch incident rate", before: "38%", after: "4%", delta: "−89%" },
-      { metric: "Mean time to triage node dropouts", before: "3.2 hrs", after: "28 min", delta: "−85%" },
-      { metric: "Field technician task CSAT", before: "3.1 / 5", after: "4.8 / 5", delta: "+55%" },
+      {
+        metric: "Gateway management",
+        before: "Information and actions were spread across different screens",
+        after: "Related gateway information and actions were organized into clearer workflows",
+        delta: "More structured",
+      },
+      {
+        metric: "Technical information",
+        before: "Different types of information competed for attention",
+        after: "Information was organized by hierarchy and context",
+        delta: "Easier to understand",
+      },
+      {
+        metric: "Administrative workflows",
+        before: "Related tasks could feel disconnected",
+        after: "Workflows were designed with more consistent patterns",
+        delta: "More consistent",
+      },
+      {
+        metric: "Monitoring & management",
+        before: "Users needed to navigate between different operational views",
+        after: "Key information was brought into clearer management views",
+        delta: "Easier to navigate",
+      },
     ],
-    quote: "Batch provisioning used to take our entire weekend. With Area 22, we deploy fifty gateways before lunch with zero script errors.",
-    quoteRole: "Lead IoT Hardware Engineer, Happy Three Creation",
     learnings: [
-      "Field technicians often wear protective gloves and view ruggedized tablets outdoors; UI required minimum 48px touch targets and high-contrast telemetry text.",
-      "Constructed a reusable data table component capable of handling 5,000+ live rows with virtual scrolling and instant column filtering.",
+      "Designing an industrial IoT back-office showed me how important information hierarchy becomes when users need to work with technical data and administrative tasks at the same time.",
+      "I learned that complex systems do not necessarily need more information on screen. They need clearer structure so users can understand what matters and what action comes next.",
+      "Working on management workflows reinforced the value of consistent patterns across forms, tables, states, and navigation when designing a complex administrative product.",
     ],
   },
   {
