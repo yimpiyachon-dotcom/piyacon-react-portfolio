@@ -79,7 +79,7 @@ export const projects = [
     // The card shows `hook`; the case study opens with `summary`, which carries the
     // fuller framing of how this platform sits alongside Smart Forest.
     summary:
-      "Smart Watcher is a field reporting platform designed to complement Smart Forest's satellite monitoring. It allows field officers to report incidents from the ground and connects those observations with satellite data for cross-checking and verification.",
+      "Smart Watcher is a field reporting platform designed to complement Smart Forest's satellite monitoring. It connects field observations with satellite data, giving teams additional context for cross-checking and verifying incidents.",
     role: "Lead UX/UI Designer",
     platform: "Web Application",
     industry: "Field Reporting / Incident Verification",
@@ -169,7 +169,7 @@ export const projects = [
         metric: "Incident verification",
         before: "Field and monitoring information were harder to compare",
         after: "Field reports can be cross-checked with Smart Forest data",
-        delta: "Cross-checkable",
+        delta: "Easier to verify",
       },
       {
         metric: "Reporting workflow",
