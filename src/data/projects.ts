@@ -299,7 +299,7 @@ export const projects = [
     title: "Kanna Application & CMS",
     client: "VARUNA CO., LTD. (ARV / PTTEP)",
     timeline: "1 yr 3 mo · June 2022 – Aug 2023",
-    hook: "AI-driven agricultural field diagnostics paired with a geospatial back-office for 15,000+ smallholder farmers.",
+    hook: "Kanna is an agricultural mobile application and geospatial CMS designed to connect field activities with agricultural data and support farmers and agricultural teams through a more structured digital workflow.",
     role: "UX/UI Designer",
     platform: "Mobile App + Web CMS",
     industry: "Smart Agriculture / AgriTech",
@@ -307,50 +307,105 @@ export const projects = [
     image: "/img/cover/kanna-app.webp",
     imageAlt: "Agricultural sensor technology and smartphone plant disease inspection",
     badges: [
-      { label: "+91% Diagnostic Accuracy", positive: true },
-      { label: "15k+ Farmers", positive: null },
+      { label: "Field Diagnostics", positive: true },
+      { label: "Geospatial CMS", positive: null },
     ],
     kpis: [
-      { value: "+91%", label: "Crop disease triage rate", sub: "via offline on-device camera ML" },
-      { value: "−40%", label: "Post-harvest crop loss", sub: "following preventative spray guides" },
-      { value: "4.7★", label: "Farmer app rating", sub: "15,000+ verified smallholder accounts" },
+      {
+        value: "Field Diagnostics",
+        label: "Mobile-first field experience",
+        sub: "A mobile application designed to help farmers capture field information, inspect crop conditions, and access useful agricultural guidance directly from the field.",
+      },
+      {
+        value: "Geospatial Management",
+        label: "Connected field data",
+        sub: "A web-based CMS that helps agricultural teams manage field information and connect mobile app data with geospatial views.",
+      },
+      {
+        value: "Designed for Field Conditions",
+        label: "Practical mobile UX",
+        sub: "Designed around real-world agricultural conditions, including outdoor use, limited connectivity, and users who may not be frequent smartphone users.",
+      },
     ],
+    // Written without performance metrics: the numbers that used to sit here could
+    // not be verified, so each section describes what was designed instead.
+    sectionLabels: {
+      problemEyebrow: "01 / Discovery & Context",
+      problemHeading: "Problem & Baseline",
+      solutionsHeading: "Key Design Decisions",
+      impactHeading: "Outcomes",
+      impactColumns: ["Area", "Before", "After", "Outcome"],
+      learningsEyebrow: "04 / Retrospective",
+      learningsHeading: "What I Learned",
+    },
     problem:
-      "Smallholder farmers faced severe seasonal crop losses from pests and fungus without immediate agronomist support. Meanwhile, Varuna’s agricultural coordinators lacked field data to coordinate regional drone-spraying operations and resource allocation.",
+      "Agricultural work happens in environments where connectivity, device conditions, and user familiarity with digital tools can vary. The product needed to support field activities while keeping information and workflows simple enough to use during everyday farm work.",
     baselineStats: [
-      { value: "5–7 days", label: "avg. turnaround for agronomists to visit and diagnose field disease" },
-      { value: "72 hrs", label: "time needed to coordinate emergency drone spray missions" },
-      { value: "36%", label: "historical adherence to chemical prevention schedules" },
+      {
+        value: "Field-first constraints",
+        label: "The mobile experience needed to work in outdoor environments where sunlight, device conditions, and attention could affect how users interact with the interface.",
+      },
+      {
+        value: "Limited connectivity",
+        label: "Field activities may take place in areas with unreliable connectivity, so important workflows needed to remain practical when network access was limited.",
+      },
+      {
+        value: "Complex agricultural information",
+        label: "Crop information, cultivation records, field data, and supporting guidance needed to be organized so users could understand and act on them without unnecessary complexity.",
+      },
+      {
+        value: "Connected field & back-office workflows",
+        label: "Mobile field activities and agricultural team workflows needed to work together through a connected CMS and geospatial view.",
+      },
     ],
     solutions: [
       {
-        title: "High-Sunlight Mobile Inspection Flow",
-        body: "Designed ultra-high-contrast UI with large visual cards and voice prompts, tailored for non-tech-savvy farmers operating in direct sunlight.",
+        title: "Field-First Mobile Experience",
+        body: "Designed the mobile experience around real field conditions, using clear visual hierarchy, accessible touch targets, and straightforward navigation.",
       },
       {
-        title: "Offline-First Disease Scanner",
-        body: "Instant on-device ML leaf photo analysis that delivers treatment recommendations even when disconnected from cellular coverage in remote fields.",
+        title: "Practical Offline Experience",
+        body: "Considered limited connectivity in the field and designed important interactions to remain understandable and usable when network access was unavailable or unreliable.",
       },
       {
-        title: "Agronomist GIS Back Office",
-        body: "Geographic dashboard tracking regional outbreak clusters and scheduling drone flights to contain pest outbreaks before spreading.",
+        title: "Structured Farm & Project Management",
+        body: "Organized farm plots, project participation, cultivation activities, and related information into clearer workflows so users could manage field activities more easily.",
       },
       {
-        title: "Localized Calendar & Spray Tracker",
-        body: "Icon-driven weather warnings and countdown timelines reminding farmers when to irrigate and apply organic fertilizers.",
+        title: "Connected Geospatial CMS",
+        body: "Designed the relationship between the mobile application and web-based CMS so agricultural teams could manage field information through a more structured geospatial workflow.",
       },
     ],
     impactTable: [
-      { metric: "Disease diagnosis turnaround", before: "5–7 days", after: "< 30 sec", delta: "−99%" },
-      { metric: "Back-office drone mission dispatch", before: "72 hrs", after: "4 hrs", delta: "−94%" },
-      { metric: "Preventative schedule adherence", before: "36%", after: "82%", delta: "+128%" },
-      { metric: "Agronomist weekly case resolution", before: "14 cases", after: "68 cases", delta: "+385%" },
+      {
+        metric: "Field activities",
+        before: "Field information and activities could be difficult to organize digitally",
+        after: "Key activities were structured into clearer mobile workflows",
+        delta: "More structured",
+      },
+      {
+        metric: "Mobile experience",
+        before: "Field conditions introduced usability constraints",
+        after: "Interface and interaction patterns were designed around field use",
+        delta: "More practical",
+      },
+      {
+        metric: "Farm management",
+        before: "Farm and project information could be spread across different workflows",
+        after: "Related information was organized into clearer management flows",
+        delta: "Easier to manage",
+      },
+      {
+        metric: "Field & back-office data",
+        before: "Mobile and agricultural team workflows needed stronger connection",
+        after: "Mobile activities were connected with a geospatial CMS workflow",
+        delta: "Better connected",
+      },
     ],
-    quote: "Before Kanna, a leaf spot could ruin half our harvest before anyone inspected it. Now, taking a photo tells me what to do immediately.",
-    quoteRole: "Participating Agricultural Lead, Suphanburi Demonstration Farm",
     learnings: [
-      "Conducted extensive in-field contextual inquiries: discovered complex typography was unusable under harsh sunlight, leading to an icon-first visual grammar.",
-      "Designed an offline local-storage sync queue that silently syncs disease photos once mobile signal is re-acquired.",
+      "Designing for agricultural users taught me to consider the environment around the interface, not just the interface itself. Outdoor conditions, connectivity, device limitations, and user familiarity all affect how a product is experienced.",
+      "I learned that simplifying a field experience is not about removing information. It is about presenting the right information at the right moment and making the next action obvious.",
+      "Working across a mobile application and geospatial CMS reinforced the importance of designing connected workflows rather than treating each product surface as a separate experience.",
     ],
   },
   {

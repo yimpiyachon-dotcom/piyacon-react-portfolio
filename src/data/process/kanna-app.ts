@@ -4,7 +4,7 @@ export const steps: ProcessStep[] = [
   {
     step: "01",
     title: "UX Process Framing",
-    body: "Set the process for a product whose users are smallholder farmers, not office workers — many on low-end devices, in the field, with intermittent connectivity. That constraint shaped every decision downstream: what could be assumed, what had to degrade gracefully, and how much a screen could ask of someone standing in a plot.",
+    body: "Set the process around who actually uses this: people working in a plot, often on modest devices, with connectivity that comes and goes. That constraint shaped every decision downstream — what could be assumed, what had to degrade gracefully, and how much a single screen could reasonably ask of someone standing in a field.",
     images: [
       "/img/process/kanna-app/01.webp",
     ],
@@ -12,7 +12,7 @@ export const steps: ProcessStep[] = [
   {
     step: "02",
     title: "Design System Foundation",
-    body: "Built a token-driven system sized for mobile-first agricultural use — large touch targets, high contrast for outdoor daylight, and Thai typography that stays legible at small sizes. Consistency here directly reduced onboarding friction for first-time smartphone users.",
+    body: "Built a token-driven system sized for mobile-first agricultural use — large touch targets, high contrast for outdoor daylight, and Thai typography that stays legible at small sizes. One consistent set of patterns is what keeps each screen predictable for someone who does not use a smartphone often.",
     images: [
       "/img/process/kanna-app/02.webp",
     ],
@@ -20,7 +20,7 @@ export const steps: ProcessStep[] = [
   {
     step: "03",
     title: "Onboarding, Homepage & Content",
-    body: "Designed the welcome flow, homepage and news surfaces alongside their full state coverage — loading, 500 errors, unauthorised, no-internet, request timeout and coming-soon. For a field app, the offline and failure states are not edge cases; they are the everyday experience.",
+    body: "Designed the welcome flow, homepage and news surfaces alongside their full state coverage — loading, 500 errors, unauthorised, no-internet, request timeout and coming-soon. For a field app the offline and failure states are not edge cases, they are part of the everyday experience, so they were designed rather than left to chance.",
     images: [
       "/img/process/kanna-app/03.webp",
       "/img/process/kanna-app/04.webp",
@@ -61,7 +61,7 @@ export const steps: ProcessStep[] = [
   {
     step: "07",
     title: "Notifications & Account Management",
-    body: "Designed alerting, profile and account surfaces that connect the mobile app to the geospatial back-office. Notifications had to be specific enough to act on without becoming noise a farmer learns to dismiss.",
+    body: "Designed alerting, profile and account surfaces that connect the mobile app to the geospatial CMS. Notifications had to be specific enough to act on without becoming noise a farmer learns to dismiss.",
     images: [
       "/img/process/kanna-app/16.webp",
       "/img/process/kanna-app/17.webp",
@@ -71,7 +71,7 @@ export const steps: ProcessStep[] = [
   {
     step: "08",
     title: "Final UI & Launch",
-    body: "Shipped to the App Store and Google Play — an AI-driven field diagnostics app paired with a geospatial CMS, serving 15,000+ smallholder farmers under the KANNA by Varuna brand.",
+    body: "Released on the App Store and Google Play as KANNA by varuna: drawing a plot directly on the satellite map with its area returned in Thai agricultural units, the saved plot records and their details, weather, projects and agricultural news — with the geospatial CMS behind it.",
     images: [
       "/img/process/kanna-app/19.webp",
       "/img/process/kanna-app/20.webp",
