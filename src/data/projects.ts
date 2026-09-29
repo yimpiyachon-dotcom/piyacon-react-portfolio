@@ -413,7 +413,7 @@ export const projects = [
     title: "Dr. Smoothlife Platform",
     client: "HAPPY THREE CREATION CO., LTD.",
     timeline: "7 mo · Aug 2023 – Feb 2024",
-    hook: "Integrated telehealth booking, digital prescription fulfillment, and doctor clinical workspace.",
+    hook: "Dr. Smoothlife is a telemedicine platform designed to connect patients, doctors, pharmacy fulfilment, and operational workflows across mobile and web experiences.",
     role: "Senior UX/UI Designer",
     platform: "Mobile App + Web Admin CMS",
     industry: "HealthTech / Telemedicine",
@@ -421,50 +421,103 @@ export const projects = [
     image: "/img/cover/dr-smoothlife.webp",
     imageAlt: "Doctor utilizing telemedicine workspace and digital consultation platform",
     badges: [
-      { label: "+68% Call Completion", positive: true },
-      { label: "−52% Cart Drop-off", positive: true },
+      { label: "Connected Care", positive: true },
+      { label: "Clinical Workspace", positive: null },
     ],
     kpis: [
-      { value: "+68%", label: "Consultation completion", sub: "zero tech dropouts during calls" },
-      { value: "−52%", label: "Pharmacy cart abandonment", sub: "via in-app 1-tap fulfillment" },
-      { value: "3.2 min", label: "Patient-to-doctor connection", sub: "down from 14.8 min baseline" },
+      {
+        value: "Connected Telemedicine",
+        label: "From consultation to fulfilment",
+        sub: "A telemedicine platform connecting patient consultation, digital prescriptions, pharmacy fulfilment, and doctor workflows into one connected experience.",
+      },
+      {
+        value: "Clinical Workspace",
+        label: "Focused doctor experience",
+        sub: "A dedicated clinical workspace designed to help doctors manage consultations, patient information, and digital prescriptions without switching between disconnected tools.",
+      },
+      {
+        value: "Operational Back Office",
+        label: "Connected service management",
+        sub: "Supporting admin workflows for prescription orders, delivery configuration, fulfilment, cancellations, and other operational tasks behind the telemedicine service.",
+      },
     ],
+    // Written without performance metrics: the numbers that used to sit here could
+    // not be verified, so each section describes what was designed instead.
+    sectionLabels: {
+      problemHeading: "Problem & Baseline",
+      impactHeading: "Outcomes",
+      impactColumns: ["Area", "Before", "After", "Outcome"],
+      learningsEyebrow: "04 / Retrospective",
+      learningsHeading: "What I Learned",
+    },
     problem:
-      "Patients endured long virtual queue times, opaque symptom intake forms, and disconnected pharmacy handoffs that caused over 60% of digital prescriptions to go unfulfilled. Physicians were slowed down by fragmented desktop software.",
+      "Telemedicine involves more than the consultation itself. Patients need to move through intake and booking before meeting a doctor, while doctors need access to clinical information and prescribing tools during the consultation. Behind the experience, pharmacy and fulfilment workflows also need to stay connected.",
     baselineStats: [
-      { value: "14.8 min", label: "avg. patient waiting time in virtual consultation queue" },
-      { value: "51%", label: "intake form drop-off before connecting to a physician" },
-      { value: "8.5 min", label: "physician time spent manually logging EHR notes post-call" },
+      {
+        value: "Disconnected patient journey",
+        label: "Patient intake, consultation, prescription, and fulfilment needed to work together as one continuous experience rather than separate product steps.",
+      },
+      {
+        value: "Fragmented clinical workflow",
+        label: "Doctors needed to manage consultation information and prescribing while maintaining focus on the patient.",
+      },
+      {
+        value: "Complex fulfilment operations",
+        label: "Prescription orders, delivery rules, pharmacy fulfilment, cancellations, and related operational tasks required structured back-office workflows.",
+      },
+      {
+        value: "Multiple product surfaces",
+        label: "The platform spanned patient-facing mobile experiences, doctor-facing interfaces, and web-based operational tools, requiring consistency across different contexts.",
+      },
     ],
     solutions: [
       {
-        title: "90-Second Rapid Medical Intake",
-        body: "Visual symptom picker and automated microphone/camera test ensuring patients are prepped and verified before the physician connects.",
+        title: "Structured Medical Intake",
+        body: "Designed a focused intake experience that helps patients provide relevant information and prepare for the consultation before connecting with a doctor.",
       },
       {
         title: "Unified Clinical Workspace",
-        body: "Split-screen doctor desktop UI featuring video consultation on the left and live EHR record + 1-click digital prescribing on the right.",
+        body: "Designed a doctor workspace that brings video consultation, patient information, clinical records, and prescribing actions into a more focused interface.",
       },
       {
-        title: "Direct-to-Door Prescription Pipeline",
-        body: "Automated routing of digital prescriptions to the nearest certified pharmacy with real-time courier tracking in the patient app.",
+        title: "Connected Prescription Fulfilment",
+        body: "Connected digital prescription workflows with pharmacy and delivery processes so the journey continues beyond the consultation.",
       },
       {
-        title: "Multi-Language Healthcare Portal",
-        body: "Full Thai & English language parity with accessible font sizing compliant with WCAG AAA contrast standards.",
+        title: "Operational Back Office",
+        body: "Designed structured admin workflows for delivery configuration, order management, prescription handling, cancellations, and fulfilment operations.",
       },
     ],
     impactTable: [
-      { metric: "Patient intake form completion", before: "51%", after: "89%", delta: "+74%" },
-      { metric: "Pre-consultation queue wait time", before: "14.8 min", after: "3.2 min", delta: "−78%" },
-      { metric: "Physician charting time per patient", before: "8.5 min", after: "2.1 min", delta: "−75%" },
-      { metric: "Digital prescription fulfillment rate", before: "38%", after: "79%", delta: "+108%" },
+      {
+        metric: "Patient journey",
+        before: "Consultation and fulfilment involved multiple disconnected steps",
+        after: "Patient, consultation, prescription, and fulfilment workflows were connected",
+        delta: "More connected",
+      },
+      {
+        metric: "Doctor workflow",
+        before: "Clinical information and actions could be spread across different tools",
+        after: "Key consultation and prescribing tasks were brought into one workspace",
+        delta: "More focused",
+      },
+      {
+        metric: "Prescription fulfilment",
+        before: "Pharmacy and delivery operations required separate management workflows",
+        after: "Prescription and fulfilment processes were structured as part of the wider service",
+        delta: "Better connected",
+      },
+      {
+        metric: "Operations",
+        before: "Delivery, orders, cancellations, and fulfilment required multiple administrative tasks",
+        after: "Operational workflows were organized into clearer management flows",
+        delta: "More structured",
+      },
     ],
-    quote: "The split-screen clinical UI cut our consultation logging time by 75%. I can focus on listening to the patient instead of fighting EHR tabs.",
-    quoteRole: "Consulting Medical Director, Smoothlife Clinic Network",
     learnings: [
-      "Healthcare applications require strict error prevention: added double-confirmation modals with dosage sanity checks to prevent accidental medication over-prescribing.",
-      "Created an animated connection-status indicator during video calls to reduce patient anxiety during momentary cellular jitter.",
+      "Designing a telemedicine product showed me that healthcare UX is not only about making individual screens easy to use. The experience depends on how patients, doctors, pharmacies, and operational teams connect across the entire service.",
+      "I learned that clinical interfaces need to reduce cognitive load while still keeping important information and actions visible. The goal is not to simplify the data itself, but to make the workflow easier to understand.",
+      "Working across patient-facing, clinical, and operational products reinforced the importance of designing a consistent system across different users, devices, and responsibilities.",
     ],
   },
   {
