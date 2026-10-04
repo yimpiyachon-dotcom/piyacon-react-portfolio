@@ -3,8 +3,8 @@ import type { ProcessStep } from '../processSteps';
 export const steps: ProcessStep[] = [
   {
     step: "01",
-    title: "Before & After: A Wall of Links Becomes a Catalogue",
-    body: "The before is the whole brief in one screenshot — the previous site ran every course as a plain red text link in a single unbroken column, over a hundred of them, no grouping, no imagery, nothing to scan by. An HR buyer looking for one thing had to read the entire page to learn whether it existed. The after opens with the institute's positioning across soft skill and hard skill, states the four delivery formats before any course is shown, then presents fifteen course groups as an image grid, and only then the course cards themselves with a category filter above them. The institute's depth stops being the reason the page is unusable and becomes the reason to browse it.",
+    title: "Before and After: From a Wall of Links to a Catalogue",
+    body: "The earlier site listed every course as a plain red text link in one long column, with no grouping and no images, so a buyer had to read the whole list to learn whether a course existed. The redesign states the delivery formats before any course, then shows the course groups as an image grid, and only then the course cards with a category filter above them. Recognising a group by its image and narrowing with the filter replaces reading and remembering a list.",
     images: [
       "/img/process/happy-training/01.webp",
     ],

@@ -3,16 +3,16 @@ import type { ProcessStep } from '../processSteps';
 export const steps: ProcessStep[] = [
   {
     step: "01",
-    title: "Before & After: The Case for a Rebuild",
-    body: "The previous site ran five pages on a light teal palette with stock illustration carrying most of the layout — generic enough to belong to any small agency, and silent on what the team actually builds with. Setting the five old pages directly above the five new ones made the argument without a written brief: the same information architecture, an entirely different signal. The rebuild moves to a dark ground with green accents and code texture, which is the register a software house gets read in.",
+    title: "Before and After: Five Pages Rebuilt",
+    body: "The board sets the five pages being replaced directly above their rebuilt versions. The earlier pages did not share one visual language: two used a teal treatment with stock illustration, the other three a white and navy layout with a pink footer band, so the site read as several templates rather than one company. The rebuild keeps the same five-page structure and moves every page onto one dark ground with green accents and a code texture, so the consistency comes from the system rather than from each page being matched by hand.",
     images: [
       "/img/process/beurdev-agency/01.webp",
     ],
   },
   {
     step: "02",
-    title: "The Rebuilt Home Page",
-    body: "One scroll carries the whole pitch: the Design, Build, Roll Out promise in the hero; both founders named with their roles; the working process as Starting, On Progress and Success with QA sitting inside the final stage; the stack split across iOS, front end and back end with the actual frameworks listed; four packages with prices on the page; and a direct contact block. Naming React Native, Flutter, React, Vue, Angular, NestJS, Laravel and Django instead of claiming a modern stack is the part that does the work — a prospect evaluating a software house is checking whether the team builds in what their project needs.",
+    title: "The Home Page in One Scroll",
+    body: "The home page carries the whole pitch in one scroll: the Design, Build, Roll Out promise in the hero, the two founders with their roles, the working process as three stages from Starting to Success with QA inside the last, the tech stack split into app, front end and back end with each framework named by its logo, four packages compared side by side, and a direct contact block. Naming the frameworks speaks the buyer's language, and putting the packages on one screen lets them be compared without being remembered.",
     images: [
       "/img/process/beurdev-agency/02.webp",
     ],

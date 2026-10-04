@@ -3,8 +3,8 @@ import type { ProcessStep } from '../processSteps';
 export const steps: ProcessStep[] = [
   {
     step: "01",
-    title: "One Page, Two Versions of the Offer",
-    body: "The board carries the sale page twice, and the difference between the two is the whole argument. Both run the same spine — hero with the phone number and LINE account, a promotion band claiming the lowest service fee and registration inside a week, three priced packages, the four-step process, why-us, the four services, a client wall carrying Shell and MG, and a free-consultation bar repeated after every block. What changes is the third pricing card: version one offers it as a package at ฿1,900, version two strikes through the ฿2,000 tier to show a discount and turns the third card into a logo design add-on at half price, ฿3,800 down to ฿1,900. Alongside sit the ONCE ACCOUNTING logo itself and the mobile layouts for the step flow and the client wall.",
+    title: "One Sale Page in Two Versions",
+    body: "The board shows the sale page in two versions with the same structure: a hero with the phone and LINE contacts, a promotion band, three package cards, the four-step registration process with its stated finish, the reasons to choose the firm, the four services, the client logos, and a consultation bar repeated after every block. The two versions differ only in what the third card offers. Each package lists what it includes, with a note on what the price does not cover beneath the cards, so there is nothing to discover after the call. Mobile layouts for the step flow and the client logos sit alongside, keeping the same order on a phone.",
     images: [
       "/img/process/once-accounting/01.webp",
     ],
