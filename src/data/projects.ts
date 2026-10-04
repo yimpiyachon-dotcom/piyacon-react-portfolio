@@ -6,71 +6,128 @@ export const projects = [
     title: "Smart Forest Platform",
     client: "VARUNA CO., LTD. (ARV / PTTEP)",
     timeline: "1 yr 8 mo · Oct 2024 – May 2026",
-    hook: "Smart Forest brings satellite, geospatial, and field data into one platform, helping teams monitor forest conditions, analyze carbon data, and support reporting and verification.",
+    hook: "A forest-monitoring platform designed so officers can read satellite and field data without GIS expertise: layers explained in plain language, analysis by plot, and email alerts.",
+    summary:
+      "Smart Forest is a GIS platform for monitoring forest plots and their carbon, working alongside Smart Watcher's field reports and the Forest of Tomorrow carbon marketplace. The design groups the map layers into five plain-language categories, gives each metric its own analysis view, shows a plot either as its own shapefile or as the analysis grid, and sends hotspot, deforestation and forest-change alerts by email.",
     role: "UX/UI Designer",
     platform: "Web Application (GIS)",
     industry: "ClimateTech / SaaS",
     stack: ["Figma", "Design Tokens", "GIS Data Viz", "BaseBlocksUI"],
     image: "/img/cover/smart-forest.webp",
-    imageAlt: "Aerial forest canopy with GIS digital heatmaps and telemetry overlay",
+    imageAlt: "Smart Forest analytics on a laptop: a plot's master grid on satellite imagery, with its NDVI time series and monthly images",
     badges: [
       { label: "GIS Data Platform", positive: true },
-      { label: "12-Screen System", positive: null },
+      { label: "Split-View Map", positive: null },
     ],
     kpis: [
-      { value: "One Platform", label: "Connected data", sub: "Satellite, GIS, field, and carbon data brought into one workflow." },
-      { value: "Layered Views", label: "Progressive disclosure", sub: "From high-level insights to detailed GIS and carbon data." },
-      { value: "Design System", label: "Reusable tokens", sub: "Consistent UI patterns that scale as the platform grows." },
+      {
+        value: "Plain-Language Layers",
+        label: "Five groups, each explained",
+        sub: "Biosphere, atmosphere, land cover, risk and socioeconomics, with a short explanation and a legend for every layer.",
+      },
+      {
+        value: "Analysis per Plot",
+        label: "One view per metric",
+        sub: "NDVI, CO2 sequestration, biomass and forest change each get their own analysis, with a split view to compare layers.",
+      },
+      {
+        value: "Shared Design System",
+        label: "One theme, five products",
+        sub: "A core theme shared by five company products, each overriding only its colour, radius and font, built on BaseBlocksUI.",
+      },
     ],
-    // This study is written without performance metrics: none of the numbers
-    // that used to sit here could be verified, so the sections describe what
-    // was designed and what changed instead of claiming a percentage.
+    // Written from the boards. The only figures are the usability-test results read
+    // off the Maze boards; every other section describes what was designed.
     sectionLabels: {
+      problemEyebrow: "01 / Discovery & Context",
       problemHeading: "Problem & Baseline",
       solutionsHeading: "Key Design Decisions",
-      impactHeading: "Impact",
+      impactHeading: "Outcomes",
       impactColumns: ["Area", "Before", "After", "Outcome"],
       learningsEyebrow: "04 / Retrospective",
       learningsHeading: "What I Learned",
-      processHeading: "From Field Research to Shipped System",
+      processHeading: "From Ecosystem Map to Next Version",
       processIntro:
-        "The end-to-end process behind this platform \u2014 how ambiguous stakeholder requests were reframed into a validated problem, then architected into a scalable, tokenized system.",
+        "From the product ecosystem, personas and one problem statement, through the information architecture and a design system shared across products, to the finished interface, usability testing and the direction for the next version.",
     },
     problem:
-      "Forest monitoring and carbon auditing relied on data spread across satellite, GIS, and field workflows. Analysts had to cross-reference information across different sources, making it harder to understand forest conditions and move from monitoring to reporting.",
+      "Forest officers needed to understand the condition of large planted areas and report on them, but the satellite and GIS data that could show it was hard to read without specialist training. The research found users switching between several systems, finding GIS complex, and facing areas too large to survey on foot, with long journeys to hard-to-reach plots and reports still made manually. The platform also had to show plots the way customers define them in their own shapefiles, while running its analysis on a common grid.",
     baselineStats: [
-      { value: "Multiple data sources", label: "Satellite · GIS · Field · Carbon" },
-      { value: "Complex information", label: "Different users needed different levels of detail." },
-      { value: "Fragmented workflow", label: "Monitoring, analysis, and reporting were handled across separate steps." },
+      {
+        value: "Many systems",
+        label: "Users switched between several systems to see the data for one area.",
+      },
+      {
+        value: "Complex GIS",
+        label: "Satellite and GIS layers were hard to read, and one persona had little technical background.",
+      },
+      {
+        value: "Areas too large",
+        label: "Plots were too large and too remote to survey on foot, so officers needed to know where to look first.",
+      },
+      {
+        value: "Two shapes of data",
+        label: "Customers define plots in their own shapefiles, while the analysis runs on a common master grid.",
+      },
     ],
     solutions: [
       {
-        title: "Integrated Geospatial View",
-        body: "Combined multiple map layers into a single workspace so users could explore forest conditions without switching between separate data views.",
+        title: "Layers Grouped and Explained",
+        body: "Grouped the map layers into biosphere, atmosphere, land cover, risk and vulnerability, and socioeconomics, and gave every layer a short 'What is it?' explanation and a legend.",
       },
       {
-        title: "Carbon Analytics Dashboard",
-        body: "Structured key carbon and forest indicators into a clearer dashboard, allowing users to understand important information before diving into detailed data.",
+        title: "One Analysis View per Metric",
+        body: "Gave NDVI, CO2 sequestration, above-ground biomass and forest change their own analysis views, with time series, monthly imagery and a split view for comparing layers side by side.",
       },
       {
-        title: "Risk & Monitoring Views",
-        body: "Organized monitoring information around important forest conditions and potential areas of concern, making it easier to identify where further investigation was needed.",
+        title: "Original Polygon or Master Grid",
+        body: "Let a plot be shown as its original shapefile polygon or as the master grid used for analysis, for one file or several, with uploads tracked in a progress summary of the area covered.",
       },
       {
-        title: "Progressive Disclosure",
-        body: "Designed different levels of information so users could start with a high-level overview and progressively explore detailed GIS and carbon data when needed.",
+        title: "Alerts That Come to the User",
+        body: "Designed email alerts for hotspots, deforestation and forest change, including the email sent when nothing was detected, answering the research call for alerts and automatic reports.",
+      },
+      {
+        title: "One Theme Across Five Products",
+        body: "Built a core theme shared by five products, each overriding only its colour, radius and font, with components in BaseBlocksUI and an empty, loading, data and error state defined for every layer.",
       },
     ],
     impactTable: [
-      { metric: "Forest & carbon data", before: "Scattered across multiple sources", after: "Connected in one platform", delta: "Unified" },
-      { metric: "Information depth", before: "One level of information", after: "Layered from overview to detail", delta: "Clearer" },
-      { metric: "UI consistency", before: "Ad hoc screens", after: "Shared tokens & components", delta: "Scalable" },
-      { metric: "Monitoring → reporting", before: "Disconnected steps", after: "Connected workflow", delta: "Connected" },
+      {
+        metric: "Reading the layers",
+        before: "Layers assumed GIS knowledge",
+        after: "Five groups, each layer explained with a legend",
+        delta: "Easier to read",
+      },
+      {
+        metric: "Seeing one area",
+        before: "Data for one area sat in several systems",
+        after: "Each metric analysed per plot, with a split view",
+        delta: "One place",
+      },
+      {
+        metric: "Plot boundaries",
+        before: "Customers' shapefiles and the analysis grid differed",
+        after: "Switch between the original polygon and the master grid",
+        delta: "Both views",
+      },
+      {
+        metric: "Alerts and reports",
+        before: "Reports were made manually",
+        after: "Email alerts for hotspots, deforestation and forest change",
+        delta: "Proactive",
+      },
+      {
+        metric: "Finding the project form",
+        before: "Production test: about four minutes, 90.6% misclick",
+        after: "Fix proposed: start the form from Create Project, menu labelled in words",
+        delta: "To retest",
+      },
     ],
     learnings: [
-      "Working across product, UX/UI, GIS, and data teams showed me how important shared patterns are when designing a complex data-heavy platform.",
-      "Building reusable tokens and components helped maintain consistency as the platform expanded across different screens and workflows.",
-      "Progressive disclosure helped balance the needs of users who wanted a quick overview with those who needed deeper GIS and carbon data.",
+      "Writing the problem as one question, how officers could understand a forest without GIS expertise, gave every later decision a test: does this screen need specialist knowledge to read?",
+      "Testing the production version showed that a working feature can still be hard to find: most participants looked for the project form under Create Project rather than where it was placed.",
+      "Sharing one core theme across five products, with each overriding only its colour, radius and font, kept them related without forcing them to look identical.",
     ],
   },
   {
@@ -78,40 +135,38 @@ export const projects = [
     title: "Smart Watcher Platform",
     client: "VARUNA CO., LTD. (ARV)",
     timeline: "1 yr 8 mo · Oct 2024 – May 2026",
-    hook: "Field reporting connected with satellite monitoring, helping teams capture ground observations and cross-check incidents with Smart Forest data.",
-    // The card shows `hook`; the case study opens with `summary`, which carries the
-    // fuller framing of how this platform sits alongside Smart Forest.
+    hook: "A field reporting app opened by QR code: villagers and survey staff report a hotspot, deforestation or wildlife in three steps, and the report reaches Smart Forest for checking.",
     summary:
-      "Smart Watcher is a field reporting platform designed to complement Smart Forest's satellite monitoring. It connects field observations with satellite data, giving teams additional context for cross-checking and verifying incidents.",
+      "Smart Watcher is the field reporting side of Smart Forest. People on the ground sign in by scanning their organisation's QR code, choose what they saw, add the details, photos and location, and submit; the landowner is emailed, and the report appears in Smart Forest beside the satellite data it can confirm.",
     role: "Lead UX/UI Designer",
     platform: "Web Application",
     industry: "Field Reporting / Incident Verification",
     stack: ["Figma", "Design System", "GIS Workflow", "Field UX"],
     image: "/img/cover/smart-watcher.webp",
-    imageAlt: "Security monitoring control room screens with camera feeds",
+    imageAlt: "Smart Watcher report form on a phone in a forest, at the location step with a map pin, a photo and the nearby village",
     badges: [
       { label: "Field Reporting", positive: true },
-      { label: "Incident Verification", positive: null },
+      { label: "Cross-Checking", positive: null },
     ],
     kpis: [
       {
-        value: "Field Reporting",
-        label: "Real-world observations",
-        sub: "Field officers can report incidents directly from the location, providing information that satellite monitoring cannot capture immediately.",
+        value: "QR Sign-In",
+        label: "Reporting starts with a scan",
+        sub: "Scanning the organisation's QR code opens the right reporting space, with screens for a code that leads nowhere.",
       },
       {
-        value: "Connected Monitoring",
-        label: "Smart Forest integration",
-        sub: "Field reports can be connected with satellite observations from Smart Forest to support incident verification.",
+        value: "Three-Step Report",
+        label: "Type, detail, location",
+        sub: "Five report categories, then the reporter's details and urgency, then the photos, map pin, date and time.",
       },
       {
-        value: "Incident Verification",
-        label: "Cross-checking data",
-        sub: "Combining field observations with satellite data helps teams compare what is happening on the ground with what the monitoring system detects.",
+        value: "Linked to Smart Forest",
+        label: "Ground truth beside satellite",
+        sub: "Each report emails the landowner and appears in Smart Forest, where it can be checked against the satellite layers.",
       },
     ],
-    // Written without performance metrics: the numbers that used to sit here could
-    // not be verified, so each section describes what was designed instead.
+    // Written from the boards. The only figures are the usability-test results read
+    // off the Maze boards; every other section describes what was designed.
     sectionLabels: {
       problemEyebrow: "01 / Discovery & Context",
       problemHeading: "Problem & Baseline",
@@ -125,69 +180,83 @@ export const projects = [
         "How field reporting was framed around the people who file reports, built into flows, a design system and report screens, then tested with scripted tasks before handoff.",
     },
     problem:
-      "Satellite monitoring provides valuable coverage across large forest areas, but it cannot observe the same location continuously. Because satellite revisit cycles create a delay between observations, teams need a way to capture what is happening on the ground in the meantime.",
+      "Satellite monitoring covers large forest areas but cannot watch one place continuously, and it can show a change without confirming what caused it. The people who can confirm it, villagers and field survey teams, had no simple way to report what they saw. The officers who use the reports range from a technical user in Bangkok who monitors plots and reports upward to a less technical user in Laos who has to walk into the area to assess it.",
     baselineStats: [
       {
-        value: "Satellite revisit cycle",
-        label: "The same area cannot be continuously observed by satellite, creating a gap between monitoring cycles.",
+        value: "Satellite revisit gap",
+        label: "The same area is not observed continuously, so changes between passes go unseen.",
       },
       {
-        value: "Limited real-time field context",
-        label: "Satellite data can indicate changes, but it does not always confirm what is happening on the ground.",
+        value: "No reporting tool",
+        label: "People who saw a fire or forest clearing on the ground had no simple way to report it.",
       },
       {
-        value: "Disconnected verification",
-        label: "Field observations need to be captured and connected with monitoring data so teams can cross-check incidents.",
+        value: "Two kinds of user",
+        label: "A technical officer monitoring from Bangkok and a less technical officer on site needed different things from the same reports.",
+      },
+      {
+        value: "Edge cases in the field",
+        label: "A code with no organisation, a denied location or a blocked page could stop a report before it was filed.",
       },
     ],
     solutions: [
       {
-        title: "Simple Field Reporting",
-        body: "Designed a straightforward reporting flow so field officers can quickly capture an incident from the location without navigating unnecessary complexity.",
+        title: "QR Code as the Way In",
+        body: "Reporters start by scanning their organisation's QR code, which opens the right reporting space, with screens for a code that has no organisation and for pages an account cannot open.",
       },
       {
-        title: "Location-Based Reporting",
-        body: "Connected reports with location information so each observation could be associated with the area where it occurred.",
+        title: "A Report in Three Steps",
+        body: "Report entry runs as type, detail and location, starting from five categories, hotspot, deforestation, biodiversity, plant growth and other, each with a line on when to use it.",
       },
       {
-        title: "Structured Incident Information",
-        body: "Organized report types and supporting information to make field observations easier to understand and compare with monitoring data.",
+        title: "Location and Evidence From the Site",
+        body: "The location step pins the report on the map from the device or a photo, shows the latitude and longitude, and takes photos from the camera or the library, with its own path when location access is denied.",
       },
       {
-        title: "Connected Verification Workflow",
-        body: "Designed the reporting experience as a complementary layer to Smart Forest, allowing field observations to be used alongside satellite data during incident verification.",
+        title: "Urgency and Distance at a Glance",
+        body: "A report shows the reporter, the photos, the issue type, a new or emergency tag, and how far the viewer is from the reported point, settled in wireframes before the visual design.",
+      },
+      {
+        title: "Reports That Reach the Right People",
+        body: "Each submission emails the landowner and appears in Smart Forest, while administrators work through report management, status checks by reporter name or phone, and an overall dashboard.",
       },
     ],
     impactTable: [
       {
-        metric: "Field observations",
-        before: "Information depended on separate field communication",
-        after: "Incidents can be reported directly from the field",
-        delta: "Structured reporting",
+        metric: "Getting started",
+        before: "No simple way into a reporting tool",
+        after: "One QR scan opens the organisation's reporting space",
+        delta: "One scan",
       },
       {
-        metric: "Satellite monitoring",
-        before: "Satellite observations operate on revisit cycles",
-        after: "Field reports provide additional ground context between observations",
-        delta: "Complementary data",
+        metric: "Report entry",
+        before: "No structured way to report an incident",
+        after: "Five categories and three numbered steps",
+        delta: "Guided",
       },
       {
-        metric: "Incident verification",
-        before: "Field and monitoring information were harder to compare",
-        after: "Field reports can be cross-checked with Smart Forest data",
-        delta: "Easier to verify",
+        metric: "Location",
+        before: "Sightings were hard to place on the map",
+        after: "Map pin from the device or the photo, with a path for denied location",
+        delta: "Pinned",
       },
       {
-        metric: "Reporting workflow",
-        before: "Incident information could be fragmented",
-        after: "Structured reporting flow with location and incident details",
-        delta: "Connected workflow",
+        metric: "Follow-up",
+        before: "Reports needed to reach the right people",
+        after: "Email to the landowner, report management and status checks",
+        delta: "Routed",
+      },
+      {
+        metric: "QR sign-in (tested)",
+        before: "Flow not yet tried by users",
+        after: "100% success and no drop-off in Maze, with a 17.4% misclick rate to fix",
+        delta: "Validated",
       },
     ],
     learnings: [
-      "Designing a field reporting product made me think beyond the interface and consider how information moves between people, systems, and real-world conditions.",
-      "Working alongside Smart Forest showed me that different data sources do not always need to replace each other. They can provide complementary perspectives when connected through the right workflow.",
-      "Designing for field conditions reinforced the importance of keeping reporting flows focused, structured, and easy to complete at the point of observation.",
+      "Designing for two very different officers, one monitoring from Bangkok and one walking into the forest in Laos, meant a report had to be quick to file on site and complete enough to review from a desk.",
+      "Much of the work was in the edge cases: a code with no organisation, a denied location or a blocked page decides whether a report is filed at all, so each one got its own screen.",
+      "Field reports and satellite data do not replace each other; a report is most useful when it lands on the same map as the layer it confirms.",
     ],
   },
   {
@@ -195,36 +264,38 @@ export const projects = [
     title: "Area 22 IOT Management",
     client: "HAPPY THREE CREATION CO., LTD.",
     timeline: "7 mo · Aug 2023 – Feb 2024",
-    hook: "Area 22 is an industrial IoT gateway management platform designed to make complex administrative and monitoring tasks easier to manage through a structured back-office experience.",
+    hook: "A back office for a building of rented offices, connected to its face scan, CCTV, car barrier and meters, with room booking, technician jobs and usage dashboards for billing tenants.",
+    summary:
+      "Area 22 manages a building of rented offices and the hardware in it: the screen in the common area, face scan, CCTV, the car barrier, and the electricity and water meters. The design splits the platform between the front-desk admin, the technicians and the building owner, puts a screen by each meeting room door, and turns meter readings into dashboards the owner can use to bill tenants.",
     role: "Senior UX/UI Designer",
     platform: "Back Office",
-    industry: "Industrial IoT / Admin SaaS",
-    stack: ["Figma", "Design System", "Hardware Telemetry", "RBAC"],
+    industry: "PropTech / Smart Building",
+    stack: ["Figma", "Chakra UI", "Chart.js", "Role-Based Access"],
     image: "/img/cover/area-22.webp",
-    imageAlt: "Industrial IoT analytics dashboard with live telemetry and data charts",
+    imageAlt: "Area 22 electricity dashboard on a laptop, with total consumption, usage over time and the floors that use the most",
     badges: [
-      { label: "Gateway Management", positive: true },
-      { label: "Back Office Admin", positive: null },
+      { label: "Building Operations", positive: true },
+      { label: "Room Signage", positive: null },
     ],
     kpis: [
       {
-        value: "Gateway Management",
-        label: "Centralized administration",
-        sub: "A back-office platform for managing industrial IoT gateways, configurations, and operational information through a structured web interface.",
+        value: "Three Roles",
+        label: "Admin, technician, owner",
+        sub: "The front desk runs daily operations, technicians see only their job tickets, and the owner also gets the dashboards.",
       },
       {
-        value: "Operational Monitoring",
-        label: "Clear system visibility",
-        sub: "Organized gateway status and technical information into clearer views so users can understand system conditions without navigating fragmented screens.",
+        value: "Room Signage",
+        label: "A screen by every door",
+        sub: "Each meeting room's screen shows the day's bookings with tenant logos, whether the room is free now and the sessions left.",
       },
       {
-        value: "Structured Workflows",
-        label: "From setup to monitoring",
-        sub: "Designed administrative workflows that make technical gateway management more structured, consistent, and easier to follow.",
+        value: "Usage Dashboards",
+        label: "Meter readings for billing",
+        sub: "Electricity, water, visitors, cars, events and jobs, from a day up to a year, filtered by floor and exported as CSV.",
       },
     ],
-    // Written without performance metrics: the numbers that used to sit here could
-    // not be verified, so each section describes what was designed instead.
+    // Written from the boards: Area 22 is a building back office joined to its
+    // hardware, so every section describes what was designed, without metrics.
     sectionLabels: {
       problemEyebrow: "01 / Discovery & Context",
       problemHeading: "Problem & Baseline",
@@ -238,69 +309,83 @@ export const projects = [
         "How the back office was structured around what an administrator manages, from requirements and access rules to the operational modules, live CCTV and monitoring dashboards.",
     },
     problem:
-      "Managing industrial IoT gateways involves multiple types of technical information and administrative tasks. Without a clear structure, users can find it difficult to understand gateway status, configure devices, and move between different operational workflows.",
+      "A building of rented offices shares its entrance, meeting rooms, fitness room and car park between many tenant companies, and its hardware, face scan, CCTV, the car barrier and the electricity and water meters, all had to come together in one place. The owner wanted one system to log who came and went, manage the shared rooms in limited space, route tenants' problems to the in-house technicians, and summarise electricity, water and room use so tenants could be billed correctly.",
     baselineStats: [
       {
-        value: "Complex technical information",
-        label: "Gateway status, configuration, and operational information needed to be presented in a way that users could understand and act on.",
+        value: "Many devices",
+        label: "Face scan, CCTV, the car barrier and the meters each had to feed one system.",
       },
       {
-        value: "Fragmented administration",
-        label: "Different management tasks required users to move between related workflows and screens.",
+        value: "Shared, limited rooms",
+        label: "Many tenant companies shared a small number of meeting and fitness rooms.",
       },
       {
-        value: "Low information hierarchy",
-        label: "Technical information needed clearer hierarchy so users could quickly distinguish important status information from detailed configuration data.",
+        value: "Three roles",
+        label: "The front desk, the technicians and the owner needed different access to the same data.",
+      },
+      {
+        value: "Billing by usage",
+        label: "The owner needed electricity, water and room use summarised to charge tenants correctly.",
       },
     ],
     solutions: [
       {
-        title: "Structured Gateway Management",
-        body: "Organized gateway-related information and actions into clearer administrative workflows so users could manage devices without unnecessary navigation.",
+        title: "Structure Built Around Roles",
+        body: "Organised the platform into Dashboard, Manage, Technician Service, Time Log and CCTV, with permissions per role, so a technician sees only job tickets and the owner sees the dashboards.",
       },
       {
-        title: "Clear Information Hierarchy",
-        body: "Prioritized important gateway status and operational information while keeping detailed technical data available when needed.",
+        title: "Room Booking With Signage at the Door",
+        body: "Booking runs in month, week, day and agenda views and checks the slot before confirming, and a portrait screen by each room shows the day's bookings, tenant logos and the sessions left.",
       },
       {
-        title: "Consistent Administrative Patterns",
-        body: "Applied reusable patterns across management screens, forms, tables, and system states to make the back-office experience more consistent.",
+        title: "People and Vehicles on Record",
+        body: "Visitors and staff are registered with a photo from the camera or a file, and the time logs list vehicles by licence-plate photo and visitors by type and purpose, with times in and out and a CSV export.",
       },
       {
-        title: "Connected Management Flow",
-        body: "Designed related administrative workflows with a consistent structure so users could move between setup, configuration, monitoring, and management tasks more easily.",
+        title: "Job Tickets for the In-House Team",
+        body: "Technicians accept a job from its ticket and update its progress, anyone who did not accept it sees a separate view, and an admin can delete a ticket after confirming.",
+      },
+      {
+        title: "Dashboards for Billing",
+        body: "Electricity, water, operator, event and technician dashboards each have a CSV download; the range runs from a single day up to a year or a custom period, with bars grouped more coarsely as it grows, and usage filters by floor.",
       },
     ],
     impactTable: [
       {
-        metric: "Gateway management",
-        before: "Information and actions were spread across different screens",
-        after: "Related gateway information and actions were organized into clearer workflows",
-        delta: "More structured",
+        metric: "Building hardware",
+        before: "Face scan, CCTV, barrier and meters needed one place",
+        after: "One back office with dashboards, time logs and CCTV",
+        delta: "One system",
       },
       {
-        metric: "Technical information",
-        before: "Different types of information competed for attention",
-        after: "Information was organized by hierarchy and context",
-        delta: "Easier to understand",
+        metric: "Shared rooms",
+        before: "Limited rooms shared by many tenants",
+        after: "Calendar booking with an availability check and a screen by each door",
+        delta: "Visible",
       },
       {
-        metric: "Administrative workflows",
-        before: "Related tasks could feel disconnected",
-        after: "Workflows were designed with more consistent patterns",
-        delta: "More consistent",
+        metric: "Access",
+        before: "Three roles needed different views of the same data",
+        after: "Permissions per role; technicians see only job tickets",
+        delta: "Role-based",
       },
       {
-        metric: "Monitoring & management",
-        before: "Users needed to navigate between different operational views",
-        after: "Key information was brought into clearer management views",
-        delta: "Easier to navigate",
+        metric: "Maintenance",
+        before: "Tenants' problems needed a route to the technicians",
+        after: "Job tickets that technicians accept and update",
+        delta: "Tracked",
+      },
+      {
+        metric: "Billing",
+        before: "Usage needed summarising for tenant bills",
+        after: "Meter dashboards by range and floor, exported as CSV",
+        delta: "Exportable",
       },
     ],
     learnings: [
-      "Designing an industrial IoT back-office showed me how important information hierarchy becomes when users need to work with technical data and administrative tasks at the same time.",
-      "I learned that complex systems do not necessarily need more information on screen. They need clearer structure so users can understand what matters and what action comes next.",
-      "Working on management workflows reinforced the value of consistent patterns across forms, tables, states, and navigation when designing a complex administrative product.",
+      "Starting from the three roles, front desk, technician and owner, decided the structure: each module exists because one of them needs it, and the permissions follow the same split.",
+      "The meeting-room screens showed that a back office does not end at the browser; the same booking data had to read at a glance on a door.",
+      "Setting date ranges for the dashboards meant deciding how the bars group at each range; otherwise a year of readings is unreadable and a single day too coarse.",
     ],
   },
   {
@@ -308,32 +393,163 @@ export const projects = [
     title: "Kanna Application & CMS",
     client: "VARUNA CO., LTD. (ARV / PTTEP)",
     timeline: "1 yr 3 mo · June 2022 – Aug 2023",
-    hook: "Kanna is an agricultural mobile application and geospatial CMS designed to connect field activities with agricultural data and support farmers and agricultural teams through a more structured digital workflow.",
+    hook: "A farming app and CMS: farmers draw their plots on the satellite map, get the area in rai, ngan and square wa, check the weather, join projects and record their work, even with a weak connection.",
+    summary:
+      "Kanna is a mobile app for farmers with a web CMS behind it, built from field research in Nakhon Phanom. Farmers draw a plot on the satellite map or trace it over a photo of the land title deed, read the weather and advice for each plot, join projects and verify their plots, and record activities with location-stamped photos, while the agricultural team approves plots and reviews activities in the CMS.",
     role: "UX/UI Designer",
     platform: "Mobile App + Web CMS",
     industry: "Smart Agriculture / AgriTech",
     stack: ["Figma", "User Research", "Offline UX", "Mobile Design"],
     image: "/img/cover/kanna-app.webp",
-    imageAlt: "Agricultural sensor technology and smartphone plant disease inspection",
+    imageAlt: "Kanna home screen on a phone, with the local weather, shortcuts for prices, weather, soil checks and pests, and the news feed",
     badges: [
-      { label: "Field Diagnostics", positive: true },
+      { label: "Plot Drawing", positive: true },
       { label: "Geospatial CMS", positive: null },
     ],
     kpis: [
       {
-        value: "Field Diagnostics",
-        label: "Mobile-first field experience",
-        sub: "A mobile application designed to help farmers capture field information, inspect crop conditions, and access useful agricultural guidance directly from the field.",
+        value: "Plot Drawing",
+        label: "Area in Thai units",
+        sub: "Tap a plot's corners on the satellite map, or trace it over a photo of the title deed, and get its area in rai, ngan and square wa.",
       },
       {
-        value: "Geospatial Management",
-        label: "Connected field data",
-        sub: "A web-based CMS that helps agricultural teams manage field information and connect mobile app data with geospatial views.",
+        value: "Connected Projects",
+        label: "From the app to the CMS",
+        sub: "Farmers join projects and verify their plots in the app; the agricultural team approves plots and reviews activities in the CMS.",
       },
       {
         value: "Designed for Field Conditions",
         label: "Practical mobile UX",
         sub: "Designed around real-world agricultural conditions, including outdoor use, limited connectivity, and users who may not be frequent smartphone users.",
+      },
+    ],
+    // Written from the boards, without metrics. The offline claims stay as they were:
+    // the boards show only the no-internet screen, but the user confirmed it works.
+    sectionLabels: {
+      problemEyebrow: "01 / Discovery & Context",
+      problemHeading: "Problem & Baseline",
+      solutionsHeading: "Key Design Decisions",
+      impactHeading: "Outcomes",
+      impactColumns: ["Area", "Before", "After", "Outcome"],
+      learningsEyebrow: "04 / Retrospective",
+      learningsHeading: "What I Learned",
+      processHeading: "From Field Research to Launch",
+      processIntro:
+        "From field research in Nakhon Phanom and a design system, through drawing plots on the map, weather, projects, activity records and the back-office CMS, to launch.",
+    },
+    problem:
+      "Field research in Na Wa, Nakhon Phanom followed farmers through the season, from preparing the land to selling the crop. The app had to work where they are: outdoors, often with a weak connection, for people who may not use a smartphone often. Plots had to be defined in the units farmers use and drawn from the paper title deeds they hold, and the work recorded in the field had to reach the agricultural team that runs the projects.",
+    baselineStats: [
+      {
+        value: "Plots in Thai units",
+        label: "Farmers measure land in rai, ngan and square wa, and their plot boundaries are on paper title deeds.",
+      },
+      {
+        value: "Limited connectivity",
+        label: "Field activities may take place in areas with unreliable connectivity, so important workflows needed to remain practical when network access was limited.",
+      },
+      {
+        value: "A season of records",
+        label: "Activities, trees and land cover had to be recorded plot by plot across the season, with evidence of where.",
+      },
+      {
+        value: "Connected field & back-office workflows",
+        label: "Mobile field activities and agricultural team workflows needed to work together through a connected CMS and geospatial view.",
+      },
+    ],
+    solutions: [
+      {
+        title: "Drawing a Plot on the Satellite Map",
+        body: "Farmers tap a plot's corners and see each side's length and the area in rai, ngan and square wa, or lay a photo of the title deed over the map, adjust its transparency, size and rotation, and trace the boundary along it.",
+      },
+      {
+        title: "Practical Offline Experience",
+        body: "Considered limited connectivity in the field and designed important interactions to remain understandable and usable when network access was unavailable or unreliable.",
+      },
+      {
+        title: "Weather and Advice per Plot",
+        body: "The home page leads with the local weather, and each plot carries its own forecast, an hourly view, an air-quality scale and advice for that plot.",
+      },
+      {
+        title: "Projects, Verification and Records",
+        body: "Farmers join a project and choose which plots to enrol, verify each plot with their ID card and land documents, and record activities with photos stamped with the plot ID, coordinates and time.",
+      },
+      {
+        title: "A CMS for the Agricultural Team",
+        body: "Behind the app, the CMS lets the team approve plot data and review recorded activities in tables with counts by status and filters by province, district, sub-district, date and status.",
+      },
+    ],
+    impactTable: [
+      {
+        metric: "Plot definition",
+        before: "Boundaries held on paper title deeds",
+        after: "Drawn on the satellite map or traced over a photo of the deed",
+        delta: "On the map",
+      },
+      {
+        metric: "Units",
+        before: "Areas reckoned in rai, ngan and square wa",
+        after: "Area shown in Thai units, with a unit converter",
+        delta: "Familiar units",
+      },
+      {
+        metric: "Connectivity",
+        before: "Field areas with unreliable connectivity",
+        after: "Key interactions stay usable without a connection, with clear no-internet and time-out screens",
+        delta: "Practical",
+      },
+      {
+        metric: "Field records",
+        before: "Activities needed proof of where they happened",
+        after: "Photos stamped with the plot ID, coordinates and time",
+        delta: "Verifiable",
+      },
+      {
+        metric: "Back office",
+        before: "Field data had to reach the project team",
+        after: "Plot approvals and activity reviews in the CMS",
+        delta: "Better connected",
+      },
+    ],
+    learnings: [
+      "Designing for agricultural users taught me to consider the environment around the interface, not just the interface itself. Outdoor conditions, connectivity, device limitations, and user familiarity all affect how a product is experienced.",
+      "Meeting farmers in the units and documents they already use, rai, ngan and square wa, and the paper title deed, took a translation step out of the most important task.",
+      "Working across the app and the CMS reinforced that a field record is only useful once someone in the back office can approve it or act on it.",
+    ],
+  },
+  {
+    id: "dr-smoothlife",
+    title: "Dr. Smoothlife Platform",
+    client: "HAPPY THREE CREATION CO., LTD.",
+    timeline: "7 mo · Aug 2023 – Feb 2024",
+    hook: "Dr. Smoothlife is a telemedicine and online pharmacy platform that takes a patient from intake and video consultation through to medicine delivery, with the back office that runs the orders behind it.",
+    summary:
+      "Dr. Smoothlife is a telemedicine and online pharmacy service on a mobile app and a responsive website, with a web back office behind it. The design maps each service scenario as patient and system lanes, takes the patient from a stepped intake and identity check through the video consultation to buying and receiving medicine, and gives the back office its own flows for delivery fees, orders, and returns, exchanges and cancellations.",
+    role: "Senior UX/UI Designer",
+    platform: "App + Web CMS",
+    industry: "HealthTech / Telemedicine",
+    stack: ["Figma", "Design Tokens", "Design System", "Telehealth UX"],
+    image: "/img/cover/dr-smoothlife.webp",
+    imageAlt: "Dr. Smoothlife patient website on a laptop and a phone, showing Shop by Symptoms and product listings",
+    badges: [
+      { label: "Connected Care", positive: true },
+      { label: "Guided Intake", positive: null },
+    ],
+    kpis: [
+      {
+        value: "Connected Telemedicine",
+        label: "From intake to delivery",
+        sub: "Intake, video consultation, the pharmacy catalogue and delivery designed as one service across the patient app and website.",
+      },
+      {
+        value: "Guided Intake",
+        label: "Consultation journeys",
+        sub: "A stepped intake with identity verification, a queue and the video call, with the time-out, hang-up and error branches drawn as screens too.",
+      },
+      {
+        value: "Operational Back Office",
+        label: "Connected service management",
+        sub: "Admin workflows for shipping-fee rules, order management, and returns, exchanges and cancellations behind the telemedicine service.",
       },
     ],
     // Written without performance metrics: the numbers that used to sit here could
@@ -346,181 +562,76 @@ export const projects = [
       impactColumns: ["Area", "Before", "After", "Outcome"],
       learningsEyebrow: "04 / Retrospective",
       learningsHeading: "What I Learned",
-      processHeading: "From Field Conditions to Launch",
-      processIntro:
-        "How the app was framed around farm work, then built up from a design system into plots, projects, cultivation records and field tools, through to the final UI.",
-    },
-    problem:
-      "Agricultural work happens in environments where connectivity, device conditions, and user familiarity with digital tools can vary. The product needed to support field activities while keeping information and workflows simple enough to use during everyday farm work.",
-    baselineStats: [
-      {
-        value: "Field-first constraints",
-        label: "The mobile experience needed to work in outdoor environments where sunlight, device conditions, and attention could affect how users interact with the interface.",
-      },
-      {
-        value: "Limited connectivity",
-        label: "Field activities may take place in areas with unreliable connectivity, so important workflows needed to remain practical when network access was limited.",
-      },
-      {
-        value: "Complex agricultural information",
-        label: "Crop information, cultivation records, field data, and supporting guidance needed to be organized so users could understand and act on them without unnecessary complexity.",
-      },
-      {
-        value: "Connected field & back-office workflows",
-        label: "Mobile field activities and agricultural team workflows needed to work together through a connected CMS and geospatial view.",
-      },
-    ],
-    solutions: [
-      {
-        title: "Field-First Mobile Experience",
-        body: "Designed the mobile experience around real field conditions, using clear visual hierarchy, accessible touch targets, and straightforward navigation.",
-      },
-      {
-        title: "Practical Offline Experience",
-        body: "Considered limited connectivity in the field and designed important interactions to remain understandable and usable when network access was unavailable or unreliable.",
-      },
-      {
-        title: "Structured Farm & Project Management",
-        body: "Organized farm plots, project participation, cultivation activities, and related information into clearer workflows so users could manage field activities more easily.",
-      },
-      {
-        title: "Connected Geospatial CMS",
-        body: "Designed the relationship between the mobile application and web-based CMS so agricultural teams could manage field information through a more structured geospatial workflow.",
-      },
-    ],
-    impactTable: [
-      {
-        metric: "Field activities",
-        before: "Field information and activities could be difficult to organize digitally",
-        after: "Key activities were structured into clearer mobile workflows",
-        delta: "More structured",
-      },
-      {
-        metric: "Mobile experience",
-        before: "Field conditions introduced usability constraints",
-        after: "Interface and interaction patterns were designed around field use",
-        delta: "More practical",
-      },
-      {
-        metric: "Farm management",
-        before: "Farm and project information could be spread across different workflows",
-        after: "Related information was organized into clearer management flows",
-        delta: "Easier to manage",
-      },
-      {
-        metric: "Field & back-office data",
-        before: "Mobile and agricultural team workflows needed stronger connection",
-        after: "Mobile activities were connected with a geospatial CMS workflow",
-        delta: "Better connected",
-      },
-    ],
-    learnings: [
-      "Designing for agricultural users taught me to consider the environment around the interface, not just the interface itself. Outdoor conditions, connectivity, device limitations, and user familiarity all affect how a product is experienced.",
-      "I learned that simplifying a field experience is not about removing information. It is about presenting the right information at the right moment and making the next action obvious.",
-      "Working across a mobile application and geospatial CMS reinforced the importance of designing connected workflows rather than treating each product surface as a separate experience.",
-    ],
-  },
-  {
-    id: "dr-smoothlife",
-    title: "Dr. Smoothlife Platform",
-    client: "HAPPY THREE CREATION CO., LTD.",
-    timeline: "7 mo · Aug 2023 – Feb 2024",
-    hook: "Dr. Smoothlife is a telemedicine platform designed to connect patients, doctors, pharmacy fulfilment, and operational workflows across mobile and web experiences.",
-    role: "Senior UX/UI Designer",
-    platform: "App + Web CMS",
-    industry: "HealthTech / Telemedicine",
-    stack: ["Figma", "Design Tokens", "Design System", "Telehealth UX"],
-    image: "/img/cover/dr-smoothlife.webp",
-    imageAlt: "Doctor utilizing telemedicine workspace and digital consultation platform",
-    badges: [
-      { label: "Connected Care", positive: true },
-      { label: "Clinical Workspace", positive: null },
-    ],
-    kpis: [
-      {
-        value: "Connected Telemedicine",
-        label: "From consultation to fulfilment",
-        sub: "A telemedicine platform connecting patient consultation, digital prescriptions, pharmacy fulfilment, and doctor workflows into one connected experience.",
-      },
-      {
-        value: "Clinical Workspace",
-        label: "Focused doctor experience",
-        sub: "A dedicated clinical workspace designed to help doctors manage consultations, patient information, and digital prescriptions without switching between disconnected tools.",
-      },
-      {
-        value: "Operational Back Office",
-        label: "Connected service management",
-        sub: "Supporting admin workflows for prescription orders, delivery configuration, fulfilment, cancellations, and other operational tasks behind the telemedicine service.",
-      },
-    ],
-    // Written without performance metrics: the numbers that used to sit here could
-    // not be verified, so each section describes what was designed instead.
-    sectionLabels: {
-      problemHeading: "Problem & Baseline",
-      impactHeading: "Outcomes",
-      impactColumns: ["Area", "Before", "After", "Outcome"],
-      learningsEyebrow: "04 / Retrospective",
-      learningsHeading: "What I Learned",
       processHeading: "From Consultation to Fulfilment",
       processIntro:
         "The service mapped as patient and system scenarios first, then the design system, the patient experience on web and mobile, and the back office that prices delivery and handles orders, returns and cancellations.",
     },
     problem:
-      "Telemedicine involves more than the consultation itself. Patients need to move through intake and booking before meeting a doctor, while doctors need access to clinical information and prescribing tools during the consultation. Behind the experience, pharmacy and fulfilment workflows also need to stay connected.",
+      "Telemedicine involves more than the consultation itself. Patients need to move through intake and identity checks before meeting a doctor, then buy and receive their medicine, on a phone or on the web. Behind the experience, delivery pricing, orders and the exceptions, returns, exchanges and cancellations, each need a workflow of their own.",
     baselineStats: [
       {
         value: "Disconnected patient journey",
-        label: "Patient intake, consultation, prescription, and fulfilment needed to work together as one continuous experience rather than separate product steps.",
+        label: "Patient intake, consultation, purchase and delivery needed to work together as one continuous experience rather than separate product steps.",
       },
       {
-        value: "Fragmented clinical workflow",
-        label: "Doctors needed to manage consultation information and prescribing while maintaining focus on the patient.",
+        value: "Coverage-dependent delivery",
+        label: "Delivery coverage differed between service scenarios, so the same consultation could end in different dispensing and delivery paths.",
       },
       {
         value: "Complex fulfilment operations",
-        label: "Prescription orders, delivery rules, pharmacy fulfilment, cancellations, and related operational tasks required structured back-office workflows.",
+        label: "Shipping-fee rules, orders, returns, exchanges and cancellations required structured back-office workflows.",
       },
       {
         value: "Multiple product surfaces",
-        label: "The platform spanned patient-facing mobile experiences, doctor-facing interfaces, and web-based operational tools, requiring consistency across different contexts.",
+        label: "The platform spanned a patient mobile app, a responsive patient website and a web back office, requiring consistency across different contexts.",
       },
     ],
     solutions: [
       {
         title: "Structured Medical Intake",
-        body: "Designed a focused intake experience that helps patients provide relevant information and prepare for the consultation before connecting with a doctor.",
+        body: "Designed a stepped intake with a progress bar, identity verification on mobile and a queue, so patients provide the right information and know where they stand before connecting with a doctor.",
       },
       {
-        title: "Unified Clinical Workspace",
-        body: "Designed a doctor workspace that brings video consultation, patient information, clinical records, and prescribing actions into a more focused interface.",
+        title: "Scenario-First Service Mapping",
+        body: "Mapped each service scenario with a patient lane above a system lane before drawing screens, so every decision point shows what the patient sees and what the system has to do.",
       },
       {
-        title: "Connected Prescription Fulfilment",
-        body: "Connected digital prescription workflows with pharmacy and delivery processes so the journey continues beyond the consultation.",
+        title: "One Design System Across Surfaces",
+        body: "Built one system of colour, Thai type, buttons, fields, tags and toasts, each with its states, shared by the patient app, the website and the back office.",
+      },
+      {
+        title: "Patient Web Built for Every State",
+        body: "Designed the patient website at desktop, tablet and mobile widths, each with its own navigation drawer, and specified product pages for every state a pharmacy catalogue meets: with and without options, out of stock, without an image and loading.",
       },
       {
         title: "Operational Back Office",
-        body: "Designed structured admin workflows for delivery configuration, order management, prescription handling, cancellations, and fulfilment operations.",
+        body: "Designed admin workflows for shipping-fee rules, order management, and returns, exchanges and cancellations, including item-by-item approval with a required reason for each rejection.",
       },
     ],
     impactTable: [
       {
         metric: "Patient journey",
         before: "Consultation and fulfilment involved multiple disconnected steps",
-        after: "Patient, consultation, prescription, and fulfilment workflows were connected",
+        after: "Intake, consultation, purchase and delivery were designed as one connected flow",
         delta: "More connected",
       },
       {
-        metric: "Doctor workflow",
-        before: "Clinical information and actions could be spread across different tools",
-        after: "Key consultation and prescribing tasks were brought into one workspace",
-        delta: "More focused",
+        metric: "Exception paths",
+        before: "Time-outs, dropped calls and errors in a consultation had no defined screens",
+        after: "Each branch of the consultation flow was designed as its own screen",
+        delta: "Fully mapped",
       },
       {
-        metric: "Prescription fulfilment",
-        before: "Pharmacy and delivery operations required separate management workflows",
-        after: "Prescription and fulfilment processes were structured as part of the wider service",
-        delta: "Better connected",
+        metric: "Product pages",
+        before: "A pharmacy catalogue meets many edge cases",
+        after: "Pages specified with and without options, out of stock, without an image and loading",
+        delta: "Fully specified",
+      },
+      {
+        metric: "Delivery pricing",
+        before: "Shipping fees depended on weight bands and delivery type",
+        after: "Fee rules were configured in one table, each with its own on-off status",
+        delta: "Configurable",
       },
       {
         metric: "Operations",
@@ -530,9 +641,9 @@ export const projects = [
       },
     ],
     learnings: [
-      "Designing a telemedicine product showed me that healthcare UX is not only about making individual screens easy to use. The experience depends on how patients, doctors, pharmacies, and operational teams connect across the entire service.",
-      "I learned that clinical interfaces need to reduce cognitive load while still keeping important information and actions visible. The goal is not to simplify the data itself, but to make the workflow easier to understand.",
-      "Working across patient-facing, clinical, and operational products reinforced the importance of designing a consistent system across different users, devices, and responsibilities.",
+      "Designing a telemedicine product showed me that healthcare UX is not only about making individual screens easy to use. The experience depends on how patients, pharmacies and operational teams connect across the entire service.",
+      "Mapping the scenarios as patient and system lanes before drawing screens showed early where delivery coverage splits the journey, so the screens could be designed for each branch from the start.",
+      "Working across the patient app, the website and the back office reinforced the importance of one design system shared by different users, devices and responsibilities.",
     ],
   },
   {
@@ -893,6 +1004,12 @@ export const projects = [
         before: "Point cost needed to be clear before confirming",
         after: "Select, confirm and success as separate steps",
         delta: "Clearer",
+      },
+      {
+        metric: "Membership",
+        before: "Points, rewards, coupons and tier needed one home",
+        after: "One membership menu with balance, redemption, coupon wallet, tier card and history",
+        delta: "One place",
       },
       {
         metric: "Mobile browsing",

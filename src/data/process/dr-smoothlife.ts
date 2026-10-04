@@ -14,7 +14,7 @@ export const steps: ProcessStep[] = [
   {
     step: "02",
     title: "Design System Foundation",
-    body: "One system board sets the foundation shared by the patient, clinical and admin screens: a green primary palette with greys, and yellow and red reserved for alerts; Prompt for headings and Sarabun for Thai body text; button families from primary to ghost, each with default, hover, pressed and disabled states; text fields with focused, error and complete states; tabs, status tags, and toasts for error, warning, info and success; and container widths for desktop, tablet and mobile with their paddings.",
+    body: "One system board sets the foundation shared by the patient and admin screens: a green primary palette with greys, and yellow and red reserved for alerts; Prompt for headings and Sarabun for Thai body text; button families from primary to ghost, each with default, hover, pressed and disabled states; text fields with focused, error and complete states; tabs, status tags, and toasts for error, warning, info and success; and container widths for desktop, tablet and mobile with their paddings.",
     images: [
       "/img/process/dr-smoothlife/04.webp",
     ],

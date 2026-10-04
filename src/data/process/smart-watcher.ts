@@ -36,8 +36,8 @@ export const steps: ProcessStep[] = [
   },
   {
     step: "05",
-    title: "Design System & Token Architecture",
-    body: "Built the component system on semantic tokens so status, report type and urgency read consistently across every surface. Consistency matters here because the same report is read on a phone in the field and in a back-office review screen, and the two have to agree at a glance.",
+    title: "Design System & Theme",
+    body: "Smart Watcher draws on the same core theme as the company's other products, colour, type, grid, spacing, icons, shadow, radius and motion, and overrides only its own colour, radius and font family. The theme's documentation covers its variables for colour, type, size, space and radius, with quick light and dark previews, and the components live in BaseBlocksUI, where each one, such as the dropdown, is drawn in all its placements and states.",
     images: [
       "/img/process/smart-watcher/06.webp",
       "/img/process/smart-watcher/07.webp",
@@ -83,15 +83,15 @@ export const steps: ProcessStep[] = [
   {
     step: "10",
     title: "Design Spec & Developer Handoff",
-    body: "Documented components with edge-case states, token references and behavioural notes — including what the interface does when location is unavailable, a photo cannot be attached, or a scanned code resolves to nothing. A report that fails silently in the field is a report that never reaches the monitoring side.",
+    body: "Components were specified with numbered anatomy callouts and a layout and spacing view for each selected node: the report category card, the organisation step, the urgency selector and a full phone screen. The edge cases themselves, from a code with no organisation to a denied location, are drawn on their own boards in the step before.",
     images: [
       "/img/process/smart-watcher/17.webp",
     ],
   },
   {
     step: "11",
-    title: "Screen Flow & Interactive Prototype",
-    body: "Assembled the full screen flow and a clickable prototype so both the field and administrator paths could be walked end-to-end. Seeing report entry as a continuous path exposed transitions that felt correct in isolation but broke the flow of someone filling this in outdoors.",
+    title: "Screen Flow & Report Entry",
+    body: "The reporter's screens were laid out as one flow, from the welcome screen and the QR scan through the organisation, the report category, the details, the location pin and the photos to the confirmation, ending in the email the landowner receives. Report entry runs as three numbered steps, type, detail and location, and the category screen offers hotspot, deforestation, biodiversity, plant growth and other reports, each with a line on when to use it.",
     images: [
       "/img/process/smart-watcher/18.webp",
       "/img/process/smart-watcher/19.webp",
@@ -100,7 +100,7 @@ export const steps: ProcessStep[] = [
   {
     step: "12",
     title: "Usability Testing",
-    body: "Ran moderated task-completion sessions against the prototype. Watching people work through the report flow, rather than collecting preferences, isolated the friction worth fixing before engineering built against the spec.",
+    body: "Testing followed a planned flow, from setting objectives and recruiting participants to retesting after changes and handing over. Two task scripts were written: signing in with the QR code and reporting a wildfire or a suspicious object found in the area, and filing activity reports for a plot. The sessions ran in person with participants from the client organisations, and a separate survey collected feedback on the multiple-shapefile selector.",
     images: [
       "/img/process/smart-watcher/20.webp",
       "/img/process/smart-watcher/21.webp",
