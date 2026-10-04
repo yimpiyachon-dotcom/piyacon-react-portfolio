@@ -1907,3 +1907,120 @@ body {
     opacity: 1;
   }
 }
+
+/* ==========================================================================
+   Methodology helix (About page)
+   A canvas double helix coloured by step, with a floating label per step.
+   Type follows the rest of the About page — mono 11px eyebrow, 26px Plus
+   Jakarta heading, 16px step titles, 13px Inter descriptions — rather than
+   the Syne / Manrope display scale the design file was drawn with.
+
+   Desktop: text and helix share the row in two equal columns, and the stage
+   has no height of its own beyond a floor, so it stretches to the text column
+   and the helix is sized to match. Below 1024px the heading comes first like
+   every other section on the page, then the helix, then the steps.
+   ========================================================================== */
+
+.mh {
+  --mh-fg: #F5F5F4;
+  --mh-sub: #9CA0A8;
+  --mh-eyebrow: #828790;
+  --mh-display: 'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif;
+  --mh-body: 'Inter', 'Inter Fallback', sans-serif;
+  --mh-mono: 'JetBrains Mono', 'JetBrains Fallback', monospace;
+  margin: 0 0 64px;
+  color: var(--mh-fg);
+  font-family: var(--mh-body);
+}
+.mh__inner {
+  display: grid;
+  /* the helix takes the wider share: its labels sit either side of it, so a
+     narrow stage squeezes the helix itself down to a thin strand */
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  column-gap: 48px;
+  align-items: stretch;
+}
+.mh__text { display: flex; flex-direction: column; min-width: 0; }
+.mh__eyebrow {
+  margin: 0 0 12px;
+  font-family: var(--mh-mono);
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mh-eyebrow);
+}
+.mh__title {
+  margin: 0 0 24px;
+  font-family: var(--mh-display);
+  font-weight: 700; font-size: 26px;
+  color: var(--mh-fg);
+}
+.mh__steps {
+  /* sits at the foot of the column when the helix is the taller of the two */
+  margin: auto 0 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px; row-gap: 24px;
+  /* one panel around all four steps, the same card the rest of the About page uses */
+  padding: 24px;
+  background: #131417;
+  border: 1px solid #24262B;
+  border-radius: 12px;
+}
+.mh__step {
+  display: flex; flex-direction: column; gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in srgb, var(--hue) 60%, transparent);
+}
+.mh__step-head { display: flex; align-items: baseline; gap: 10px; font-family: var(--mh-mono); color: var(--hue); }
+.mh__step-num { font-size: 16px; font-weight: 700; }
+.mh__step-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.mh__step-title {
+  margin: 0;
+  font-family: var(--mh-display);
+  font-weight: 700; font-size: 16px;
+  color: var(--mh-fg);
+  text-wrap: pretty;
+}
+.mh__step-desc { margin: 0; font-size: 13px; line-height: 1.55; color: var(--mh-sub); text-wrap: pretty; }
+
+.mh__stage { position: relative; min-height: 470px; touch-action: pan-y; }
+.mh__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.mh__label {
+  position: absolute; left: 0; top: 0;
+  display: flex; align-items: center; gap: 8px;
+  box-sizing: border-box;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--hue) 40%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--hue) 15%, transparent);
+  background: rgba(19, 20, 23, 0.82);
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0; /* the canvas loop fades them in once positioned */
+  will-change: transform, opacity;
+}
+.mh__label-num { font-family: var(--mh-mono); font-size: 11px; color: var(--hue); }
+.mh__label-name { font-family: var(--mh-display); font-weight: 700; font-size: 14px; }
+/* stacked cards beside the helix (the component sets data-mode="cards" when the stage is narrow) */
+.mh__stage[data-mode='cards'] .mh__label {
+  flex-direction: column; align-items: flex-start; gap: 2px;
+  padding: 8px 10px; border-radius: 12px;
+}
+.mh__stage[data-mode='cards'] .mh__label-name { font-size: 13px; }
+
+@media (max-width: 1023px) {
+  .mh__inner { grid-template-columns: minmax(0, 1fr); }
+  /* let the heading, helix and steps order themselves as one column */
+  .mh__text { display: contents; }
+  .mh__eyebrow { order: 1; }
+  .mh__title { order: 2; }
+  .mh__stage { order: 3; min-height: 460px; margin-bottom: 24px; }
+  .mh__steps { order: 4; margin-top: 0; }
+}
+@media (max-width: 639px) {
+  /* hug the helix: in the stacked-label mode its size follows the stage width
+     (about 2.1px of helix height per px of width), so a fixed height left a
+     band of empty space above and below it on narrow phones */
+  .mh__stage { min-height: clamp(320px, calc(209vw - 342px), 500px); }
+  .mh__steps { padding: 18px 16px; column-gap: 16px; row-gap: 20px; }
+  .mh__step { padding-top: 12px; gap: 6px; }
+}

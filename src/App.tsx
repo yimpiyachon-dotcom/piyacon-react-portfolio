@@ -5,6 +5,7 @@ import { projects } from "./data/projects";
 import { allProjects } from "./data/allProjects";
 import { webProjects } from "./data/webProjects";
 import { processSteps } from "./data/processSteps";
+import MethodologyHelix from "./MethodologyHelix";
 import { career } from "./data/career";
 import { imageSizes } from "./data/imageSizes";
 
@@ -3944,132 +3945,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
         </div>
       </div>
 
-      {/* 4-Step Methodology */}
-      <section style={{ marginBottom: 64 }}>
-        <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#828790", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
-          METHODOLOGY
-        </div>
-        <h2 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 26, fontWeight: 700, color: "#F5F5F4", margin: "0 0 24px" }}>
-          How I approach a design problem
-        </h2>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(230px, 100%), 1fr))", gap: 16 }}>
-          {[
-            {
-              step: "01",
-              phase: "Understand",
-              accent: "#6EE7B7",
-              accentRgb: "110,231,183",
-              title: "Start with the people and the problem",
-              desc: "Talk to users, understand their context, and find out where things actually get difficult.",
-            },
-            {
-              step: "02",
-              phase: "Define",
-              accent: "#3B82F6",
-              accentRgb: "59,130,246",
-              title: "Make sense of what we learned",
-              desc: "Turn research, business needs, and user problems into clear priorities and journeys.",
-            },
-            {
-              step: "03",
-              phase: "Design",
-              accent: "#A78BFA",
-              accentRgb: "167,139,250",
-              title: "Explore, simplify, and iterate",
-              desc: "Explore different ideas, prototype early, and work closely with the team to shape the right solution.",
-            },
-            {
-              step: "04",
-              phase: "Validate",
-              accent: "#FCD34D",
-              accentRgb: "252,211,77",
-              title: "Test it before calling it done",
-              desc: "Put designs in front of real users, learn what works, and improve based on evidence.",
-            },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                background: "#131417",
-                border: `1px solid rgba(${item.accentRgb},0.25)`,
-                borderRadius: 14,
-                padding: "24px 22px",
-                display: "flex",
-                flexDirection: "column",
-                gap: 8,
-                minHeight: 220,
-              }}
-            >
-              {/* Bottom glow */}
-              <div
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  bottom: -60,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: 260,
-                  height: 200,
-                  background: `radial-gradient(circle, rgba(${item.accentRgb},0.28) 0%, transparent 70%)`,
-                  filter: "blur(10px)",
-                  pointerEvents: "none",
-                }}
-              />
-              {/* Ghost step number */}
-              <span
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  bottom: -18,
-                  right: -6,
-                  fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
-                  fontSize: 96,
-                  fontWeight: 800,
-                  color: `rgba(${item.accentRgb},0.08)`,
-                  lineHeight: 1,
-                  pointerEvents: "none",
-                  userSelect: "none",
-                }}
-              >
-                {item.step}
-              </span>
-
-              <div style={{ position: "relative", zIndex: 1 }}>
-                <span
-                  style={{
-                    fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-                    fontSize: 11,
-                    fontWeight: 600,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    color: item.accent,
-                  }}
-                >
-                  {item.phase}
-                </span>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginTop: 6, marginBottom: 2 }}>
-                  {/* No opacity here: fading the accent to 70% composited the
-                      blue phase down to #2f61b3 (3.05:1) and the purple to
-                      #7b67b6 (3.9:1), which is what Lighthouse was failing.
-                      At full strength they are 5.01:1 and 6.77:1. */}
-                  <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 16, fontWeight: 700, color: item.accent }}>
-                    {item.step}
-                  </span>
-                </div>
-                <h3 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 16, fontWeight: 700, color: "#F5F5F4", margin: "0 0 8px" }}>
-                  {item.title}
-                </h3>
-                <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 13, color: "#9CA0A8", lineHeight: 1.55, margin: 0 }}>
-                  {item.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <MethodologyHelix />
 
       {/* Experience Highlights */}
       <section style={{ marginBottom: 64 }}>
