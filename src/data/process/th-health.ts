@@ -36,7 +36,7 @@ export const steps: ProcessStep[] = [
   {
     step: "05",
     title: "Account & Member Management",
-    body: "Designed member registration, profile management and address book flows, including inline validation and success feedback. Reducing form friction here directly affects whether a first-time buyer completes their first order.",
+    body: "Designed member registration, profile management and address book flows, including inline validation and success feedback. A first-time buyer meets these forms before their first order, so each field had to explain itself where it is filled in.",
     images: [
       "/img/process/th-health/05.webp",
       "/img/process/th-health/06.webp",
@@ -53,7 +53,7 @@ export const steps: ProcessStep[] = [
   {
     step: "07",
     title: "Checkout & Payment Confirmation",
-    body: "Designed the bank transfer flow with slip upload, including the error state when a required file is missing. Thai e-commerce still runs heavily on transfer-and-confirm, so this path needed the same care usually reserved for card checkout.",
+    body: "Designed the bank transfer flow with slip upload, including the error state when a required file is missing. Transfer-and-confirm is how this store takes payment, so this path needed the same care usually reserved for card checkout.",
     images: [
       "/img/process/th-health/08.webp",
     ],
@@ -68,8 +68,8 @@ export const steps: ProcessStep[] = [
   },
   {
     step: "09",
-    title: "Kiosk & Mobile Touchpoint Design",
-    body: "Resolved the patient-facing experience into two additional touchpoints: a kiosk format with a vertical scan-and-browse layout anchored to a LINE QR handoff, and a mobile-optimised product catalogue with a persistent bottom action bar. Both surfaces were designed for low-friction discovery — customers who arrive at a clinic or pharmacy kiosk have already decided to buy; the interface just needs to get out of the way.",
+    title: "Kiosk Touchpoint",
+    body: "The kiosk runs as tall portrait screens. It opens on a grid of symptoms with a LINE QR code for contact, leads to the matching products with the symptom chips kept along the top, and then to product detail with its own LINE QR code. On the product screens a fixed bar along the bottom always offers a way back and a way to contact the store or return to the start, so nobody at the kiosk is left without a next step.",
     images: [
       "/img/process/th-health/10.webp",
     ],

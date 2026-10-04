@@ -8,9 +8,10 @@ import { webProjects } from './data/webProjects';
  * crawler reading the static file — and no crawler or link unfurler runs the
  * JS at all, so anything left at the template's default is what Google, LINE,
  * Facebook and Slack actually see. Before this map carried more than a title,
- * every one of the 29 case studies unfurled as the same generic card.
+ * every case study unfurled as the same generic card.
  */
 const SITE = 'Piyachon Wanburi';
+const TOTAL = projects.length + webProjects.length;
 
 /** 1200x630 cards written by scripts/gen-og.mjs, one per case study. */
 const OG_DIR = '/og';
@@ -41,30 +42,30 @@ const caseRoutes = [...projects, ...webProjects].map((p) => [
 
 export const routes: Record<string, RouteMeta> = {
   '/': {
-    title: `${SITE} — Senior UX/UI Designer`,
-    shareTitle: `${SITE} — Senior UX/UI Designer`,
+    title: `${SITE} — UX/UI Designer`,
+    shareTitle: `${SITE} — UX/UI Designer`,
     description: DEFAULT_DESC,
     image: DEFAULT_IMAGE,
   },
   '/projects': {
     title: `All Projects — ${SITE}`,
-    shareTitle: `29 Projects — ${SITE}`,
+    shareTitle: `${TOTAL} Projects — ${SITE}`,
     description:
-      'Case studies across ClimateTech GIS, Industrial IoT, Telehealth and enterprise platforms, plus 20 web and brand builds.',
+      `Case studies across ClimateTech GIS, Industrial IoT, Telehealth and enterprise platforms, plus ${webProjects.length} web and brand builds.`,
     image: DEFAULT_IMAGE,
   },
   '/about': {
     title: `About — ${SITE}`,
-    shareTitle: `About ${SITE} — Senior UX/UI Designer`,
+    shareTitle: `About ${SITE} — UX/UI Designer`,
     description:
-      'Senior Product & UX/UI Designer in Bangkok. An architecture background applied to mission-critical dashboards: spatial hierarchy, durability and purposeful wayfinding.',
+      'Product & UX/UI Designer in Bangkok. An architecture background applied to mission-critical dashboards: spatial hierarchy, durability and purposeful wayfinding.',
     image: DEFAULT_IMAGE,
   },
   '/stack': {
     title: `Stack — ${SITE}`,
     shareTitle: `Design Stack — ${SITE}`,
     description:
-      'The tools, design-system practices and handoff workflow behind 29 shipped products.',
+      `The tools, design-system practices and handoff workflow behind ${TOTAL} shipped products.`,
     image: DEFAULT_IMAGE,
   },
   ...Object.fromEntries(caseRoutes),

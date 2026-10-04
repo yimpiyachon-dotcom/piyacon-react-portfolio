@@ -9,6 +9,10 @@ import MethodologyHelix from "./MethodologyHelix";
 import { career } from "./data/career";
 import { imageSizes } from "./data/imageSizes";
 
+// Every "N projects" in the copy reads from the data, so adding a project
+// cannot leave a stale count behind in the nav, the hero or the archive.
+const PROJECT_COUNT = projects.length + webProjects.length;
+
 /**
  * Portfolio content (projects, KPIs, case-study steps) is authored as plain data
  * in ./data/ and its per-project shape varies by project, so the
@@ -152,7 +156,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                 srcSet={srcSetFor(PROFILE_IMG)}
                 // The portrait is a fixed 344px at every viewport.
                 sizes="344px"
-                alt="Piyachon Wanburi (Yim) - Senior UX/UI Designer"
+                alt="Piyachon Wanburi (Yim) - UX/UI Designer"
                 onError={(e) => {
                   e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&fit=crop&auto=format";
                 }}
@@ -286,7 +290,7 @@ function InteractivePortrait({ onOpenAbout, onSelectCv, onOpenContact }: {
                       marginBottom: 10,
                     }}
                   >
-                    Senior UX/UI Designer
+                    UX/UI Designer
                   </div>
                 </div>
 
@@ -483,7 +487,7 @@ function Nav({
         borderRadius: 10,
       }}
     >
-      29
+      {PROJECT_COUNT}
     </span>
   );
 
@@ -550,7 +554,7 @@ function Nav({
           </button>
         </div>
 
-        {/* Desktop Nav Menu: Home, Projects (29), About, Stack, Contact */}
+        {/* Desktop Nav Menu: Home, Projects (count), About, Stack, Contact */}
         <div className="nav-desktop-menu" style={{ alignItems: "center", gap: 8 }}>
           {navLink("Home", currentPage === "home", onHome)}
           {navLink("Projects", currentPage === "projects", onProjects, projectsBadge)}
@@ -793,7 +797,7 @@ function KpiStrip() {
   const items = [
     { value: "5+ Years", label: "UX/UI Design Experience" },
     { value: "5 Core", label: "SaaS, IoT & Data Platforms" },
-    { value: "29 Projects", label: "Web & Mobile Products" },
+    { value: `${PROJECT_COUNT} Projects`, label: "Web & Mobile Products" },
     { value: "End-to-End", label: "Research to Delivery" },
   ];
   return (
@@ -1024,15 +1028,16 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
           ))}
         </div>
 
-        {/* Divider + client */}
+        {/* Divider + client. Always stacked: a short client name would
+            otherwise pull the timeline onto its line and make that card's
+            footer read differently from its neighbours. */}
         <div
           style={{
             borderTop: "1px solid #24262B",
             paddingTop: 12,
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
+            flexDirection: "column",
+            alignItems: "flex-start",
             gap: 8,
           }}
         >
@@ -1048,9 +1053,19 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: Handler 
   );
 }
 
+// A trend arrow belongs to the word after it, so a no-break space keeps
+// "↑ Confidence" from leaving the arrow alone on the first line.
+const glueArrow = (v: unknown) => String(v).replace(/^([↑↓→←]) /, "$1\u00A0");
+
 function KpiScoreboard({ kpis }: { kpis: Kpi[] }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
+  // Values are set in a monospace face, so the longest unbreakable run across
+  // the row fixes how wide any of them gets. The cells are equal width, so one
+  // size for the whole row: 38px unless that run would not fit a cell, then
+  // just small enough that it does (0.6em per character, letter-spacing included).
+  const longest = Math.max(1, ...kpis.flatMap((k) => glueArrow(k.value).split(" ").map((w) => w.length)));
+  const valueSize = `min(38px, calc(100cqi / ${(longest * 0.6).toFixed(2)}))`;
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -1076,7 +1091,9 @@ function KpiScoreboard({ kpis }: { kpis: Kpi[] }) {
         overflow: "hidden",
       }}
     >
-      {kpis.map((kpi, i) => (
+      {kpis.map((kpi, i) => {
+        const value = glueArrow(kpi.value);
+        return (
         <div
           key={i}
           className={visible ? "kpi-animate" : ""}
@@ -1084,20 +1101,30 @@ function KpiScoreboard({ kpis }: { kpis: Kpi[] }) {
             background: "#131417",
             padding: "26px 24px",
             animationDelay: `${i * 120}ms`,
+            // Value, label and sub share the row's tracks, so a label that
+            // wraps in one cell pushes the subs in its neighbours down with it.
+            display: "grid",
+            gridRow: "span 3",
+            gridTemplateRows: "subgrid",
+            rowGap: 0,
+            alignContent: "start",
           }}
         >
-          <div
-            style={{
-              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-              fontSize: 38,
-              fontWeight: 700,
-              color: "#6EE7B7",
-              letterSpacing: "-0.03em",
-              lineHeight: 1,
-              marginBottom: 10,
-            }}
-          >
-            {kpi.value}
+          {/* The size container sits on this wrapper, not the cell: containment
+              would stop the cell from being a subgrid. */}
+          <div style={{ containerType: "inline-size", marginBottom: 10 }}>
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+                fontSize: valueSize,
+                fontWeight: 700,
+                color: "#6EE7B7",
+                letterSpacing: "-0.03em",
+                lineHeight: 1,
+              }}
+            >
+              {value}
+            </div>
           </div>
           <div
             style={{
@@ -1121,12 +1148,17 @@ function KpiScoreboard({ kpis }: { kpis: Kpi[] }) {
             {kpi.sub}
           </div>
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
 
 function BaselineStat({ stats }: { stats: Stat[] }) {
+  // Same fitting rule as KpiScoreboard: one size for the row, 28px unless the
+  // longest unbreakable word would overflow a box.
+  const longest = Math.max(1, ...stats.flatMap((s) => String(s.value ?? "").split(" ").map((w) => w.length)));
+  const valueSize = `min(28px, calc(100cqi / ${(longest * 0.6).toFixed(2)}))`;
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(200px, 100%), 1fr))", gap: 12 }}>
       {stats.map((s, i) => (
@@ -1137,19 +1169,29 @@ function BaselineStat({ stats }: { stats: Stat[] }) {
             border: "1px solid #24262B",
             borderRadius: 10,
             padding: "18px 20px",
+            // Value and label share the row's tracks, so a value that wraps in
+            // one box starts every label in the row on the same line.
+            display: "grid",
+            gridRow: "span 2",
+            gridTemplateRows: "subgrid",
+            rowGap: 0,
+            alignContent: "start",
           }}
         >
-          <div
-            style={{
-              fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-              fontSize: 28,
-              fontWeight: 700,
-              color: "#FCA5A5",
-              marginBottom: 6,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {s.value}
+          {/* Size container on a wrapper: containment on the box itself
+              would stop it being a subgrid. */}
+          <div style={{ containerType: "inline-size", marginBottom: 6 }}>
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+                fontSize: valueSize,
+                fontWeight: 700,
+                color: "#FCA5A5",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              {s.value}
+            </div>
           </div>
           <div
             style={{
@@ -1328,6 +1370,8 @@ function CaseStudy({ project, onBack, onHome }: {
     impactColumns: string[];
     learningsEyebrow: string;
     learningsHeading: string;
+    processHeading: string;
+    processIntro: string;
   } = {
     problemEyebrow: "01 / Discovery & Bottlenecks",
     problemHeading: "Problem & Baseline Metrics",
@@ -1336,6 +1380,10 @@ function CaseStudy({ project, onBack, onHome }: {
     impactColumns: ["Key Workflow / Metric", "Before Redesign", "Post Launch", "Net Improvement"],
     learningsEyebrow: "04 / Retrospective & Seniority",
     learningsHeading: "Senior Learnings & Scalability",
+    // Generic on purpose: every study sets its own heading and intro, and a new
+    // one that has not yet should not inherit another project's story.
+    processHeading: "How It Was Designed",
+    processIntro: "The process behind this project, step by step, with the boards it produced.",
     ...(project.sectionLabels ?? {}),
   };
 
@@ -1378,27 +1426,36 @@ function CaseStudy({ project, onBack, onHome }: {
 
       {/* Header */}
       <div style={{ marginBottom: 12 }}>
-        <button
-          onClick={onHome}
-          style={{
-            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-            fontSize: 13,
-            color: "#828790",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            marginBottom: 24,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            padding: 0,
-            transition: "color 150ms",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#9CA0A8")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#828790")}
-        >
-          ← All projects overview
-        </button>
+        {/* Real links, so the trail can be opened in a new tab and read by a
+            crawler; a plain click stays inside the app's own router. */}
+        <nav aria-label="Breadcrumb" style={{ marginBottom: 24 }}>
+          <ol className="breadcrumb">
+            {[
+              { label: "Home", href: "/", go: onHome },
+              { label: "Projects", href: "/projects", go: onBack },
+            ].map((crumb) => (
+              <li key={crumb.href}>
+                <a
+                  href={crumb.href}
+                  className="breadcrumb-link"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+                    e.preventDefault();
+                    crumb.go();
+                  }}
+                >
+                  {crumb.label}
+                </a>
+                <span className="breadcrumb-sep" aria-hidden="true">/</span>
+              </li>
+            ))}
+            <li>
+              <span className="breadcrumb-current" aria-current="page">
+                {project.title}
+              </span>
+            </li>
+          </ol>
+        </nav>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
           {[project.role, project.platform, project.industry]
@@ -1529,7 +1586,7 @@ function CaseStudy({ project, onBack, onHome }: {
               letterSpacing: "-0.02em",
             }}
           >
-            From Field Research to Shipped System
+            {labels.processHeading}
           </h2>
           <p
             style={{
@@ -1541,8 +1598,7 @@ function CaseStudy({ project, onBack, onHome }: {
               maxWidth: 720,
             }}
           >
-            The end-to-end process behind this platform — how ambiguous stakeholder requests were
-            reframed into a validated problem, then architected into a scalable, tokenized system.
+            {labels.processIntro}
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
@@ -1761,6 +1817,22 @@ function CaseStudy({ project, onBack, onHome }: {
                 0{i + 1}
               </div>
               <div>
+                {/* Web & brand studies name the usability heuristic each
+                    decision serves, tying it back to the scoreboard above. */}
+                {s.heuristic && (
+                  <div
+                    style={{
+                      fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
+                      fontSize: 11,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      color: "#828790",
+                      marginBottom: 6,
+                    }}
+                  >
+                    {s.heuristic}
+                  </div>
+                )}
                 <div
                   style={{
                     fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif",
@@ -2740,7 +2812,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
                 margin: 0,
               }}
             >
-              Senior UX/UI Designer with 5+ years of experience designing digital products across SaaS, IoT, GIS,
+              UX/UI Designer with 5+ years of experience designing digital products across SaaS, IoT, GIS,
               healthcare, and mobile. I&nbsp;like working on complex problems and turning them into experiences
               that feel simple and easy to use.
             </p>
@@ -2770,7 +2842,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
                 onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
                 onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
               >
-                <span>Explore my 29 projects</span>
+                <span>Explore my {PROJECT_COUNT} projects</span>
                 <span aria-hidden="true">↓</span>
               </button>
               <button
@@ -2821,7 +2893,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
         <button
           className="section-head-action"
           onClick={onProjects}
-          aria-label="View all 29 projects"
+          aria-label={`View all ${PROJECT_COUNT} projects`}
         >
           View all
           <span className="arrow" aria-hidden="true">→</span>
@@ -2868,7 +2940,7 @@ function HomePage({ onSelect, onProjects, onAbout, onContact, onSelectCv }: {
             color: "#828790",
           }}
         >
-          © 2026 Piyachon Wanburi · Senior UX/UI Designer · Bangkok
+          © 2026 Piyachon Wanburi · UX/UI Designer · Bangkok
         </span>
         <div style={{ display: "flex", gap: 20 }}>
           <span style={{ color: "#828790", fontSize: 13 }}>094-498-9917</span>
@@ -3316,7 +3388,7 @@ function ProjectsPage({ onSelect, onBack }: {
             marginBottom: 12,
           }}
         >
-          Curated Archive · 29 Total Works
+          Curated Archive · {PROJECT_COUNT} Total Works
         </div>
         <h1
           style={{
@@ -3341,7 +3413,7 @@ function ProjectsPage({ onSelect, onBack }: {
             maxWidth: 620,
           }}
         >
-          29 delivered projects spanning enterprise data platforms, ClimateTech GIS command centers, Industrial IoT back-offices, and high-conversion web brand experiences.
+          {PROJECT_COUNT} delivered projects spanning enterprise data platforms, ClimateTech GIS command centers, Industrial IoT back-offices, and high-conversion web brand experiences.
         </p>
 
         {/* Search and Filters Bar */}
@@ -3701,7 +3773,7 @@ function StoryPortrait() {
             Piyachon Wanburi (Yim)
           </div>
           <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7" }}>
-            Bangkok · Senior UX/UI Designer
+            Bangkok · UX/UI Designer
           </div>
         </div>
       </div>
@@ -3831,7 +3903,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
           }}
         >
           {[
-            "I'm Piyachon, a Senior UX/UI Designer based in Bangkok with 5+ years of experience designing digital products across SaaS, IoT, GIS, healthcare, and mobile.",
+            "I'm Piyachon, a UX/UI Designer based in Bangkok with 5+ years of experience designing digital products across SaaS, IoT, GIS, healthcare, and mobile.",
             "I enjoy working on complex problems — understanding the people, workflows, and information behind them, then turning them into experiences that feel simple and easy to use.",
           ].map((line) => (
             <p
@@ -4085,7 +4157,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             color: "#828790",
           }}
         >
-          © 2026 Piyachon Wanburi · Senior UX/UI Designer · Bangkok
+          © 2026 Piyachon Wanburi · UX/UI Designer · Bangkok
         </span>
         <button
           onClick={onProjects}
@@ -4101,7 +4173,7 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
             cursor: "pointer",
           }}
         >
-          Explore 29 Projects ↓
+          Explore {PROJECT_COUNT} Projects ↓
         </button>
       </footer>
     </div>
@@ -4433,7 +4505,7 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
             cursor: "pointer",
           }}
         >
-          Explore 29 Projects ↓
+          Explore {PROJECT_COUNT} Projects ↓
         </button>
       </footer>
     </div>
@@ -4589,7 +4661,7 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
               />
               <div>
                 <div style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 11, color: "#6EE7B7", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 4 }}>
-                  Senior UX/UI Designer
+                  UX/UI Designer
                 </div>
                 <h1 style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 28, fontWeight: 800, margin: "0 0 4px", letterSpacing: "-0.03em" }}>
                   PIYACHON WANBURI <span style={{ color: "#6EE7B7", fontWeight: 700 }}>(Yim)</span>
@@ -5113,7 +5185,7 @@ function routeToPath(route: Route): string {
 }
 
 const PAGE_TITLES: Record<Route["page"], string> = {
-  home: "Piyachon Wanburi — Senior UX/UI Designer",
+  home: "Piyachon Wanburi — UX/UI Designer",
   projects: "All Projects — Piyachon Wanburi",
   about: "About — Piyachon Wanburi",
   stack: "Stack — Piyachon Wanburi",
