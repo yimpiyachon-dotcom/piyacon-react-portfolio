@@ -3557,7 +3557,7 @@ function ProjectsPage({ onSelect, onBack }: {
       {/* Projects Footer */}
       <div style={{ borderTop: "1px solid #24262B", paddingTop: 36, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#828790" }}>
-          © 2026 Piyachon Wanburi · Senior UX/UI Designer · Bangkok
+          © 2026 Piyachon Wanburi · UX/UI Designer · Bangkok
         </span>
         <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#828790" }}>
           {allProjects.apps.length + allProjects.web.length} projects shown
@@ -4489,7 +4489,7 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
             color: "#828790",
           }}
         >
-          © 2026 Piyachon Wanburi · Senior UX/UI Designer · Bangkok
+          © 2026 Piyachon Wanburi · UX/UI Designer · Bangkok
         </span>
         <button
           onClick={onProjects}
@@ -4984,7 +4984,7 @@ function ContactModal({ isOpen, onClose, onShowToast, onResume }: { isOpen: bool
           Get in Touch
         </h2>
         <p style={{ fontFamily: "'Inter', 'Inter Fallback', sans-serif", fontSize: 14, color: "#9CA0A8", lineHeight: 1.55, margin: "0 0 24px" }}>
-          Available for senior product design roles and complex enterprise systems.
+          Available for middle/senior UX/UI designer roles.
         </p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
