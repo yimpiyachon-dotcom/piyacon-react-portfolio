@@ -1337,6 +1337,41 @@ function ShotLightbox({ shot, onClose }: { shot: { src: string; alt: string } | 
   );
 }
 
+type Crumb = { label: string; href: string; go: Handler };
+
+// The trail at the top of every inner page. Real links, so the trail can be
+// opened in a new tab and read by a crawler; a plain click stays inside the
+// app's own router.
+function Breadcrumb({ trail, current, style }: { trail: Crumb[]; current: string; style?: React.CSSProperties }) {
+  return (
+    <nav aria-label="Breadcrumb" style={style}>
+      <ol className="breadcrumb">
+        {trail.map((crumb) => (
+          <li key={crumb.href}>
+            <a
+              href={crumb.href}
+              className="breadcrumb-link"
+              onClick={(e) => {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+                e.preventDefault();
+                crumb.go();
+              }}
+            >
+              {crumb.label}
+            </a>
+            <span className="breadcrumb-sep" aria-hidden="true">/</span>
+          </li>
+        ))}
+        <li>
+          <span className="breadcrumb-current" aria-current="page">
+            {current}
+          </span>
+        </li>
+      </ol>
+    </nav>
+  );
+}
+
 function CaseStudy({ project, onBack, onHome }: {
   project: Project;
   onBack: Handler;
@@ -1426,36 +1461,14 @@ function CaseStudy({ project, onBack, onHome }: {
 
       {/* Header */}
       <div style={{ marginBottom: 12 }}>
-        {/* Real links, so the trail can be opened in a new tab and read by a
-            crawler; a plain click stays inside the app's own router. */}
-        <nav aria-label="Breadcrumb" style={{ marginBottom: 24 }}>
-          <ol className="breadcrumb">
-            {[
-              { label: "Home", href: "/", go: onHome },
-              { label: "Projects", href: "/projects", go: onBack },
-            ].map((crumb) => (
-              <li key={crumb.href}>
-                <a
-                  href={crumb.href}
-                  className="breadcrumb-link"
-                  onClick={(e) => {
-                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-                    e.preventDefault();
-                    crumb.go();
-                  }}
-                >
-                  {crumb.label}
-                </a>
-                <span className="breadcrumb-sep" aria-hidden="true">/</span>
-              </li>
-            ))}
-            <li>
-              <span className="breadcrumb-current" aria-current="page">
-                {project.title}
-              </span>
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumb
+          trail={[
+            { label: "Home", href: "/", go: onHome },
+            { label: "Projects", href: "/projects", go: onBack },
+          ]}
+          current={project.title}
+          style={{ marginBottom: 24 }}
+        />
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
           {[project.role, project.platform, project.industry]
@@ -3360,31 +3373,18 @@ function ProjectsPage({ onSelect, onBack }: {
 
       {/* Header */}
       <div style={{ marginBottom: 44, position: "relative", zIndex: 1 }}>
-        <button
-          onClick={onBack}
-          style={{
-            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-            fontSize: 13,
-            color: "#828790",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            marginBottom: 20,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            padding: 0,
-          }}
-        >
-          ← Home
-        </button>
+        <Breadcrumb
+          trail={[{ label: "Home", href: "/", go: onBack }]}
+          current="Projects"
+          style={{ marginBottom: 20 }}
+        />
         <div
           style={{
             fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
             fontSize: 11,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            color: "#828790",
+            color: "#6EE7B7",
             marginBottom: 12,
           }}
         >
@@ -3847,24 +3847,11 @@ function AboutPage({ onBack, onProjects, onContact, onSelectCv }: {
 
       {/* Header section */}
       <div style={{ marginBottom: 48, position: "relative", zIndex: 1 }}>
-        <button
-          onClick={onBack}
-          style={{
-            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-            fontSize: 13,
-            color: "#828790",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            marginBottom: 20,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            padding: 0,
-          }}
-        >
-          ← Home
-        </button>
+        <Breadcrumb
+          trail={[{ label: "Home", href: "/", go: onBack }]}
+          current="About"
+          style={{ marginBottom: 20 }}
+        />
 
         <div
           style={{
@@ -4305,24 +4292,11 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
 
       {/* Header */}
       <div style={{ marginBottom: 48, position: "relative", zIndex: 1 }}>
-        <button
-          onClick={onBack}
-          style={{
-            fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace",
-            fontSize: 13,
-            color: "#828790",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            marginBottom: 20,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            padding: 0,
-          }}
-        >
-          ← Home
-        </button>
+        <Breadcrumb
+          trail={[{ label: "Home", href: "/", go: onBack }]}
+          current="Stack"
+          style={{ marginBottom: 20 }}
+        />
 
         <div
           style={{
@@ -4334,7 +4308,7 @@ function StackPage({ onBack, onProjects, onSelectCv }: { onBack: Handler; onProj
             marginBottom: 12,
           }}
         >
-          // TOOLS &amp; WORKFLOW
+          TOOLS · WORKFLOW
         </div>
 
         <h1
