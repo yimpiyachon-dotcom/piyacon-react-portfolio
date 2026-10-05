@@ -364,6 +364,11 @@ body {
   #resume-print-area h3 {
     break-after: avoid;
   }
+  /* Keep each job whole: a card split at a page break left its last bullet
+     alone at the top of the next sheet. */
+  #resume-print-area .cv-exp-card {
+    break-inside: avoid;
+  }
 }
 
 .tag-chip {

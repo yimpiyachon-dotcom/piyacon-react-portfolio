@@ -4769,12 +4769,15 @@ function CvModal({ isOpen, onClose }: { isOpen: boolean; onClose: Handler }) {
                   ],
                 },
               ].map((exp, idx) => (
-                <div key={idx} style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 6, marginBottom: 4 }}>
-                    <span style={{ fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 15, fontWeight: 700, color: "#F5F5F4" }}>
+                <div key={idx} className="cv-exp-card" style={{ background: "#17191E", border: "1px solid #24262B", borderRadius: 10, padding: "16px 20px" }}>
+                  {/* The title takes the free width and wraps inside it, so a long
+                      company name no longer pushes the dates onto a line of their
+                      own; the row only stacks when the card is too narrow for both. */}
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", columnGap: 16, rowGap: 6, marginBottom: 4 }}>
+                    <span style={{ flex: "1 1 320px", minWidth: 0, fontFamily: "'Plus Jakarta Sans', 'Plus Jakarta Fallback', sans-serif", fontSize: 15, fontWeight: 700, color: "#F5F5F4" }}>
                       {exp.role} · <span style={{ color: "#6EE7B7" }}>{exp.company}</span>
                     </span>
-                    <span style={{ fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#828790" }}>
+                    <span style={{ flex: "0 0 auto", whiteSpace: "nowrap", fontFamily: "'JetBrains Mono', 'JetBrains Fallback', monospace", fontSize: 12, color: "#828790" }}>
                       {exp.period}
                     </span>
                   </div>
