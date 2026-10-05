@@ -4,7 +4,7 @@ export const steps: ProcessStep[] = [
   {
     step: "01",
     title: "Home Page and the Standards Row",
-    body: "The home page runs the company statement, a plain explanation of what ethanol is, the four products, and then Our Standard: a row of certification marks placed in the body of the page rather than in the footer. A procurement reviewer reads in a fixed order and looks for evidence of standards first, so the row was given the position a product grid would normally take. The same page closes with the ESG summary and a contact form.",
+    body: "The home page runs the company statement, a plain explanation of what ethanol is, the four products, and then Our Standard: the company's licences and certificates listed by name and number above a row of certification marks, placed in the body of the page rather than in the footer. A procurement reviewer works from a checklist, so the standards are written out in terms each item can be matched against. The same page closes with the ESG summary and a contact form.",
     images: [
       "/img/process/unionchemical/01.webp",
     ],

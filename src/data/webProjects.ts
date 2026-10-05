@@ -138,18 +138,18 @@ export const webProjects = [
       {
         heuristic: "Help and documentation",
         title: "Each Template Explains Itself First",
-        body: "Every template page states what the document is, when it was last revised, its format and length, and the three steps ahead, with an FAQ on the public site behind it. The questions a first-time user has before investing time in a form are answered before the form begins.",
+        body: "Every template page states what the document is, when it was last revised, its format and length, and the four steps ahead, with an FAQ on the public site behind it. The questions a first-time user has before investing time in a form are answered before the form begins.",
       },
       {
         heuristic: "User control and freedom",
         title: "Documents and Account in the User's Hands",
-        body: "The member area keeps finished documents with their status and a Word or PDF download, alongside receipts, profile settings, password change and account deletion. A user can retrieve, re-issue or leave without asking anyone.",
+        body: "The member area keeps finished documents with their status and a Word or PDF download, alongside receipts, profile settings, password change and account deletion. A user can fetch a document again, check a receipt or close the account without asking anyone.",
       },
     ],
     impactTable: [
       { metric: "Visibility", before: "Wording unseen until download", after: "Rendered live beside the form", delta: "Visible" },
       { metric: "Real-world", before: "Templates in legal vocabulary", after: "Split by business and personal, search first", delta: "Relatable" },
-      { metric: "Guidance", before: "No explanation before the form", after: "Revision date, format and three steps up front", delta: "Explained" },
+      { metric: "Guidance", before: "No explanation before the form", after: "Revision date, format and four steps up front", delta: "Explained" },
       { metric: "Control", before: "One-time download", after: "Documents, receipts and account settings kept", delta: "Retained" },
     ],
     quote:
@@ -158,7 +158,7 @@ export const webProjects = [
     learnings: [
       "Showing the output while it is being produced is the strongest form of system status: it replaces reassurance with something the user can verify.",
       "Letting people choose by situation before they meet specialist vocabulary is a real-world match that a single list of document names cannot provide.",
-      "In a dense language set in long form, type scale and line height carry much of the usability work, so the scale was set against Thai body copy from the start.",
+      "Each template page answers what a first-time user asks before committing to a form: what the document is, how long it runs and what the steps are. Answering those up front is help that costs the user nothing to read.",
     ],
     sectionLabels: {
       problemEyebrow: "01 / Discovery & Heuristic Gaps",
@@ -189,7 +189,7 @@ export const webProjects = [
     metric: "Audit-Led Redesign",
     hook: "A freelance engagement that started by auditing the client's live site against named usability heuristics, then rebuilt it on what the audit found.",
     overview:
-      "A redesign of the public website for Aluminium Loop, a Thai closed-loop aluminium can recycling business. The engagement began as a heuristic evaluation of the site already in production — each finding written against a named heuristic so it could be argued rather than asserted — and the redesign that followed rebuilt the marketing surface as eleven bilingual templates on a single dark-ground system. Delivered as a complete design; not yet in production at the time of writing.",
+      "A redesign of the public website for Aluminium Loop, a Thai closed-loop aluminium can recycling business. The engagement began as a heuristic evaluation of the site already in production — each finding written against a named heuristic so it could be argued rather than asserted — and the redesign that followed rebuilt the marketing surface as eleven page templates sharing one system: light pages under a blue hero, a navy footer, and a language switcher in the header. Delivered as a complete design; not yet in production at the time of writing.",
     summary:
       "A redesign of a recycling company's marketing site that began as a heuristic audit of the live site. Each finding was written against a named principle so it could be argued rather than asserted, and the redesign rebuilt the site on what the audit found. Delivered as a complete design; not in production at the time of writing.",
     kpis: [
@@ -266,58 +266,59 @@ export const webProjects = [
     stack: ["Figma", "Design System", "Dark UI", "Thai Typography"],
     image: "/img/cover/beurdev-agency.webp",
     imageAlt: "Beurdev agency site rebuild — dark engineering-led marketing site naming the tech stack and publishing package pricing",
-    metric: "Side-by-Side Packages",
-    hook: "An agency site that answers the two questions a prospect actually has — what do you build with, and what does it cost — before they have to ask for either.",
+    metric: "Five Pages, One System",
+    hook:
+      "An agency site rebuilt so its five pages read as one company, with the frameworks the team builds in named where a technical buyer looks for them.",
     overview:
-      "The flagship site for Beurdev, the software house behind much of the client work in this portfolio. The rebuild replaced a five-page, illustration-led marketing site with a dark, engineering-led one that names the frameworks the team builds with and publishes package pricing on the page — the two things the previous site made every prospect ask for by email.",
+      "The flagship site for Beurdev, the software house behind much of the client work in this portfolio. The five pages being replaced did not share one look: two used a teal treatment with stock illustration, the other three a white and navy layout with a pink footer band. The rebuild keeps the five-page structure, moves every page onto one dark system with green accents, and adds a tech stack section that names the frameworks the team builds with.",
     summary:
-      "A rebuild of a software agency's own site, designed for a prospect checking two things before they get in touch: whether the team builds in what their project needs, and whether it fits their budget. The design puts both answers on the page and shows the engagement as stages a client can follow.",
+      "A rebuild of a software agency's own site, designed for a prospect deciding whether the team fits their project before getting in touch. The design gives five pages one visual language, names the frameworks behind each service, and labels the working process by stage. Each decision below is tied to the usability heuristic it serves.",
     kpis: [
+      { value: "Consistency", label: "Consistency and standards", sub: "five pages moved onto one dark system" },
       { value: "Real-world", label: "Match between system and the real world", sub: "services described by the frameworks a buyer checks" },
-      { value: "Recognition", label: "Recognition rather than recall", sub: "packages compared on the page, not by email" },
-      { value: "Visibility", label: "Visibility of system status", sub: "engagement shown as three stages a client can follow" },
+      { value: "Visibility", label: "Visibility of system status", sub: "each process stage labelled with its status" },
     ],
     problem:
-      "The previous site ran five pages carried by stock illustration and described its services only in general terms. Read against the heuristics, a technical prospect could not check it against their own world: no frameworks were named, so compatibility had to be asked; scope and price lived in an email exchange, so the comparison had to be held in memory across replies; and nothing showed how an engagement would progress once it started.",
+      "The site being replaced had the right sections, a price list and a package table among them, but it did not read as one company. Read against the heuristics, its five pages used two unrelated looks, so a visitor moving between them could not be sure they were still on the same site; the team was described by role, with no frameworks named, so a technical buyer had to ask what the team builds in; and two of the pages were led by stock illustration that showed nothing of the work.",
     baselineStats: [
-      { value: "No stack named", label: "services described in general terms, no frameworks listed" },
-      { value: "Scope by email", label: "package scope and price only available by making contact" },
-      { value: "Process unseen", label: "nothing showed how an engagement would run once started" },
+      { value: "Two looks", label: "five pages split between a teal and a navy layout" },
+      { value: "No stack named", label: "the team described by role, with no frameworks listed" },
+      { value: "Stock imagery", label: "two pages led by illustration rather than the team's work" },
     ],
     solutions: [
       {
-        heuristic: "Match between system and the real world",
-        title: "The Stack, Named in the Buyer's Terms",
-        body: "Mobile, front end and back end each list the actual frameworks the team builds with. A prospect with an existing codebase checks compatibility in the vocabulary they already use, instead of reading a claim about a modern stack.",
+        heuristic: "Consistency and standards",
+        title: "Five Pages, One System",
+        body: "Every page moves onto one dark ground with green accents and a code texture, under the same header and above the same footer. A visitor going from the home page to services, portfolio or contact stays inside one company's site rather than crossing between templates.",
       },
       {
-        heuristic: "Recognition rather than recall",
-        title: "Packages Compared on One Screen",
-        body: "Four packages sit side by side with their scope and inclusions listed under each. A prospect compares them in view rather than piecing the options together from separate replies.",
+        heuristic: "Match between system and the real world",
+        title: "The Stack, Named in the Buyer's Terms",
+        body: "The tech stack splits into iOS app, front end and back end, and names each framework with its logo: React Native and Flutter; React, Vue.js and Angular; NestJS, Laravel and Django. A prospect with an existing codebase checks compatibility in the vocabulary they already use.",
       },
       {
         heuristic: "Visibility of system status",
-        title: "Engagement Shown as Three Stages",
-        body: "Design, build and roll out are presented as Starting, On Progress and Success, with QA named inside the final stage. A client can place their project in the sequence, and knows what each stage means, before the work begins.",
+        title: "Each Stage Labelled With Its Status",
+        body: "The working process runs as three cards, Design, Build and Roll Out, tagged Starting, On Progress and Success, with QA and testing named inside the last. A client can see what each stage covers and where a project stands at each point before the work begins.",
       },
       {
         heuristic: "Aesthetic and minimalist design",
-        title: "One Scroll Carries the Whole Pitch",
-        body: "The homepage runs the promise, the founders, the process, the stack, the packages and contact in one sequence, on a dark ground with code texture in place of illustration that carried no information. Each section answers one question a prospect has, in the order they ask it.",
+        title: "The Work in Place of Illustration",
+        body: "The stock illustration gives way to screenshots of client projects and photographs of the two founders, and the four packages sit side by side with their inclusions under each price. The space that decoration took now carries what a prospect came to check.",
       },
     ],
     impactTable: [
-      { metric: "Real-world", before: "Services in general terms", after: "Frameworks named across three groups", delta: "Checkable" },
-      { metric: "Recognition", before: "Scope and price by email", after: "Four packages compared on one screen", delta: "In view" },
-      { metric: "Visibility", before: "Process undescribed", after: "Three named stages, QA inside the last", delta: "Shown" },
-      { metric: "Minimalism", before: "Five pages carried by illustration", after: "One scroll, one question per section", delta: "Focused" },
+      { metric: "Consistency", before: "Teal pages and navy pages", after: "One dark system on all five pages", delta: "Unified" },
+      { metric: "Real-world", before: "Team described by role", after: "Frameworks named in three groups", delta: "Checkable" },
+      { metric: "Visibility", before: "Process as a row of arrows", after: "Three stages, each with a status", delta: "Labelled" },
+      { metric: "Minimalism", before: "Stock illustration", after: "Client work and founders' photos", delta: "Focused" },
     ],
     quote:
-      "A prospect choosing a software house runs two checks: can you build in what my project needs, and does it fit what I have. The design puts both answers where they can be checked without an email.",
+      "A prospect choosing a software house runs two checks it can make on the page: is this one serious company, and does it build in what my project needs. The rebuild puts both answers where they can be checked.",
     quoteRole: "Design rationale · Beurdev Agency",
     learnings: [
       "Naming frameworks is stronger than describing capability because it is checkable; a claim a visitor can verify in their own vocabulary carries weight that a general one does not.",
-      "Showing options side by side turns a comparison the visitor would otherwise hold in memory into one they can make on the page.",
+      "Consistency across pages is part of credibility: five pages in two looks read as a set of templates, not as one company.",
       "For a technical service the visual register is part of the message; illustration that carried no information was quietly saying the wrong thing.",
     ],
     sectionLabels: {
@@ -347,50 +348,51 @@ export const webProjects = [
     image: "/img/cover/patc-institute.webp",
     imageAlt: "Pattaya Aviation Training Center website — accreditation marks, course catalogue and public training schedule",
     metric: "One Course Template",
-    hook: "A training centre whose authority sat in a filing cabinet as four certificates — the site's job was to move them to the point where someone decides whether to enrol.",
+    hook:
+      "A training centre whose authority rested on four scanned documents — the site's job was to bring them to the point where someone decides whether to enrol.",
     overview:
       "The website for Pattaya Aviation Training Center, a Thai aviation and occupational safety training provider. The site carries three separate lines of business — public and in-house training, occupational measurement services, and meeting room hire — and puts the centre's accreditations, each traced back to the certificate that issues it, in front of anyone weighing up a course.",
     summary:
       "A course and booking site for an aviation and occupational safety training centre, designed around the three questions a visitor brings: is this centre qualified to train me, which of its services is mine, and can I compare and book a course without phoning. Each decision below is tied to the usability heuristic it serves.",
     kpis: [
       { value: "Consistency", label: "Consistency and standards", sub: "one detail template so any two courses compare field by field" },
-      { value: "Recognition", label: "Recognition rather than recall", sub: "schedule row answers date, room, price and booking in one place" },
+      { value: "Recognition", label: "Recognition rather than recall", sub: "schedule row answers date, area, price and booking in one place" },
       { value: "Minimalism", label: "Aesthetic and minimalist design", sub: "competing service lines given a fixed order down the homepage" },
     ],
     problem:
-      "Read against the usability heuristics, the content did not answer those questions where they were asked. The centre's accreditation existed only as scanned certificates, away from the pages where a visitor decides. Three unrelated services competed for the top of the same homepage, so a visitor first had to sort out which one they were looking at. And course information had no fixed shape, so comparing two courses meant remembering one while reading the other.",
+      "The material the site started from answered those questions in the wrong places. The centre's accreditation existed as four scanned documents, a certificate and three official letters, none of them where a visitor decides. The business runs three unrelated services that would otherwise compete for the top of one homepage. And a catalogue of courses is only useful if two of them can be compared, which turns into a memory task when each course page takes its own shape. Read against the heuristics, those were the three gaps to close.",
     baselineStats: [
-      { value: "Proof hidden", label: "accreditation held as scanned certificates, not where a visitor decides" },
-      { value: "No clear entry", label: "three unrelated services competing for the top of one homepage" },
-      { value: "Recall required", label: "each course page shaped differently, so comparing meant remembering" },
+      { value: "Proof on paper", label: "accreditation held as four scanned documents, away from the pages that need it" },
+      { value: "Three services", label: "training, measurement and room hire sharing one homepage" },
+      { value: "Courses to compare", label: "a catalogue whose value depends on comparing courses field by field" },
     ],
     solutions: [
       {
         heuristic: "Match between system and the real world",
         title: "Trust Marks Drawn From the Certificates",
-        body: "Each accreditation mark was traced back to the certificate that issues it before it was drawn, so the mark a visitor sees on the site is the same one printed on the paper document. Working from the documents rather than from a list of claims also kept the row to what the centre can actually evidence.",
+        body: "Each accreditation mark was traced back to the document that issues it before it was drawn, so the mark a visitor sees on the site is the same one printed on the paper. Working from the documents rather than from a list of claims also kept the row to what the centre can actually evidence.",
       },
       {
         heuristic: "Aesthetic and minimalist design",
         title: "One Block per Service, in a Fixed Order",
-        body: "Training, measurement services and room hire each get their own homepage block, in an order that does not change. A visitor finds the one they came for within a screen instead of reading past the other two to work out which is which.",
+        body: "Training, measurement services and room hire each get their own homepage block under their own heading, in an order that does not change. A visitor finds the one they came for by its heading instead of reading past the other two to work out which is which.",
       },
       {
         heuristic: "Recognition rather than recall",
         title: "A Schedule Row That Holds the Whole Decision",
-        body: "The public schedule puts cohort, dates, course, room, price and the registration action on one row. Everything needed to book is in view at the moment of booking, so nothing has to be carried over from another page or asked by phone.",
+        body: "The public schedule, grouped under tabs by course type, puts each run's number, dates, course and area on one row with the general and member prices, the course details, a quotation request and the booking action. Everything needed to book is in view at the moment of booking, so nothing has to be carried over from another page.",
       },
       {
         heuristic: "Consistency and standards",
         title: "One Template for Every Course",
-        body: "Every course page uses the same fields in the same order: duration, delivery format, who it is for, instructor qualification, objectives, outline and evaluation. Because each field sits in the same place every time, two courses can be compared without relearning the page.",
+        body: "Every course page uses the same fields in the same order: duration, course format, participants, instructor qualification, objectives, outline and evaluation. Because each field sits in the same place every time, two courses can be compared without relearning the page.",
       },
     ],
     impactTable: [
-      { metric: "Real-world", before: "Accreditation as scanned certificates", after: "Marks traced to the issuing documents", delta: "Evidenced" },
-      { metric: "Minimalism", before: "Three services competing for one space", after: "One block each, in a fixed order", delta: "Separated" },
-      { metric: "Recognition", before: "Enquiry needed before booking", after: "Dates, room, price and registration in one row", delta: "In view" },
-      { metric: "Consistency", before: "Each course page shaped differently", after: "One template across every course", delta: "Standardised" },
+      { metric: "Real-world", before: "Four scanned documents", after: "Marks traced to the issuing documents", delta: "Evidenced" },
+      { metric: "Minimalism", before: "Three services, one homepage", after: "One block each, in a fixed order", delta: "Separated" },
+      { metric: "Recognition", before: "Date, area, price and booking to find", after: "All in one schedule row, with a quote request", delta: "In view" },
+      { metric: "Consistency", before: "Courses compared one page at a time", after: "One template across every course", delta: "Standardised" },
     ],
     quote:
       "Every page here answers one question a visitor brings: is this centre qualified, which service is mine, and can I compare and book without phoning. The heuristics were the test of whether each page actually answered it.",
@@ -426,29 +428,30 @@ export const webProjects = [
     stack: ["Figma", "Design System", "Card System", "Responsive Layout"],
     image: "/img/cover/the-right-office.webp",
     imageAlt: "The Right Office website rebuild — serviced office, visa advisory, accounting and incorporation services for foreign businesses in Bangkok",
-    metric: "Question-Led Services",
-    hook: "Six services sold to one customer — a foreign business setting up in Thailand — rebuilt out of a site that buried all six in prose.",
+    metric: "One Card per Service",
+    hook:
+      "Six services sold to one customer — a foreign business setting up in Thailand — rebuilt out of a fixed-width site that showed all six only as menu links.",
     overview:
-      "The website for The Right Office, a Bangkok provider whose business runs wider than desks: serviced and virtual offices, visa and work permit advisory, accounting, secretarial services and company incorporation for foreign businesses operating in Thailand. The rebuild replaced a fixed-width site from an earlier web era with a responsive one organised around those six services and the single audience they share.",
+      "The website for The Right Office, a Bangkok provider whose business runs wider than desks: serviced and virtual offices, visa and work permit advisory, accounting, secretarial services and company incorporation for foreign businesses operating in Thailand. The rebuild replaced a fixed-width site from an earlier web era, where the services were text links in a side menu above a column of prose, with a full-width one organised around those six services and the single audience they share.",
     summary:
-      "A rebuild of a business-services provider's site, from a fixed-width layout into a responsive one organised around six services and the one visitor they share. The design lets that visitor recognise their need in a question, read the site on any screen, and scan a long list of inclusions without losing any of it.",
+      "A rebuild of a business-services provider's site, from a fixed-width layout into a full-width one organised around six services and the one visitor they share. The design shows all six as one set of cards, opens the office cards with the visitor's own questions, and keeps a long list of inclusions in full while making it scannable. Each decision below is tied to the usability heuristic it serves.",
     kpis: [
-      { value: "Real-world", label: "Match between system and the real world", sub: "each service card opens with the visitor's own question" },
+      { value: "Recognition", label: "Recognition rather than recall", sub: "six services shown as cards, not as menu labels" },
       { value: "Consistency", label: "Consistency and standards", sub: "six services on one card pattern, read as one set" },
       { value: "Minimalism", label: "Aesthetic and minimalist design", sub: "a long inclusions list kept in full and given structure" },
     ],
     problem:
-      "The site being replaced was built for a desktop monitor: fixed width, dense paragraphs and body text no phone would render usefully. Read against the heuristics, the six services were described inside running prose in the provider's own terms, so a visitor had to read everything to find out whether their need was covered; and the most useful content on the site, a long list of what an office includes, sat as one undivided block.",
+      "The site being replaced was built for a desktop monitor: a fixed-width column with small body text. Read against the heuristics, the six services appeared only as text links in a side menu, so a visitor had to know which label fitted their situation before learning anything about it; the home page itself was a column of prose; and the most useful content on the site, the list of what an office includes, sat in a small box at the foot of the page.",
     baselineStats: [
-      { value: "Fixed width", label: "built for a desktop monitor and unreadable on a phone" },
-      { value: "Services in prose", label: "six offerings buried inside paragraphs, not addressable" },
-      { value: "Undivided list", label: "the most useful content set as one block of text" },
+      { value: "Menu labels only", label: "six services listed as text links, with nothing about each" },
+      { value: "Fixed width", label: "a narrow desktop column with small body text" },
+      { value: "Boxed away", label: "the inclusions list squeezed into a small box at the foot of the page" },
     ],
     solutions: [
       {
-        heuristic: "Match between system and the real world",
-        title: "Six Services, Each Led by a Question",
-        body: "Each service card opens with the question it answers, phrased the way a visitor would ask it, rather than a description of the service. A visitor recognises their own situation before reading any detail.",
+        heuristic: "Recognition rather than recall",
+        title: "Six Services Shown, Not Listed",
+        body: "The services move out of the side menu and onto the home and services pages as six cards, each with a photograph, the service name, a short summary and a link to read more. A visitor recognises the one that fits instead of guessing from a menu label.",
       },
       {
         heuristic: "Consistency and standards",
@@ -456,27 +459,27 @@ export const webProjects = [
         body: "Office, virtual office, visa and work permit advice, accounting, secretarial work and incorporation share one card structure. The six read as a single set, so a visitor who needs several of them sees that one provider covers them all.",
       },
       {
-        heuristic: "Aesthetic and minimalist design",
-        title: "The Inclusions List, Structured Rather Than Cut",
-        body: "The long list of what an office includes was kept in full, then given a heading and a shape so it can be scanned. It was the content visitors needed most, so the fix for a dense block was structure, not removal.",
+        heuristic: "Match between system and the real world",
+        title: "Office Cards Open With the Visitor's Question",
+        body: "The serviced and virtual office cards open with the questions a visitor would ask: a start-up needing a prestigious address, a company expanding, a short-term project, a small business whose owner is always on the road. The accounting card names the taxes it covers, from personal and corporate income tax to VAT and withholding tax, in the terms a business owner already uses.",
       },
       {
-        heuristic: "Flexibility and efficiency of use",
-        title: "Rebuilt to Read on Any Screen",
-        body: "The fixed-width desktop layout was rebuilt as a responsive one with body text sized for reading on a phone. A visitor on a mobile device gets the same content at a usable size rather than a scaled-down desktop page.",
+        heuristic: "Aesthetic and minimalist design",
+        title: "The Inclusions List, Structured Rather Than Cut",
+        body: "The list of what an office includes was kept in full and moved into its own section, Why Choose The Right Office, with a heading, a short introduction and the list beside photographs of the space. It was the content visitors needed most, so the fix for a cramped box was space and structure, not removal.",
       },
     ],
     impactTable: [
-      { metric: "Efficiency", before: "Fixed width, desktop only", after: "Responsive across devices", delta: "Rebuilt" },
-      { metric: "Real-world", before: "Services described in prose", after: "Six cards, each led by a question", delta: "Addressable" },
-      { metric: "Consistency", before: "Services mixed into running text", after: "One card pattern for all six", delta: "Unified" },
-      { metric: "Minimalism", before: "Undivided block of text", after: "Kept in full, given structure", delta: "Scannable" },
+      { metric: "Recognition", before: "Services as menu links", after: "Six cards with photo and summary", delta: "Visible" },
+      { metric: "Consistency", before: "Side menu above a column of prose", after: "One card pattern for all six", delta: "Unified" },
+      { metric: "Real-world", before: "The provider's own description", after: "Office cards open with the visitor's questions", delta: "Relatable" },
+      { metric: "Minimalism", before: "Small box at the foot of the page", after: "Own section, kept in full", delta: "Scannable" },
     ],
     quote:
-      "The six services look unrelated until you notice they are the same visitor in the same month. Giving them one pattern, each opened by that visitor's own question, is what lets a single visit cover all of them.",
+      "The six services look unrelated until you notice they are the same visitor in the same month. Showing them as one set of cards is what lets a single visit cover all of them.",
     quoteRole: "Design rationale · The Right Office",
     learnings: [
-      "Opening a card with the question it answers lets a visitor self-select faster than any description of the service can.",
+      "Opening a card with the question it answers lets a visitor self-select faster than a description of the service; it works best where the questions are easy to state, as they were for the office cards.",
       "A dense list is not automatically something to delete; when it is the content people need, the minimalist fix is structure rather than removal.",
       "When several services share one customer, a shared card pattern tells the visitor they belong together more clearly than copy saying so.",
     ],
@@ -518,11 +521,11 @@ export const webProjects = [
       { value: "Prevention", label: "Error prevention", sub: "quote form asks for product and callback time up front" },
     ],
     problem:
-      "An access-control purchase is specified by someone who needs the exact model and evidence it has held up somewhere comparable. Read against the heuristics, a buyer who already knew the device had no fast route to it; references did not speak in the model numbers a specifier works with; and getting a price meant a phone call during office hours, with nothing structuring what a quote needed.",
+      "An access-control purchase is specified by someone who needs the exact model and evidence it has held up somewhere comparable. Read against the heuristics, the usual supplier site fails that buyer in three places: one route serves every visitor, so a buyer who already knows the device still reads the marketing first; references show a client's name but not the models installed, so a specifier cannot use them; and a price starts with an open phone call, with nothing structuring what a quote needs.",
     baselineStats: [
-      { value: "No fast route", label: "a buyer who knew the device still read the marketing" },
-      { value: "Specs unstated", label: "references did not name the models a specifier uses" },
-      { value: "Call to quote", label: "a price meant a phone call with nothing structuring it" },
+      { value: "Two kinds of buyer", label: "some arrive knowing the device, others need to browse" },
+      { value: "Proof needs models", label: "a reference persuades a specifier only when it names the hardware" },
+      { value: "Open-ended call", label: "a phone call leaves nothing to structure what a quote needs" },
     ],
     solutions: [
       {
@@ -538,19 +541,19 @@ export const webProjects = [
       {
         heuristic: "Error prevention",
         title: "A Quote Request That Asks the Right Questions",
-        body: "The quotation page replaces a checkout with a form that asks which product, the details and the time the buyer prefers to be called back. Asking for the callback window up front prevents the missed call that would otherwise stall the request.",
+        body: "The quotation page is a form that asks which product, the buyer's name, email, phone and LINE ID, the details, and the time they prefer to be called back. Asking for the callback window up front prevents the missed call that would otherwise stall the request.",
       },
       {
         heuristic: "User control and freedom",
         title: "A Second Channel for Buyers Who Will Not Phone",
-        body: "A LINE QR code sits beside the quote form, so a buyer who does not want a phone call can still start the conversation in the channel they choose.",
+        body: "A LINE QR code sits beside the quote form, with the phone, hotline and email contacts listed below it, so a buyer who does not want a phone call can still start the conversation in the channel they choose.",
       },
     ],
     impactTable: [
-      { metric: "Efficiency", before: "Marketing before the catalogue", after: "Device strip at the top of the homepage", delta: "Direct" },
-      { metric: "Real-world", before: "References without models", after: "Models and go-live month on every card", delta: "Specific" },
-      { metric: "Prevention", before: "Phone call in office hours", after: "Form with product and callback window", delta: "Structured" },
-      { metric: "Control", before: "Phone as the only route", after: "LINE offered beside the form", delta: "Choice" },
+      { metric: "Efficiency", before: "One route for every buyer", after: "Device strip at the top of the homepage", delta: "Direct" },
+      { metric: "Real-world", before: "A client name without models", after: "Models and go-live month on every card", delta: "Specific" },
+      { metric: "Prevention", before: "An open-ended phone call", after: "Form with product and callback window", delta: "Structured" },
+      { metric: "Control", before: "One channel chosen for the buyer", after: "LINE, phone and email beside the form", delta: "Choice" },
     ],
     quote:
       "A specifier does not want a brochure; they want to know which model went into a building like theirs. Every decision here gives that buyer a shorter or more specific route to the answer.",
@@ -589,26 +592,26 @@ export const webProjects = [
     metric: "Price Breaks Upfront",
     hook: "A juice factory that earns from cases, not bottles — so the site publishes the wholesale break-points instead of making a reseller ask for them.",
     overview:
-      "The site for ORGENESS GROUP, a fresh orange juice factory selling wholesale and OEM contract production. It is built to convert resellers and own-brand clients rather than individual shoppers: four formulas each get their own page, every bottle size carries a retail price and two quantity break-points, and contract manufacturing runs as a second track alongside the catalogue.",
+      "The site for ORGENESS GROUP, a fresh orange juice factory selling wholesale and producing juice for other companies. It is built to convert resellers and production clients rather than individual shoppers: four formulas each get their own product page, every bottle size carries a retail price and two quantity break-points, and the factory's production offer has a services page of its own beside the catalogue.",
     summary:
       "A product and wholesale site for a juice manufacturer, designed for a reseller deciding whether to stock a line rather than a shopper buying a bottle. The design keeps the numbers a reseller needs in view, matches the pages to how resellers actually stock, and gives contract production its own route.",
     kpis: [
       { value: "Recognition", label: "Recognition rather than recall", sub: "price breaks printed under every size, no lookup" },
       { value: "Real-world", label: "Match between system and the real world", sub: "one page per product line, the way a reseller stocks" },
-      { value: "Minimalism", label: "Aesthetic and minimalist design", sub: "contract production on its own page, off the homepage" },
+      { value: "Minimalism", label: "Aesthetic and minimalist design", sub: "factory offer summarised at home, detailed on its own page" },
     ],
     problem:
-      "The business sells wholesale and produces under other companies' labels, but a conventional product site is shaped for someone buying one bottle. Read against the heuristics, a reseller's first question, the margin, could only be answered by asking for prices; a variant selector would assume the buyer compares the range when they stock a single line; and the contract production offer had no place of its own, so it would either be missed or crowd the wholesale catalogue.",
+      "The business sells wholesale and produces juice for other companies, but a conventional product site is shaped for someone buying one bottle. Read against the heuristics, that shape fails a reseller in three places: the margin, their first question, can only be answered by asking for prices; a variant selector assumes the buyer compares the range when they stock a single line; and a production offer with no page of its own is either missed or crowds the catalogue.",
     baselineStats: [
-      { value: "Terms on request", label: "wholesale prices and quantity breaks had to be asked for" },
+      { value: "Terms on request", label: "the usual route to wholesale prices and quantity breaks is to ask" },
       { value: "Retail framing", label: "a structure shaped for one bottle, not a reseller's order" },
-      { value: "Offer unplaced", label: "contract production had no page of its own" },
+      { value: "Offer unplaced", label: "a production offer without a page is missed or crowds the catalogue" },
     ],
     solutions: [
       {
         heuristic: "Recognition rather than recall",
         title: "Price Breaks on the Product Page",
-        body: "Each formula gets a full-width price panel: every bottle size with its retail price underneath and two quantity break points below that. A reseller works out their margin from what is in view instead of requesting a price list.",
+        body: "Each formula gets a full-width price panel: every size from the smallest bottle to a six-litre container, with its retail price and two wholesale quantity break points beneath it. A reseller works out their margin from what is in view instead of requesting a price list.",
       },
       {
         heuristic: "Match between system and the real world",
@@ -617,20 +620,20 @@ export const webProjects = [
       },
       {
         heuristic: "Aesthetic and minimalist design",
-        title: "Contract Production as Its Own Track",
-        body: "A dedicated services page carries the offer to produce under the client's own label, with its own consultation route. It sits beside the wholesale catalogue without competing with it for the homepage.",
+        title: "The Factory Offer Given Its Own Page",
+        body: "The homepage carries the production offer as one short why-choose block. The full offer, with the factory's standards, its certificate and the price panels for all four formulas, sits on the services page, so it is easy to find without crowding the catalogue.",
       },
       {
         heuristic: "Flexibility and efficiency of use",
         title: "The Next Step on the Same Panel",
-        body: "The LINE QR code sits on the price panel itself, so a reseller who has done the arithmetic can start the order from the same place without looking for a contact page.",
+        body: "The LINE QR code, the LINE ID and the phone number sit on the price panel itself, so a reseller who has done the arithmetic can start the order from the same place without looking for a contact page.",
       },
     ],
     impactTable: [
       { metric: "Recognition", before: "Prices on request", after: "Retail price and two breaks per size", delta: "In view" },
       { metric: "Real-world", before: "Variants of one product", after: "Four products, a page each", delta: "Separated" },
-      { metric: "Minimalism", before: "No place for contract work", after: "Its own services page", delta: "Placed" },
-      { metric: "Efficiency", before: "Contact apart from pricing", after: "LINE QR on the price panel", delta: "Adjacent" },
+      { metric: "Minimalism", before: "Production offer with no place", after: "Summary at home, detail on its own page", delta: "Placed" },
+      { metric: "Efficiency", before: "Contact apart from pricing", after: "LINE QR and phone on the price panel", delta: "Adjacent" },
     ],
     quote:
       "A reseller's first question is margin. Every decision here keeps the answer in view and the next step beside it, so the arithmetic and the order happen on the same page.",
@@ -663,7 +666,7 @@ export const webProjects = [
     platform: "Responsive Marketing & Catalogue Site",
     industry: "Industrial Cleaning Equipment",
     tags: ["Industrial", "Catalogue", "Rental", "B2B"],
-    stack: ["Figma", "Wireframes", "Design System", "Thai Typography"],
+    stack: ["Figma", "Spec Tables", "Design System", "Thai Typography"],
     image: "/img/cover/billion-plus.webp",
     imageAlt: "Billion Plus Service website — industrial floor-cleaning machine catalogue, specification tables and rental",
     metric: "Task-Based Catalogue",
@@ -688,12 +691,12 @@ export const webProjects = [
       {
         heuristic: "Match between system and the real world",
         title: "Catalogue Grouped by Cleaning Task",
-        body: "Machines sit in the classes a facilities manager already uses, from compact floor washers to ride-on scrubbers, with a category menu that also reaches sweepers, vacuums, pressure washers and the chemicals that go with them. A buyer enters at the job, not the product code.",
+        body: "Machines sit in the classes a facilities manager already uses, from compact floor washers and single-disc machines to walk-behind and ride-on scrubbers, with a category menu that also reaches sweepers, vacuums, pressure washers and the chemicals that go with them. A buyer enters at the job, not the product code.",
       },
       {
         heuristic: "Recognition rather than recall",
         title: "Specification Tables That Answer the Sizing Question",
-        body: "Each table sets machine size against tank capacity, cleaning throughput per hour and rental term. A manager who knows their floor area and shift length reads the right size off the table instead of describing the problem to a salesperson.",
+        body: "The rental page sets each machine's brush size against tank capacity, cleaning throughput per hour and rental term, in one table for each type of scrubber and sweeper. A manager who knows their floor area and shift length reads the right size off the table instead of describing the problem to a salesperson.",
       },
       {
         heuristic: "Error prevention",
@@ -702,15 +705,15 @@ export const webProjects = [
       },
       {
         heuristic: "Consistency and standards",
-        title: "Wireframes Kept Beside the Pages",
-        body: "The board keeps each wireframe beside the page it became, so the structural decisions stayed reviewable once the visual design arrived and the finished pages could be checked against the structure that was agreed.",
+        title: "One Card for Every Machine",
+        body: "Every machine in the catalogue uses the same card, a photograph on white, the model name, a short description and a link to its details, under a class heading with a paragraph on what that class is for. Once a buyer has read one card they can scan the rest.",
       },
     ],
     impactTable: [
       { metric: "Real-world", before: "Model number as the entry point", after: "Machine class and cleaning task", delta: "Restructured" },
       { metric: "Recognition", before: "Ask a salesperson to size", after: "Throughput set against size in a table", delta: "Self-serve" },
       { metric: "Prevention", before: "Rental behind an enquiry", after: "Rental entry price in the hero", delta: "Surfaced" },
-      { metric: "Consistency", before: "Structure agreed in wireframes", after: "Pages checked against the wireframes", delta: "Kept" },
+      { metric: "Consistency", before: "A long list of models", after: "One card per machine, grouped by class", delta: "Uniform" },
     ],
     quote:
       "A plant manager does not want a machine; they want the floor clean before the next shift. Publishing throughput against size turns the catalogue into a calculation they can run themselves.",
@@ -718,7 +721,7 @@ export const webProjects = [
     learnings: [
       "Buyers navigate by the constraint they own, floor area and shift length, not by the supplier's product codes, so the deciding specification belongs in the table.",
       "Stating every route in the hero is cheap error prevention: three words stop a rental customer leaving a page shaped for sales.",
-      "Keeping wireframes beside finished pages kept the structural argument reviewable after the visual design arrived.",
+      "A class heading with a short explanation helps a non-specialist more than a filter does, because it tells them which group their job belongs to before they look at a single model.",
     ],
     sectionLabels: {
       problemEyebrow: "01 / Discovery & Heuristic Gaps",
@@ -728,9 +731,9 @@ export const webProjects = [
       impactColumns: ["Heuristic", "Before", "After", "Change"],
       learningsEyebrow: "04 / Retrospective",
       learningsHeading: "Design Learnings",
-      processHeading: "From Wireframe to Specification Table",
+      processHeading: "From Catalogue to Specification Table",
       processIntro:
-        "Each wireframe kept beside the page it became, ending on the tables that let a buyer size a machine.",
+        "The home, about, catalogue and service pages, ending on the rental tables that let a buyer size a machine.",
     },
   },
   {
@@ -751,24 +754,24 @@ export const webProjects = [
     overview:
       "The corporate site for Union Chemical and Equipment (UC&E), a Thai ethanol manufacturer supplying food, pharmaceutical and industrial customers. It is weighted toward governance rather than catalogue: four products sit inside a structure that gives at least as much room to certification, company history, ESG and organisational structure, because in a regulated supply chain those are what a buyer audits before a grade is ever discussed.",
     summary:
-      "A corporate site for a manufacturer selling into regulated food and pharmaceutical supply chains, where the buyer audits before they buy. The design follows the order a reviewer works in, shows the same history in two shapes for two kinds of reader, and puts the details that decide a purchase on the product page.",
+      "A corporate site for a manufacturer selling into regulated food and pharmaceutical supply chains, where the buyer audits before they buy. The design writes out the evidence a reviewer checks by name and number, shows the same history in two shapes for two kinds of reader, and puts the details that decide a purchase on the product page.",
     kpis: [
-      { value: "Real-world", label: "Match between system and the real world", sub: "certification laid out in the order a reviewer audits" },
+      { value: "Real-world", label: "Match between system and the real world", sub: "standards named with their licence numbers, as a checklist reads" },
       { value: "Efficiency", label: "Flexibility and efficiency of use", sub: "one history as a table and a timeline for two readers" },
-      { value: "Recognition", label: "Recognition rather than recall", sub: "packaging specification on every product page" },
+      { value: "Recognition", label: "Recognition rather than recall", sub: "packaging specification on both ethanol product pages" },
     ],
     problem:
-      "In a regulated supply chain, a procurement or quality reviewer screens a supplier against a checklist before looking at any product. Read against the heuristics, a conventional product site leads with grades and treats the evidence as a footnote, which inverts the order the reviewer works in; it shows the company's history in one shape when two readers want different things from it; and it leaves shipping details for a later conversation, though they decide whether a product can be bought at all.",
+      "In a regulated supply chain, a procurement or quality reviewer screens a supplier against a checklist before a grade is discussed. Read against the heuristics, a conventional product site serves that reviewer badly: certification is reduced to a row of logos in the footer, with nothing a checklist item can be matched against; the company's history comes in one shape when two readers want different things from it; and shipping details are left for a later conversation, though they decide whether a product can be bought at all.",
     baselineStats: [
-      { value: "Product-first order", label: "grades first, the evidence treated as a footnote" },
+      { value: "Logos only", label: "certification reduced to a row of marks in the footer" },
       { value: "One shape of history", label: "a single format for readers who want different things" },
       { value: "Specs deferred", label: "shipping units left for a later conversation" },
     ],
     solutions: [
       {
         heuristic: "Match between system and the real world",
-        title: "Certification in the Reviewer's Order",
-        body: "Standards marks sit high on the homepage, and a dedicated certification page divides the evidence into four categories rather than one list. A reviewer arrives holding a checklist and can work down it in the order they already use.",
+        title: "Certification in the Reviewer's Terms",
+        body: "The homepage gives Our Standard its own section in the body of the page, listing each licence and certificate by name and number above the row of marks. A dedicated certification page divides the evidence into four groups: company, product, environmental, and laboratory testing and calibration. A reviewer arrives holding a checklist and can match it item by item.",
       },
       {
         heuristic: "Flexibility and efficiency of use",
@@ -777,8 +780,8 @@ export const webProjects = [
       },
       {
         heuristic: "Recognition rather than recall",
-        title: "Packaging Specified on Every Product",
-        body: "Each product page ends with its shipping containers, from small drums to bulk tanks, with net volume and weight per unit. A buyer sees whether the product ships the way they need without asking for it separately.",
+        title: "Packaging Specified on the Product Page",
+        body: "The two ethanol product pages end with their shipping containers, from small drums to bulk tanks, with net volume and weight per unit. A buyer sees whether the product ships the way they need without asking for it separately.",
       },
       {
         heuristic: "Aesthetic and minimalist design",
@@ -787,15 +790,16 @@ export const webProjects = [
       },
     ],
     impactTable: [
-      { metric: "Real-world", before: "Product grades first", after: "Certification given its own section", delta: "Reordered" },
+      { metric: "Real-world", before: "Marks as a footer row", after: "Named standards and a four-group page", delta: "Checkable" },
       { metric: "Efficiency", before: "History in one format", after: "Dated table and timeline", delta: "Two views" },
-      { metric: "Recognition", before: "Shipping units on request", after: "Specified on every product page", delta: "In view" },
+      { metric: "Recognition", before: "Shipping units on request", after: "Specified on both ethanol product pages", delta: "In view" },
+      { metric: "Minimalism", before: "Every job description in full", after: "Accordion with a CV upload", delta: "Collapsed" },
     ],
     quote:
-      "In a regulated supply chain the sale opens with an audit, not a pitch. Matching the site to the order a reviewer works in was the central design decision.",
+      "In a regulated supply chain the sale opens with an audit, not a pitch. Giving the evidence a reviewer checks its own place, written out by name and number, was the central design decision.",
     quoteRole: "Design rationale · Unionchemical Website",
     learnings: [
-      "Matching the real-world task order matters more than the conventional page order: here the buyer's checklist, not the product grid, set the structure.",
+      "A reviewer matches a supplier against a checklist, so standards listed by name and licence number serve them better than a row of logos can.",
       "The same content can serve two readers if it is given two shapes; showing the history twice was correct rather than redundant.",
       "Details that decide whether a purchase is possible belong where the purchase is considered, not in a follow-up.",
     ],
@@ -809,7 +813,7 @@ export const webProjects = [
       learningsHeading: "Design Learnings",
       processHeading: "Structured for the Reviewer",
       processIntro:
-        "The homepage and standards row, the corporate and certification structure, product pages with their packaging specifications, ESG with its fourth pillar, and contact, media and careers.",
+        "The homepage and standards row, the corporate and certification structure, product pages, two of them with packaging specifications, ESG with its fourth pillar, and contact, media and careers.",
     },
   },
   {
@@ -828,26 +832,26 @@ export const webProjects = [
     metric: "Search-First Catalogue",
     hook: "OEM buyers qualify a factory on its machine list and its tonnage range. Publishing both turns the first enquiry into a shortlist decision the buyer has already made.",
     overview:
-      "The corporate site for Thaimanee Craft, a Thai OEM plastic injection moulder and mould maker operating since 1983. It is built for industrial buyers rather than browsers: the machine inventory and clamping range are published outright, work is organised into the four things the factory actually does, and everything runs in Thai and English so an overseas buyer reaches the same evidence a domestic one does.",
+      "The corporate site for Thaimanee Craft, a Thai OEM plastic injection moulder and mould maker operating since 1983. It is built for industrial buyers rather than browsers: the machine inventory and clamping range are published outright, work is organised into the four things the factory actually does, and every page carries a Thai and English switch so an overseas buyer can reach the same evidence a domestic one does.",
     summary:
-      "A corporate site for an injection moulding and mould-making factory, designed for an industrial buyer qualifying suppliers before they make contact. The design publishes the pass-or-fail criteria up front, lets a buyer match their part against real production, and carries both languages through every page.",
+      "A corporate site for an injection moulding and mould-making factory, designed for an industrial buyer qualifying suppliers before they make contact. The design publishes the pass-or-fail criteria up front, lets a buyer match their part against real production, and keeps the language switch in the same place on every page.",
     kpis: [
-      { value: "Real-world", label: "Match between system and the real world", sub: "capacity published as the filters a buyer qualifies on" },
+      { value: "Real-world", label: "Match between system and the real world", sub: "capacity published as the figures a buyer qualifies on" },
       { value: "Recognition", label: "Recognition rather than recall", sub: "photo grids of real parts to match a component against" },
-      { value: "Consistency", label: "Consistency and standards", sub: "both languages carry the same content on every page" },
+      { value: "Consistency", label: "Consistency and standards", sub: "language switch in the same place on every page" },
     ],
     problem:
-      "An OEM buyer qualifies a moulding supplier on two things before anything else: what machines it runs and whether their tonnage covers the part. Read against the heuristics, a site that publishes neither leaves the buyer nothing to check against their own requirement; without photographs of parts actually produced there is nothing to compare a component to; and a site in one language leaves an overseas buyer with less evidence than a domestic one.",
+      "An OEM buyer qualifies a moulding supplier on two things before anything else: what machines it runs and whether their tonnage covers the part. Read against the heuristics, a supplier site that publishes neither leaves the buyer nothing to check against their own requirement; without photographs of parts actually produced there is nothing to compare a component to; and a second language that has to be hunted for leaves an overseas buyer with less evidence than a domestic one.",
     baselineStats: [
-      { value: "Capacity unstated", label: "machine inventory and tonnage range not published" },
+      { value: "Capacity unstated", label: "machine inventory and tonnage range usually left unpublished" },
       { value: "Nothing to match", label: "no record of parts produced to compare a component with" },
-      { value: "Thai only", label: "no English route for an overseas buyer" },
+      { value: "Language hunted", label: "a second language an overseas buyer has to look for" },
     ],
     solutions: [
       {
         heuristic: "Match between system and the real world",
         title: "Capacity Stated in the Buyer's Terms",
-        body: "The homepage states the machine inventory and clamping range near the top, in the units a buyer specifies with. A buyer confirms their part fits before writing an email, which is all a first visit needs to achieve.",
+        body: "The homepage states the machine inventory in plain figures, 26 mould-making machines across CNC, wire-cut, EDM and milling and 47 injection machines from 35 to 1,200 tons, in the units a buyer specifies with. A buyer confirms their part fits before writing an email, which is all a first visit needs to achieve.",
       },
       {
         heuristic: "Recognition rather than recall",
@@ -861,14 +865,15 @@ export const webProjects = [
       },
       {
         heuristic: "Consistency and standards",
-        title: "Both Languages, Every Page",
-        body: "The Thai and English toggle sits in the top bar of every page and carries across history, vision, mission and objectives. An overseas buyer reaches the same evidence a domestic one does, not a reduced summary.",
+        title: "One Language Switch, Every Page",
+        body: "The Thai and English switch sits in the same place in the top bar of every page, and each page header repeats the phone and LINE contacts. A buyer can change language or make contact from wherever they land, without looking for a separate section.",
       },
     ],
     impactTable: [
       { metric: "Real-world", before: "Capacity unstated", after: "Inventory and tonnage range on the homepage", delta: "Published" },
       { metric: "Recognition", before: "Nothing to compare against", after: "Photo grids of real parts in four groups", delta: "Catalogued" },
-      { metric: "Consistency", before: "Thai only", after: "Thai and English on every page", delta: "Bilingual" },
+      { metric: "Efficiency", before: "Browse every grid", after: "Search and category filter first", delta: "Direct" },
+      { metric: "Consistency", before: "A second language to look for", after: "Thai and English switch on every page", delta: "Fixed place" },
     ],
     quote:
       "A moulding buyer's first question is whether the press can close on their part. Answering it on the homepage, in their units, removes the only reason they had to call before shortlisting.",
@@ -876,7 +881,7 @@ export const webProjects = [
     learnings: [
       "Figures a supplier treats as internal are the buyer's shortlisting criteria; publishing them in the buyer's units is the real-world match that matters most here.",
       "Photography of real output works as recognition: the buyer matches their component against it rather than reading about capability.",
-      "Bilingual is a consistency question, not a translation task: the second language has to carry the same evidence on every page.",
+      "Bilingual is a consistency question as much as a translation task: the switch has to sit in the same place on every page, wherever a buyer lands.",
     ],
     sectionLabels: {
       problemEyebrow: "01 / Discovery & Heuristic Gaps",
@@ -905,9 +910,10 @@ export const webProjects = [
     image: "/img/cover/supakit-amulet.webp",
     imageAlt: "Supakit Watthumongkol website — die-struck and 3D sculpted portfolio, workshop photography and founder-fronted enquiry",
     metric: "Shot-on-Black Gallery",
-    hook: "In amulet commissioning the order goes to a person, not a company — so the founder's face and his own mobile number sit on the homepage rather than behind a contact form.",
+    hook:
+      "In amulet commissioning the order goes to a person, not a company — so the founder's face and direct mobile number sit on the homepage rather than behind a contact form.",
     overview:
-      "The site for Supakit Watthumongkol, a Thai amulet and Buddhist-object foundry. Commissioning sacred objects is a trust decision made on craftsmanship and on who answers the phone, so the site is built around two things: photographic evidence of finished work and of the production floor, and the founder placed personally at every point where an enquiry starts.",
+      "The site for Supakit Watthumongkol, a Thai amulet and Buddhist-object foundry. Commissioning sacred objects is a trust decision made on craftsmanship and on who answers the phone, so the site is built around two things: photographic evidence of finished work and of the production floor, and the founder named, pictured and reachable where an enquiry starts.",
     summary:
       "A portfolio and enquiry site for a foundry making religious coins, medals and sculpted pieces, where a commission is a trust decision made on craftsmanship and on the person taking the order. The design lets the work carry the page, shows how it is made, and keeps the person and the contact within reach.",
     kpis: [
@@ -916,11 +922,11 @@ export const webProjects = [
       { value: "Efficiency", label: "Flexibility and efficiency of use", sub: "contact one element away from any piece being viewed" },
     ],
     problem:
-      "A client commissioning a sacred object judges two things: whether the finish is good enough and whether the person taking the order can be relied on, and they usually judged both by visiting the workshop. Read against the heuristics, a site has to give them the real-world cues they would use in person, finished work they can inspect, the production floor and the person they would deal with, and keep the route to asking a question short.",
+      "A client commissioning a sacred object judges two things: whether the finish is good enough and whether the person taking the order can be relied on, and in person they would judge both at the workshop. Read against the heuristics, a site has to give them the real-world cues they would use on a visit, finished work they can inspect, the production floor and the person they would deal with, and keep the route to asking a question short.",
     baselineStats: [
-      { value: "No portfolio", label: "finished work not viewable before an enquiry" },
-      { value: "Process unseen", label: "casting and hand finishing undocumented" },
-      { value: "No named contact", label: "nothing showed who a client would be dealing with" },
+      { value: "Finish unseen", label: "without photographs, the work can only be judged in person" },
+      { value: "Process unseen", label: "how a piece is struck and finished visible only on a visit" },
+      { value: "No named contact", label: "a company name does not say who will take the order" },
     ],
     solutions: [
       {
@@ -931,7 +937,7 @@ export const webProjects = [
       {
         heuristic: "Match between system and the real world",
         title: "The Workshop and the Person, Shown",
-        body: "Six photographs of the production floor show inspection, casting, hand finishing and welding, and the founder appears by name, photograph and direct number on the homepage call to action. A client gets the cues they would look for on a visit: how the work is made and who they would deal with.",
+        body: "Six photographs of the production floor show the striking presses, inspection and hand sculpting, with monks visiting the work, and the founder appears by name, photograph and direct number on the homepage call to action. A client gets the cues they would look for on a visit: how the work is made and who they would deal with.",
       },
       {
         heuristic: "Consistency and standards",
@@ -945,9 +951,10 @@ export const webProjects = [
       },
     ],
     impactTable: [
-      { metric: "Minimalism", before: "Work not viewable", after: "Two groups of work, shot on black", delta: "Published" },
+      { metric: "Minimalism", before: "Work judged only in person", after: "Two groups of work, shot on black", delta: "Published" },
       { metric: "Real-world", before: "Workshop visit needed to judge", after: "Production floor and founder on the site", delta: "Shown" },
-      { metric: "Efficiency", before: "Phone only", after: "Phone, LINE and form, in every header", delta: "Expanded" },
+      { metric: "Consistency", before: "Work to sort through", after: "Same two groups in the same order", delta: "Predictable" },
+      { metric: "Efficiency", before: "A visit or a phone call", after: "Phone and LINE in every header", delta: "Closer" },
     ],
     quote:
       "A client is not choosing a supplier; they are choosing someone to entrust a sacred object to. The site gives them the cues a workshop visit would: the work, the floor and the person.",
@@ -986,7 +993,7 @@ export const webProjects = [
     metric: "Decision-Order IA",
     hook: "Renting IT is weighed against buying it — so the site argues the case, terms and failure handling included, before it shows a single laptop.",
     overview:
-      "A lead-generation site for Chaocom Thailand, a computer and notebook rental service supplying offices, training sessions, seminars and events. It is structured as an argument before a catalogue: five reasons to rent rather than buy, the delivery and replacement terms stated in the open, then the machines, then a quotation form specific enough for sales to price directly.",
+      "A lead-generation site for Chaocom Thailand, a computer and notebook rental service supplying offices, training sessions, seminars and events. It is structured as an argument before a catalogue: five reasons to rent come before the machines, the documents, delivery and replacement terms have a page of their own, and the quotation form is specific enough for sales to price directly.",
     summary:
       "A lead-generation site for a computer rental service, designed for a company deciding whether to rent at all rather than which provider to rent from. The design puts the pages in the order that decision is made, publishes the terms people would otherwise negotiate, and turns the enquiry into a brief sales can price.",
     kpis: [
@@ -995,32 +1002,32 @@ export const webProjects = [
       { value: "Guidance", label: "Help and documentation", sub: "documents to rent listed before the quote is sent" },
     ],
     problem:
-      "A company renting IT equipment is weighing renting against buying, and that turns on questions a product page never addresses. Read against the heuristics, the terms that decide it, what happens when a machine fails and what paperwork is needed, were left for negotiation; a prospect had to describe the hardware they wanted rather than pick it; and an open contact box let requests arrive without the details needed to price them, so an enquiry began with a round of questions.",
+      "A company renting IT equipment is weighing renting against buying, and that turns on questions a product page never addresses. Read against the heuristics, a typical rental enquiry leaves the deciding terms, what happens when a machine fails and what paperwork is needed, to negotiation; asks a prospect to describe the hardware they want rather than pick it; and offers an open contact box that lets a request arrive without the details needed to price it, so an enquiry begins with a round of questions.",
     baselineStats: [
-      { value: "Terms unstated", label: "failure handling and delivery left for negotiation" },
-      { value: "Describe, not pick", label: "no named models to choose a specification from" },
-      { value: "Open contact box", label: "requests arrived without what a price depends on" },
+      { value: "Terms unstated", label: "failure handling and delivery usually left for negotiation" },
+      { value: "Describe, not pick", label: "without named models, a buyer has to describe a specification" },
+      { value: "Open contact box", label: "a request can arrive without what a price depends on" },
     ],
     solutions: [
       {
         heuristic: "Match between system and the real world",
         title: "Pages in the Order the Decision Is Made",
-        body: "The site runs argument, terms, catalogue, then quote: five reasons to rent rather than buy come before any machine is shown. A visitor who has not yet decided to rent meets the argument first, matching how the decision actually unfolds.",
+        body: "The homepage makes the case before the catalogue: five reasons to rent come before any machine is shown, and the menu then runs from the service conditions to the quotation form. A visitor who has not yet decided to rent meets the argument first, matching how the decision actually unfolds.",
       },
       {
         heuristic: "Recognition rather than recall",
         title: "Models Named, Not Described",
-        body: "Equipment is split into laptops, Mac laptops and desktops with the actual models listed. A prospect picks a specification they recognise instead of describing one and waiting to hear whether it exists.",
+        body: "Equipment is split into laptops, MacBooks and desktop computers with the actual brands and models listed. A prospect picks a specification they recognise instead of describing one and waiting to hear whether it exists.",
       },
       {
         heuristic: "Error prevention",
         title: "A Quote Form Sales Can Price",
-        body: "The quotation page asks for company, purpose, rental period, specification, quantity and the collection and return dates. A request arrives with the details a price depends on, which removes the first round of follow-up questions.",
+        body: "The quotation page asks for the company and contact, the purpose, the specification, the quantity, the start and return dates and a budget. A request arrives with the details a price depends on, which removes the first round of follow-up questions.",
       },
       {
         heuristic: "Help and documentation",
         title: "Terms and Paperwork Published Up Front",
-        body: "The service conditions page states the documents needed to rent, the delivery terms and what happens when hardware fails, with a replacement time for each area. The questions a prospect would ask during negotiation are answered before they enquire, and nothing stalls after the quote is accepted.",
+        body: "The service conditions page lists the documents needed to rent, states that delivery and collection are free, and sets out what happens when hardware fails, with a replacement time for each area and remote help for software problems. The questions a prospect would ask during negotiation are answered before they enquire.",
       },
     ],
     impactTable: [
@@ -1030,7 +1037,7 @@ export const webProjects = [
       { metric: "Guidance", before: "Terms asked during negotiation", after: "Documents, delivery and failure terms published", delta: "Published" },
     ],
     quote:
-      "Nobody shopping for rental laptops is comparing rental companies; they are deciding whether to rent at all. The site follows that decision in order and answers each question before it has to be asked.",
+      "Someone looking at rental laptops is often still deciding whether to rent at all, not which company to rent from. The site follows that decision in order and answers each question before it has to be asked.",
     quoteRole: "Design rationale · Chaocom Thailand Website",
     learnings: [
       "When a service competes with not using it at all, matching the real-world order of the decision means the argument comes before the catalogue.",
@@ -1075,9 +1082,9 @@ export const webProjects = [
       { value: "Guidance", label: "Help and documentation", sub: "articles for homeowners researching months ahead" },
     ],
     problem:
-      "Commissioning a house is decided on evidence a homeowner cannot easily get. Read against the heuristics, a single gallery mixes two different judgements, taste in design and quality of construction; nothing showed which people inside the company would handle each stage, including who would answer after handover; and someone researching months before they could commission had no reason to visit.",
+      "Commissioning a house is decided on evidence a homeowner cannot easily get. Read against the heuristics, a single gallery mixes two different judgements, taste in design and quality of construction; a builder's site rarely shows which people inside the company handle each stage, including who answers after handover; and someone researching months before they can commission has no reason to visit.",
     baselineStats: [
-      { value: "One gallery", label: "design and construction work mixed together" },
+      { value: "One gallery", label: "design and construction work commonly shown together" },
       { value: "Company unseen", label: "no account of who handles each stage" },
       { value: "No early content", label: "nothing for homeowners still months from deciding" },
     ],
@@ -1090,18 +1097,24 @@ export const webProjects = [
       {
         heuristic: "Visibility of system status",
         title: "The Organisation Chart, Published in Full",
-        body: "The about page shows three departments and their named functions, from estimating and engineering through construction, handover and quality warranty. A homeowner can see who owns each stage of the build, including after handover, rather than taking capability on trust.",
+        body: "The about page shows three departments and their thirteen functions, from design and estimating through engineering, construction and handover to quality warranty and after-sales service. A homeowner can see who owns each stage of the build, including after handover, rather than taking capability on trust.",
       },
       {
         heuristic: "Help and documentation",
         title: "Articles for People Not Ready to Enquire",
         body: "An article index and template cover choosing a contractor and a house design. A build decision has a long lead time, so helping someone who cannot yet commission is part of the site's job.",
       },
+      {
+        heuristic: "Flexibility and efficiency of use",
+        title: "An Enquiry Band at the Foot of Every Page",
+        body: "Every page ends on the same band, an invitation to ask about design and construction with the phone number and a LINE button, above the footer. A homeowner who has seen enough can enquire from wherever they stopped reading.",
+      },
     ],
     impactTable: [
       { metric: "Real-world", before: "Design and construction mixed", after: "Two portfolios judged separately", delta: "Separated" },
-      { metric: "Visibility", before: "Company structure unstated", after: "Three departments, named functions", delta: "Published" },
+      { metric: "Visibility", before: "Company structure unstated", after: "Three departments, thirteen functions", delta: "Published" },
       { metric: "Guidance", before: "No reason to visit early", after: "Article and guide content", delta: "Reached" },
+      { metric: "Efficiency", before: "Contact on its own page", after: "Phone and LINE band on every page", delta: "Closer" },
     ],
     quote:
       "The question underneath 'which builder should I use' is usually 'will anyone answer when something needs fixing in year two'. Showing who owns each stage answers it better than a guarantee written in marketing copy.",
@@ -1138,28 +1151,29 @@ export const webProjects = [
     image: "/img/cover/happy-training.webp",
     imageAlt: "Happy Training website redesign — a flat column of course links rebuilt as fifteen grouped, filterable categories",
     metric: "Filterable Catalogue",
-    hook: "The old site put every course in one column of plain text links — over a hundred of them, ungrouped. Making that catalogue navigable was the entire redesign.",
+    hook:
+      "The old site put every course in one column of plain text links — dozens of them, ungrouped. Making that catalogue navigable was the entire redesign.",
     overview:
       "A redesign for Happy Training, a Thai corporate training institute. The site it replaced listed every course as a plain text link in a single continuous column with no grouping, no imagery and no hierarchy. The rebuild turns that into fifteen course groups, image-led cards with a category filter, and the four delivery formats stated before the catalogue — so an HR buyer can shortlist by the capability gap they are trying to close.",
     summary:
-      "A redesign of a corporate training institute's site, whose catalogue had been a single column of over a hundred plain text links. The design groups the catalogue, gives the eye something to scan by, and states how sessions run before the course list.",
+      "A redesign of a corporate training institute's site, whose catalogue had been a single long column of plain text links. The design groups the catalogue, gives the eye something to scan by, and states how sessions run before the course list. Each decision below is tied to the usability heuristic it serves.",
     kpis: [
       { value: "Minimalism", label: "Aesthetic and minimalist design", sub: "a flat column of links regrouped into categories" },
       { value: "Recognition", label: "Recognition rather than recall", sub: "image cards and a filter, so the catalogue is scanned" },
       { value: "Real-world", label: "Match between system and the real world", sub: "delivery format stated before the course list" },
     ],
     problem:
-      "The previous site listed every course as a plain text link in one unbroken column, over a hundred of them, with no grouping and no imagery. Read against the heuristics, a buyer looking for one course had to read the entire page to learn whether it existed, with nothing to recognise by and no structure to narrow the search; and how a session would run, which a corporate buyer decides alongside the topic, was not stated at all.",
+      "The previous site listed every course as a plain text link in one unbroken column, dozens of them, with no grouping and no imagery in the list. Read against the heuristics, a buyer looking for one course had to read the entire list to learn whether it existed, with nothing to recognise by and no structure to narrow the search; and how a session would run, which a corporate buyer decides alongside the topic, was not stated at all.",
     baselineStats: [
-      { value: "One flat column", label: "over a hundred courses as undifferentiated text links" },
+      { value: "One flat column", label: "every course as an undifferentiated text link" },
       { value: "No grouping", label: "nothing organising courses by skill type or function" },
-      { value: "No imagery", label: "no visual hierarchy to scan; the page had to be read" },
+      { value: "No imagery", label: "no visual hierarchy in the list; it had to be read" },
     ],
     solutions: [
       {
         heuristic: "Aesthetic and minimalist design",
-        title: "Fifteen Groups Over a Hundred Courses",
-        body: "The catalogue was restructured into fifteen groups, from coaching and leadership to digital skills and online courses. A visitor sees fifteen choices instead of a hundred and navigates by the skill they need rather than by scanning titles.",
+        title: "Fifteen Groups Instead of One List",
+        body: "The catalogue was restructured into fifteen groups, from coaching and leadership to digital skills and online courses. A visitor sees fifteen choices instead of the whole list and navigates by the skill they need rather than by scanning titles.",
       },
       {
         heuristic: "Recognition rather than recall",
@@ -1171,14 +1185,20 @@ export const webProjects = [
         title: "Delivery Format Before the Syllabus",
         body: "Four formats are stated before any course is shown: training with group coaching, hard-skill workshop, training with workshop, and training with activity. A corporate buyer decides how a day will run with their team as deliberately as what it covers, so the format comes first.",
       },
+      {
+        heuristic: "Consistency and standards",
+        title: "One Card for Every Course",
+        body: "Every course card takes the same shape: a photograph, the numbered course title and a red details button in the same place. Once a buyer has read one card, the rest of the grid can be compared at a glance.",
+      },
     ],
     impactTable: [
       { metric: "Minimalism", before: "One flat column of links", after: "Fifteen grouped categories", delta: "Restructured" },
-      { metric: "Recognition", before: "Read the entire page", after: "Image cards with a category filter", delta: "Scannable" },
+      { metric: "Recognition", before: "Read the entire list", after: "Image cards with a category filter", delta: "Scannable" },
       { metric: "Real-world", before: "Format not stated", after: "Four formats before the catalogue", delta: "Defined" },
+      { metric: "Consistency", before: "Links of varying length", after: "One card shape for every course", delta: "Uniform" },
     ],
     quote:
-      "A hundred courses in one column is not a catalogue, it is a wall. The institute's depth was its best asset and its worst navigation problem, and grouping it was the redesign.",
+      "Dozens of courses in one column is not a catalogue, it is a wall. The institute's depth was its best asset and its worst navigation problem, and grouping it was the redesign.",
     quoteRole: "Design rationale · Happy Training Website",
     learnings: [
       "Depth becomes a liability the moment it is presented flat; the minimalist fix is grouping rather than trimming.",
@@ -1225,9 +1245,9 @@ export const webProjects = [
     problem:
       "A visitor arriving from an advertisement has two questions and little patience: what it costs and how long it takes. Read against the heuristics, a corporate site answers neither where they land; a quoted price that later grows by government fees misleads them; and a single contact form at the end of the page asks them to scroll to the bottom at the moment they decide.",
     baselineStats: [
-      { value: "Price on request", label: "service fees not stated up front" },
-      { value: "Timeline unstated", label: "how long a registration takes not explained" },
-      { value: "One exit", label: "contact only at the end of the page" },
+      { value: "Price on request", label: "the usual route to a fee is a call" },
+      { value: "Timeline unstated", label: "how long a registration takes rarely explained" },
+      { value: "One exit", label: "contact only at the end of a long page" },
     ],
     solutions: [
       {
@@ -1255,6 +1275,7 @@ export const webProjects = [
       { metric: "Visibility", before: "Process unstated", after: "Four steps and a completion time", delta: "Shown" },
       { metric: "Prevention", before: "Price on request", after: "Three tiers, excluded fees disclosed", delta: "Honest" },
       { metric: "Efficiency", before: "Footer form only", after: "Contact after every block", delta: "Multiplied" },
+      { metric: "Consistency", before: "Steps laid out for a wide screen", after: "Same numbered order, stacked on a phone", delta: "Kept" },
     ],
     quote:
       "Ad traffic is expensive and impatient. If the first screens do not show the price and the timeline, the click has already been paid for nothing.",
@@ -1293,11 +1314,11 @@ export const webProjects = [
     metric: "Per-Business Sections",
     hook: "One company selling solar rooftops, electric motorcycles and Häfele bathroom fittings — the design problem was giving three unrelated businesses one coherent site.",
     overview:
-      "The site for Enless Eco, a Chachoengsao company running three unrelated businesses under one roof: solar rooftop installation, the Deco electric motorcycle brand, and Häfele sanitary and hardware distribution. Rather than forcing them through one funnel, each gets its own top-level section, its own product treatment and its own stream in the blog, with the homepage doing only the work of introducing the company and pointing at all three.",
+      "The site for Enless Eco, a Chachoengsao company running three unrelated businesses under one roof: solar rooftop installation, the Deco electric motorcycle brand, and Häfele sanitary and hardware distribution. Rather than forcing them through one funnel, solar, the company's main line, leads the homepage with its installed sites, Deco and Häfele each get a top-level section with their own product treatment, and the blog splits into a stream for each line.",
     summary:
-      "A site for a company running three unrelated businesses under one roof: solar installation, electric motorcycles and hardware distribution. The design gives each audience its own route from the navigation, presents each line the way its buyer already searches, and splits content so nobody reads past the other two.",
+      "A site for a company running three unrelated businesses under one roof: solar installation, electric motorcycles and hardware distribution. The design gives each audience its own route, presents each line the way its buyer already searches, and splits content so nobody reads past the other two. Each decision below is tied to the usability heuristic it serves.",
     kpis: [
-      { value: "Efficiency", label: "Flexibility and efficiency of use", sub: "each business line one click from the top navigation" },
+      { value: "Efficiency", label: "Flexibility and efficiency of use", sub: "two brands in the navigation, solar leading the homepage" },
       { value: "Real-world", label: "Match between system and the real world", sub: "each line laid out the way its buyer already searches" },
       { value: "Minimalism", label: "Aesthetic and minimalist design", sub: "articles split by line, so no one scrolls past the rest" },
     ],
@@ -1311,13 +1332,13 @@ export const webProjects = [
     solutions: [
       {
         heuristic: "Flexibility and efficiency of use",
-        title: "One Section per Business, From the Navigation",
-        body: "Each business has its own top-level item in the navigation, with call and LINE buttons in the bar itself. A visitor reaches the line they came for in one click, and the homepage does only introduction work before handing off.",
+        title: "A Route for Each Business",
+        body: "Solar, the company's main line, leads the homepage with its installed sites. Deco and Häfele each have their own item in the navigation, with call and LINE buttons in the bar itself. A rider or a contractor reaches their line in one click from anywhere, and a homeowner meets solar as soon as they land.",
       },
       {
         heuristic: "Match between system and the real world",
         title: "A Product Layout That Fits Each Buyer",
-        body: "Motorcycles are listed as named models with customer reviews beneath, because a rider buys on model and on what other riders said. Hardware runs as a searchable catalogue with a category sidebar, because a contractor arrives knowing the category. Solar shows installed sites, because a homeowner wants roofs like theirs.",
+        body: "Motorcycles are listed as named models with customer reviews beneath, because a rider buys on model and on what other riders said. Hardware runs as a searchable catalogue with a category sidebar, because a contractor arrives knowing the category. Solar shows installed sites, each with a page of its own, because a homeowner wants roofs like theirs.",
       },
       {
         heuristic: "Aesthetic and minimalist design",
@@ -1331,7 +1352,7 @@ export const webProjects = [
       },
     ],
     impactTable: [
-      { metric: "Efficiency", before: "Reached through the company story", after: "Its own top-level nav section", delta: "Direct" },
+      { metric: "Efficiency", before: "Reached through the company story", after: "Brands in the nav, solar on the homepage", delta: "Direct" },
       { metric: "Real-world", before: "One shared treatment", after: "Model grid, catalogue, installed sites", delta: "Fitted" },
       { metric: "Minimalism", before: "Single mixed feed", after: "Four streams by business line", delta: "Segmented" },
       { metric: "Consistency", before: "Contact form", after: "Call and LINE in every header", delta: "Constant" },
@@ -1340,7 +1361,7 @@ export const webProjects = [
       "A homeowner pricing a solar roof, a rider choosing a motorcycle and a contractor sourcing fittings share nothing but the company they landed on. The design job was to stop any of them reading the other two.",
     quoteRole: "Design rationale · Endless Eco Website",
     learnings: [
-      "When one company runs unrelated lines, a top-level route per line is the efficient path; inventing a shared story only adds reading.",
+      "When one company runs unrelated lines, a route per line is the efficient path: here the main line leads the homepage and the other two get sections of their own, where a shared story would only add reading.",
       "Each line needed its own product layout because each buyer arrives knowing something different; matching that is the real-world fit.",
       "Splitting content by audience lets one system serve three groups, which a single reverse-chronological feed cannot.",
     ],
@@ -1354,7 +1375,7 @@ export const webProjects = [
       learningsHeading: "Design Learnings",
       processHeading: "Three Businesses, Three Routes",
       processIntro:
-        "One site for three unrelated businesses, each reached from the navigation and presented the way its buyer searches.",
+        "One site for three unrelated businesses, each given its own route and presented the way its buyer searches.",
     },
   },
   {
@@ -1392,23 +1413,29 @@ export const webProjects = [
       {
         heuristic: "Match between system and the real world",
         title: "Real People and Real Rooms",
-        body: "Doctor, nurses and caregivers appear by name with photographs, followed by real photographs of rooms, beds and daily activities from a dedicated set. A family sees the people and the conditions they are choosing, so a visit confirms what they already saw rather than revealing it.",
+        body: "Two doctors and two nurses appear by name with photographs and a line on their experience, followed by real photographs of rooms, beds and daily activities from a dedicated set. A family sees the people and the conditions they are choosing, so a visit confirms what they already saw rather than revealing it.",
       },
       {
         heuristic: "Error prevention",
         title: "The Rate and Everything It Covers",
-        body: "The service page states the monthly and daily rate, and directly beneath it an eight-item block lists what that includes, from meals to vital-signs monitoring and round-the-clock CCTV. A family knows what they are paying for before they call, rather than bracing for it.",
+        body: "The service page states the monthly and daily rate, and directly beneath it an eight-item block lists what that includes, from three meals and two snacks a day to vital-signs monitoring and round-the-clock CCTV. A family knows what they are paying for before they call, rather than bracing for it.",
       },
       {
         heuristic: "Help and documentation",
         title: "Nearby Hospitals Named",
         body: "The contact page lists seven nearby hospitals beside the map as the transfer destinations in an emergency. The question families find hardest to ask on a first call is answered without them asking.",
       },
+      {
+        heuristic: "Flexibility and efficiency of use",
+        title: "Call or LINE From Any Page",
+        body: "The phone number and a LINE button sit in the header of every page and again beneath the rate, so a family that has read enough can call or message from wherever they stopped, instead of looking for the contact page.",
+      },
     ],
     impactTable: [
       { metric: "Real-world", before: "Staff and rooms not shown", after: "Named team and real photography", delta: "Shown" },
       { metric: "Prevention", before: "Rate unexplained", after: "Rate with an eight-item inclusions list", delta: "Clear" },
       { metric: "Guidance", before: "Emergency plan unaddressed", after: "Seven nearby hospitals named", delta: "Answered" },
+      { metric: "Efficiency", before: "Contact on its own page", after: "Phone and LINE in every header", delta: "Closer" },
     ],
     quote:
       "The question a family cannot bring themselves to ask on a first call is what happens at three in the morning. Naming the hospitals a resident would go to answers it before they have to.",
@@ -1474,6 +1501,11 @@ export const webProjects = [
         body: "Twelve bag types are named in one block, alongside uniforms, hats and caps, with printing methods listed under the claim. A buyer with a specific brief finds their item on the list or does not, which is faster for both sides than an enquiry that ends in a no.",
       },
       {
+        heuristic: "Help and documentation",
+        title: "Design Help Offered Up Front",
+        body: "A consultation and design block says the factory will help shape the product with the buyer, beside photographs of pattern cutting. A buyer who arrives with an idea rather than finished artwork learns before enquiring that this is part of the service.",
+      },
+      {
         heuristic: "Flexibility and efficiency of use",
         title: "Contact the Length of the Scroll",
         body: "A call button and LINE account sit in the header and repeat after every block, seven points across one page. The next step is always beside wherever the reader stops.",
@@ -1482,6 +1514,7 @@ export const webProjects = [
     impactTable: [
       { metric: "Real-world", before: "Claimed only", after: "Own factory floor photographed", delta: "Shown" },
       { metric: "Recognition", before: "Capability unstated", after: "Twelve bag types named", delta: "Listed" },
+      { metric: "Guidance", before: "Artwork assumed", after: "Consultation and design offered", delta: "Explained" },
       { metric: "Efficiency", before: "Footer only", after: "Seven call and LINE points", delta: "Multiplied" },
     ],
     quote:
@@ -1515,7 +1548,12 @@ export const webProjects = [
     platform: "Single-Page Sale Page",
     industry: "Commercial & Industrial Cleaning",
     tags: ["Facility Services", "B2B", "Sale Page", "Lead Gen"],
-    stack: ["Figma", "Wireframing", "Design System", "Thai Typography"],
+    stack: [
+      "Figma",
+      "Landing Page",
+      "Design System",
+      "Thai Typography",
+    ],
     image: "/img/cover/clean-all-kleen.webp",
     imageAlt: "Clean All Kleen sale page — three service lines, eight facility types and a grid of completed industrial jobs",
     metric: "Photo-Led Service Cards",
@@ -1532,9 +1570,9 @@ export const webProjects = [
     problem:
       "Commercial cleaning is bought on evidence that the contractor has handled a site like yours, and this page had to serve a factory manager and a homeowner at once. Read against the heuristics, services described in text make both read before they recognise their job; a general description of coverage leaves each wondering whether their type of site is included; and without completed work there is nothing to judge the standard by.",
     baselineStats: [
-      { value: "Text only", label: "services described rather than shown" },
-      { value: "Unclear scope", label: "the types of site served not stated" },
-      { value: "No evidence", label: "completed jobs not shown" },
+      { value: "Text only", label: "services usually described rather than shown" },
+      { value: "Unclear scope", label: "the types of site served left unstated" },
+      { value: "No evidence", label: "nothing to judge the standard of work by" },
     ],
     solutions: [
       {
@@ -1560,7 +1598,8 @@ export const webProjects = [
     ],
     impactTable: [
       { metric: "Recognition", before: "Text description", after: "Three lines, each with its own photograph", delta: "Visual" },
-      { metric: "Real-world", before: "Coverage implied", after: "Eight site types named twice", delta: "Explicit" },
+      { metric: "Real-world", before: "Coverage implied", after: "Eight site types named in the hero and copy", delta: "Explicit" },
+      { metric: "Consistency", before: "Industrial and domestic apart", after: "One card pattern for all three lines", delta: "Unified" },
       { metric: "Real-world", before: "No completed work shown", after: "Eight-job gallery including a PPE crew", delta: "Documented" },
     ],
     quote:
@@ -1606,7 +1645,7 @@ export const webProjects = [
     kpis: [
       { value: "Visibility", label: "Visibility of system status", sub: "three numbered steps show where an engagement starts" },
       { value: "Real-world", label: "Match between system and the real world", sub: "expertise shown through published course material" },
-      { value: "Consistency", label: "Consistency and standards", sub: "reusable components keep every page the same" },
+      { value: "Consistency", label: "Consistency and standards", sub: "reusable cards and one closing block across the pages" },
     ],
     problem:
       "Outsourcing accounts is a high-trust decision made by someone who cannot easily judge accounting expertise. Read against the heuristics, the risks were specific: a visitor could not see what starting an engagement involved, so the first step felt like a commitment; expertise written as prose gave them nothing from their own world to check it against; and four services in a flat list gave them no structure to recognise their own need by.",
@@ -1634,14 +1673,14 @@ export const webProjects = [
       {
         heuristic: "Consistency and standards",
         title: "One Component Set Across Six Pages",
-        body: "Service cards, article cards and the contact block were built as reusable components with collapsed and expanded variants, and the contact block with its LINE QR code repeats in the same form at the end of every page. A visitor learns the layout once and finds the same element in the same place everywhere.",
+        body: "The service cards were built as reusable components with collapsed and expanded variants, and a consultation block with two QR codes, LINE among them, closes the home, services, blog and contact pages in the same form. A visitor learns the layout once and finds the same element in the same place.",
       },
     ],
     impactTable: [
       { metric: "Visibility", before: "First step of an engagement unstated", after: "Three numbered steps, the form named first", delta: "Shown" },
       { metric: "Real-world", before: "Expertise described in prose", after: "Published seminar material on the homepage", delta: "Evidenced" },
       { metric: "Recognition", before: "Services in a flat list", after: "Four cards with photograph and inclusions", delta: "Scannable" },
-      { metric: "Consistency", before: "Not systematised", after: "Reusable cards and contact block on six pages", delta: "Systematised" },
+      { metric: "Consistency", before: "Not systematised", after: "Card components and one closing block", delta: "Systematised" },
     ],
     quote:
       "Outsourcing accounts is decided on trust by someone who cannot audit an accountant. The design kept to things a visitor can check for themselves: what the first step is, what the firm has already taught, and the same structure on every page.",
@@ -1649,7 +1688,7 @@ export const webProjects = [
     learnings: [
       "For a high-trust service the most useful thing to make visible is the first step; naming it as a form rather than a meeting lowers the commitment a visitor believes they are making.",
       "Evidence from the visitor's own world, such as a published course with a date and a fee, matches how people already judge expertise, which is why it carries further than a claim in prose.",
-      "Building cards and the contact block as components with variants kept six pages consistent, so a new service or article reuses a pattern visitors have already learned.",
+      "Building the service cards as components with variants kept the pages consistent, so a new service reuses a pattern visitors have already learned.",
     ],
     sectionLabels: {
       problemEyebrow: "01 / Discovery & Heuristic Gaps",
